@@ -63,7 +63,7 @@ class Moderator extends Component
             $user->tasks()->delete();
             $user->products()->delete();
             $user->delete();
-            
+
             return redirect()->route('home');
         } else {
             return false;
