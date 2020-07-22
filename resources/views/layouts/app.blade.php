@@ -103,6 +103,16 @@
                                         {{Emoji::gear()}} Settings
                                     </a>
                                     <div class="dropdown-divider"></div>
+                                    @if (Auth::check() && Auth::user()->isStaff)
+                                    <a class="dropdown-item text-dark" href="/adminbar">
+                                        @if (Auth::user()->staffShip)
+                                        {{Emoji::eyes()}} Hide adminbar
+                                        @else
+                                        {{Emoji::eyes()}} Show adminbar
+                                        @endif
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    @endif
                                     <a class="dropdown-item text-dark" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
