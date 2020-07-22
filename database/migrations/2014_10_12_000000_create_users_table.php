@@ -34,6 +34,7 @@ class CreateUsersTable extends Migration
             $table->string('telegram')->nullable();
             $table->string('youtube')->nullable();
             $table->boolean('isStaff')->default(false);
+            $table->boolean('isDeveloper')->default(false);
             $table->boolean('staffShip')->default(false);
             $table->boolean('isBeta')->default(false);
             $table->boolean('isFlagged')->default(false);

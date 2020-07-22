@@ -34,6 +34,16 @@ class Moderator extends Component
             return false;
         }
     }
+    
+    public function enrollDeveloper()
+    {
+        if (Auth::check() && Auth::user()->isStaff) {
+            $this->user->isDeveloper = ! $this->user->isDeveloper;
+            $this->user->save();
+        } else {
+            return false;
+        }
+    }
 
     public function flagUser()
     {

@@ -97,7 +97,7 @@ If all the conditions are met, you can proceed with the following steps:
 1. Make sure **port 8080 is unused** *or else* change `DEV_PORT` to a free port on your host.
 2. **Run `chgrp -R docker storage`**. The development container will chown the `storage` directory to the `www-data` user inside the container so Taskord can write to it. You need to change the group to your host's `docker` group here to not lose access to the `storage` directory.
 3. **Run `docker-compose up`** and wait until all database migrations have been done.
-4. You can now login with `root` and `root` as password on `localhost:8080` (or another port if specified).
+4. You can now login with `test` and `test` as password on `localhost:8080` (or another port if specified).
 
 If needed, You'll be able to run any artisan commands via docker-compose like so:
 

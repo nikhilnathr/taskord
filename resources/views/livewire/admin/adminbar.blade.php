@@ -15,7 +15,7 @@
             </span>
             <a class="text-white" href="https://github.com/taskord/taskord" target="_blank">
                 <span class="font-weight-bold ml-3">
-                    <i class="fa fa-github mr-1"></i>
+                    <i class="fa text-white fa-github mr-1"></i>
                     GitHub
                 </span>
             </a>

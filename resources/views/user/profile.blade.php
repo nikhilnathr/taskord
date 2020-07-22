@@ -56,11 +56,19 @@
                     @if (Auth::check() && Auth::user()->id === $user->id)
                     <div class="mt-2">
                         <span class="font-weight-bold">{{Emoji::blossom()}} You are a </span>
-                        {{ count($user->badges) < 0 ? 'Beginner' : $user->badges->last()->name }}
+                        {{ count($user->badges) === 0 ? 'Beginner' : $user->badges->last()->name }}
                     </div>
-                    
+                    @else
+                    <div class="mt-2">
+                        <span class="font-weight-bold">{{Emoji::blossom()}} {{ $user->username }} is a </span>
+                        {{ count($user->badges) === 0 ? 'Beginner' : $user->badges->last()->name }}
+                    </div>
                     @endif
-                    {{ count($user->badges)}}
+                    @if (Auth::check() && Auth::user()->isDeveloper)
+                    <div class="mt-2">
+                        <span class="font-weight-bold">{{Emoji::checkBoxWithCheck()}} Taskord Code Contributor</span>
+                    </div>
+                    @endif
                 </div>
             </div>  
         </div>

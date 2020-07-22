@@ -16,6 +16,11 @@
             <span class="ml-1">Enroll to Staff</span>
             <span wire:loading wire:target="enrollStaff" class="small ml-2 text-success font-weight-bold">Enrolling...</span>
         </div>
+        <div class="mb-2">
+            <input wire:click="enrollDeveloper" class="form-check-input" type="checkbox" {{ $user->isDeveloper ? 'checked' : '' }}>
+            <span class="ml-1">Enroll to Contributor</span>
+            <span wire:loading wire:target="enrollDeveloper" class="small ml-2 text-success font-weight-bold">Enrolling...</span>
+        </div>
         <div>
             <input wire:click="flagUser" class="form-check-input" type="checkbox" {{ $user->isFlagged ? 'checked' : '' }}>
             <span class="ml-1 text-danger font-weight-bold">Flag this user</span>

@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'firstname' => 'Evil',
             'lastname' => 'Dabbit',
-            'username' => 'dabbit',
+            'username' => 'test',
             'company' => 'Taskord',
             'bio' => $faker->sentence($nbWords = 6, $variableNbWords = true),
             'email' => 'test@test.com',
@@ -32,6 +32,7 @@ class UserSeeder extends Seeder
             'telegram' => $faker->userName,
             'youtube' => $faker->userName,
             'isStaff' => true,
+            'isDeveloper' => true,
             'isBeta' => true,
             'created_at' => $faker->dateTimeBetween($startDate = '-10 days', $endDate = 'now'),
         ]);
@@ -54,6 +55,7 @@ class UserSeeder extends Seeder
                 'telegram' => $faker->userName,
                 'youtube' => $faker->userName,
                 'isStaff' => false,
+                'isDeveloper' => false,
                 'isBeta' => false,
                 'created_at' => $faker->dateTimeBetween($startDate = '-10 days', $endDate = 'now'),
             ]);
