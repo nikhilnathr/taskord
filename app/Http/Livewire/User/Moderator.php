@@ -34,7 +34,7 @@ class Moderator extends Component
             return false;
         }
     }
-    
+
     public function enrollDeveloper()
     {
         if (Auth::check() && Auth::user()->isStaff) {
