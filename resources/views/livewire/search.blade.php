@@ -1,0 +1,72 @@
+<div class="relative mr-3">
+    <input
+        type="text"
+        class="form-control"
+        placeholder="Search tasks..."
+        wire:model="query"
+    />
+    <ul class="position-absolute mt-2 w-50 list-group shadow-sm search-dropdown" style="z-index:2">
+        @if (!empty($query))
+        <li class="list-group-item">
+            <span class="h5">Tasks</span>
+        </li>
+        @if (count($tasks) > 0)
+            @foreach($tasks as $task)
+            <li class="list-group-item">
+                <span>
+                    <input
+                        class="form-check-input mt-1"
+                        type="checkbox"
+                        {{ $task->done ? "checked" : "unchecked" }}
+                        disabled
+                    />
+                    <a class="ml-1 task-font" href="#">{{ $task->task }}</a>
+                    <span class="small ml-2">👏
+                        <span class="text-black-50">{{ $task->task_praise->count() }}</span>
+                    </span>
+                </span>
+                <img class="rounded-circle float-right avatar-30" src="{{$task->user->avatar}}" />
+            </li>
+            @endforeach
+        @else
+            <li class="list-group-item">We couldn’t find any tasks matching <span class="font-weight-bold">{{ $query }}</span>!</li>
+        @endif
+        <li class="list-group-item">
+            <span class="h5">Users</span>
+        </li>
+        @if (count($users) > 0)
+            @foreach($users as $user)
+            <li class="list-group-item">
+                <img class="rounded-circle avatar-30" src="{{$user->avatar}}" />
+                <span>
+                    <a class="ml-2 task-font" href="{{ route('user.done', ['username' => $user->username]) }}">
+                        <span class="font-weight-bold">{{ $user->firstname ? $user->firstname . ' ' . $user->lastname : '' }}</span>
+                        <span class="small">{{ "@" . $user->username }}</span>
+                    </a>
+                </span>
+            </li>
+            @endforeach
+        @else
+            <li class="list-group-item">We couldn’t find any users matching <span class="font-weight-bold">{{ $query }}</span>!</li>
+        @endif
+        <li class="list-group-item">
+            <span class="h5">Products</span>
+        </li>
+        @if (count($products) > 0)
+            @foreach($products as $product)
+            <li class="list-group-item">
+                <img class="rounded avatar-30" src="{{$product->avatar}}" />
+                <span>
+                    <a class="ml-2 task-font" href="{{ route('product.done', ['slug' => $product->slug]) }}">
+                        <span class="font-weight-bold">{{ $product->name }}</span>
+                    </a>
+                </span>
+                <img class="rounded-circle float-right avatar-30" src="{{$product->user->avatar}}" />
+            </li>
+            @endforeach
+        @else
+            <li class="list-group-item">We couldn’t find any products matching <span class="font-weight-bold">{{ $query }}</span>!</li>
+        @endif
+        @endif
+    </ul>
+</div>

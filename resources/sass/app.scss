@@ -1,0 +1,150 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+@import 'floating-labels';
+
+a {
+  text-decoration: none;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #5850ec;
+  border-color: #5850ec;
+  
+  &:hover, &:active, &:focus {
+    background-color: #6f68ee;
+  }
+}
+
+.navbar {
+  .reputation {
+    padding: 5px 5px;
+  }
+}
+
+.navbar-shadow {
+  border-bottom: 3px solid;
+  border-image: linear-gradient(to right, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+  border-image-slice: 1;
+}
+
+.avatar-30 {
+  height: 30px;
+  width: 30px;
+}
+
+.avatar-40 {
+  height: 40px;
+  width: 40px;
+}
+
+.avatar-50 {
+  height: 50px;
+  width: 50px;
+}
+
+.avatar-120 {
+  height: 120px;
+  width: 120px;
+}
+
+.btn-task {
+  font-size: 12px;
+  padding: 1px 8px;
+}
+
+// Remove Bootstrap Glow on Input and Button
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus
+.btn.active.focus,
+.btn.active:focus,
+.btn.focus,
+.btn.focus:active,
+.btn:active:focus,
+.btn:focus {
+  box-shadow: none;
+}
+
+.fa-link {
+  color: $primary;
+}
+
+.fa-twitter {
+  color: #38A1F3;
+}
+
+.fa-twitch {
+  color: #6441A4;
+}
+
+.fa-telegram {
+  color: #0088cc;
+}
+
+.fa-github {
+  color: #333;
+}
+
+.fa-youtube {
+  color: #ff0000;
+}
+
+.fa-producthunt {
+  color: #da552f;
+}
+
+.list-group-item {
+  padding: 0.4rem 1rem;
+}
+
+.form-check-input {
+  vertical-align: sub;
+  
+  &:disabled {
+    opacity: initial;
+  }
+}
+
+.task-font {
+  font-size: 16px;
+}
+
+.admin-bar {
+  font-size: 13px;
+  
+  .fa, .fab {
+    font-size: 12px;
+  }
+}
+
+.achievement-emoji {
+  display: block;
+  height: 35px;
+  width: 35px;
+  line-height: 35px;
+  text-align: center;
+  border-radius: 4px;
+  font-size: 1rem;
+}
