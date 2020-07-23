@@ -124,9 +124,9 @@
                                     @if (Auth::user()->isPatron)
                                     <a class="dropdown-item text-dark" id="dark-mode" role="button">
                                         @if (Auth::user()->darkMode)
-                                        {{Emoji::sunWithFace()}} Lightmode
+                                        {{Emoji::sunWithFace()}} Light Mode
                                         @else
-                                        {{Emoji::newMoon()}} Darkmode
+                                        {{Emoji::newMoonFace()}} Dark Mode
                                         @endif
                                     </a>
                                     @endif
