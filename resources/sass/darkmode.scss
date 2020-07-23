@@ -10,6 +10,7 @@ body {
 .card {
     background-color: $card-bg;
     color: #ffffff;
+    border: 1px solid $border-bg;
     
     .card-header {
         background-color: #2b3034;
