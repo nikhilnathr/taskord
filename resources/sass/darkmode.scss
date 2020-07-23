@@ -1,0 +1,69 @@
+$body-bg: #17181a !important;
+$card-bg: #343a40;
+$border-bg: #4c555d;
+
+body {
+    background-color: $body-bg;
+    color: #ffffff;
+}
+
+.card {
+    background-color: $card-bg;
+    color: #ffffff;
+    
+    .card-header {
+        background-color: #2b3034;
+    }
+}
+
+.list-group-item {
+    background-color: $card-bg;
+}
+
+.text-black-50 {
+    color: #c0c0c0 !important;
+}
+
+.text-dark {
+    color: #ffffff !important;
+}
+
+.reputation {
+    color: #000000 !important;
+}
+
+.dropdown-menu {
+    background-color: $card-bg;
+
+    .dropdown-item {
+        color: #ffffff;
+
+        &:hover {
+            background-color: $body-bg;
+        }
+    }
+}
+
+.form-control {
+    background-color: $body-bg;
+    color: #ffffff !important;
+    border: 1px solid $border-bg;
+}
+
+.input-group-text {
+    background-color: $body-bg;
+    border: 1px solid $border-bg;
+}
+
+.form-file-label {
+    border-color: $border-bg;
+}
+
+.form-file-text, .form-file-button {
+    background-color: $body-bg;
+    color: $border-bg;
+}
+
+.progress {
+    background-color: $body-bg;
+}
