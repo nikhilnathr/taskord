@@ -51,7 +51,7 @@
                             <a class="nav-link text-white font-weight-bold" href="#" data-toggle="dropdown">
                                 More
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <ul class="dropdown-menu shadow-sm" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item text-dark" href="#">{{Emoji::wrappedGift()}} Deals</a></li>
                                 <li><a class="dropdown-item text-dark" href="#">{{Emoji::clinkingBeerMugs()}} Meetups</a></li>
                                 <li><a class="dropdown-item text-dark" href="#">{{Emoji::thinkingFace()}} Help</a></li>
@@ -88,7 +88,7 @@
                                     <img class="rounded-circle avatar-30 mt-1" src="{{ Auth::user()->avatar }}" />
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right mt-2" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu shadow-sm dropdown-menu-right mt-2" aria-labelledby="navbarDropdown">
                                     <div class="dropdown-item">
                                         <div class="font-weight-bold">
                                             {{ Auth::user()->firstname ? Auth::user()->firstname . ' ' . Auth::user()->lastname : '' }}
