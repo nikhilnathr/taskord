@@ -58,11 +58,11 @@
                     <ul class="navbar-nav ml-auto">
                         @guest
                             <li class="nav-item mr-3">
-                                <a class="nav-link" href="{{ route('login') }}">Login</a>
+                                <a class="nav-link font-weight-bold" href="{{ route('login') }}">Login</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link text-white btn btn-primary" href="{{ route('register') }}">Register</a>
+                                    <a class="nav-link text-white btn btn-primary font-weight-bold" href="{{ route('register') }}">Register</a>
                                 </li>
                             @endif
                         @else
@@ -101,6 +101,9 @@
                                     </a>
                                     <a class="dropdown-item text-dark" href="{{ route('user.settings.profile') }}">
                                         {{Emoji::gear()}} Settings
+                                    </a>
+                                    <a class="dropdown-item text-dark" href="{{ route('patron') }}">
+                                        {{Emoji::gemStone()}} Patron
                                     </a>
                                     <div class="dropdown-divider"></div>
                                     @if (Auth::check() && Auth::user()->isStaff)

@@ -30,8 +30,6 @@ Route::group(['prefix' => 'settings', 'as' => 'user.settings.', 'middleware' => 
     Route::get('/delete', 'UserController@deleteSettings')->name('delete');
 });
 
-Route::get('/task/{id}', 'TaskController@task')->name('task');
-
 Route::get('login/{provider}', 'SocialController@redirect');
 Route::get('login/{provider}/callback', 'SocialController@Callback');
 
@@ -46,5 +44,9 @@ Route::group(['prefix' => 'products', 'as' => 'products.'], function () {
 });
 
 Route::get('/adminbar', 'Admin\AdminBarController@toggle')->name('adminbar');
+
+Route::get('/task/{id}', 'TaskController@task')->name('task');
+
+Route::get('/patron', 'PatronController@patron')->name('patron');
 
 Route::personalDataExports('personal-data-exports');
