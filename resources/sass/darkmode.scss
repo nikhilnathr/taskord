@@ -44,6 +44,10 @@ body {
     }
 }
 
+.dropdown-divider {
+    border-top: 1px solid $border-bg;
+}
+
 .form-control {
     background-color: $body-bg;
     color: #ffffff !important;
