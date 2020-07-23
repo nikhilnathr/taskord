@@ -111,7 +111,7 @@
                                         {{Emoji::gemStone()}} Patron
                                     </a>
                                     <div class="dropdown-divider"></div>
-                                    @if (Auth::check() && Auth::user()->isStaff)
+                                    @if (Auth::user()->isStaff)
                                     <a class="dropdown-item text-dark" id="admin-bar-click" role="button">
                                         @if (Auth::user()->staffShip)
                                         {{Emoji::seeNoEvilMonkey()}} Hide adminbar
@@ -120,6 +120,15 @@
                                         @endif
                                     </a>
                                     <div class="dropdown-divider"></div>
+                                    @endif
+                                    @if (Auth::user()->isPatron)
+                                    <a class="dropdown-item text-dark" id="dark-mode" role="button">
+                                        @if (Auth::user()->darkMode)
+                                        {{Emoji::sunWithFace()}} Lightmode
+                                        @else
+                                        {{Emoji::newMoon()}} Darkmode
+                                        @endif
+                                    </a>
                                     @endif
                                     <a class="dropdown-item text-dark" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

@@ -43,7 +43,9 @@ Route::group(['prefix' => 'products', 'as' => 'products.'], function () {
     Route::get('/launched', 'ProductsController@launched')->name('launched');
 });
 
+// Toggles
 Route::get('/adminbar', 'Admin\AdminBarController@toggle')->name('adminbar');
+Route::get('/darkmode', 'UserController@darkMode')->name('darkmode');
 
 Route::get('/task/{id}', 'TaskController@task')->name('task');
 

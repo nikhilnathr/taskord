@@ -61,3 +61,15 @@ $("#admin-bar-click").click(function() {
     }
   });
 });
+
+// Dark Mode Toggle
+
+$("#dark-mode").click(function() {
+  $.get("/darkmode", function(data, status) {
+    if(data === "enabled" || data === "disabled") {
+      if (status === "success") {
+        location.reload();
+      }
+    }
+  });
+});

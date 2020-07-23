@@ -83,4 +83,28 @@ class UserController extends Controller
             'user' => $user,
         ]);
     }
+    
+    public function darkMode()
+    {
+        $user = Auth::user();
+        if (Auth::check()) {
+            if ($user->isPatron) {
+                if ($user->darkMode) {
+                    $user->darkMode = false;
+                    $user->save();
+    
+                    return 'disabled';
+                } else {
+                    $user->darkMode = true;
+                    $user->save();
+    
+                    return 'enabled';
+                }
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
 }
