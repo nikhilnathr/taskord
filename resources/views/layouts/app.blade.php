@@ -9,7 +9,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" data-turbolinks-track="true">
-    @if(Auth::check() && Auth::user()->isPatron)
+    @if(Auth::check() && Auth::user()->isPatron or Auth::check() && Auth::user()->isStaff)
     @if(Auth::user()->darkMode)
     <link href="{{ asset('css/darkmode.css') }}" rel="stylesheet" data-turbolinks-track="true">
     @endif
