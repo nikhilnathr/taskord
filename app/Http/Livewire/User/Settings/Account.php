@@ -17,38 +17,30 @@ class Account extends Component
         $this->username = $user->username;
         $this->email = $user->email;
     }
-    
+
     public function enrollBeta()
     {
         if (Auth::check()) {
             $this->user->isBeta = ! $this->user->isBeta;
             $this->user->save();
+            if ($this->user->isBeta) {
+                session()->flash('message', 'Your are now beta member!');
+            } else {
+                session()->flash('message', 'Your are no longer a beta member!');
+            }
         } else {
             return false;
         }
     }
 
-    public function updated($field)
-    {
-        $this->validateOnly($field, [
-            'username' => 'required|alpha_dash|string|max:20|unique:users',
-            'email' => 'required|email|unique:users',
-        ]);
-    }
-
     public function updateAccount()
     {
-        $this->validate([
-            'username' => 'required|alpha_dash|string|max:20|unique:users',
-            'email' => 'required|email|unique:users',
-        ]);
-
         if (Auth::check()) {
             $this->user->username = $this->username;
             $this->user->email = $this->email;
             $this->user->save();
 
-            return session()->flash('message', 'Your profile has been updated!');
+            return session()->flash('message', 'Your account has been updated!');
         }
     }
 
