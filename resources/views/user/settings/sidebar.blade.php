@@ -4,25 +4,25 @@
             Settings
         </div>
         <ul class="list-group list-group-flush">
-            <a href="#">
+            <a href="{{ route('user.settings.profile') }}">
                 <li class="list-group-item border-0 pt-2 pb-2 border-bottom">
                     <i class="fa fa-user mr-1"></i>
                     Profile
                 </li>
             </a>
-            <a href="#">
+            <a href="{{ route('user.settings.account') }}">
                 <li class="list-group-item border-0 pt-2 pb-2 border-bottom">
                     <i class="fa fa-at mr-1"></i>
                     Account
                 </li>
             </a>
-            <a href="#">
+            <a href="{{ route('user.settings.password') }}">
                 <li class="list-group-item border-0 pt-2 pb-2 border-bottom">
                     <i class="fa fa-key mr-1"></i>
                     Password
                 </li>
             </a>
-            <a href="#">
+            <a href="{{ route('user.settings.delete') }}">
                 <li class="list-group-item text-danger border-0 pt-2 pb-2 rounded">
                     <i class="fa fa-exclamation-triangle mr-1"></i>
                     Danger Zone

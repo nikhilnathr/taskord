@@ -17,6 +17,16 @@ class Account extends Component
         $this->username = $user->username;
         $this->email = $user->email;
     }
+    
+    public function enrollBeta()
+    {
+        if (Auth::check()) {
+            $this->user->isBeta = ! $this->user->isBeta;
+            $this->user->save();
+        } else {
+            return false;
+        }
+    }
 
     public function updated($field)
     {

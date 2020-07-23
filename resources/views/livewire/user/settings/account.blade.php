@@ -19,6 +19,11 @@
                     <label class="form-label">Email</label>
                     <input type="email" class="form-control" value="{{ $user->email }}" wire:model="email">
                 </div>
+                <div class="mb-3">
+                    <input wire:click="enrollBeta" class="form-check-input" type="checkbox" {{ $user->isBeta ? 'checked' : '' }}>
+                    <span class="ml-1">Enroll to Beta</span>
+                    <span wire:loading wire:target="enrollBeta" class="small ml-2 text-success font-weight-bold">Enrolling...</span>
+                </div>
                 <button type="submit" class="btn btn-primary">Save</button>
             </form>
         </div>
