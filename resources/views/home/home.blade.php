@@ -79,7 +79,10 @@
                                     <img class="rounded-circle avatar-30" src="{{ Auth::user()->avatar }}" />
                                     <span class="align-middle">
                                         <span class="ml-2">Hi</span>
-                                        <span class="font-weight-bold">{{ Auth::user()->firstname ? Auth::user()->firstname . ' ' . Auth::user()->lastname : Auth::user()->username }}!</span>
+                                        <span class="font-weight-bold">
+                                            {{ Auth::user()->firstname ? Auth::user()->firstname . ' ' . Auth::user()->lastname : Auth::user()->username }}!
+                                            {{Emoji::wavingHand()}}
+                                        </span>
                                     </span>
                                 </div>
                             </div>
