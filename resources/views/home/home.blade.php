@@ -72,6 +72,21 @@
                 <div class="col-sm">
                     @auth
                         @livewire('home.onboarding')
+                        
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <div class="h5 pt-2">
+                                    <img class="rounded-circle avatar-30" src="{{ Auth::user()->avatar }}" />
+                                    <span class="align-middle">
+                                        <span class="ml-2">Hi</span>
+                                        <span class="font-weight-bold">{{ Auth::user()->firstname ? Auth::user()->firstname . ' ' . Auth::user()->lastname : Auth::user()->username }}!</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                Soon
+                            </div>
+                        </div>
                     @endauth
                     <div class="card mb-4">
                         <div class="card-header">

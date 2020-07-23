@@ -35,6 +35,15 @@
             </form>
         </div>
     </div>
+    
+    <div class="card mb-4">
+        <div class="card-body">
+            <input wire:click="onlyFollowingsTasks" class="form-check-input" type="checkbox" {{ $user->onlyFollowingsTasks ? 'checked' : '' }}>
+            <span class="ml-1">Show only following user's tasks on homepage</span>
+            <span wire:loading wire:target="onlyFollowingsTasks" class="small ml-2 text-success font-weight-bold">Updating...</span>
+        </div>
+    </div>
+    
     <div class="card mb-4">
         <div class="card-header">
             Social

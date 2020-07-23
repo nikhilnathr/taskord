@@ -68,6 +68,21 @@ class Profile extends Component
             return session()->flash('message', 'Your social links has been updated!');
         }
     }
+    
+    public function onlyFollowingsTasks()
+    {
+        if (Auth::check() && Auth::user()->id === $this->user->id) {
+            $this->user->onlyFollowingsTasks = ! $this->user->onlyFollowingsTasks;
+            $this->user->save();
+            if ($this->user->onlyFollowingsTasks) {
+                session()->flash('message', 'Only following user\'s task will be show on homepage');
+            } else {
+                session()->flash('message', 'All user\'s task will be show on homepage');
+            }
+        } else {
+            return false;
+        }
+    }
 
     public function render()
     {

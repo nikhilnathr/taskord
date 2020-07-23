@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Home;
 
 use App\Task;
+use Auth;
 use Carbon\Carbon;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
@@ -36,13 +37,27 @@ class Tasks extends Component
 
     public function render()
     {
-        $tasks = Task::where('done', true)
-            ->orderBy('created_at', 'desc')
-            ->orderBy('done_at', 'desc')
-            ->get()
-            ->groupBy(function ($date) {
-                return Carbon::parse($date->done_at)->format('d-M-y');
-            });
+        $user = Auth::user();
+        if (Auth::check() && $user->onlyFollowingsTasks) {
+            $userIds = $user->followings->pluck('id');
+            $userIds->push(Auth::user()->id);
+            $tasks = Task::whereIn('user_id', $userIds)
+                ->where('done', true)
+                ->orderBy('created_at', 'desc')
+                ->orderBy('done_at', 'desc')
+                ->get()
+                ->groupBy(function ($date) {
+                    return Carbon::parse($date->done_at)->format('d-M-y');
+                });
+        } else {
+            $tasks = Task::where('done', true)
+                ->orderBy('created_at', 'desc')
+                ->orderBy('done_at', 'desc')
+                ->get()
+                ->groupBy(function ($date) {
+                    return Carbon::parse($date->done_at)->format('d-M-y');
+                });
+        }
 
         return view('livewire.home.tasks', [
             'tasks' => $this->paginate($tasks),
