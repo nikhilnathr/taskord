@@ -78,7 +78,6 @@ Contributions are what make the open source community such an amazing place to b
     npm run dev
 
     php artisan key:generate
-    php artisan telescope:publish
     php artisan migrate:fresh --seed
     ```
 4. That's it! Run `php artisan serve` to start the application and head to `http://localhost:8000`
