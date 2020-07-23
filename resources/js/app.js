@@ -37,6 +37,7 @@ $("input").blur(function(){
 
 // Admin Bar
 
+// Shortcut
 $(document).on('keydown', function (e) {
   if (e.keyCode === 192) { // Backtick
     $.get("/adminbar", function(data, status) {
@@ -47,4 +48,16 @@ $(document).on('keydown', function (e) {
       }
     });
   }
+});
+
+// Dropdown
+
+$("#admin-bar-click").click(function() {
+  $.get("/adminbar", function(data, status) {
+    if(data === "enabled" || data === "disabled") {
+      if (status === "success") {
+        location.reload();
+      }
+    }
+  });
 });

@@ -104,7 +104,7 @@
                                     </a>
                                     <div class="dropdown-divider"></div>
                                     @if (Auth::check() && Auth::user()->isStaff)
-                                    <a class="dropdown-item text-dark" href="/adminbar">
+                                    <a class="dropdown-item text-dark" id="admin-bar-click" role="button">
                                         @if (Auth::user()->staffShip)
                                         {{Emoji::seeNoEvilMonkey()}} Hide adminbar
                                         @else
