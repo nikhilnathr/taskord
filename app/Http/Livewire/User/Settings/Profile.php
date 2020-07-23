@@ -68,7 +68,7 @@ class Profile extends Component
             return session()->flash('message', 'Your social links has been updated!');
         }
     }
-    
+
     public function onlyFollowingsTasks()
     {
         if (Auth::check() && Auth::user()->id === $this->user->id) {
