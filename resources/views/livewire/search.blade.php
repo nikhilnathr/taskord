@@ -1,8 +1,8 @@
-<div class="relative mr-3">
+<div class="d-none d-md-block mr-3">
     <input
         type="text"
-        class="form-control"
-        placeholder="Search tasks..."
+        class="form-control border-0 bg-secondary text-white"
+        placeholder="Search Taskord..."
         wire:model="query"
     />
     <ul class="position-absolute mt-2 w-50 list-group shadow-sm search-dropdown" style="z-index:2">
