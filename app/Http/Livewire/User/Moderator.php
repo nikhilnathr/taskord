@@ -60,7 +60,7 @@ class Moderator extends Component
             return false;
         }
     }
-    
+
     public function enrollPatron()
     {
         if (Auth::check() && Auth::user()->isStaff) {
@@ -70,7 +70,7 @@ class Moderator extends Component
             return false;
         }
     }
-    
+
     public function enrollDarkMode()
     {
         if (Auth::check() && Auth::user()->isStaff) {

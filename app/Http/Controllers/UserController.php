@@ -83,7 +83,7 @@ class UserController extends Controller
             'user' => $user,
         ]);
     }
-    
+
     public function darkMode()
     {
         $user = Auth::user();
@@ -92,12 +92,12 @@ class UserController extends Controller
                 if ($user->darkMode) {
                     $user->darkMode = false;
                     $user->save();
-    
+
                     return 'disabled';
                 } else {
                     $user->darkMode = true;
                     $user->save();
-    
+
                     return 'enabled';
                 }
             } else {
