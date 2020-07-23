@@ -4,7 +4,7 @@
             <div class="card-body d-flex align-items-center">
                 <img class="rounded-circle avatar-120" src="{{ $user->avatar }}" />
                 <div class="ml-4">
-                    <div class="h5">
+                    <div class="h5 mb-0">
                         {{ $user->firstname ? $user->firstname . ' ' . $user->lastname : '' }}
                         @if (Auth::check() && $user->isFollowing(Auth::user()))
                             <span class="ml-2 badge bg-light text-black-50">Follows you</span>
@@ -12,9 +12,9 @@
                         @if (Auth::check() && Auth::user()->isStaff && $user->isFlagged)
                             <span class="ml-2 badge bg-danger">Flagged</span>
                         @endif
-                        <div class="small text-black-50 font-weight-normal">
-                            {{ "@" . $user->username }}
-                        </div>
+                    </div>
+                    <div class="text-black-50 mb-2">
+                        {{ "@" . $user->username }}
                     </div>
                     @if (Auth::check() && Auth::user()->id !== $user->id && !$user->isFlagged)
                         @livewire('user.follow', [

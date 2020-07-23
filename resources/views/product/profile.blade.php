@@ -2,11 +2,11 @@
     <div class="card-body d-flex align-items-center">
         <img class="rounded avatar-120" src="{{ $product->avatar }}"/>
         <div class="ml-4">
-            <div class="h5">
+            <div class="h5 mb-0">
                 {{ $product->name }}
-                <div class="small text-black-50 font-weight-normal">
-                    {{ "#" . $product->slug }}
-                </div>
+            </div>
+            <div class="text-black-50 mb-2">
+                {{ "#" . $product->slug }}
             </div>
             @if (Auth::check() && Auth::user()->id !== $product->user->id)
                 @livewire('product.subscribe', [
