@@ -7,7 +7,11 @@
             </a>
             <div class="small">{{ "@" . $task->user->username }}</div>
         </span>
-        <span class="align-text-top small float-right text-black-50 ml-auto">{{ Carbon::parse($task->done_at)->diffForHumans() }}</span>
+        <span class="align-text-top small float-right ml-auto">
+            <a class="text-black-50" href="{{ route('task', ['id' => $task->id]) }}">
+                {{ Carbon::parse($task->done_at)->diffForHumans() }}
+            </a>
+        </span>
     </div>
     <div class="mt-3 mb-1">
         <input
