@@ -106,7 +106,7 @@
                                     @if (Auth::check() && Auth::user()->isStaff)
                                     <a class="dropdown-item text-dark" href="/adminbar">
                                         @if (Auth::user()->staffShip)
-                                        {{Emoji::eyes()}} Hide adminbar
+                                        {{Emoji::seeNoEvilMonkey()}} Hide adminbar
                                         @else
                                         {{Emoji::eyes()}} Show adminbar
                                         @endif
