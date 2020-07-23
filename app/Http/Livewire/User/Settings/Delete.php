@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire\User\Settings;
 
-use Livewire\Component;
-use Auth;
 use App\User;
+use Auth;
+use Livewire\Component;
 
 class Delete extends Component
 {
@@ -15,12 +15,12 @@ class Delete extends Component
     {
         $this->user = $user;
     }
-    
+
     public function confirmDelete()
     {
         $this->confirming = $this->user->id;
     }
-    
+
     public function deleteAccount()
     {
         if (Auth::check()) {
@@ -35,11 +35,10 @@ class Delete extends Component
             return false;
         }
     }
-    
+
     public function exportAccount()
     {
         if (Auth::check()) {
-            
         } else {
             return false;
         }

@@ -15,7 +15,7 @@ class Password extends Component
     {
         $this->user = $user;
     }
-    
+
     public function updateAccount()
     {
         if (Auth::check()) {
