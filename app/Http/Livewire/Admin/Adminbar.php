@@ -12,14 +12,14 @@ class Adminbar extends Component
 {
     public function render()
     {
-        if (file_exists ('../.git/HEAD')) {
+        if (file_exists('../.git/HEAD')) {
             $branch = File::get('../.git/HEAD');
             $explodedstring = explode('/', $branch, 3);
             $branchname = str_replace("\n", '', $explodedstring[2]);
         } else {
-            $branchname = "master";
+            $branchname = 'master';
         }
-        
+
         $version = File::get('../VERSION');
 
         // DB Details
