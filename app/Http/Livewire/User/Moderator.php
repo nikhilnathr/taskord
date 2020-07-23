@@ -60,6 +60,26 @@ class Moderator extends Component
             return false;
         }
     }
+    
+    public function enrollPatron()
+    {
+        if (Auth::check() && Auth::user()->isStaff) {
+            $this->user->isPatron = ! $this->user->isPatron;
+            $this->user->save();
+        } else {
+            return false;
+        }
+    }
+    
+    public function enrollDarkMode()
+    {
+        if (Auth::check() && Auth::user()->isStaff) {
+            $this->user->darkMode = ! $this->user->darkMode;
+            $this->user->save();
+        } else {
+            return false;
+        }
+    }
 
     public function deleteUser()
     {

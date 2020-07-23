@@ -16,6 +16,16 @@
             <span class="ml-1">Enroll to Staff</span>
             <span wire:loading wire:target="enrollStaff" class="small ml-2 text-success font-weight-bold">Enrolling...</span>
         </div>
+        <div class="mb-2">
+            <input wire:click="enrollPatron" class="form-check-input" type="checkbox" {{ $user->isPatron ? 'checked' : '' }}>
+            <span class="ml-1">Enroll to Patron</span>
+            <span wire:loading wire:target="enrollPatron" class="small ml-2 text-success font-weight-bold">Enrolling...</span>
+        </div>
+        <div class="mb-2">
+            <input wire:click="enrollDarkMode" class="form-check-input" type="checkbox" {{ $user->darkMode ? 'checked' : '' }}>
+            <span class="ml-1">Enable Dark Mode</span>
+            <span wire:loading wire:target="enrollDarkMode" class="small ml-2 text-success font-weight-bold">Enrolling...</span>
+        </div>
         <div>
             <input wire:click="enrollDeveloper" class="form-check-input" type="checkbox" {{ $user->isDeveloper ? 'checked' : '' }}>
             <span class="ml-1">Enroll to Contributor</span>

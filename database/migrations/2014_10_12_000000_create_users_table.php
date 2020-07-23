@@ -36,7 +36,9 @@ class CreateUsersTable extends Migration
             $table->boolean('isStaff')->default(false);
             $table->boolean('isDeveloper')->default(false);
             $table->boolean('staffShip')->default(false);
+            $table->boolean('darkMode')->default(false);
             $table->boolean('isBeta')->default(false);
+            $table->boolean('isPatron')->default(false);
             $table->boolean('isFlagged')->default(false);
             $table->rememberToken();
             $table->timestamps();
