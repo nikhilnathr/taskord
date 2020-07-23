@@ -71,3 +71,7 @@ body {
 .progress {
     background-color: $body-bg;
 }
+
+.border-bottom {
+    border-bottom: 1px solid $border-bg !important;
+}
