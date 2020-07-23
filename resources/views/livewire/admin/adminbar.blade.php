@@ -41,11 +41,6 @@
                 <i class="fa fa-clock mr-1"></i>
                 {{ round(microtime(true) - LARAVEL_START, 2) * 1000 }}ms Load
             </span>
-            <a class="text-white" href="/telescope" target="_blank">
-                <span class="font-weight-bold ml-3">
-                    <i class="fa text-white fa-binoculars mr-1"></i>
-                </span>
-            </a>
         </span>
     </div>
 </div>
