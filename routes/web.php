@@ -46,3 +46,5 @@ Route::group(['prefix' => 'products', 'as' => 'products.'], function () {
 });
 
 Route::get('/adminbar', 'Admin\AdminBarController@toggle')->name('adminbar');
+
+Route::personalDataExports('personal-data-exports');

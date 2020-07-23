@@ -20,7 +20,7 @@ class Account extends Component
 
     public function enrollBeta()
     {
-        if (Auth::check()) {
+        if (Auth::check() && Auth::user()->id === $this->user->id) {
             $this->user->isBeta = ! $this->user->isBeta;
             $this->user->save();
             if ($this->user->isBeta) {
@@ -35,7 +35,7 @@ class Account extends Component
 
     public function updateAccount()
     {
-        if (Auth::check()) {
+        if (Auth::check() && Auth::user()->id === $this->user->id) {
             $this->user->username = $this->username;
             $this->user->email = $this->email;
             $this->user->save();
