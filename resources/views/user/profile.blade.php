@@ -22,8 +22,12 @@
                         ])
                     @endif
                     <span class="small">
-                        <span class="font-weight-bold">{{ $user->followings()->count() }}</span> Followings
-                        <span class="font-weight-bold ml-2">{{ $user->followers()->count() }}</span> Followers
+                        <span class="font-weight-bold">{{ $user->followings()->count() }}</span>
+                        {{ $user->followings()->count() <= 1 ? "Following" : "Followings" }}
+                        <span class="font-weight-bold ml-2">{{ $user->followers()->count() }}</span>
+                        {{ $user->followers()->count() <= 1 ? "Follower" : "Followers" }}
+                        <span class="font-weight-bold ml-2">{{ $user->task_praise->count() }}</span>
+                        {{ $user->task_praise->count() <= 1 ? "Praise" : "Praises" }}
                     </span>
                     @if ($user->bio)
                     <div class="mt-3">
