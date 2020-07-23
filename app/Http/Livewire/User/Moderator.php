@@ -27,9 +27,10 @@ class Moderator extends Component
 
     public function enrollStaff()
     {
-        if (Auth::user()->id === 1) {
-            return false;
-        } elseif (Auth::check() && Auth::user()->isStaff) {
+        if (Auth::check() && Auth::user()->isStaff) {
+            if ($this->user->id === 1) {
+                return false;
+            }
             $this->user->isStaff = ! $this->user->isStaff;
             $this->user->save();
         } else {
@@ -49,9 +50,10 @@ class Moderator extends Component
 
     public function flagUser()
     {
-        if (Auth::user()->id === 1) {
-            return false;
-        } elseif (Auth::check() && Auth::user()->isStaff) {
+        if (Auth::check() && Auth::user()->isStaff) {
+            if ($this->user->id === 1) {
+                return false;
+            }
             $this->user->isFlagged = ! $this->user->isFlagged;
             $this->user->save();
         } else {
@@ -61,9 +63,10 @@ class Moderator extends Component
 
     public function deleteUser()
     {
-        if (Auth::user()->id === 1) {
-            return false;
-        } elseif (Auth::check() && Auth::user()->isStaff) {
+        if (Auth::check() && Auth::user()->isStaff) {
+            if ($this->user->id === 1) {
+                return false;
+            }
             $user = User::find($this->user->id);
             $user->task_praise()->delete();
             $user->tasks()->delete();
