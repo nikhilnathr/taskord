@@ -47,7 +47,7 @@ class UserController extends Controller
             'product_count' => Product::where('user_id', $user->id)->count(),
         ]);
     }
-    
+
     public function following($username)
     {
         $user = User::where('username', $username)->firstOrFail();
@@ -59,7 +59,7 @@ class UserController extends Controller
             'product_count' => Product::where('user_id', $user->id)->count(),
         ]);
     }
-    
+
     public function followers($username)
     {
         $user = User::where('username', $username)->firstOrFail();
