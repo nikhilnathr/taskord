@@ -47,6 +47,23 @@ class CreateTask extends Component
         ]);
     }
 
+    public function search($array, $key, $value)
+    {
+        $results = array();
+    
+        if (is_array($array)) {
+            if (isset($array[$key]) && $array[$key] == $value) {
+                $results[] = $array;
+            }
+    
+            foreach ($array as $subarray) {
+                $results = array_merge($results, $this->search($subarray, $key, $value));
+            }
+        }
+    
+        return $results;
+    }
+
     public function submit()
     {
         $validatedData = $this->validate([
@@ -62,13 +79,11 @@ class CreateTask extends Component
         }
 
         $check_time = Auth::user()->tasks()
-            ->where('created_at', '>', Carbon::now()->subMinutes(1)->toDateTimeString())
-            ->latest()
-            ->first();
-        if ($check_time) {
-            if ($check_time->task === $this->task) {
-                return session()->flash('error', 'Your already posted this task, wait for sometime!');
-            }
+            ->select('task', 'created_at')
+            ->where('created_at', '>', Carbon::now()->subMinutes(3)->toDateTimeString())
+            ->latest()->get()->toArray();
+        if (count($this->search($check_time, 'task', $this->task)) > 0) {
+            return session()->flash('error', 'Your already posted this task, wait for sometime!');
         }
 
         $product = $this->getProductIDFromHashtag($this->task);
