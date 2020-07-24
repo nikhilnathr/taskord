@@ -36,7 +36,7 @@ class CreateComment extends Component
         ]);
 
         $this->emit('commentAdded');
-        $this->reset();
+        $this->comment = '' ;
         //Auth::user()->givePoint(new TaskCreated($task));
 
         return session()->flash('success', 'Comment has been added!');

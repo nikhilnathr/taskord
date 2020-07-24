@@ -19,21 +19,19 @@
                     {{ $message }}
                 </div>
             @enderror
-            <form wire:submit.prevent="submit">
-                <div class="mb-3">
-                    <textarea placeholder="Add a comment" class="form-control" rows="3" wire:model="comment"></textarea>
-                </div>
-                @if ($comment)
-                <div>
-                    <div class="font-weight-bold mb-1">Preview</div>
-                    @markdown($comment)
-                </div>
-                @endif
-                <button class="btn btn-sm btn-primary" type="submit">
-                    <i class="fa fa-plus mr-1"></i>
-                    Add Comment
-                </button>
-            </form>
+            <div class="mb-3">
+                <textarea placeholder="Add a comment" class="form-control" rows="3" wire:model="comment"></textarea>
+            </div>
+            @if ($comment)
+            <div>
+                <div class="font-weight-bold mb-1">Preview</div>
+                @markdown($comment)
+            </div>
+            @endif
+            <button class="btn btn-sm btn-primary" type="submit" wire:click="submit">
+                <i class="fa fa-plus mr-1"></i>
+                Add Comment
+            </button>
         </div>
     </div>
 </div>
