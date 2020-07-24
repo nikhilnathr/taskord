@@ -1,4 +1,12 @@
 <div>
+    @if (count($user->followers) === 0)
+    <div class="card-body text-center">
+        <i class="fa fa-3x fa-users mb-3 text-primary"></i>
+        <div class="h5">
+            No followers found!
+        </div>
+    </div>
+    @endif
     @foreach($user->followers as $user)
     <div class="card mb-3">
         <div class="card-body d-flex list-group-item align-items-center">
