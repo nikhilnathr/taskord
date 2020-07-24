@@ -1,4 +1,4 @@
-<li class="list-group-item p-3">
+<div class="card-body p-3">
     <div class="align-items-center d-flex">
         <img class="avatar-40 rounded-circle" src="{{ $comment->user->avatar }}" />
         <span class="ml-2">
@@ -16,4 +16,4 @@
             {{ $comment->comment }}
         </span>
     </div>
-</li>
+</div>

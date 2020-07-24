@@ -15,7 +15,11 @@
                             @endif
                         </ul>
                     </div>
-                    @livewire('task.comments', ['task' => $task])
+                    @livewire('task.comments', [
+                        'task' => $task,
+                        'page' => 1,
+                        'perPage' => 10
+                    ])
                 </div>
                 <div class="col-sm">
                     <div class="card mb-4">

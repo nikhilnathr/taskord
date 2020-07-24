@@ -1,9 +1,26 @@
-<div class="card mt-4" wire:poll.5s>
-    <ul class="list-group list-group-flush">
-        @foreach ($comments as $comment)
+<div>
+    @if (count($comments) === 0)
+    <div class="card-body text-center">
+        <i class="fa fa-3x fa-check-square mb-3 text-primary"></i>
+        <div class="h5">
+            No comments found!
+        </div>
+    </div>
+    @endif
+    @foreach ($comments as $comment)
+        <div class="card mt-4" wire:poll.5s>
             @livewire('task.single-comment', [
-                'comment' => $comment
+                'comment' => $comment,
             ], key($comment->id))
-        @endforeach
-    </ul>
+        </div>
+    @endforeach
+    <div class="mt-4">
+        @if($comments->hasMorePages())
+            @livewire('task.load-more', [
+                'task' => $task,
+                'page' => $page,
+                'perPage' => $perPage
+            ])
+        @endif
+    </div>
 </div>
