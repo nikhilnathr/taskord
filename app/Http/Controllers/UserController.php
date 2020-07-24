@@ -47,6 +47,30 @@ class UserController extends Controller
             'product_count' => Product::where('user_id', $user->id)->count(),
         ]);
     }
+    
+    public function following($username)
+    {
+        $user = User::where('username', $username)->firstOrFail();
+
+        return view('user.following', [
+            'user' => $user,
+            'done_count' => Task::where([['user_id', $user->id], ['done', true]])->count(),
+            'pending_count' => Task::where([['user_id', $user->id], ['done', false]])->count(),
+            'product_count' => Product::where('user_id', $user->id)->count(),
+        ]);
+    }
+    
+    public function followers($username)
+    {
+        $user = User::where('username', $username)->firstOrFail();
+
+        return view('user.followers', [
+            'user' => $user,
+            'done_count' => Task::where([['user_id', $user->id], ['done', true]])->count(),
+            'pending_count' => Task::where([['user_id', $user->id], ['done', false]])->count(),
+            'product_count' => Product::where('user_id', $user->id)->count(),
+        ]);
+    }
 
     public function profileSettings()
     {
