@@ -37,14 +37,14 @@
             @auth
             @if (Auth::user()->task_praise->where('task_id', $task->id)->count() === 1)
                 <button type="button" class="btn btn-task btn-success text-white mr-1" wire:click="togglePraise" wire:loading.attr="disabled">
-                    👏
+                    {{Emoji::clappingHands()}}
                     <span class="small text-white font-weight-bold">
                         {{ $task->task_praise->count() }}
                     </span>
                 </button>
             @else
                 <button type="button" class="btn btn-task btn-outline-success mr-1" wire:click="togglePraise" wire:loading.attr="disabled">
-                    👏
+                    {{Emoji::clappingHands()}}
                     <span class="small text-black-50 font-weight-bold">
                         {{ $task->task_praise->count() }}
                     </span>
@@ -53,9 +53,25 @@
             @endauth
             @guest
                 <a href="/login" class="btn btn-task btn-outline-success mr-1">
-                    👏
+                    {{Emoji::clappingHands()}}
                     <span class="small text-black-50 font-weight-bold">
                         {{ $task->task_praise->count() }}
+                    </span>
+                </a>
+            @endguest
+            @auth
+                <a href="{{ route('task', ['id' => $task->id]) }}" class="btn btn-task btn-outline-primary mr-1">
+                    {{Emoji::speechBalloon()}}
+                    <span class="small text-black-50 font-weight-bold">
+                        {{ $task->task_comments->count() }}
+                    </span>
+                </a>
+            @endauth
+            @guest
+                <a href="/login" class="btn btn-task btn-outline-primary mr-1">
+                    {{Emoji::speechBalloon()}}
+                    <span class="small text-black-50 font-weight-bold">
+                        {{ $task->task_comments->count() }}
                     </span>
                 </a>
             @endguest
