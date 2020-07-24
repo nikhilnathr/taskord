@@ -42,7 +42,6 @@ class Tasks extends Component
     {
         $tasks = Task::where('user_id', $this->user_id)
             ->where('done', $this->type === 'user.done' ? true : false)
-            ->orderBy('created_at', 'desc')
             ->orderBy('done_at', 'desc')
             ->get()
             ->groupBy(function ($date) {
