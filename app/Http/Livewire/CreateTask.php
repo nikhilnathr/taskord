@@ -60,6 +60,16 @@ class CreateTask extends Component
         if (Auth::user()->isFlagged) {
             return session()->flash('error', 'Your account is flagged!');
         }
+        
+        $check_time = Auth::user()->tasks()
+            ->where('created_at', '>', Carbon::now()->subMinutes(1)->toDateTimeString())
+            ->latest()
+            ->first();
+        if ($check_time) {
+            if ($check_time->task === $this->task) {
+                return session()->flash('error', 'Your already posted this task, wait for sometime!');
+            }
+        }
 
         $product = $this->getProductIDFromHashtag($this->task);
 
