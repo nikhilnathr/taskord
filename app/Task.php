@@ -18,7 +18,7 @@ class Task extends Model
         'done',
         'done_at',
         'image',
-        'type'
+        'type',
     ];
 
     public function user()
@@ -30,7 +30,7 @@ class Task extends Model
     {
         return $this->hasMany('App\TaskPraise');
     }
-    
+
     public function task_comments()
     {
         return $this->hasMany('App\TaskComments');

@@ -28,7 +28,7 @@ class User extends Authenticatable
         'email',
         'password',
         'provider',
-        'provider_id'
+        'provider_id',
     ];
 
     /**
@@ -58,7 +58,7 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\TaskPraise');
     }
-    
+
     public function task_comments()
     {
         return $this->hasMany('App\TaskComments');
