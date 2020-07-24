@@ -114,9 +114,9 @@
                                     @if (Auth::user()->isStaff)
                                     <a class="dropdown-item text-dark" id="admin-bar-click" role="button">
                                         @if (Auth::user()->staffShip)
-                                        {{Emoji::seeNoEvilMonkey()}} Hide adminbar
+                                        {{Emoji::seeNoEvilMonkey()}} Hide Admin Bar
                                         @else
-                                        {{Emoji::eyes()}} Show adminbar
+                                        {{Emoji::eyes()}} Show Admin Bar
                                         @endif
                                     </a>
                                     <div class="dropdown-divider"></div>
