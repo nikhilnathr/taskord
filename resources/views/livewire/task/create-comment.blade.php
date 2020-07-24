@@ -24,8 +24,16 @@
             </div>
             @if ($comment)
             <div>
-                <div class="font-weight-bold mb-1">Preview</div>
-                @markdown($comment)
+                <div class="h6 font-weight-bold mb-3">
+                    <i class="fab fa-markdown mr-1"></i>
+                    Markdown Preview
+                </div>
+                <span class="task-font">@markdown($comment)</span>
+            </div>
+            @else
+            <div class="h6 font-weight-bold mb-3">
+                <i class="fab fa-markdown mr-1"></i>
+                Markdown Supported
             </div>
             @endif
             <button class="btn btn-sm btn-primary" type="submit" wire:click="submit">
