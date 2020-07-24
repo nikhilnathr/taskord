@@ -82,8 +82,9 @@ class CreateTask extends Component
         if ($state) {
             $done_at = Carbon::now();
             $created_at = Carbon::now();
-            $updated_at = null;
+            $updated_at = Carbon::now();
         } else {
+            $done_at = null;
             $created_at = Carbon::now();
             $updated_at = Carbon::now();
         }
