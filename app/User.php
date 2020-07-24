@@ -22,7 +22,13 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'firstname', 'avatar', 'email', 'password', 'provider', 'provider_id',
+        'username',
+        'firstname',
+        'avatar',
+        'email',
+        'password',
+        'provider',
+        'provider_id'
     ];
 
     /**
@@ -51,6 +57,11 @@ class User extends Authenticatable
     public function task_praise()
     {
         return $this->hasMany('App\TaskPraise');
+    }
+    
+    public function task_comments()
+    {
+        return $this->hasMany('App\TaskComments');
     }
 
     public function products()

@@ -11,7 +11,15 @@ class Task extends Model
 
     protected $cacheFor = 3600;
 
-    protected $fillable = ['user_id', 'product_id', 'task', 'done', 'done_at', 'image', 'type'];
+    protected $fillable = [
+        'user_id',
+        'product_id',
+        'task',
+        'done',
+        'done_at',
+        'image',
+        'type'
+    ];
 
     public function user()
     {
@@ -21,6 +29,11 @@ class Task extends Model
     public function task_praise()
     {
         return $this->hasMany('App\TaskPraise');
+    }
+    
+    public function task_comments()
+    {
+        return $this->hasMany('App\TaskComments');
     }
 
     public function product()
