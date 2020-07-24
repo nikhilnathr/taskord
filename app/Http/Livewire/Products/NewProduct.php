@@ -2,10 +2,10 @@
 
 namespace App\Http\Livewire\Products;
 
-use Livewire\Component;
 use App\Product;
 use Auth;
 use Carbon\Carbon;
+use Livewire\Component;
 
 class NewProduct extends Component
 {
@@ -17,7 +17,7 @@ class NewProduct extends Component
     public $github;
     public $producthunt;
     public $launched;
-    
+
     public function updated($field)
     {
         $this->validateOnly($field, [
@@ -31,7 +31,7 @@ class NewProduct extends Component
             'description.profanity' => 'Please check your words!',
         ]);
     }
-    
+
     public function submit()
     {
         $validatedData = $this->validate([
@@ -44,13 +44,13 @@ class NewProduct extends Component
             'slug.profanity' => 'Please check your words!',
             'description.profanity' => 'Please check your words!',
         ]);
-        
+
         if (Auth::user()->isFlagged) {
             return session()->flash('error', 'Your account is flagged!');
         }
-        
+
         $launched = ! $this->launched ? false : true;
-        
+
         if ($launched) {
             $launched_status = true;
             $launched_at = Carbon::now();
@@ -59,7 +59,7 @@ class NewProduct extends Component
             $launched_status = false;
             $launched_at = null;
         }
-        
+
         $product = Product::create([
             'user_id' =>  Auth::user()->id,
             'name' => $this->name,
@@ -73,11 +73,12 @@ class NewProduct extends Component
             'launched' => $launched_status,
             'launched_at' => $launched_at,
         ]);
-        
+
         session()->flash('message', 'Product has been created!');
+
         return redirect()->route('product.done', ['slug' => $product->slug]);
     }
-    
+
     public function render()
     {
         return view('livewire.products.new-product');

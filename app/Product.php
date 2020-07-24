@@ -11,7 +11,7 @@ class Product extends Model
     use QueryCacheable, Subscribable;
 
     protected $cacheFor = 3600;
-    
+
     protected $fillable = [
         'user_id',
         'name',
@@ -23,7 +23,7 @@ class Product extends Model
         'github',
         'producthunt',
         'launched',
-        'launched_at'
+        'launched_at',
     ];
 
     public function user()

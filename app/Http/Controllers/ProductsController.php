@@ -19,7 +19,7 @@ class ProductsController extends Controller
             'type' => 'products.launched',
         ]);
     }
-    
+
     public function new()
     {
         return view('products.new');
