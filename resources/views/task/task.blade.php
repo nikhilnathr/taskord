@@ -13,11 +13,7 @@
                             ], key($task->id))
                         @endif
                     </div>
-                    <div class="card mt-4">
-                        <div class="card-body">
-                            Comments WIP
-                        </div>
-                    </div>
+                    @livewire('task.comments')
                 </div>
                 <div class="col-sm">
                     <div class="card mb-4">
