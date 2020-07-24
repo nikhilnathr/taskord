@@ -22,6 +22,12 @@ hotkeys('d+m', () => {
   });
 });
 
+// Do a barrel roll
+hotkeys('b+r', () => {
+  $('body').addClass('barrel_roll');
+  setTimeout("$('body').removeClass('barrel_roll')", 4000);
+});
+
 // Go to home
 hotkeys('g+h', () => {
   window.location.href = "/";
