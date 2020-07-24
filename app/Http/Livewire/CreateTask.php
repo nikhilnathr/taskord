@@ -40,13 +40,6 @@ class CreateTask extends Component
         }
     }
 
-    public function updatedImage()
-    {
-        $this->validate([
-            'image' => 'nullable|image|max:2048',
-        ]);
-    }
-
     public function search($array, $key, $value)
     {
         $results = [];

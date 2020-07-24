@@ -24,7 +24,7 @@
                     <div class="input-group-text">
                         <input class="form-check-input" type="checkbox" wire:model.lazy="done" checked>
                     </div>
-                    <input type="text" class="form-control" placeholder="Add a Task" wire:model.lazy="task">
+                    <input type="text" class="form-control" placeholder="Add a Task" wire:model.debounce.5s="task">
                 </div>
                 <div class="d-flex justify-content-between">
                 <div class="form-file form-file-sm w-25">
