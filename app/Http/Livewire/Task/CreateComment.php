@@ -35,10 +35,10 @@ class CreateComment extends Component
             'task_id' =>  $this->task->id,
             'comment' => $this->comment,
         ]);
-        
+
         $this->emit('commentAdded');
         $this->comment = '';
-        
+
         if (Auth::user()->id !== $this->task->user->id) {
             Auth::user()->givePoint(new CommentCreated($comment));
         }
