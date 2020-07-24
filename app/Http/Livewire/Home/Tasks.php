@@ -43,7 +43,6 @@ class Tasks extends Component
             $userIds->push(Auth::user()->id);
             $tasks = Task::whereIn('user_id', $userIds)
                 ->where('done', true)
-                ->orderBy('created_at', 'desc')
                 ->orderBy('done_at', 'desc')
                 ->get()
                 ->groupBy(function ($date) {
@@ -51,7 +50,6 @@ class Tasks extends Component
                 });
         } else {
             $tasks = Task::where('done', true)
-                ->orderBy('created_at', 'desc')
                 ->orderBy('done_at', 'desc')
                 ->get()
                 ->groupBy(function ($date) {

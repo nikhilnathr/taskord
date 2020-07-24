@@ -32,6 +32,7 @@ class SingleTask extends Component
                     undoPoint(new TaskCompleted($this->task));
                 } else {
                     givePoint(new TaskCompleted($this->task));
+                    $this->task->done_at = Carbon::now();
                 }
                 $this->task->done = ! $this->task->done;
                 $this->task->save();
