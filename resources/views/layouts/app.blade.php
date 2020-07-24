@@ -108,7 +108,7 @@
                                         {{Emoji::gear()}} Settings
                                     </a>
                                     <a class="dropdown-item text-dark" href="{{ route('patron') }}">
-                                        {{Emoji::gemStone()}} Patron
+                                        {{Emoji::handshake()}} Patron
                                     </a>
                                     <div class="dropdown-divider"></div>
                                     @if (Auth::user()->isStaff)

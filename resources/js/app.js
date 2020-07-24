@@ -73,3 +73,7 @@ $("#dark-mode").click(function() {
     }
   });
 });
+
+$(document).off().on('ready turbolinks:load',function(){
+  $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+});

@@ -6,6 +6,11 @@
                 <div class="ml-4">
                     <div class="h5 mb-0">
                         {{ $user->firstname ? $user->firstname . ' ' . $user->lastname : '' }}
+                        @if ($user->isPatron)
+                            <a class="ml-2 small" href="{{ route('patron') }}" data-toggle="tooltip" data-placement="right" title="Patron">
+                                {{Emoji::handshake()}}
+                            </a>
+                        @endif
                         @if (Auth::check() && $user->isFollowing(Auth::user()))
                             <span class="ml-2 badge bg-light text-black-50">Follows you</span>
                         @endif

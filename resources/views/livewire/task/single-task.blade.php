@@ -7,7 +7,6 @@
             </a>
             <div class="small">{{ "@" . $task->user->username }}</div>
         </span>
-        {{$task->done_at}}
         <span class="align-text-top small float-right ml-auto">
             <a class="text-black-50" href="{{ route('task', ['id' => $task->id]) }}">
                 {{ !$task->done_at ? Carbon::parse($task->created_at)->diffForHumans() : Carbon::parse($task->done_at)->diffForHumans() }}
