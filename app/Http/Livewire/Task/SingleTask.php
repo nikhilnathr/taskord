@@ -30,6 +30,7 @@ class SingleTask extends Component
             if (Auth::user()->id === $this->task->user->id) {
                 if ($this->task->done) {
                     undoPoint(new TaskCompleted($this->task));
+                    $this->task->updated_at = Carbon::now();
                 } else {
                     givePoint(new TaskCompleted($this->task));
                     $this->task->done_at = Carbon::now();

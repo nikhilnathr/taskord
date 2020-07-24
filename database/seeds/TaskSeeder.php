@@ -22,6 +22,8 @@ class TaskSeeder extends Seeder
                 'task' => $faker->sentence($nbWords = 6, $variableNbWords = true),
                 'done' => $faker->boolean($chanceOfGettingTrue = 50),
                 'done_at' => $faker->dateTimeBetween($startDate = '-5 days', $endDate = 'now'),
+                'created_at' => $faker->dateTimeBetween($startDate = '-5 days', $endDate = 'now'),
+                'updated_at' => $faker->dateTimeBetween($startDate = '-5 days', $endDate = 'now'),
             ]);
         }
         foreach (range(1, 1000) as $index) {
@@ -31,6 +33,8 @@ class TaskSeeder extends Seeder
                 'task' => $faker->sentence($nbWords = 6, $variableNbWords = true),
                 'done' => $faker->boolean($chanceOfGettingTrue = 50),
                 'done_at' => $faker->dateTimeBetween($startDate = '-30 days', $endDate = '-5 days'),
+                'created_at' => $faker->dateTimeBetween($startDate = '-30 days', $endDate = '-5 days'),
+                'updated_at' => $faker->dateTimeBetween($startDate = '-30 days', $endDate = '-5 days'),
             ]);
         }
     }
