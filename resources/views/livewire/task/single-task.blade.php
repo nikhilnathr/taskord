@@ -4,6 +4,11 @@
         <span class="ml-2">
             <a href="{{ route('user.done', ['username' => $task->user->username]) }}" class="font-weight-bold text-dark">
                 {{ $task->user->firstname ? $task->user->firstname . ' ' . $task->user->lastname : '' }}
+                @if ($task->user->isPatron)
+                    <a class="ml-1 small" href="{{ route('patron') }}" data-toggle="tooltip" data-placement="right" title="Patron">
+                        {{Emoji::handshake()}}
+                    </a>
+                @endif
             </a>
             <div class="small">{{ "@" . $task->user->username }}</div>
         </span>
