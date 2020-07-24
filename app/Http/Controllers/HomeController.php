@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\User;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Auth;
+use Carbon\Carbon;
 use DB;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -61,7 +61,7 @@ class HomeController extends Controller
         //         DB::raw('Date(created_at) as date'),
         //         DB::raw('COUNT(*) as "tasks"')
         //     ));
-            
+
         // dd($stats);
 
         return view('home/home', [
