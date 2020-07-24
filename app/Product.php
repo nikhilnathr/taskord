@@ -11,6 +11,13 @@ class Product extends Model
     use QueryCacheable, Subscribable;
 
     protected $cacheFor = 3600;
+    
+    protected $fillable = [
+        'user_id',
+        'name',
+        'slug',
+        'avatar'
+    ];
 
     public function user()
     {

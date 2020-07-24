@@ -43,11 +43,12 @@ Route::group(['prefix' => 'product/{slug}', 'as' => 'product.'], function () {
 Route::group(['prefix' => 'products', 'as' => 'products.'], function () {
     Route::get('/', 'ProductsController@newest')->name('newest');
     Route::get('/launched', 'ProductsController@launched')->name('launched');
+    Route::get('/new', 'ProductsController@new')->name('new')->middleware('auth');
 });
 
 // Toggles
-Route::get('/adminbar', 'Admin\AdminBarController@toggle')->name('adminbar');
-Route::get('/darkmode', 'UserController@darkMode')->name('darkmode');
+Route::get('/adminbar', 'Admin\AdminBarController@toggle')->name('adminbar')->middleware('auth');
+Route::get('/darkmode', 'UserController@darkMode')->name('darkmode')->middleware('auth');
 
 Route::get('/task/{id}', 'TaskController@task')->name('task');
 
