@@ -64,7 +64,6 @@ class SingleTask extends Component
                     ['user_id', Auth::user()->id],
                     ['task_id', $this->task->id],
                 ])->first();
-                undoPoint(new PraiseCreated($praise));
                 $praise->delete();
                 $this->task->refresh();
             } else {
@@ -92,7 +91,8 @@ class SingleTask extends Component
                 return session()->flash('message', 'Your account is flagged!');
             }
             if (Auth::user()->id === $this->task->user->id) {
-                Auth::user()->undoPoint(new TaskCreated($this->task));
+                $this->task->task_comments()->delete();
+                $this->task->task_praise()->delete();
                 $this->task->delete();
                 $this->emitUp('taskDeleted');
             } else {
