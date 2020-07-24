@@ -3,9 +3,10 @@
         Moderator
     </div>
     <div class="card-body">
-        <span>
-            <span class="font-weight-bold">User ID:</span> {{ $user->id }}
-        </span>
+        <div class="text-info h5 mb-3">
+            <i class="fa fa-flag-checkered mr-1"></i>
+            Flags
+        </div>
         <div class="mb-2 mt-3">
             <input wire:click="enrollBeta" class="form-check-input" type="checkbox" {{ $user->isBeta ? 'checked' : '' }}>
             <span class="ml-1">Enroll to Beta</span>
@@ -32,6 +33,11 @@
             <span wire:loading wire:target="enrollDeveloper" class="small ml-2 text-success font-weight-bold">Enrolling...</span>
         </div>
         @if (!$user->isStaff)
+        <hr>
+        <div class="text-danger h5 mb-3">
+            <i class="fa fa-user-ninja mr-1"></i>
+            Danger Zone
+        </div>
         <div class="mt-2">
             <input wire:click="flagUser" class="form-check-input" type="checkbox" {{ $user->isFlagged ? 'checked' : '' }}>
             <span class="ml-1 text-danger font-weight-bold">Flag this user</span>

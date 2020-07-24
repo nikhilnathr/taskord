@@ -1,4 +1,5 @@
 require('./bootstrap');
+require('./shortcuts');
 const Turbolinks = require("turbolinks");
 import {isInViewport} from "observe-element-in-viewport";
 
@@ -25,32 +26,11 @@ $(window).scroll(function() {
 
 // Hide Search Dropdown
 
-$(document).on('keydown', function (e) {
-  if (e.keyCode === 27) { // ESC
-    $('.search-dropdown').hide();
-  }
-});
-
 $("input").blur(function(){
   $('.search-dropdown').hide();
 });
 
 // Admin Bar
-
-// Shortcut
-$(document).on('keydown', function (e) {
-  if (e.keyCode === 192) { // Backtick
-    $.get("/adminbar", function(data, status) {
-      if(data === "enabled" || data === "disabled") {
-        if (status === "success") {
-          location.reload();
-        }
-      }
-    });
-  }
-});
-
-// Dropdown
 
 $("#admin-bar-click").click(function() {
   $.get("/adminbar", function(data, status) {
@@ -61,18 +41,8 @@ $("#admin-bar-click").click(function() {
     }
   });
 });
-
-// Dark Mode Toggle
-
-$("#dark-mode").click(function() {
-  $.get("/darkmode", function(data, status) {
-    if(data === "enabled" || data === "disabled") {
-      if (status === "success") {
-        location.reload();
-      }
-    }
-  });
-});
+ 
+// Enable Tooltips
 
 $(document).off().on('ready turbolinks:load',function(){
   $("body").tooltip({ selector: '[data-toggle=tooltip]' });

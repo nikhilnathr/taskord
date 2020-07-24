@@ -6,6 +6,9 @@
                 <div class="ml-4">
                     <div class="h5 mb-0">
                         {{ $user->firstname ? $user->firstname . ' ' . $user->lastname : '' }}
+                        @if (Auth::check() && Auth::user()->isStaff && Auth::user()->staffShip)
+                            <span class="ml-2 text-secondary small">#{{ $user->id }}</span>
+                        @endif
                         @if ($user->isPatron)
                             <a class="ml-2 small" href="{{ route('patron') }}" data-toggle="tooltip" data-placement="right" title="Patron">
                                 {{Emoji::handshake()}}
