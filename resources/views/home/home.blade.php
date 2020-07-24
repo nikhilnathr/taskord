@@ -72,7 +72,6 @@
                 <div class="col-sm">
                     @auth
                         @livewire('home.onboarding')
-                        
                         <div class="card mb-4">
                             <div class="card-header">
                                 <div class="h5 pt-2">
@@ -117,7 +116,7 @@
                         </div>
                         <ul class="list-group list-group-flush">
                             @foreach($products as $product)
-                            <li class="list-group-item">
+                            <li class="list-group-item pb-2 pt-2">
                                 <img class="rounded avatar-30 mt-1 ml-2" src="{{ $product->avatar }}" height="50" width="50" />
                                 <a href="{{ route('product.done', ['slug' => $product->slug]) }}" class="ml-2 mr-2 align-text-top font-weight-bold text-dark">
                                     {{ $product->name }}
@@ -138,7 +137,7 @@
                         </div>
                         <ul class="list-group list-group-flush">
                             @foreach($reputations as $user)
-                            <li class="list-group-item">
+                            <li class="list-group-item pb-2 pt-2">
                                 <span class="h6 text-black-50" style="vertical-align:sub">
                                     @if ($loop->index === 0)
                                     <span class="font-weight-bold" style="color:green">
