@@ -2,21 +2,21 @@
 
 namespace App\Http\Livewire\Task;
 
-use Livewire\Component;
-use Auth;
-use App\TaskComments;
 use App\Gamify\Points\CommentCreated;
+use App\TaskComments;
+use Auth;
+use Livewire\Component;
 
 class CreateComment extends Component
 {
     public $comment;
     public $task;
-    
+
     public function mount($task)
     {
         $this->task = $task;
     }
-    
+
     public function submit()
     {
         $validatedData = $this->validate([
@@ -37,12 +37,12 @@ class CreateComment extends Component
         ]);
 
         $this->emit('commentAdded');
-        $this->comment = '' ;
+        $this->comment = '';
         Auth::user()->givePoint(new CommentCreated($comment));
 
         return session()->flash('success', 'Comment has been added!');
     }
-    
+
     public function render()
     {
         return view('livewire.task.create-comment');

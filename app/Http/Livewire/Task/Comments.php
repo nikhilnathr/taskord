@@ -11,9 +11,9 @@ use Livewire\Component;
 class Comments extends Component
 {
     public $listeners = [
-        'commentAdded' => 'render'
+        'commentAdded' => 'render',
     ];
-    
+
     public $task;
     public $page;
     public $perPage;
