@@ -23,7 +23,13 @@
                 <div class="mb-3">
                     <textarea placeholder="Add a comment" class="form-control" rows="3" wire:model="comment"></textarea>
                 </div>
-                <button wire:loading.attr="disabled" class="btn btn-sm btn-primary" type="submit">
+                @if ($comment)
+                <div>
+                    <div class="font-weight-bold mb-1">Preview</div>
+                    @markdown($comment)
+                </div>
+                @endif
+                <button class="btn btn-sm btn-primary" type="submit">
                     <i class="fa fa-plus mr-1"></i>
                     Add Comment
                 </button>
