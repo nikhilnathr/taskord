@@ -15,6 +15,7 @@
                             @endif
                         </ul>
                     </div>
+                    @livewire('task.create-comment')
                     @livewire('task.comments', [
                         'task' => $task,
                         'page' => 1,
