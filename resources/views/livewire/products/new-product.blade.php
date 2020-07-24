@@ -18,36 +18,33 @@
                         {{ session('error') }}
                     </div>
                 @endif
-                @error('name')
-                    <div class="alert alert-warning alert-dismissible fade show mt-2">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        {{ $message }}
-                    </div>
-                @enderror
-                @error('slug')
-                    <div class="alert alert-danger alert-dismissible fade show mt-2">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        {{ $message }}
-                    </div>
-                @enderror
-                @error('description')
-                    <div class="alert alert-warning alert-dismissible fade show mt-2">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        {{ $message }}
-                    </div>
-                @enderror
                 <form wire:target="submit" wire:submit.prevent="submit">
                     <div class="mb-3">
                         <label class="form-label font-weight-bold">Name of the product</label>
-                        <input type="text" class="form-control" placeholder="Simply the name of the product" wire:model="name">
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Simply the name of the product" wire:model="name">
+                        @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label class="form-label font-weight-bold">Slug</label>
-                        <input type="text" class="form-control" placeholder="Product Slug (/taskord)" wire:model.lazy="slug">
+                        <input type="text" class="form-control @error('slug') is-invalid @enderror" placeholder="Product Slug (/taskord)" wire:model="slug">
+                        @error('slug')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label class="form-label font-weight-bold">Description</label>
-                        <textarea class="form-control"rows="3" placeholder="Some words about your awesome product" wire:model="description"></textarea>
+                        <textarea class="form-control @error('description') is-invalid @enderror" rows="3" placeholder="Some words about your awesome product" wire:model="description"></textarea>
+                        @error('description')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">

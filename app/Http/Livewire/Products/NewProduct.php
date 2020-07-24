@@ -18,12 +18,26 @@ class NewProduct extends Component
     public $producthunt;
     public $launched;
     
+    public function updated($field)
+    {
+        $this->validateOnly($field, [
+            'name' => 'required|profanity',
+            'slug' => 'required|profanity|max:20|unique:products|alpha_dash',
+            'description' => 'nullable|profanity',
+        ],
+        [
+            'name.profanity' => 'Please check your words!',
+            'slug.profanity' => 'Please check your words!',
+            'description.profanity' => 'Please check your words!',
+        ]);
+    }
+    
     public function submit()
     {
         $validatedData = $this->validate([
             'name' => 'required|profanity',
-            'slug' => 'required|profanity|max:20',
-            'description' => 'required|profanity',
+            'slug' => 'required|profanity|max:20|unique:products|alpha_dash',
+            'description' => 'nullable|profanity',
         ],
         [
             'name.profanity' => 'Please check your words!',
