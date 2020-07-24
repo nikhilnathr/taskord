@@ -6,12 +6,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <div class="mb-4 text-center">
+                    <div class="mb-4">
                         <a class="btn btn-{{ Route::currentRouteName() === 'products.newest' ? '' : 'outline-' }}primary mr-2" href="{{ route('products.newest') }}">
                             Newest
                         </a>
-                        <a class="btn btn-outline-primary" href="{{ route('products.launched') }}">
+                        <a class="btn btn-{{ Route::currentRouteName() === 'products.launched' ? '' : 'outline-' }}primary mr-2" href="{{ route('products.launched') }}">
                             Launched
+                        </a>
+                        <a class="btn btn-success mr-2 float-right text-white" href="{{ route('products.launched') }}">
+                            <i class="fa fa-plus"></i>
+                            New Product
                         </a>
                     </div>
                     @livewire('products.products', [
