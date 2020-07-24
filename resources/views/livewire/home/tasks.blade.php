@@ -28,7 +28,7 @@
             <ul class="list-group list-group-flush">
                 @foreach ($groupedTask as $task)
                     @if (!$task->user->isFlagged)
-                        @livewire('single-task', [
+                        @livewire('task.single-task', [
                             'task' => $task
                         ], key($task->id))
                     @endif

@@ -8,7 +8,7 @@
                 <div class="col-md-8">
                     <div>
                         @if (!$task->user->isFlagged)
-                            @livewire('single-task', [
+                            @livewire('task.single-task', [
                                 'task' => $task
                             ], key($task->id))
                         @endif

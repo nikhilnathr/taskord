@@ -27,7 +27,7 @@
         <div class="card mb-4" wire:poll.5s>
             <ul class="list-group list-group-flush">
                 @foreach ($groupedTask as $task)
-                    @livewire('single-task', [
+                    @livewire('task.single-task', [
                         'task' => $task
                     ], key($task->id))
                 @endforeach

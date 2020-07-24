@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Task;
 
 use App\Gamify\Points\PraiseCreated;
 use App\Gamify\Points\TaskCompleted;
@@ -105,6 +105,6 @@ class SingleTask extends Component
 
     public function render()
     {
-        return view('livewire.single-task');
+        return view('livewire.task.single-task');
     }
 }
