@@ -52,7 +52,7 @@ class CreateTask extends Component
         $results = [];
 
         if (is_array($array)) {
-            if (isset($array[$key]) && $array[$key] == $value) {
+            if (isset($array[$key]) && strtolower($array[$key]) == $value) {
                 $results[] = $array;
             }
 
@@ -82,7 +82,7 @@ class CreateTask extends Component
             ->select('task', 'created_at')
             ->where('created_at', '>', Carbon::now()->subMinutes(3)->toDateTimeString())
             ->latest()->get()->toArray();
-        if (count($this->search($check_time, 'task', $this->task)) > 0) {
+        if (count($this->search($check_time, 'task', strtolower($this->task))) > 0) {
             return session()->flash('error', 'Your already posted this task, wait for sometime!');
         }
 
