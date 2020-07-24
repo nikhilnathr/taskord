@@ -1,11 +1,7 @@
 import hotkeys from 'hotkeys-js';
 
-hotkeys('alt+c', function(event, handler) {
-  $('.search-dropdown').hide();
-});
-
 // Admin Bar
-hotkeys('`', function(event, handler) {
+hotkeys('`', () => {
   $.get("/adminbar", function(data, status) {
     if(data === "enabled" || data === "disabled") {
       if (status === "success") {
@@ -16,7 +12,7 @@ hotkeys('`', function(event, handler) {
 });
 
 // Dark Mode
-hotkeys('d+m', function(event, handler) {
+hotkeys('d+m', () => {
   $.get("/darkmode", function(data, status) {
     if(data === "enabled" || data === "disabled") {
       if (status === "success") {
@@ -24,4 +20,19 @@ hotkeys('d+m', function(event, handler) {
       }
     }
   });
+});
+
+// Go to home
+hotkeys('g+h', () => {
+  window.location.href = "/";
+});
+
+// Go to products
+hotkeys('g+p', () => {
+  window.location.href = "/products";
+});
+
+// Go to settings
+hotkeys('g+s', () => {
+  window.location.href = "/settings";
 });
