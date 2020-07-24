@@ -60,27 +60,22 @@ class NewProduct extends Component
             $launched_at = null;
         }
         
-        $check = Product::where('slug', $this->slug)->first();
-        if ($check === null) {
-           $product = Product::create([
-                'user_id' =>  Auth::user()->id,
-                'name' => $this->name,
-                'slug' => $this->slug,
-                'avatar' => 'https://github.com/taskord.png',
-                'description' => $this->description,
-                'website' => $this->website,
-                'twitter' => $this->twitter,
-                'github' => $this->github,
-                'producthunt' => $this->producthunt,
-                'launched' => $launched_status,
-                'launched_at' => $launched_at,
-            ]);
-            
-            session()->flash('message', 'Product has been created!');
-            return redirect()->route('product.done', ['slug' => $product->slug]);
-        } else {
-            return session()->flash('error', 'Product already exists!');
-        }
+        $product = Product::create([
+            'user_id' =>  Auth::user()->id,
+            'name' => $this->name,
+            'slug' => $this->slug,
+            'avatar' => 'https://github.com/taskord.png',
+            'description' => $this->description,
+            'website' => $this->website,
+            'twitter' => $this->twitter,
+            'github' => $this->github,
+            'producthunt' => $this->producthunt,
+            'launched' => $launched_status,
+            'launched_at' => $launched_at,
+        ]);
+        
+        session()->flash('message', 'Product has been created!');
+        return redirect()->route('product.done', ['slug' => $product->slug]);
     }
     
     public function render()

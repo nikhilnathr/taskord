@@ -16,7 +16,14 @@ class Product extends Model
         'user_id',
         'name',
         'slug',
-        'avatar'
+        'description',
+        'avatar',
+        'website',
+        'twitter',
+        'github',
+        'producthunt',
+        'launched',
+        'launched_at'
     ];
 
     public function user()
