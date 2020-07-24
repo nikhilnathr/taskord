@@ -6,14 +6,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <div>
-                        @if (!$task->user->isFlagged)
-                            @livewire('task.single-task', [
-                                'task' => $task
-                            ], key($task->id))
-                        @endif
+                    <div class="card">
+                        <ul class="list-group list-group-flush">
+                            @if (!$task->user->isFlagged)
+                                @livewire('task.single-task', [
+                                    'task' => $task
+                                ], key($task->id))
+                            @endif
+                        </ul>
                     </div>
-                    @livewire('task.comments')
+                    @livewire('task.comments', ['task' => $task])
                 </div>
                 <div class="col-sm">
                     <div class="card mb-4">
