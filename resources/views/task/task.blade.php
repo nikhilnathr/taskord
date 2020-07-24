@@ -8,14 +8,16 @@
                 <div class="col-md-8">
                     <div class="card">
                         <ul class="list-group list-group-flush">
-                            @if (!$task->user->isFlagged)
-                                @livewire('task.single-task', [
-                                    'task' => $task
-                                ], key($task->id))
-                            @endif
+                            @livewire('task.single-task', [
+                                'task' => $task
+                            ], key($task->id))
                         </ul>
                     </div>
-                    @livewire('task.create-comment')
+                    @if (Auth::check() && !Auth::user()->isFlagged)
+                        @livewire('task.create-comment', [
+                            'task' => $task
+                        ])
+                    @endif
                     @livewire('task.comments', [
                         'task' => $task,
                         'page' => 1,

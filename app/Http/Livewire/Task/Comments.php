@@ -10,6 +10,10 @@ use Livewire\Component;
 
 class Comments extends Component
 {
+    public $listeners = [
+        'commentAdded' => 'render'
+    ];
+    
     public $task;
     public $page;
     public $perPage;
@@ -32,6 +36,7 @@ class Comments extends Component
     public function render()
     {
         $comments = TaskComments::where('task_id', $this->task->id)
+            ->orderBy('created_at', 'DESC')
             ->get();
 
         return view('livewire.task.comments', [

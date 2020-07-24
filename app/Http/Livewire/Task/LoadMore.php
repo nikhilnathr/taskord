@@ -42,6 +42,7 @@ class LoadMore extends Component
     {
         if ($this->loadMore) {
             $comments = TaskComments::where('task_id', $this->task->id)
+                ->orderBy('created_at', 'DESC')
                 ->get();
 
             return view('livewire.task.comments', [
