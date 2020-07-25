@@ -91,37 +91,67 @@
                     <span class="input-group-text">
                         <i class="fa fa-link"></i>
                     </span>
-                    <input type="text" class="form-control" placeholder="Website" value="{{ $user->website }}" wire:model.lazy="website">
+                    <input type="text" class="form-control @error('website') is-invalid @enderror" placeholder="Website" value="{{ $user->website }}" wire:model="website">
+                    @error('website')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text">
                         <i class="fa fa-twitter"></i>
                     </span>
-                    <input type="text" class="form-control" placeholder="Twitter" value="{{ $user->twitter }}" wire:model.lazy="twitter">
+                    <input type="text" class="form-control @error('twitter') is-invalid @enderror" placeholder="Twitter" value="{{ $user->twitter }}" wire:model="twitter">
+                    @error('twitter')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text">
                         <i class="fa fa-twitch"></i>
                     </span>
-                    <input type="text" class="form-control" placeholder="Twitch" value="{{ $user->twitch }}" wire:model.lazy="twitch">
+                    <input type="text" class="form-control @error('twitch') is-invalid @enderror" placeholder="Twitch" value="{{ $user->twitch }}" wire:model="twitch">
+                    @error('twitch')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text">
                         <i class="fa fa-telegram"></i>
                     </span>
-                    <input type="text" class="form-control" placeholder="Telegram" value="{{ $user->telegram }}" wire:model.lazy="telegram">
+                    <input type="text" class="form-control @error('telegram') is-invalid @enderror" placeholder="Telegram" value="{{ $user->telegram }}" wire:model="telegram">
+                    @error('telegram')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text">
                         <i class="fa fa-github"></i>
                     </span>
-                    <input type="text" class="form-control" placeholder="GitHub" value="{{ $user->github }}" wire:model.lazy="github">
+                    <input type="text" class="form-control @error('github') is-invalid @enderror" placeholder="GitHub" value="{{ $user->github }}" wire:model="github">
+                    @error('github')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text">
                         <i class="fa fa-youtube"></i>
                     </span>
-                    <input type="text" class="form-control" placeholder="YouTube" value="{{ $user->youtube }}" wire:model.lazy="youtube">
+                    <input type="text" class="form-control @error('youtube') is-invalid @enderror" placeholder="YouTube" value="{{ $user->youtube }}" wire:model="youtube">
+                    @error('youtube')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
                 <button type="submit" class="btn btn-primary">Save</button>
             </form>
