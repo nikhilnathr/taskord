@@ -21,11 +21,11 @@
                 </span>
             </div>
             <div class="card-body pt-1">
-                <a href="" class="mr-2 h5 align-text-top font-weight-bold text-dark">
+                <a href="" class="h5 align-text-top font-weight-bold text-dark">
                     {{ $question->title }}
                 </a>
-                <div>{{ $question->body }}</div>
-                <div class="mt-2">
+                <div class="mt-2">{{ Str::words($question->body, '30') }}</div>
+                <div class="mt-3">
                     @auth
                     @if (true)
                         <button type="button" class="btn btn-task btn-success text-white mr-1" wire:click="togglePraise" wire:loading.attr="disabled">
