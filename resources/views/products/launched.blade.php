@@ -13,7 +13,7 @@
                         <a class="btn btn-{{ Route::currentRouteName() === 'products.launched' ? '' : 'outline-' }}primary mr-2" href="{{ route('products.launched') }}">
                             Launched
                         </a>
-                        <a class="btn btn-success mr-2 float-right text-white" href="{{ route('products.new') }}">
+                        <a class="btn btn-success float-right text-white" href="{{ route('products.new') }}">
                             <i class="fa fa-plus"></i>
                             New Product
                         </a>
