@@ -51,22 +51,16 @@
                             </span>
                         </a>
                     @endguest
-                    @auth
-                        <a href="" class="btn btn-task btn-outline-primary mr-1">
-                            {{ Emoji::speechBalloon() }}
-                            <span class="small text-dark font-weight-bold">
-                                {{ $question->answer->count() }}
-                            </span>
-                        </a>
-                    @endauth
-                    @guest
-                        <a href="/login" class="btn btn-task btn-outline-primary mr-1">
-                            {{ Emoji::speechBalloon() }}
-                            <span class="small text-black-50 font-weight-bold">
-                                {{ $question->answer->count() }}
-                            </span>
-                        </a>
-                    @endguest
+                    <a href="#" class="avatar-stack text-dark">
+                        @foreach ($question->answer->take(5) as $answer)
+                        <img class="rounded-circle avatar avatar-30" src="{{ $answer->user->avatar }}" />
+                        @endforeach
+                        @if ($question->answer->count() >= 5)
+                        <span class="ml-3 pl-1 font-weight-bold small">
+                            +{{ $question->answer->count() - 5 }} more
+                        </span>
+                        @endif
+                    </a>
                 </div>
             </div>
         </div>

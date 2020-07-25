@@ -156,3 +156,21 @@ input[type="color"]:focus,
   background: linear-gradient(90deg,#6a63ec 0%, #6a63ecba 90%);
   background-size: contain;
 }
+
+.avatar-stack {
+  .avatar {
+    height: 30px;
+    margin-right: -18px;
+    border: 2px solid white;
+    transition: all 0.2s ease;
+  }
+  span {
+    margin-left: 15px !important;
+  }
+  &:hover .avatar {
+    margin-right: -5px !important;
+  }
+  &:hover span {
+    margin-left: 5px !important;
+  }
+}
