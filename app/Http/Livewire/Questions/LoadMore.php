@@ -50,8 +50,7 @@ class LoadMore extends Component
             } elseif ($this->type === 'questions.popular') {
                 $questions = Question::has('answer')
                     ->get()
-                    ->sortByDesc(function($question)
-                    {
+                    ->sortByDesc(function ($question) {
                         return $question->answer->count();
                     });
             }

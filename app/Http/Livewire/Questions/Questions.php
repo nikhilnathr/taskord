@@ -2,12 +2,12 @@
 
 namespace App\Http\Livewire\Questions;
 
-use Livewire\Component;
+use App\Question;
 use Carbon\Carbon;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
-use App\Question;
+use Livewire\Component;
 
 class Questions extends Component
 {
@@ -29,7 +29,7 @@ class Questions extends Component
 
         return new LengthAwarePaginator($items->forPage($page, $this->perPage), $items->count(), $this->perPage, $page, $options);
     }
-    
+
     public function render()
     {
         if ($this->type === 'questions.newest') {
@@ -42,11 +42,11 @@ class Questions extends Component
         } elseif ($this->type === 'questions.popular') {
             $questions = Question::has('answer')
                 ->get()
-                ->sortByDesc(function($question)
-                {
+                ->sortByDesc(function ($question) {
                     return $question->answer->count();
                 });
         }
+
         return view('livewire.questions.questions', [
             'questions' => $this->paginate($questions),
             'page' => $this->page,

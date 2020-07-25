@@ -13,14 +13,14 @@ class QuestionController extends Controller
             'type' => 'questions.newest',
         ]);
     }
-    
+
     public function unanswered()
     {
         return view('questions.unanswered', [
             'type' => 'questions.unanswered',
         ]);
     }
-    
+
     public function popular()
     {
         return view('questions.popular', [
