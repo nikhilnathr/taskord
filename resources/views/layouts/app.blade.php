@@ -9,8 +9,8 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" data-turbolinks-track="true">
-    @if(Auth::check() && Auth::user()->isPatron or Auth::check() && Auth::user()->isStaff)
-    @if(Auth::user()->darkMode)
+    @if (Auth::check() && Auth::user()->isPatron or Auth::check() && Auth::user()->isStaff)
+    @if (Auth::user()->darkMode)
     <link href="{{ asset('css/darkmode.css') }}" rel="stylesheet" data-turbolinks-track="true">
     @endif
     @endif
@@ -52,11 +52,11 @@
                                 More
                             </a>
                             <ul class="dropdown-menu shadow-sm border" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item text-dark" href="#">{{Emoji::wrappedGift()}} Deals</a></li>
-                                <li><a class="dropdown-item text-dark" href="#">{{Emoji::clinkingBeerMugs()}} Meetups</a></li>
-                                <li><a class="dropdown-item text-dark" href="#">{{Emoji::thinkingFace()}} Help</a></li>
-                                <li><a class="dropdown-item text-dark" href="#">{{Emoji::hammerAndWrench()}} API</a></li>
-                                <li><a class="dropdown-item text-dark" href="#">{{Emoji::barChart()}} Open</a></li>
+                                <li><a class="dropdown-item text-dark" href="#">{{ Emoji::wrappedGift() }} Deals</a></li>
+                                <li><a class="dropdown-item text-dark" href="#">{{ Emoji::clinkingBeerMugs() }} Meetups</a></li>
+                                <li><a class="dropdown-item text-dark" href="#">{{ Emoji::thinkingFace() }} Help</a></li>
+                                <li><a class="dropdown-item text-dark" href="#">{{ Emoji::hammerAndWrench() }} API</a></li>
+                                <li><a class="dropdown-item text-dark" href="#">{{ Emoji::barChart() }} Open</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -73,13 +73,13 @@
                         @else
                             <li class="nav-item mr-2">
                                 <a class="nav-link text-white" href="#">
-                                    {{Emoji::speechBalloon()}}
+                                    {{ Emoji::speechBalloon() }}
                                 </a>
                             </li>
                             <li class="nav-item mr-2">
                                 <div class="nav-link">
                                     <span class="badge rounded-pill bg-warning text-dark reputation">
-                                        {{Emoji::fire()}} {{ Auth::user()->getPoints(true) }}
+                                        {{ Emoji::fire() }} {{ Auth::user()->getPoints(true) }}
                                     </span>
                                 </div>
                             </li>
@@ -99,24 +99,24 @@
                                     </div>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item text-dark" href="{{ route('user.done', ['username' => Auth::user()->username]) }}">
-                                        {{Emoji::bustInSilhouette()}} Profile
+                                        {{ Emoji::bustInSilhouette() }} Profile
                                     </a>
                                     <a class="dropdown-item text-dark" href="{{ route('user.pending', ['username' => Auth::user()->username]) }}">
-                                        {{Emoji::hourglassNotDone()}} Pending Tasks
+                                        {{ Emoji::hourglassNotDone() }} Pending Tasks
                                     </a>
                                     <a class="dropdown-item text-dark" href="{{ route('user.settings.profile') }}">
-                                        {{Emoji::gear()}} Settings
+                                        {{ Emoji::gear() }} Settings
                                     </a>
                                     <a class="dropdown-item text-dark" href="{{ route('patron') }}">
-                                        {{Emoji::handshake()}} Patron
+                                        {{ Emoji::handshake() }} Patron
                                     </a>
                                     <div class="dropdown-divider"></div>
                                     @if (Auth::user()->isStaff)
                                     <a class="dropdown-item text-dark" id="admin-bar-click" role="button">
                                         @if (Auth::user()->staffShip)
-                                        {{Emoji::seeNoEvilMonkey()}} Hide Admin Bar
+                                        {{ Emoji::seeNoEvilMonkey() }} Hide Admin Bar
                                         @else
-                                        {{Emoji::eyes()}} Show Admin Bar
+                                        {{ Emoji::eyes() }} Show Admin Bar
                                         @endif
                                     </a>
                                     <div class="dropdown-divider"></div>
@@ -124,16 +124,16 @@
                                     @if (Auth::user()->isPatron)
                                     <a class="dropdown-item text-dark" id="dark-mode" role="button">
                                         @if (Auth::user()->darkMode)
-                                        {{Emoji::sunWithFace()}} Light Mode
+                                        {{ Emoji::sunWithFace() }} Light Mode
                                         @else
-                                        {{Emoji::newMoonFace()}} Dark Mode
+                                        {{ Emoji::newMoonFace() }} Dark Mode
                                         @endif
                                     </a>
                                     @endif
                                     <a class="dropdown-item text-dark" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{Emoji::door()}} Logout
+                                        {{ Emoji::door() }} Logout
                                     </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf

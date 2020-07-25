@@ -34,7 +34,7 @@
             </ul>
         </div>
     @endforeach
-    @if($tasks->hasMorePages())
+    @if ($tasks->hasMorePages())
         @livewire('product.load-more', [
             'type' => $type,
             'product' => $task->product,

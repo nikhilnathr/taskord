@@ -6,7 +6,7 @@
                 {{ $task->user->firstname ? $task->user->firstname . ' ' . $task->user->lastname : '' }}
                 @if ($task->user->isPatron)
                     <a class="ml-1 small" href="{{ route('patron') }}" data-toggle="tooltip" data-placement="right" title="Patron">
-                        {{Emoji::handshake()}}
+                        {{ Emoji::handshake() }}
                     </a>
                 @endif
             </a>
@@ -42,14 +42,14 @@
             @auth
             @if (Auth::user()->task_praise->where('task_id', $task->id)->count() === 1)
                 <button type="button" class="btn btn-task btn-success text-white mr-1" wire:click="togglePraise" wire:loading.attr="disabled">
-                    {{Emoji::clappingHands()}}
+                    {{ Emoji::clappingHands() }}
                     <span class="small text-dark font-weight-bold">
                         {{ $task->task_praise->count() }}
                     </span>
                 </button>
             @else
                 <button type="button" class="btn btn-task btn-outline-success mr-1" wire:click="togglePraise" wire:loading.attr="disabled">
-                    {{Emoji::clappingHands()}}
+                    {{ Emoji::clappingHands() }}
                     <span class="small text-dark font-weight-bold">
                         {{ $task->task_praise->count() }}
                     </span>
@@ -58,7 +58,7 @@
             @endauth
             @guest
                 <a href="/login" class="btn btn-task btn-outline-success mr-1">
-                    {{Emoji::clappingHands()}}
+                    {{ Emoji::clappingHands() }}
                     <span class="small text-dark font-weight-bold">
                         {{ $task->task_praise->count() }}
                     </span>
@@ -66,7 +66,7 @@
             @endguest
             @auth
                 <a href="{{ route('task', ['id' => $task->id]) }}" class="btn btn-task btn-outline-primary mr-1">
-                    {{Emoji::speechBalloon()}}
+                    {{ Emoji::speechBalloon() }}
                     <span class="small text-dark font-weight-bold">
                         {{ $task->task_comments->count() }}
                     </span>
@@ -74,14 +74,14 @@
             @endauth
             @guest
                 <a href="/login" class="btn btn-task btn-outline-primary mr-1">
-                    {{Emoji::speechBalloon()}}
+                    {{ Emoji::speechBalloon() }}
                     <span class="small text-black-50 font-weight-bold">
                         {{ $task->task_comments->count() }}
                     </span>
                 </a>
             @endguest
             @if (Auth::check() && Auth::user()->id === $task->user->id)
-                @if($confirming === $task->id)
+                @if ($confirming === $task->id)
                 <button type="button" class="btn btn-task btn-danger" wire:click="deleteTask" wire:loading.attr="disabled">
                     Are you sure?
                 </button>

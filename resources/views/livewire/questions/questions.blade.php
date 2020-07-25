@@ -1,5 +1,5 @@
 <div>
-    @foreach($questions as $question)
+    @foreach ($questions as $question)
         <div class="card mb-2">
             <div class="card-body d-flex align-items-center">
                 <img class="avatar-40 rounded-circle" src="{{ $question->user->avatar }}" />
@@ -8,7 +8,7 @@
                         {{ $question->user->firstname ? $question->user->firstname . ' ' . $question->user->lastname : '' }}
                         @if ($question->user->isPatron)
                             <a class="ml-1 small" href="{{ route('patron') }}" data-toggle="tooltip" data-placement="right" title="Patron">
-                                {{Emoji::handshake()}}
+                                {{ Emoji::handshake() }}
                             </a>
                         @endif
                     </a>
@@ -29,14 +29,14 @@
                     @auth
                     @if (true)
                         <button type="button" class="btn btn-task btn-success text-white mr-1" wire:click="togglePraise" wire:loading.attr="disabled">
-                            {{Emoji::clappingHands()}}
+                            {{ Emoji::clappingHands() }}
                             <span class="small text-dark font-weight-bold">
                                 10
                             </span>
                         </button>
                     @else
                         <button type="button" class="btn btn-task btn-outline-success mr-1" wire:click="togglePraise" wire:loading.attr="disabled">
-                            {{Emoji::clappingHands()}}
+                            {{ Emoji::clappingHands() }}
                             <span class="small text-dark font-weight-bold">
                                 10
                             </span>
@@ -45,7 +45,7 @@
                     @endauth
                     @guest
                         <a href="/login" class="btn btn-task btn-outline-success mr-1">
-                            {{Emoji::clappingHands()}}
+                            {{ Emoji::clappingHands() }}
                             <span class="small text-dark font-weight-bold">
                                 10
                             </span>
@@ -53,7 +53,7 @@
                     @endguest
                     @auth
                         <a href="" class="btn btn-task btn-outline-primary mr-1">
-                            {{Emoji::speechBalloon()}}
+                            {{ Emoji::speechBalloon() }}
                             <span class="small text-dark font-weight-bold">
                                 {{ $question->answer->count() }}
                             </span>
@@ -61,7 +61,7 @@
                     @endauth
                     @guest
                         <a href="/login" class="btn btn-task btn-outline-primary mr-1">
-                            {{Emoji::speechBalloon()}}
+                            {{ Emoji::speechBalloon() }}
                             <span class="small text-black-50 font-weight-bold">
                                 {{ $question->answer->count() }}
                             </span>
@@ -71,7 +71,7 @@
             </div>
         </div>
     @endforeach
-    @if($questions->hasMorePages())
+    @if ($questions->hasMorePages())
         @livewire('questions.load-more', [
             'type' => $type,
             'page' => $page,

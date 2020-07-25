@@ -6,7 +6,7 @@
                 {{ $product->name }}
                 @if ($product->launched)
                     <a href="{{ route('products.launched') }}" class="ml-2 small" data-toggle="tooltip" data-placement="right" title="Launched">
-                        {{Emoji::rocket()}}
+                        {{ Emoji::rocket() }}
                     </a>
                 @endif
             </div>
@@ -47,7 +47,7 @@
                 @endif
             </div>
             <div class="small mt-3 text-black-50">
-                <span class="mr-3">{{Emoji::calendar()}} Lauched at {{ Carbon::parse($product->launched_at)->format("F Y") }}</span>
+                <span class="mr-3">{{ Emoji::calendar()}} Lauched at {{ Carbon::parse($product->launched_at)->format("F Y") }}</span>
             </div>
         </div>
     </div>

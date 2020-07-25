@@ -7,11 +7,6 @@ use Auth;
 
 class AdminBarController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public static function toggle()
     {
         $user = Auth::user();

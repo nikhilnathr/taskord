@@ -12,7 +12,7 @@
                         {{ session('message') }}
                     </div>
                 @endif
-                @if(session()->has('error'))
+                @if (session()->has('error'))
                     <div class="alert alert-danger alert-dismissible fade show mb-3">
                         <button type="button" class="close" data-dismiss="alert">×</button>
                         {{ session('error') }}
@@ -93,10 +93,10 @@
                 <span class="rounded bg-secondary p-4 mt-1 ml-2" src="" height="50" width="50" /></span>
                 <span class="ml-3">
                     <span class="mr-2 h5 align-text-top font-weight-bold text-dark">
-                        {{ $name ? $name : 'Product Name'}}
+                        {{ $name ? $name : 'Product Name' }}
                         <span class="small ml-2">{{ $launched ? '🚀' : '' }}</span>
                     </span>
-                    <div>{{ $description ? $description : 'Product Description'}}</div>
+                    <div>{{ $description ? $description : 'Product Description' }}</div>
                     <button class="btn btn-sm btn-primary mt-2">
                         <i class="fa fa-plus mr-1"></i>
                         Subscribe

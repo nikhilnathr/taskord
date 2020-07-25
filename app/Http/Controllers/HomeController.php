@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\Question;
 use App\User;
-use Auth;
 use Carbon\Carbon;
-use DB;
 
 class HomeController extends Controller
 {

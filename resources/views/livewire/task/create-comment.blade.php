@@ -1,13 +1,13 @@
 <div>
     <div class="card mt-4">
         <div class="card-body">
-            @if(session()->has('success'))
+            @ if(session()->has('success'))
                 <div class="alert alert-success alert-dismissible fade show mt-2">
                     <button type="button" class="close" data-dismiss="alert">×</button>
                     {{ session('success') }}
                 </div>
             @endif
-            @if(session()->has('error'))
+            @ if(session()->has('error'))
                 <div class="alert alert-danger alert-dismissible fade show mt-2">
                     <button type="button" class="close" data-dismiss="alert">×</button>
                     {{ session('error') }}
