@@ -42,6 +42,11 @@
                                     <span class="ml-3">
                                         <a href="{{ route('product.done', ['slug' => $product->slug]) }}" class="mr-2 h5 align-text-top font-weight-bold text-dark">
                                             {{ $product->name }}
+                                            @if ($product->launched)
+                                                <a href="{{ route('products.launched') }}" class="small" data-toggle="tooltip" data-placement="right" title="Launched">
+                                                    {{Emoji::rocket()}}
+                                                </a>
+                                            @endif
                                         </a>
                                         <div>{{ $product->description }}</div>
                                     </span>
@@ -120,6 +125,11 @@
                                 <img class="rounded avatar-30 mt-1 ml-2" src="{{ $product->avatar }}" height="50" width="50" />
                                 <a href="{{ route('product.done', ['slug' => $product->slug]) }}" class="ml-2 mr-2 align-text-top font-weight-bold text-dark">
                                     {{ $product->name }}
+                                    @if ($product->launched)
+                                        <a href="{{ route('products.launched') }}" class="small" data-toggle="tooltip" data-placement="right" title="Launched">
+                                            {{Emoji::rocket()}}
+                                        </a>
+                                    @endif
                                 </a>
                                 <a href="{{ route('user.done', ['username' => $product->user->username]) }}">
                                     <img class="rounded-circle float-right avatar-30 mt-1 ml-2" src="{{ $product->user->avatar }}" height="50" width="50" />

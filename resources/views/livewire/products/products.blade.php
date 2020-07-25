@@ -21,6 +21,11 @@
                 <span class="ml-3">
                     <a href="{{ route('product.done', ['slug' => $product->slug]) }}" class="mr-2 h5 align-text-top font-weight-bold text-dark">
                         {{ $product->name }}
+                        @if ($product->launched)
+                            <a href="{{ route('products.launched') }}" class="small" data-toggle="tooltip" data-placement="right" title="Launched">
+                                {{Emoji::rocket()}}
+                            </a>
+                        @endif
                     </a>
                     <div>{{ $product->description }}</div>
                 </span>

@@ -4,6 +4,11 @@
         <div class="ml-4">
             <div class="h5 mb-0">
                 {{ $product->name }}
+                @if ($product->launched)
+                    <a href="{{ route('products.launched') }}" class="ml-2 small" data-toggle="tooltip" data-placement="right" title="Launched">
+                        {{Emoji::rocket()}}
+                    </a>
+                @endif
             </div>
             <div class="text-black-50 mb-2">
                 {{ "#" . $product->slug }}
