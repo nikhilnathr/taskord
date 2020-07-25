@@ -108,10 +108,10 @@
             <span class="small font-weight-normal text-black-50">{{ $product_count }}</span>
         </a>
         <a class="text-dark font-weight-bold mr-4" href="">
-            Questions <span class="small font-weight-normal text-black-50">1000</span>
+            Questions <span class="small font-weight-normal text-black-50">{{ $question_count }}</span>
         </a>
         <a class="text-dark font-weight-bold mr-4" href="">
-            Comments <span class="small font-weight-normal text-black-50">1000</span>
+            Answers <span class="small font-weight-normal text-black-50">{{ $answer_count }}</span>
         </a>
         <a class="text-dark font-weight-bold mr-4" href="">
             Stats

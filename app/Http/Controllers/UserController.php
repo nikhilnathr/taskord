@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Task;
+use App\Question;
+use App\Answer;
 use App\User;
 use Auth;
 use Illuminate\Http\Request;
@@ -20,6 +22,8 @@ class UserController extends Controller
             'done_count' => Task::where([['user_id', $user->id], ['done', true]])->count(),
             'pending_count' => Task::where([['user_id', $user->id], ['done', false]])->count(),
             'product_count' => Product::where('user_id', $user->id)->count(),
+            'question_count' => Question::where('user_id', $user->id)->count(),
+            'answer_count' => Answer::where('user_id', $user->id)->count(),
         ]);
     }
 
@@ -33,6 +37,8 @@ class UserController extends Controller
             'done_count' => Task::where([['user_id', $user->id], ['done', true]])->count(),
             'pending_count' => Task::where([['user_id', $user->id], ['done', false]])->count(),
             'product_count' => Product::where('user_id', $user->id)->count(),
+            'question_count' => Question::where('user_id', $user->id)->count(),
+            'answer_count' => Answer::where('user_id', $user->id)->count(),
         ]);
     }
 
@@ -45,6 +51,8 @@ class UserController extends Controller
             'done_count' => Task::where([['user_id', $user->id], ['done', true]])->count(),
             'pending_count' => Task::where([['user_id', $user->id], ['done', false]])->count(),
             'product_count' => Product::where('user_id', $user->id)->count(),
+            'question_count' => Question::where('user_id', $user->id)->count(),
+            'answer_count' => Answer::where('user_id', $user->id)->count(),
         ]);
     }
 
@@ -57,6 +65,8 @@ class UserController extends Controller
             'done_count' => Task::where([['user_id', $user->id], ['done', true]])->count(),
             'pending_count' => Task::where([['user_id', $user->id], ['done', false]])->count(),
             'product_count' => Product::where('user_id', $user->id)->count(),
+            'question_count' => Question::where('user_id', $user->id)->count(),
+            'answer_count' => Answer::where('user_id', $user->id)->count(),
         ]);
     }
 
@@ -69,6 +79,8 @@ class UserController extends Controller
             'done_count' => Task::where([['user_id', $user->id], ['done', true]])->count(),
             'pending_count' => Task::where([['user_id', $user->id], ['done', false]])->count(),
             'product_count' => Product::where('user_id', $user->id)->count(),
+            'question_count' => Question::where('user_id', $user->id)->count(),
+            'answer_count' => Answer::where('user_id', $user->id)->count(),
         ]);
     }
 
