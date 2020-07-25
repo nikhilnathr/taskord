@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Product;
-use App\User;
 use App\Question;
+use App\User;
 use Auth;
 use Carbon\Carbon;
 use DB;
