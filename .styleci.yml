@@ -1,8 +1,5 @@
 preset: laravel
 
-disabled:
-  - unused_use
-
 finder:
   not-name:
     - index.php
