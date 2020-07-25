@@ -47,7 +47,8 @@ class LoadMore extends Component
             if (Auth::check() && $user->onlyFollowingsTasks) {
                 $userIds = $user->followings->pluck('id');
                 $userIds->push(Auth::user()->id);
-                $tasks = Task::whereIn('user_id', $userIds)
+                $tasks = Task::cacheFor(60 * 60)
+                    ->whereIn('user_id', $userIds)
                     ->where('done', true)
                     ->orderBy('done_at', 'desc')
                     ->get()
@@ -55,7 +56,8 @@ class LoadMore extends Component
                         return Carbon::parse($date->done_at)->format('d-M-y');
                     });
             } else {
-                $tasks = Task::where('done', true)
+                $tasks = Task::cacheFor(60 * 60)
+                    ->where('done', true)
                     ->orderBy('done_at', 'desc')
                     ->get()
                     ->groupBy(function ($date) {

@@ -22,7 +22,7 @@
             </div>
             <div class="card-body pt-1">
                 <a href="" class="h5 align-text-top font-weight-bold text-dark">
-                    {{ Str::words($question->title, '20') }}
+                    {{ Str::words($question->title, '10') }}
                 </a>
                 <div class="mt-2">{{ Str::words($question->body, '30') }}</div>
                 <div class="mt-3">

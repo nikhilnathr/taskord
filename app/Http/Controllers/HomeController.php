@@ -28,26 +28,31 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $launched_today = Product::where('launched', true)
+        $launched_today = Product::cacheFor(60 * 60)
+            ->where('launched', true)
             ->whereDate('launched_at', Carbon::today())
             ->orderBy('launched_at', 'DESC')
             ->take(6)
             ->get();
-        $recently_questions = Question::orderBy('created_at', 'DESC')
+        $recently_questions = Question::cacheFor(60 * 60)
+            ->orderBy('created_at', 'DESC')
             ->take(4)
             ->get();
-        $recently_joined = User::where([
-            ['created_at', '>=', Carbon::now()->subdays(7)],
-            ['isFlagged', false],
-        ])
+        $recently_joined = User::cacheFor(60 * 60)
+            ->where([
+                ['created_at', '>=', Carbon::now()->subdays(7)],
+                ['isFlagged', false],
+            ])
             ->orderBy('created_at', 'DESC')
             ->take(5)
             ->get();
-        $products = Product::where('launched', true)
+        $products = Product::cacheFor(60 * 60)
+            ->where('launched', true)
             ->orderBy('created_at', 'DESC')
             ->take(5)
             ->get();
-        $reputations = User::where('isFlagged', false)
+        $reputations = User::cacheFor(60 * 60)
+            ->where('isFlagged', false)
             ->orderBy('reputation', 'DESC')
             ->take(10)
             ->get();

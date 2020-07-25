@@ -40,11 +40,12 @@ class Tasks extends Component
 
     public function render()
     {
-        $tasks = Task::where([
-            ['product_id', $this->product->id],
-            ['user_id', $this->product->user->id],
-            ['done', $this->type === 'product.done' ? true : false],
-        ])
+        $tasks = Task::cacheFor(60 * 60)
+            ->where([
+                ['product_id', $this->product->id],
+                ['user_id', $this->product->user->id],
+                ['done', $this->type === 'product.done' ? true : false],
+            ])
             ->orderBy('created_at', 'desc')
             ->orderBy('done_at', 'desc')
             ->get()

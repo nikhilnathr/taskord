@@ -39,7 +39,8 @@ class LoadMore extends Component
     public function render()
     {
         if ($this->loadMore) {
-            $comments = TaskComments::where('task_id', $this->task->id)
+            $comments = TaskComments::cacheFor(60 * 60)
+                ->where('task_id', $this->task->id)
                 ->orderBy('created_at', 'DESC')
                 ->get();
 

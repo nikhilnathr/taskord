@@ -46,7 +46,8 @@ class LoadMore extends Component
     public function render()
     {
         if ($this->loadMore) {
-            $tasks = Task::where('user_id', $this->user_id)
+            $tasks = Task::cacheFor(60 * 60)
+                ->where('user_id', $this->user_id)
                 ->where('done', $this->type === 'user.done' ? true : false)
                 ->orderBy('done_at', 'desc')
                 ->get()

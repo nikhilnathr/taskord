@@ -41,7 +41,8 @@ class Tasks extends Component
     public function render()
     {
         if ($this->type === 'user.done') {
-            $tasks = Task::where('user_id', $this->user_id)
+            $tasks = Task::cacheFor(60 * 60)
+                ->where('user_id', $this->user_id)
                 ->where('done', true)
                 ->orderBy('done_at', 'desc')
                 ->get()
@@ -49,7 +50,8 @@ class Tasks extends Component
                     return Carbon::parse($date->done_at)->format('d-M-y');
                 });
         } else {
-            $tasks = Task::where('user_id', $this->user_id)
+            $tasks = Task::cacheFor(60 * 60)
+                ->where('user_id', $this->user_id)
                 ->where('done', false)
                 ->orderBy('created_at', 'desc')
                 ->get()

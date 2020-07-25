@@ -40,14 +40,17 @@ class LoadMore extends Component
     {
         if ($this->loadMore) {
             if ($this->type === 'questions.newest') {
-                $questions = Question::latest()
+                $questions = Question::cacheFor(60 * 60)
+                    ->latest()
                     ->get();
             } elseif ($this->type === 'questions.unanswered') {
-                $questions = Question::doesntHave('answer')
+                $questions = Question::cacheFor(60 * 60)
+                    ->doesntHave('answer')
                     ->latest()
                     ->get();
             } elseif ($this->type === 'questions.popular') {
-                $questions = Question::has('answer')
+                $questions = Question::cacheFor(60 * 60)
+                    ->has('answer')
                     ->get()
                     ->sortByDesc(function ($question) {
                         return $question->answer->count();

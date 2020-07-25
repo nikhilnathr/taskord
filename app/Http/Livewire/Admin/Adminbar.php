@@ -23,10 +23,10 @@ class Adminbar extends Component
         $version = File::get('../VERSION');
 
         // DB Details
-        $tasks = Task::count();
-        $users = User::count();
-        $products = Product::count();
-        $reputations = User::all()->sum('reputation');
+        $tasks = Task::cacheFor(60 * 60)->count();
+        $users = User::cacheFor(60 * 60)->count();
+        $products = Product::cacheFor(60 * 60)->count();
+        $reputations = User::cacheFor(60 * 60)->sum('reputation');
 
         return view('livewire.admin.adminbar', [
             'version' => $version,

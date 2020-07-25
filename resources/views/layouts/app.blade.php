@@ -18,8 +18,10 @@
 </head>
 <body>
     <div id="app">
+        {{ Debugbar::disable() }}
         @if (Auth::check() && Auth::user()->isStaff)
             @if (Auth::user()->staffShip)
+            {{ Debugbar::enable() }}
             <div class="admin-bar">
                 @livewire('admin.adminbar')
             </div>

@@ -178,6 +178,7 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
         Stevebauman\Purify\PurifyServiceProvider::class,
         QCod\Gamify\GamifyServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
 
     ],
 
@@ -237,6 +238,7 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Purify' => Stevebauman\Purify\Facades\Purify::class,
         'Markdown' => GrahamCampbell\Markdown\Facades\Markdown::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
         // Helper
         'Helper' => App\Helpers\Helper::class,
