@@ -22,7 +22,7 @@ class NewProduct extends Component
     {
         $this->validateOnly($field, [
             'name' => 'required|profanity',
-            'slug' => 'required|profanity|max:20|unique:products|alpha_dash',
+            'slug' => 'required|profanity|min:3|max:20|unique:products|alpha_dash',
             'description' => 'nullable|profanity',
         ],
         [
@@ -36,7 +36,7 @@ class NewProduct extends Component
     {
         $validatedData = $this->validate([
             'name' => 'required|profanity',
-            'slug' => 'required|profanity|max:20|unique:products|alpha_dash',
+            'slug' => 'required|profanity|min:3|max:20|unique:products|alpha_dash',
             'description' => 'nullable|profanity',
         ],
         [

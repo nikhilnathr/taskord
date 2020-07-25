@@ -32,9 +32,30 @@ class Account extends Component
             return false;
         }
     }
+    
+    public function updated($field)
+    {
+        $this->validateOnly($field, [
+            'username' => 'required|profanity|min:3|max:20|alpha_dash|unique:users,username,'.$this->user->id,
+            'email' => 'required|email|max:255|unique:users,email,'.$this->user->id,
+        ],
+        [
+            'username.profanity' => 'Please check your words!',
+            'email.profanity' => 'Please check your words!',
+        ]);
+    }
 
     public function updateAccount()
     {
+        $validatedData = $this->validate([
+            'username' => 'required|profanity|min:3|max:20|alpha_dash|unique:users,username,'.$this->user->id,
+            'email' => 'required|email|max:255|unique:users,email,'.$this->user->id,
+        ],
+        [
+            'username.profanity' => 'Please check your words!',
+            'email.profanity' => 'Please check your words!',
+        ]);
+        
         if (Auth::check() && Auth::user()->id === $this->user->id) {
             $this->user->username = $this->username;
             $this->user->email = $this->email;
