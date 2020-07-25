@@ -56,7 +56,7 @@
                         <img class="rounded-circle avatar avatar-30" src="{{ $answer->user->avatar }}" />
                         @endforeach
                         @if ($question->answer->count() >= 5)
-                        <span class="ml-3 pl-1 font-weight-bold small">
+                        <span class="ml-3 pl-1 align-middle font-weight-bold small">
                             +{{ $question->answer->count() - 5 }} more
                         </span>
                         @endif
