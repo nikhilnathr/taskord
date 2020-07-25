@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
-use App\Task;
-use App\Question;
 use App\Answer;
+use App\Product;
+use App\Question;
+use App\Task;
 use App\User;
 use Auth;
 use Illuminate\Http\Request;
