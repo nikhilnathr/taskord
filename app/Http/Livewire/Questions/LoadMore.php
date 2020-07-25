@@ -41,11 +41,19 @@ class LoadMore extends Component
     {
         if ($this->loadMore) {
             if ($this->type === 'questions.newest') {
-                $questions = Question::latest()->get();
+                $questions = Question::latest()
+                    ->get();
             } elseif ($this->type === 'questions.unanswered') {
-                $questions = Question::latest()->get();
+                $questions = Question::doesntHave('answer')
+                    ->latest()
+                    ->get();
             } elseif ($this->type === 'questions.popular') {
-                $questions = Question::latest()->get();
+                $questions = Question::has('answer')
+                    ->get()
+                    ->sortByDesc(function($question)
+                    {
+                        return $question->answer->count();
+                    });
             }
 
             return view('livewire.questions.questions', [
