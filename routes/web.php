@@ -46,6 +46,8 @@ Route::group(['prefix' => 'products', 'as' => 'products.'], function () {
     Route::get('/new', 'ProductsController@new')->name('new')->middleware('auth');
 });
 
+Route::get('/questions', 'QuestionController@questions')->name('questions');
+
 // Toggles
 Route::get('/adminbar', 'Admin\AdminBarController@toggle')->name('adminbar')->middleware('auth');
 Route::get('/darkmode', 'UserController@darkMode')->name('darkmode')->middleware('auth');
