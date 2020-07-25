@@ -15,8 +15,8 @@ a {
 
 .btn-primary {
   color: #fff;
-  background-color: #5850ec;
-  border-color: #5850ec;
+  background-color: $primary;
+  border-color: $primary;
   
   &:hover, &:active, &:focus {
     background-color: #6f68ee;
