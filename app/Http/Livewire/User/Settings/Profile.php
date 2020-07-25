@@ -39,9 +39,42 @@ class Profile extends Component
         $this->github = $user->github;
         $this->youtube = $user->youtube;
     }
-
-    public function updateName()
+    
+    public function updated($field)
     {
+        $this->validateOnly($field, [
+            'firstname' => 'profanity|max:30',
+            'lastname' => 'profanity|max:30',
+            'bio' => 'profanity|max:200',
+            'location' => 'profanity|max:30',
+            'company' => 'profanity|max:30',
+        ],
+        [
+            'firstname.profanity' => 'Please check your words!',
+            'lastname.profanity' => 'Please check your words!',
+            'bio.profanity' => 'Please check your words!',
+            'location.profanity' => 'Please check your words!',
+            'company.profanity' => 'Please check your words!',
+        ]);
+    }
+
+    public function updateProfile()
+    {
+        $validatedData = $this->validate([
+            'firstname' => 'profanity|max:30',
+            'lastname' => 'profanity|max:30',
+            'bio' => 'profanity|max:200',
+            'location' => 'profanity|max:30',
+            'company' => 'profanity|max:30',
+        ],
+        [
+            'firstname.profanity' => 'Please check your words!',
+            'lastname.profanity' => 'Please check your words!',
+            'bio.profanity' => 'Please check your words!',
+            'location.profanity' => 'Please check your words!',
+            'company.profanity' => 'Please check your words!',
+        ]);
+        
         if (Auth::check()) {
             $this->user->firstname = $this->firstname;
             $this->user->lastname = $this->lastname;
@@ -50,7 +83,7 @@ class Profile extends Component
             $this->user->company = $this->company;
             $this->user->save();
 
-            return session()->flash('message', 'Your profile has been updated!');
+            return session()->flash('profile', 'Your profile has been updated!');
         }
     }
 
@@ -65,7 +98,7 @@ class Profile extends Component
             $this->user->youtube = $this->youtube;
             $this->user->save();
 
-            return session()->flash('message', 'Your social links has been updated!');
+            return session()->flash('social', 'Your social links has been updated!');
         }
     }
 
@@ -75,9 +108,9 @@ class Profile extends Component
             $this->user->onlyFollowingsTasks = ! $this->user->onlyFollowingsTasks;
             $this->user->save();
             if ($this->user->onlyFollowingsTasks) {
-                session()->flash('message', 'Only following user\'s task will be show on homepage');
+                session()->flash('showfollowing', 'Only following user\'s task will be show on homepage');
             } else {
-                session()->flash('message', 'All user\'s task will be show on homepage');
+                session()->flash('showfollowing', 'All user\'s task will be show on homepage');
             }
         } else {
             return false;

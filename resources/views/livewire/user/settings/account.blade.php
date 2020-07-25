@@ -10,12 +10,6 @@
                     {{ session('message') }}
                 </div>
             @endif
-            @if (session()->has('error'))
-                <div class="alert alert-danger alert-dismissible fade show mb-3">
-                    <button type="button" class="close" data-dismiss="alert">×</button>
-                    {{ session('error') }}
-                </div>
-            @endif
             <form wire:submit.prevent="updateAccount">
                 <div class="mb-3">
                     <label class="form-label">Username</label>
