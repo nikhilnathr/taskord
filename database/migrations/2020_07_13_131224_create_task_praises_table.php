@@ -15,8 +15,8 @@ class CreateTaskPraisesTable extends Migration
     {
         Schema::create('task_praises', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->onDelete('cascade');
-            $table->foreignId('task_id')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('task_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

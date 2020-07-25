@@ -88,9 +88,6 @@ class Moderator extends Component
                 return false;
             }
             $user = User::find($this->user->id);
-            $user->task_praise()->delete();
-            $user->tasks()->delete();
-            $user->products()->delete();
             $user->delete();
 
             return redirect()->route('home');

@@ -41,9 +41,9 @@ $("#admin-bar-click").click(function() {
     }
   });
 });
- 
+
 // Enable Tooltips
 
-$(document).off().on('ready turbolinks:load',function(){
+$(document).off().on('ready turbolinks:load', function() {
   $("body").tooltip({ selector: '[data-toggle=tooltip]' });
 });
