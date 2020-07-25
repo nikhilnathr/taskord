@@ -3,7 +3,6 @@
 namespace App\Http\Livewire\Questions;
 
 use App\Question;
-use Carbon\Carbon;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;

@@ -7,7 +7,6 @@ use App\User;
 use Auth;
 use Carbon\Carbon;
 use DB;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {

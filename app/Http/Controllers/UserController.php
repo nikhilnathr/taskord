@@ -8,7 +8,6 @@ use App\Question;
 use App\Task;
 use App\User;
 use Auth;
-use Illuminate\Http\Request;
 
 class UserController extends Controller
 {

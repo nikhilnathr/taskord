@@ -4,14 +4,9 @@ namespace App\Http\Livewire\Task;
 
 use App\Gamify\Points\PraiseCreated;
 use App\Gamify\Points\TaskCompleted;
-use App\Gamify\Points\TaskCreated;
 use App\TaskPraise;
-use App\User;
 use Auth;
 use Carbon\Carbon;
-use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Pagination\Paginator;
-use Illuminate\Support\Collection;
 use Livewire\Component;
 
 class SingleTask extends Component

@@ -3,8 +3,6 @@
 namespace App\Http\Livewire\Product;
 
 use App\Task;
-use App\TaskPraise;
-use Auth;
 use Carbon\Carbon;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
