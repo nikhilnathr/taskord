@@ -54,8 +54,8 @@ Route::group(['prefix' => 'questions', 'as' => 'questions.'], function () {
 });
 
 // Toggles
-Route::get('adminbar', 'Admin\AdminBarController@toggle')->name('adminbar')->middleware('auth');
-Route::get('darkmode', 'UserController@darkMode')->name('darkmode')->middleware('auth');
+Route::get('adminbar', 'Admin\AdminBarController@toggle')->name('adminbar')->middleware('staff');
+Route::get('darkmode', 'UserController@darkMode')->name('darkmode')->middleware('patron');
 
 Route::get('task/{id}', 'TaskController@task')->name('task');
 
