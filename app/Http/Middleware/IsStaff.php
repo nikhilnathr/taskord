@@ -2,8 +2,8 @@
 
 namespace App\Http\Middleware;
 
-use Closure;
 use Auth;
+use Closure;
 
 class IsStaff
 {
@@ -16,7 +16,7 @@ class IsStaff
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user() &&  Auth::user()->isStaff) {
+        if (Auth::user() && Auth::user()->isStaff) {
             return $next($request);
         }
 
