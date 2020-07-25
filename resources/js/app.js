@@ -5,7 +5,7 @@ import {isInViewport} from "observe-element-in-viewport";
 
 Turbolinks.start();
 
-$(document).ready(function() {
+$(document).ready(() => {
   (async () => {
     const target = document.querySelector('#load-more')
     if (await isInViewport(target)) {
@@ -16,7 +16,7 @@ $(document).ready(function() {
   })();
 });
 
-$(window).scroll(function() {
+$(window).scroll(() => {
   if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
     $("#load-more").click();
     $("#load-more").html("Loading");
@@ -24,26 +24,34 @@ $(window).scroll(function() {
   }
 });
 
-// Hide Search Dropdown
+// Admin Bar toggle in dropdown
 
-$("input").blur(function(){
-  $('.search-dropdown').hide();
-});
-
-// Admin Bar
-
-$("#admin-bar-click").click(function() {
-  $.get("/adminbar", function(data, status) {
-    if(data === "enabled" || data === "disabled") {
-      if (status === "success") {
-        location.reload();
+$(document).on('turbolinks:load', () => {
+  $("#admin-bar-click").click('turbolinks:load', () => {
+    $.get("/adminbar", (data, status) => {
+      if(data === "enabled" || data === "disabled") {
+        if (status === "success") {
+          location.reload();
+        }
       }
-    }
+    });
   });
 });
+// Dark mode toggle in dropdown
 
+$(document).on('turbolinks:load', () => {
+  $("#dark-mode").click('turbolinks:load', () => {
+    $.get("/darkmode", (data, status) => {
+      if(data === "enabled" || data === "disabled") {
+        if (status === "success") {
+          location.reload();
+        }
+      }
+    });
+  });
+});
 // Enable Tooltips
 
-$(document).off().on('ready turbolinks:load', function() {
+$(document).on('turbolinks:load', () => {
   $("body").tooltip({ selector: '[data-toggle=tooltip]' });
 });

@@ -1,8 +1,8 @@
 import hotkeys from 'hotkeys-js';
 
 // Admin Bar
-hotkeys('`', () => {
-  $.get("/adminbar", function(data, status) {
+hotkeys('`, p+b', () => {
+  $.get("/adminbar", (data, status) => {
     if(data === "enabled" || data === "disabled") {
       if (status === "success") {
         location.reload();
@@ -13,7 +13,7 @@ hotkeys('`', () => {
 
 // Dark Mode
 hotkeys('d+m', () => {
-  $.get("/darkmode", function(data, status) {
+  $.get("/darkmode", (data, status) => {
     if(data === "enabled" || data === "disabled") {
       if (status === "success") {
         location.reload();

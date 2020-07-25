@@ -7,16 +7,12 @@
             <div class="row">
                 <div class="col-md-8">
                     @guest
-                    <div class="p-5 rounded mb-4 text-white" style="
-                        background-image: url(https://www.article19.org/wp-content/uploads/2020/03/corona-virus-1-1500x1000.jpg);
-                        background-size: contain;
-                        text-shadow: 2px 2px #545454;
-                    ">
+                    <div class="p-5 rounded mb-4 text-white welcome-card">
                         <h1>Welcome to Taskord</h1>
                         <p class="lead">
                             Taskord helps you stay social with your todolist, so you can get things done together.
                         </p>
-                        <a class="btn btn-lg btn-primary" href="/register" role="button">
+                        <a class="btn btn-lg btn-light" href="/register" role="button">
                             Signup now
                         </a>
                     </div>
