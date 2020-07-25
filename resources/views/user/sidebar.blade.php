@@ -89,7 +89,9 @@
         </ul>
         @if (count($user->products) > 5)
         <div class="card-footer">
-            <a class="font-weight-bold" href="{{ route('user.products', ['username' => $user->username]) }}">More Products...</a>
+            <a class="font-weight-bold" href="{{ route('user.products', ['username' => $user->username]) }}">
+                {{ count($user->products) - 5 }} more Products
+            </a>
         </div>
         @endif
     </div>
