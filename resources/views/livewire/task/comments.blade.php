@@ -15,7 +15,7 @@
         </div>
     @endforeach
     <div class="mt-4">
-        @if($comments->hasMorePages())
+        @if ($comments->hasMorePages())
             @livewire('task.load-more', [
                 'task' => $task,
                 'page' => $page,

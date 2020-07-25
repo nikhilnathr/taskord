@@ -14,7 +14,7 @@
             @endif
             {{ Carbon::parse($groupedProducts[$loop->index]->created_at)->englishMonth }}
         </div>
-        @foreach($groupedProducts as $product)
+        @foreach ($groupedProducts as $product)
         <div class="card mb-2">
             <div class="card-body d-flex align-items-center">
                 <img class="rounded avatar-50 mt-1 ml-2" src="{{ $product->avatar }}" height="50" width="50" />
@@ -23,7 +23,7 @@
                         {{ $product->name }}
                         @if ($product->launched)
                             <a href="{{ route('products.launched') }}" class="small" data-toggle="tooltip" data-placement="right" title="Launched">
-                                {{Emoji::rocket()}}
+                                {{ Emoji::rocket() }}
                             </a>
                         @endif
                     </a>
@@ -36,7 +36,7 @@
         </div>
         @endforeach
     @endforeach
-    @if($products->hasMorePages())
+    @if ($products->hasMorePages())
         @livewire('products.load-more', [
             'type' => $type,
             'page' => $page,

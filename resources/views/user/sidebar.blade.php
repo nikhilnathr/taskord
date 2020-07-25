@@ -78,7 +78,7 @@
                 </div>
             </div>
             @endif
-            @foreach($user->products->take(5) as $product)
+            @foreach ($user->products->take(5) as $product)
             <li class="list-group-item">
                 <img class="rounded avatar-30 mt-1 ml-2" src="{{ $product->avatar }}" height="50" width="50" />
                 <a href="{{ route('product.done', ['slug' => $product->slug]) }}" class="ml-2 mr-2 align-text-top font-weight-bold text-dark">

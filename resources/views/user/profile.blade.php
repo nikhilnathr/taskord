@@ -11,7 +11,7 @@
                         @endif
                         @if ($user->isPatron)
                             <a class="ml-2 small" href="{{ route('patron') }}" data-toggle="tooltip" data-placement="right" title="Patron">
-                                {{Emoji::handshake()}}
+                                {{ Emoji::handshake() }}
                             </a>
                         @endif
                         @if (Auth::check() && $user->isFollowing(Auth::user()))
@@ -47,12 +47,12 @@
                     </div>
                     @endif
                     <div class="small mt-3">
-                        <span>{{Emoji::calendar()}} Joined {{ Carbon::parse($user->created_at)->format("F Y") }}</span>
+                        <span>{{ Emoji::calendar() }} Joined {{ Carbon::parse($user->created_at)->format("F Y") }}</span>
                         @if ($user->location)
-                        <span class="ml-3">{{Emoji::roundPushpin()}} {{ $user->location }}</span>
+                        <span class="ml-3">{{ Emoji::roundPushpin() }} {{ $user->location }}</span>
                         @endif
                         @if ($user->company)
-                        <span class="ml-3">{{Emoji::briefcase()}} {{ $user->company }}</span>
+                        <span class="ml-3">{{ Emoji::briefcase() }} {{ $user->company }}</span>
                         @if ($user->isStaff)
                         <span class="badge rounded-pill bg-primary ml-1">Staff</span>
                         @endif
@@ -66,28 +66,28 @@
                 <div class="h5">Highlights</div>
                 <div class="mt-3">
                     <div>
-                        <span class="font-weight-bold">{{Emoji::fire()}} {{ $user->getPoints(true) }}</span>
+                        <span class="font-weight-bold">{{ Emoji::fire() }} {{ $user->getPoints(true) }}</span>
                         {{ $user->getPoints(true) < 2 ? 'Reputation' : 'Reputations' }}
                     </div>
                     @if (Auth::check() && Auth::user()->id === $user->id)
                     <div class="mt-2">
-                        <span>{{Emoji::blossom()}} You are a</span>
+                        <span>{{ Emoji::blossom() }} You are a</span>
                         <span class="font-weight-bold">{{ count($user->badges) === 0 ? 'Beginner' : $user->badges->last()->name }}</span>
                     </div>
                     @else
                     <div class="mt-2">
-                        <span>{{Emoji::blossom()}} {{ $user->username }} is a</span>
+                        <span>{{ Emoji::blossom() }} {{ $user->username }} is a</span>
                         <span class="font-weight-bold">{{ count($user->badges) === 0 ? 'Beginner' : $user->badges->last()->name }}</span>
                     </div>
                     @endif
                     @if ($user->isBeta)
                     <div class="mt-2">
-                        <span class="font-weight-bold">{{Emoji::testTube()}} Beta Program Member</span>
+                        <span class="font-weight-bold">{{ Emoji::testTube() }} Beta Program Member</span>
                     </div>
                     @endif
                     @if ($user->isDeveloper)
                     <div class="mt-2">
-                        <span class="font-weight-bold">{{Emoji::checkBoxWithCheck()}} Taskord Code Contributor</span>
+                        <span class="font-weight-bold">{{ Emoji::checkBoxWithCheck() }} Taskord Code Contributor</span>
                     </div>
                     @endif
                 </div>

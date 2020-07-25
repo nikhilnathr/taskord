@@ -11,7 +11,7 @@
             <span class="h5">Tasks</span>
         </li>
         @if (count($tasks) > 0)
-            @foreach($tasks as $task)
+            @foreach ($tasks as $task)
             <li class="list-group-item">
                 <span>
                     <input
@@ -25,7 +25,7 @@
                         <span class="text-black-50">{{ $task->task_praise->count() }}</span>
                     </span>
                 </span>
-                <img class="rounded-circle float-right avatar-30" src="{{$task->user->avatar}}" />
+                <img class="rounded-circle float-right avatar-30" src="{{ $task->user->avatar }}" />
             </li>
             @endforeach
         @else
@@ -35,9 +35,9 @@
             <span class="h5">Users</span>
         </li>
         @if (count($users) > 0)
-            @foreach($users as $user)
+            @foreach ($users as $user)
             <li class="list-group-item">
-                <img class="rounded-circle avatar-30" src="{{$user->avatar}}" />
+                <img class="rounded-circle avatar-30" src="{{ $user->avatar }}" />
                 <span>
                     <a class="ml-2 task-font text-dark" href="{{ route('user.done', ['username' => $user->username]) }}">
                         <span class="font-weight-bold">{{ $user->firstname ? $user->firstname . ' ' . $user->lastname : '' }}</span>
@@ -53,15 +53,15 @@
             <span class="h5">Products</span>
         </li>
         @if (count($products) > 0)
-            @foreach($products as $product)
+            @foreach ($products as $product)
             <li class="list-group-item">
-                <img class="rounded avatar-30" src="{{$product->avatar}}" />
+                <img class="rounded avatar-30" src="{{ $product->avatar }}" />
                 <span>
                     <a class="ml-2 task-font text-dark" href="{{ route('product.done', ['slug' => $product->slug]) }}">
                         <span class="font-weight-bold">{{ $product->name }}</span>
                     </a>
                 </span>
-                <img class="rounded-circle float-right avatar-30" src="{{$product->user->avatar}}" />
+                <img class="rounded-circle float-right avatar-30" src="{{ $product->user->avatar }}" />
             </li>
             @endforeach
         @else

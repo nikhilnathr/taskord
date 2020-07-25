@@ -36,7 +36,7 @@
             </ul>
         </div>
     @endforeach
-    @if($tasks->hasMorePages())
+    @if ($tasks->hasMorePages())
         @livewire('home.load-more', [
             'page' => $page,
             'perPage' => $perPage

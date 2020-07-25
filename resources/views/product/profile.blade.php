@@ -47,7 +47,7 @@
                 @endif
             </div>
             <div class="small mt-3 text-black-50">
-                <span class="mr-3">{{ Emoji::calendar()}} Lauched at {{ Carbon::parse($product->launched_at)->format("F Y") }}</span>
+                <span class="mr-3">{{ Emoji::calendar() }} Lauched at {{ Carbon::parse($product->launched_at)->format("F Y") }}</span>
             </div>
         </div>
     </div>

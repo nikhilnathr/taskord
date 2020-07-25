@@ -51,7 +51,7 @@
                             🚀 Launched Today
                         </div>
                         <ul class="list-group list-group-flush">
-                            @foreach($launched_today->take(5) as $product)
+                            @foreach ($launched_today->take(5) as $product)
                             <li class="list-group-item">
                                 <div class="d-flex align-items-center">
                                     <img class="rounded avatar-50 mt-1 ml-2" src="{{ $product->avatar }}" height="50" width="50" />
@@ -60,7 +60,7 @@
                                             {{ $product->name }}
                                             @if ($product->launched)
                                                 <a href="{{ route('products.launched') }}" class="small" data-toggle="tooltip" data-placement="right" title="Launched">
-                                                    {{Emoji::rocket()}}
+                                                    {{ Emoji::rocket() }}
                                                 </a>
                                             @endif
                                         </a>
@@ -81,7 +81,7 @@
                     </div>
                     @endif
                     @auth
-                        @if(!Auth::user()->isFlagged)
+                        @if (!Auth::user()->isFlagged)
                         @livewire('create-task')
                         @endif
                     @endauth
@@ -101,7 +101,7 @@
                                         <span class="ml-2">Hi</span>
                                         <span class="font-weight-bold">
                                             {{ Auth::user()->firstname ? Auth::user()->firstname . ' ' . Auth::user()->lastname : Auth::user()->username }}!
-                                            {{Emoji::wavingHand()}}
+                                            {{ Emoji::wavingHand() }}
                                         </span>
                                     </span>
                                 </div>
@@ -116,7 +116,7 @@
                             🙌 Recently Joined
                         </div>
                         <ul class="list-group list-group-flush">
-                            @foreach($recently_joined as $user)
+                            @foreach ($recently_joined as $user)
                             <li class="d-flex list-group-item align-items-center">
                                 <img class="rounded-circle avatar-40 mt-1" src="{{ $user->avatar }}" />
                                 <span class="ml-3">
@@ -136,14 +136,14 @@
                             ✨ New Products
                         </div>
                         <ul class="list-group list-group-flush">
-                            @foreach($products as $product)
+                            @foreach ($products as $product)
                             <li class="list-group-item pb-2 pt-2">
                                 <img class="rounded avatar-30 mt-1 ml-2" src="{{ $product->avatar }}" height="50" width="50" />
                                 <a href="{{ route('product.done', ['slug' => $product->slug]) }}" class="ml-2 mr-2 align-text-top font-weight-bold text-dark">
                                     {{ $product->name }}
                                     @if ($product->launched)
                                         <a href="{{ route('products.launched') }}" class="small" data-toggle="tooltip" data-placement="right" title="Launched">
-                                            {{Emoji::rocket()}}
+                                            {{ Emoji::rocket() }}
                                         </a>
                                     @endif
                                 </a>
@@ -162,7 +162,7 @@
                             🥇 Top Reputations
                         </div>
                         <ul class="list-group list-group-flush">
-                            @foreach($reputations as $user)
+                            @foreach ($reputations as $user)
                             <li class="list-group-item pb-2 pt-2">
                                 <span class="h6 text-black-50" style="vertical-align:sub">
                                     @if ($loop->index === 0)
@@ -182,7 +182,7 @@
                                     {{ $user->firstname ? $user->firstname . ' ' . $user->lastname : '' }}
                                 </a>
                                 <span class="badge rounded-pill bg-warning text-dark align-middle reputation">
-                                    {{Emoji::fire()}} {{ $user->getPoints(true) }}
+                                    {{ Emoji::fire() }} {{ $user->getPoints(true) }}
                                 </span>
                             </li>
                             @endforeach

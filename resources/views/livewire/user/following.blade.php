@@ -7,7 +7,7 @@
         </div>
     </div>
     @endif
-    @foreach($user->followings as $user)
+    @foreach ($user->followings as $user)
     <div class="card mb-3">
         <div class="card-body d-flex list-group-item align-items-center">
         <img class="rounded-circle avatar-40 mt-1" src="{{ $user->avatar }}" />
