@@ -43,7 +43,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white font-weight-bold" href="{{ route('questions') }}">
+                            <a class="nav-link text-white font-weight-bold" href="{{ route('questions.newest') }}">
                                 Questions
                             </a>
                         </li>

@@ -46,7 +46,12 @@ Route::group(['prefix' => 'products', 'as' => 'products.'], function () {
     Route::get('/new', 'ProductsController@new')->name('new')->middleware('auth');
 });
 
-Route::get('/questions', 'QuestionController@questions')->name('questions');
+Route::group(['prefix' => 'questions', 'as' => 'questions.'], function () {
+    Route::get('/', 'QuestionController@newest')->name('newest');
+    Route::get('/unanswered', 'QuestionController@unanswered')->name('unanswered');
+    Route::get('/popular', 'QuestionController@popular')->name('popular');
+    Route::get('/new', 'QuestionController@new')->name('new')->middleware('auth');
+});
 
 // Toggles
 Route::get('/adminbar', 'Admin\AdminBarController@toggle')->name('adminbar')->middleware('auth');

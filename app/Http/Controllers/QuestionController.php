@@ -7,8 +7,24 @@ use Illuminate\Http\Request;
 
 class QuestionController extends Controller
 {
-    public function questions()
+    public function newest()
     {
-        return view('questions.questions');
+        return view('questions.newest', [
+            'type' => 'questions.newest',
+        ]);
+    }
+    
+    public function unanswered()
+    {
+        return view('questions.unanswered', [
+            'type' => 'questions.unanswered',
+        ]);
+    }
+    
+    public function popular()
+    {
+        return view('questions.popular', [
+            'type' => 'questions.popular',
+        ]);
     }
 }
