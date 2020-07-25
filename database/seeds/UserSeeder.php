@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
             'github' => $faker->userName,
             'telegram' => $faker->userName,
             'youtube' => $faker->userName,
-            'onlyFollowingsTasks' => true,
+            'onlyFollowingsTasks' => false,
             'isStaff' => true,
             'isDeveloper' => true,
             'isBeta' => true,

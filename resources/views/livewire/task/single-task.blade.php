@@ -50,7 +50,7 @@
             @else
                 <button type="button" class="btn btn-task btn-outline-success mr-1" wire:click="togglePraise" wire:loading.attr="disabled">
                     {{Emoji::clappingHands()}}
-                    <span class="small text-black-50 font-weight-bold">
+                    <span class="small text-white font-weight-bold">
                         {{ $task->task_praise->count() }}
                     </span>
                 </button>
@@ -59,7 +59,7 @@
             @guest
                 <a href="/login" class="btn btn-task btn-outline-success mr-1">
                     {{Emoji::clappingHands()}}
-                    <span class="small text-black-50 font-weight-bold">
+                    <span class="small text-white font-weight-bold">
                         {{ $task->task_praise->count() }}
                     </span>
                 </a>
@@ -67,7 +67,7 @@
             @auth
                 <a href="{{ route('task', ['id' => $task->id]) }}" class="btn btn-task btn-outline-primary mr-1">
                     {{Emoji::speechBalloon()}}
-                    <span class="small text-black-50 font-weight-bold">
+                    <span class="small text-white font-weight-bold">
                         {{ $task->task_comments->count() }}
                     </span>
                 </a>
