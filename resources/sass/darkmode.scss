@@ -23,6 +23,11 @@ body {
     border: 1px solid $border-bg;
 }
 
+.form-control:focus {
+    background-color: $input-bg;
+    border-color: $border-bg;
+}
+
 .text-black-50 {
     color: #c0c0c0 !important;
 }
