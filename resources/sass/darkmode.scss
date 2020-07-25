@@ -1,6 +1,7 @@
 $body-bg: #17181a !important;
 $card-bg: #343a40;
 $border-bg: #4c555d;
+$input-bg: #242629;
 
 body {
     background-color: $body-bg;
@@ -19,6 +20,7 @@ body {
 
 .list-group-item {
     background-color: $card-bg;
+    border: 1px solid $border-bg;
 }
 
 .text-black-50 {
@@ -50,13 +52,13 @@ body {
 }
 
 .form-control {
-    background-color: $body-bg;
+    background-color: $input-bg;
     color: #ffffff !important;
     border: 1px solid $border-bg;
 }
 
 .input-group-text {
-    background-color: $body-bg;
+    background-color: $input-bg;
     border: 1px solid $border-bg;
 }
 
@@ -64,7 +66,12 @@ body {
     border-color: $border-bg;
 }
 
-.form-file-text, .form-file-button {
+.form-file-button {
+    background-color: $input-bg;
+    color: $border-bg;
+}
+
+.form-file-text {
     background-color: $body-bg;
     color: $border-bg;
 }
