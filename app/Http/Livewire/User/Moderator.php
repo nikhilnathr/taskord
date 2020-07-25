@@ -80,6 +80,20 @@ class Moderator extends Component
             return false;
         }
     }
+    
+    public function masquerade()
+    {
+        if (Auth::check() && Auth::user()->isStaff) {
+            if ($this->user->id === 1) {
+                return false;
+            }
+            Auth::loginUsingId($this->user->id);
+
+            return redirect()->route('home');
+        } else {
+            return false;
+        }
+    }
 
     public function deleteUser()
     {
@@ -88,6 +102,7 @@ class Moderator extends Component
                 return false;
             }
             $user = User::find($this->user->id);
+            $user->logout();
             $user->delete();
 
             return redirect()->route('home');
