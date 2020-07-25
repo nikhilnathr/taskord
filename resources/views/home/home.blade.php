@@ -26,7 +26,23 @@
                             Recent questions
                         </div>
                         <div class="card-body">
-                            WIP
+                            @foreach ($recently_questions as $question)
+                                <div class="{{ $loop->index === 3 ? '' : 'mb-2' }}">
+                                    <a href="{{ route('user.done', ['username' => $question->user->username]) }}">
+                                        <img class="rounded-circle avatar-30" src="{{ $question->user->avatar }}" />
+                                    </a>
+                                    <a href="">
+                                        <span class="ml-1 font-weight-bold align-middle text-dark">{{ Str::words($question->title, '10') }}</span>
+                                    </a>
+                                    @if ($question->answer->count() >= 1)
+                                    <a href="">
+                                        <span class="ml-1 align-middle text-black-50">
+                                            {{ $question->answer->count() }} {{ $question->answer->count() >= 1 ? 'answers' : 'answer' }}
+                                        </span>
+                                    </a>
+                                    @endif
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                     @if (count($launched_today) > 0)

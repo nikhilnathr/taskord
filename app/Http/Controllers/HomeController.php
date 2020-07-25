@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\User;
+use App\Question;
 use Auth;
 use Carbon\Carbon;
 use DB;
@@ -32,6 +33,9 @@ class HomeController extends Controller
             ->orderBy('launched_at', 'DESC')
             ->take(6)
             ->get();
+        $recently_questions = Question::orderBy('created_at', 'DESC')
+            ->take(4)
+            ->get();
         $recently_joined = User::where([
             ['created_at', '>=', Carbon::now()->subdays(7)],
             ['isFlagged', false],
@@ -48,8 +52,8 @@ class HomeController extends Controller
             ->take(10)
             ->get();
 
-        $from = date('Y-m-d', strtotime('-10 days'));
-        $to = date('Y-m-d');
+        // $from = date('Y-m-d', strtotime('-10 days'));
+        // $to = date('Y-m-d');
 
         // $stats = Auth::user()->tasks()
         //     ->where('done', true)
@@ -64,6 +68,7 @@ class HomeController extends Controller
         // dd($stats);
 
         return view('home/home', [
+            'recently_questions' => $recently_questions,
             'launched_today' => $launched_today,
             'recently_joined' => $recently_joined,
             'products' => $products,
