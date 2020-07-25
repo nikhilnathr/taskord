@@ -45,7 +45,11 @@
             @if ($user->github)
             <li class="list-group-item">
                 <a class="text-dark" href="https://github.com/{{ $user->github }}">
+                    @if (Auth::user()->darkMode)
+                    <i class="fa fa-github text-white mr-1"></i>
+                    @else
                     <i class="fa fa-github mr-1"></i>
+                    @endif
                     {{ $user->github }}
                 </a>
             </li>
