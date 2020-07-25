@@ -32,7 +32,7 @@ class Account extends Component
             return false;
         }
     }
-    
+
     public function updated($field)
     {
         $this->validateOnly($field, [
@@ -55,7 +55,7 @@ class Account extends Component
             'username.profanity' => 'Please check your words!',
             'email.profanity' => 'Please check your words!',
         ]);
-        
+
         if (Auth::check() && Auth::user()->id === $this->user->id) {
             $this->user->username = $this->username;
             $this->user->email = $this->email;
