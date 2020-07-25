@@ -39,7 +39,7 @@ class Profile extends Component
         $this->github = $user->github;
         $this->youtube = $user->youtube;
     }
-    
+
     public function updated($field)
     {
         $this->validateOnly($field, [
@@ -86,7 +86,7 @@ class Profile extends Component
             'location.profanity' => 'Please check your words!',
             'company.profanity' => 'Please check your words!',
         ]);
-        
+
         if (Auth::check()) {
             $this->user->firstname = $this->firstname;
             $this->user->lastname = $this->lastname;
@@ -117,7 +117,7 @@ class Profile extends Component
             'github.profanity' => 'Please check your words!',
             'youtube.profanity' => 'Please check your words!',
         ]);
-        
+
         if (Auth::check()) {
             $this->user->website = $this->website;
             $this->user->twitter = $this->twitter;
