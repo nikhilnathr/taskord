@@ -27,7 +27,7 @@
                                     <a href="{{ route('user.done', ['username' => $question->user->username]) }}">
                                         <img class="rounded-circle avatar-30" src="{{ $question->user->avatar }}" />
                                     </a>
-                                    <a href="">
+                                    <a href="{{ route('question', ['id' => $question->id]) }}">
                                         <span class="ml-1 font-weight-bold align-middle text-dark">{{ Str::words($question->title, '10') }}</span>
                                     </a>
                                     @if ($question->answer->count() >= 1)
