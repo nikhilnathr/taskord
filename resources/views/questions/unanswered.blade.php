@@ -16,7 +16,7 @@
                         <a class="mb-2 btn btn-{{ Route::currentRouteName() === 'questions.popular' ? '' : 'outline-' }}primary mr-2" href="{{ route('questions.popular') }}">
                             Popular
                         </a>
-                        <a class="btn btn-success float-md-right mb-2 text-white" href="">
+                        <a class="btn btn-success float-md-right mb-2 text-white" href="{{ route('questions.new') }}">
                             <i class="fa fa-plus"></i>
                             New Question
                         </a>
