@@ -48,14 +48,17 @@ class EditQuestion extends Component
         
         $question = Question::where('id', $this->question->id)->firstOrFail();
         
-        $question->user_id =  Auth::user()->id;
-        $question->title = $this->title;
-        $question->body = $this->body;
-        $question->save();
-
-        session()->flash('message', 'Question has been posted!');
-
-        return redirect()->route('question.question', ['id' => $question->id]);
+        if (Auth::user()->id === $question->user_id) {
+            $question->user_id =  Auth::user()->id;
+            $question->title = $this->title;
+            $question->body = $this->body;
+            $question->save();
+    
+            session()->flash('message', 'Question has been posted!');
+            return redirect()->route('question.question', ['id' => $question->id]);
+        } else {
+            session()->flash('error', 'Forbidden!');
+        }
     }
     
     public function render()
