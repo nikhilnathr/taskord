@@ -89,14 +89,14 @@
                                 </a>
 
                                 <div class="dropdown-menu shadow-sm border dropdown-menu-right mt-2" aria-labelledby="navbarDropdown">
-                                    <div class="dropdown-item">
+                                    <a href="{{ route('user.done', ['username' => Auth::user()->username]) }}" class="dropdown-item">
                                         <div class="font-weight-bold">
                                             {{ Auth::user()->firstname ? Auth::user()->firstname . ' ' . Auth::user()->lastname : '' }}
                                         </div>
                                         <div class="small">
                                             {{ "@" . Auth::user()->username }}
                                         </div>
-                                    </div>
+                                    </a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item text-dark" href="{{ route('user.done', ['username' => Auth::user()->username]) }}">
                                         {{ Emoji::bustInSilhouette() }} Profile
