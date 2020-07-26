@@ -48,7 +48,7 @@ class SingleQuestion extends Component
             return session()->flash('message', 'Forbidden!');
         }
     }
-    
+
     public function deleteQuestion()
     {
         if (Auth::check()) {

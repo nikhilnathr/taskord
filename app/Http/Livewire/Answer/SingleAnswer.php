@@ -46,7 +46,7 @@ class SingleAnswer extends Component
             return session()->flash('error', 'Forbidden!');
         }
     }
-    
+
     public function deleteAnswer()
     {
         if (Auth::check()) {
@@ -58,7 +58,7 @@ class SingleAnswer extends Component
                 $this->answer->delete();
 
                 return redirect()->route('question.question', [
-                    'id' => $this->answer->question->id
+                    'id' => $this->answer->question->id,
                 ]);
             } else {
                 session()->flash('error', 'Forbidden!');
