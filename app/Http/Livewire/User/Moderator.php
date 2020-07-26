@@ -80,7 +80,7 @@ class Moderator extends Component
             return false;
         }
     }
-    
+
     public function masquerade()
     {
         if (Auth::check() && Auth::user()->isStaff) {
