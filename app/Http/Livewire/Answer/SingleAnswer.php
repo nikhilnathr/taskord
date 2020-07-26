@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire\Answer;
 
-use Livewire\Component;
-use Auth;
 use App\AnswerPraise;
+use Auth;
+use Livewire\Component;
 
 class SingleAnswer extends Component
 {
