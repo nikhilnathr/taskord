@@ -39,17 +39,6 @@
                             {{ $question->question_praise->count() }}
                         </span>
                     </button>
-                    @if (Auth::check() && Auth::user()->id === $question->user->id)
-                    <a type="button" class="btn btn-task btn-outline-info text-white mr-1" href="{{ route('question.edit', ['id' => $question->id]) }}">
-                        {{ Emoji::writingHand() }}
-                        <span class="small text-dark font-weight-bold">
-                            Edit
-                        </span>
-                    </a>
-                    <button type="button" class="btn btn-task btn-outline-danger text-white mr-1" wire:click="deleteQuestion" wire:loading.attr="disabled">
-                        {{ Emoji::wastebasket() }}
-                    </button>
-                    @endif
                 @else
                     <button type="button" class="btn btn-task btn-outline-success mr-1" wire:click="togglePraise" wire:loading.attr="disabled">
                         {{ Emoji::clappingHands() }}
@@ -57,6 +46,17 @@
                             {{ $question->question_praise->count() }}
                         </span>
                     </button>
+                @endif
+                @if (Auth::user()->id === $question->user->id)
+                <a type="button" class="btn btn-task btn-outline-info text-white mr-1" href="{{ route('question.edit', ['id' => $question->id]) }}">
+                    {{ Emoji::writingHand() }}
+                    <span class="small text-dark font-weight-bold">
+                        Edit
+                    </span>
+                </a>
+                <button type="button" class="btn btn-task btn-outline-danger text-white mr-1" wire:click="deleteQuestion" wire:loading.attr="disabled">
+                    {{ Emoji::wastebasket() }}
+                </button>
                 @endif
                 @endauth
                 @guest

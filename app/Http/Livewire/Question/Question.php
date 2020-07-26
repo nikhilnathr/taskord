@@ -19,10 +19,10 @@ class Question extends Component
     {
         if (Auth::check()) {
             if (Auth::user()->isFlagged) {
-                return session()->flash('message', 'Your account is flagged!');
+                return session()->flash('error', 'Your account is flagged!');
             }
             if (Auth::user()->id === $this->question->user->id) {
-                return session()->flash('message', 'You can\'t praise your own question!');
+                return session()->flash('error', 'You can\'t praise your own question!');
             }
             $isPraised = QuestionPraise::where([
                 ['user_id', Auth::user()->id],
@@ -43,22 +43,26 @@ class Question extends Component
                 $this->question->refresh();
             }
         } else {
-            return session()->flash('message', 'Forbidden!');
+            return session()->flash('error', 'Forbidden!');
         }
     }
     
     public function deleteQuestion()
     {
-        if (Auth::user()->isFlagged) {
-            return session()->flash('error', 'Your account is flagged!');
-        }
-        
-        if (Auth::user()->id === $this->question->user_id) {
-            $this->question->delete();
-
-            return redirect()->route('questions.newest');
+        if (Auth::check()) {
+            if (Auth::user()->isFlagged) {
+                return session()->flash('error', 'Your account is flagged!');
+            }
+            
+            if (Auth::user()->id === $this->question->user_id) {
+                $this->question->delete();
+    
+                return redirect()->route('questions.newest');
+            } else {
+                session()->flash('error', 'Forbidden!');
+            }
         } else {
-            session()->flash('error', 'Forbidden!');
+            return session()->flash('error', 'Forbidden!');
         }
     }
 
