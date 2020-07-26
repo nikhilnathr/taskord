@@ -51,7 +51,7 @@
                         <div class="card-header">
                             Users Involved
                         </div>
-                        <div class="card-body align-items-center">
+                        <div class="card-body align-items-center pb-2">
                             @foreach ($task->task_comments->groupBy('user_id') as $comment)
                                 <a
                                     title="{{ $comment[0]->user->firstname ? $comment[0]->user->firstname . ' ' . $comment[0]->user->lastname : $comment[0]->user->username }}"

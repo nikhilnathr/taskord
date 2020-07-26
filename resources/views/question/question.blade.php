@@ -44,7 +44,7 @@
                         <div class="card-header">
                             Users Involved
                         </div>
-                        <div class="card-body align-items-center">
+                        <div class="card-body align-items-center pb-2">
                             @foreach ($question->answer->groupBy('user_id') as $answer)
                                 <a
                                     title="{{ $answer[0]->user->firstname ? $answer[0]->user->firstname . ' ' . $answer[0]->user->lastname : $answer[0]->user->username }}"
