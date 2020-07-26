@@ -64,22 +64,14 @@
                     </span>
                 </a>
             @endguest
-            @auth
-                <a href="{{ route('task', ['id' => $task->id]) }}" class="btn btn-task btn-outline-primary mr-1">
-                    {{ Emoji::speechBalloon() }}
-                    <span class="small text-dark font-weight-bold">
-                        {{ $task->task_comments->count() }}
-                    </span>
-                </a>
-            @endauth
-            @guest
-                <a href="/login" class="btn btn-task btn-outline-primary mr-1">
-                    {{ Emoji::speechBalloon() }}
-                    <span class="small text-black-50 font-weight-bold">
-                        {{ $task->task_comments->count() }}
-                    </span>
-                </a>
-            @endguest
+            @if ($task->task_comments->count() > 0)
+            <a href="{{ route('task', ['id' => $task->id]) }}" class="btn btn-task btn-outline-primary mr-1">
+                {{ Emoji::speechBalloon() }}
+                <span class="small text-dark font-weight-bold">
+                    {{ $task->task_comments->count() }}
+                </span>
+            </a>
+            @endif
             @if (Auth::check() && Auth::user()->id === $task->user->id)
                 @if ($confirming === $task->id)
                 <button type="button" class="btn btn-task btn-danger" wire:click="deleteTask" wire:loading.attr="disabled">
