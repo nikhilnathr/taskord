@@ -20,9 +20,19 @@
     </div>
     <div class="card-body pt-1">
         <a href="{{ route('question.question', ['id' => $question->id]) }}" class="h5 align-text-top font-weight-bold text-dark">
-            {{ Str::words($question->title, '10') }}
+            @if ($type !== "question.question")
+                {{ Str::words($question->title, '10') }}
+            @else
+                {{ $question->title }}
+            @endif
         </a>
-        <div class="mt-2">@markdown(Str::words($question->body, '30'))</div>
+        <div class="mt-2">
+            @if ($type !== "question.question")
+                @markdown(Str::words($question->body, '30'))
+            @else
+                @markdown($question->body)
+            @endif
+        </div>
         <div class="mt-3">
             @auth
             @if (Auth::user()->question_praise->where('question_id', $question->id)->count() === 1)
