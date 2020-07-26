@@ -14,15 +14,15 @@
                 <div class="small">{{ "@" . $question->user->username }}</div>
             </span>
             <span class="align-text-top small float-right ml-auto">
-                <a class="text-black-50" href="">
+                <span class="text-black-50">
                     {{ Carbon::parse($question->created_at)->diffForHumans() }}
-                </a>
+                </span>
             </span>
         </div>
         <div class="card-body pt-1">
-            <a href="" class="h5 align-text-top font-weight-bold text-dark">
+            <span class="h5 align-text-top font-weight-bold text-dark">
                 {{ $question->title }}
-            </a>
+            </span>
             <div class="mt-2">@markdown($question->body)</div>
             <div class="mt-3">
                 @auth
@@ -33,6 +33,14 @@
                             10
                         </span>
                     </button>
+                    @if (Auth::check() && Auth::user()->id === $question->user->id)
+                    <a type="button" class="btn btn-task btn-outline-info text-white mr-1" href="{{ route('question.edit', ['id' => $question->id]) }}">
+                        {{ Emoji::writingHand() }}
+                        <span class="small text-dark font-weight-bold">
+                            Edit
+                        </span>
+                    </a>
+                    @endif
                 @else
                     <button type="button" class="btn btn-task btn-outline-success mr-1" wire:click="togglePraise" wire:loading.attr="disabled">
                         {{ Emoji::clappingHands() }}

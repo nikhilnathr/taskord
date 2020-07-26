@@ -13,13 +13,13 @@
             <div class="small">{{ "@" . $question->user->username }}</div>
         </span>
         <span class="align-text-top small float-right ml-auto">
-            <a class="text-black-50" href="{{ route('question', ['id' => $question->id]) }}">
+            <a class="text-black-50" href="{{ route('question.question', ['id' => $question->id]) }}">
                 {{ Carbon::parse($question->created_at)->diffForHumans() }}
             </a>
         </span>
     </div>
     <div class="card-body pt-1">
-        <a href="{{ route('question', ['id' => $question->id]) }}" class="h5 align-text-top font-weight-bold text-dark">
+        <a href="{{ route('question.question', ['id' => $question->id]) }}" class="h5 align-text-top font-weight-bold text-dark">
             {{ Str::words($question->title, '10') }}
         </a>
         <div class="mt-2">@markdown(Str::words($question->body, '30'))</div>
@@ -49,7 +49,7 @@
                     </span>
                 </a>
             @endguest
-            <a href="{{ route('question', ['id' => $question->id]) }}" class="avatar-stack text-dark">
+            <a href="{{ route('question.question', ['id' => $question->id]) }}" class="avatar-stack text-dark">
                 @foreach ($question->answer->take(5) as $answer)
                 <img class="rounded-circle avatar avatar-30" src="{{ $answer->user->avatar }}" />
                 @endforeach

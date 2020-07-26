@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Question;
+use Auth;
 
 class QuestionController extends Controller
 {
@@ -45,8 +46,14 @@ class QuestionController extends Controller
     {
         $question = Question::where('id', $id)->firstOrFail();
         
-        return view('questions.edit', [
-            'question' => $question
-        ]);
+        if (Auth::user()->id === $question->user_id) {
+            return view('questions.edit', [
+                'question' => $question
+            ]);
+        } else {
+            return redirect()->route('question.question', [
+                'id' => $question->id
+            ]);
+        }
     }
 }

@@ -53,9 +53,10 @@ Route::group(['prefix' => 'questions', 'as' => 'questions.'], function () {
     Route::get('new', 'QuestionController@new')->name('new')->middleware('auth');
 });
 
-Route::get('question/{id}', 'QuestionController@question')->name('question');
-Route::get('question/edit/{id}', 'QuestionController@edit')->name('edit')->middleware('auth');
-
+Route::group(['prefix' => 'question', 'as' => 'question.'], function () {
+    Route::get('{id}', 'QuestionController@question')->name('question');
+    Route::get('edit/{id}', 'QuestionController@edit')->name('edit')->middleware('auth');
+});
 // Toggles
 Route::get('adminbar', 'Admin\AdminBarController@toggle')->name('adminbar')->middleware('staff');
 Route::get('darkmode', 'UserController@darkMode')->name('darkmode')->middleware('patron');
