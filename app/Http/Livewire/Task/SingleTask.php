@@ -67,8 +67,8 @@ class SingleTask extends Component
                 $this->task->refresh();
             } else {
                 $praise = TaskPraise::create([
-                    'task_id' => $this->task->id,
                     'user_id' => Auth::user()->id,
+                    'task_id' => $this->task->id,
                 ]);
                 $this->task->refresh();
                 givePoint(new PraiseCreated($praise));

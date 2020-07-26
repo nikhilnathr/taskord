@@ -32,11 +32,11 @@
             <div class="mt-2">@markdown($question->body)</div>
             <div class="mt-3">
                 @auth
-                @if (true)
+                @if (Auth::user()->question_praise->where('question_id', $question->id)->count() === 1)
                     <button type="button" class="btn btn-task btn-success text-white mr-1" wire:click="togglePraise" wire:loading.attr="disabled">
                         {{ Emoji::clappingHands() }}
                         <span class="small text-dark font-weight-bold">
-                            10
+                            {{ $question->question_praise->count() }}
                         </span>
                     </button>
                     @if (Auth::check() && Auth::user()->id === $question->user->id)
@@ -54,7 +54,7 @@
                     <button type="button" class="btn btn-task btn-outline-success mr-1" wire:click="togglePraise" wire:loading.attr="disabled">
                         {{ Emoji::clappingHands() }}
                         <span class="small text-dark font-weight-bold">
-                            10
+                            {{ $question->question_praise->count() }}
                         </span>
                     </button>
                 @endif
@@ -63,7 +63,7 @@
                     <a href="/login" class="btn btn-task btn-outline-success mr-1">
                         {{ Emoji::clappingHands() }}
                         <span class="small text-dark font-weight-bold">
-                            10
+                            {{ $question->question_praise->count() }}
                         </span>
                     </a>
                 @endguest
