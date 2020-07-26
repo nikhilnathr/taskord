@@ -130,6 +130,11 @@
                                         @endif
                                     </a>
                                     @endif
+                                    @if (Auth::user()->isDeveloper)
+                                    <a class="dropdown-item text-dark" href="https://github.com/taskord/taskord" target="_blank">
+                                        {{ Emoji::octopus() }} GitHub
+                                    </a>
+                                    @endif
                                     <a class="dropdown-item text-dark" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
