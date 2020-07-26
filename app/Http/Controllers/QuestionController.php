@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Question;
+
 class QuestionController extends Controller
 {
     public function newest()
@@ -22,6 +24,15 @@ class QuestionController extends Controller
     {
         return view('questions.popular', [
             'type' => 'questions.popular',
+        ]);
+    }
+    
+    public function question($id)
+    {
+        $question = Question::where('id', $id)->firstOrFail();
+        
+        return view('question.question', [
+            'question' => $question,
         ]);
     }
 }

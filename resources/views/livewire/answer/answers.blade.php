@@ -1,3 +1,7 @@
 <div>
-    {{-- The best athlete wants his opponent at his best. --}}
+    @foreach ($answers as $answer)
+        @livewire('answer.single-answer', [
+            'answer' => $answer
+        ])
+    @endforeach
 </div>
