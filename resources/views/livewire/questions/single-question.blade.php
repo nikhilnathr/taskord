@@ -49,7 +49,7 @@
                     </span>
                 </a>
             @endguest
-            <a href="#" class="avatar-stack text-dark">
+            <a href="{{ route('question', ['id' => $question->id]) }}" class="avatar-stack text-dark">
                 @foreach ($question->answer->take(5) as $answer)
                 <img class="rounded-circle avatar avatar-30" src="{{ $answer->user->avatar }}" />
                 @endforeach
