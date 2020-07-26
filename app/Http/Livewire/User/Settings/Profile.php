@@ -48,12 +48,12 @@ class Profile extends Component
             'bio' => 'profanity|max:200',
             'location' => 'profanity|max:30',
             'company' => 'profanity|max:30',
-            'website' => 'profanity|active_url',
-            'twitter' => 'profanity|alpha_dash|max:30',
-            'twitch' => 'profanity|alpha_dash|max:200',
-            'telegram' => 'profanity|alpha_dash|max:30',
-            'github' => 'profanity|alpha_dash|max:30',
-            'youtube' => 'profanity|alpha_dash|max:30',
+            'website' => 'active_url',
+            'twitter' => 'alpha_dash|max:30',
+            'twitch' => 'alpha_dash|max:200',
+            'telegram' => 'alpha_dash|max:30',
+            'github' => 'alpha_dash|max:30',
+            'youtube' => 'alpha_dash|max:30',
         ],
         [
             'firstname.profanity' => 'Please check your words!',
@@ -61,12 +61,6 @@ class Profile extends Component
             'bio.profanity' => 'Please check your words!',
             'location.profanity' => 'Please check your words!',
             'company.profanity' => 'Please check your words!',
-            'website.profanity' => 'Please check your words!',
-            'twitter.profanity' => 'Please check your words!',
-            'twitch.profanity' => 'Please check your words!',
-            'telegram.profanity' => 'Please check your words!',
-            'github.profanity' => 'Please check your words!',
-            'youtube.profanity' => 'Please check your words!',
         ]);
     }
 
