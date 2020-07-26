@@ -18,7 +18,7 @@
     </span>
 </div>
 <div class="card-body pt-1">
-    <div>{{ $answer->answer }}</div>
+    <div>@markdown($answer->answer)</div>
     <div class="mt-3">
         @auth
         @if (true)

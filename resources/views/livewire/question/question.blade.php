@@ -23,7 +23,7 @@
             <a href="" class="h5 align-text-top font-weight-bold text-dark">
                 {{ $question->title }}
             </a>
-            <div class="mt-2">{{ $question->body }}</div>
+            <div class="mt-2">@markdown($question->body)</div>
             <div class="mt-3">
                 @auth
                 @if (true)

@@ -33,7 +33,7 @@
             @else
             <div class="h6 font-weight-bold mb-3">
                 <i class="fab fa-markdown mr-1"></i>
-                Markdown Supported
+                Markdown is supported
             </div>
             @endif
             <button class="btn btn-sm btn-primary" type="submit" wire:click="submit">

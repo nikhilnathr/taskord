@@ -35,4 +35,9 @@ class QuestionController extends Controller
             'question' => $question,
         ]);
     }
+    
+    public function new()
+    {
+        return view('questions.new');
+    }
 }
