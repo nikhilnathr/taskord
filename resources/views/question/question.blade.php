@@ -7,7 +7,8 @@
             <div class="row">
                 <div class="col-md-8">
                     <div class="mb-4">
-                        @livewire('question.question', [
+                        @livewire('questions.single-question', [
+                            'type' => $type,
                             'question' => $question,
                         ])
                     </div>

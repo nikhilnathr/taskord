@@ -9,10 +9,12 @@ use Livewire\Component;
 class SingleQuestion extends Component
 {
     public $question;
+    public $type;
 
-    public function mount($question)
+    public function mount($question, $type)
     {
         $this->question = $question;
+        $this->type = $type;
     }
 
     public function togglePraise()
@@ -44,6 +46,25 @@ class SingleQuestion extends Component
             }
         } else {
             return session()->flash('message', 'Forbidden!');
+        }
+    }
+    
+    public function deleteQuestion()
+    {
+        if (Auth::check()) {
+            if (Auth::user()->isFlagged) {
+                return session()->flash('error', 'Your account is flagged!');
+            }
+
+            if (Auth::user()->staffShip or Auth::user()->id === $this->question->user_id) {
+                $this->question->delete();
+
+                return redirect()->route('questions.newest');
+            } else {
+                session()->flash('error', 'Forbidden!');
+            }
+        } else {
+            return session()->flash('error', 'Forbidden!');
         }
     }
 

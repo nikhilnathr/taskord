@@ -33,6 +33,7 @@ class QuestionController extends Controller
         $question = Question::where('id', $id)->firstOrFail();
 
         return view('question.question', [
+            'type' => 'question.question',
             'question' => $question,
         ]);
     }

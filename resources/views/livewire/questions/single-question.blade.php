@@ -40,6 +40,17 @@
                     </span>
                 </button>
             @endif
+            @if (Auth::user()->staffShip or Auth::user()->id === $question->user->id)
+            <a type="button" class="btn btn-task btn-outline-info text-white mr-1" href="{{ route('question.edit', ['id' => $question->id]) }}">
+                {{ Emoji::writingHand() }}
+                <span class="small text-dark font-weight-bold">
+                    Edit
+                </span>
+            </a>
+            <button type="button" class="btn btn-task btn-outline-danger text-white mr-1" wire:click="deleteQuestion" wire:loading.attr="disabled">
+                {{ Emoji::wastebasket() }}
+            </button>
+            @endif
             @endauth
             @guest
                 <a href="/login" class="btn btn-task btn-outline-success mr-1">
@@ -49,6 +60,7 @@
                     </span>
                 </a>
             @endguest
+            @if ($type !== "question.question")
             <a href="{{ route('question.question', ['id' => $question->id]) }}" class="avatar-stack text-dark">
                 @foreach ($question->answer->take(5) as $answer)
                 <img class="rounded-circle avatar avatar-30" src="{{ $answer->user->avatar }}" />
@@ -59,6 +71,7 @@
                 </span>
                 @endif
             </a>
+            @endif
         </div>
     </div>
 </div>

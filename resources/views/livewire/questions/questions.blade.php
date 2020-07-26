@@ -1,6 +1,7 @@
 <div>
     @foreach ($questions as $question)
         @livewire('questions.single-question', [
+            'type' => $type,
             'question' => $question,
         ])
     @endforeach
