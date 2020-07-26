@@ -41,6 +41,24 @@
                             </span>
                         </div>
                     </div>
+                    @if ($task->task_comments->count() > 0)
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            Users Involved
+                        </div>
+                        <div class="card-body align-items-center">
+                            @foreach ($task->task_comments->groupBy('user_id') as $comment)
+                                <a
+                                    title="{{ $comment[0]->user->firstname ? $comment[0]->user->firstname . ' ' . $comment[0]->user->lastname : $comment[0]->user->username }}"
+                                    href="{{ route('user.done', ['username' => $comment[0]->user->username]) }}"
+                                    class="mr-1"
+                                >
+                                    <img class="rounded-circle avatar-30 mb-2" src="{{ $comment[0]->user->avatar }}" />
+                                </a>
+                            @endforeach
+                        </div>
+                    </div>
+                    @endif
                     <div class="text-black-50">
                         <span>
                             © Taskord

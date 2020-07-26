@@ -40,14 +40,14 @@
                             Users Involved
                         </div>
                         <div class="card-body align-items-center">
-                            @foreach ($question->answer as $answer)
-                            <a
-                                title="{{ $answer->user->firstname ? $answer->user->firstname . ' ' . $answer->user->lastname : $answer->user->username }}"
-                                href="{{ route('user.done', ['username' => $answer->user->username]) }}"
-                                class="mr-1"
-                            >
-                                <img class="rounded-circle avatar-30 mb-2" src="{{ $answer->user->avatar }}" />
-                            </a>
+                            @foreach ($question->answer->groupBy('user_id') as $answer)
+                                <a
+                                    title="{{ $answer[0]->user->firstname ? $answer[0]->user->firstname . ' ' . $answer[0]->user->lastname : $answer[0]->user->username }}"
+                                    href="{{ route('user.done', ['username' => $answer[0]->user->username]) }}"
+                                    class="mr-1"
+                                >
+                                    <img class="rounded-circle avatar-30 mb-2" src="{{ $answer[0]->user->avatar }}" />
+                                </a>
                             @endforeach
                         </div>
                     </div>
