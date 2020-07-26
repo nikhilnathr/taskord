@@ -54,7 +54,7 @@ class SingleAnswer extends Component
                 return session()->flash('error', 'Your account is flagged!');
             }
 
-            if (Auth::user()->id === $this->answer->user->id) {
+            if (Auth::user()->staffShip or Auth::user()->id === $this->answer->user->id) {
                 $this->answer->delete();
 
                 return redirect()->route('question.question', [

@@ -54,7 +54,7 @@ class Question extends Component
                 return session()->flash('error', 'Your account is flagged!');
             }
 
-            if (Auth::user()->id === $this->question->user_id) {
+            if (Auth::user()->staffShip or Auth::user()->id === $this->question->user_id) {
                 $this->question->delete();
 
                 return redirect()->route('questions.newest');

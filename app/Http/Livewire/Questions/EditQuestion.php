@@ -48,8 +48,8 @@ class EditQuestion extends Component
 
         $question = Question::where('id', $this->question->id)->firstOrFail();
 
-        if (Auth::user()->id === $question->user_id) {
-            $question->user_id = Auth::user()->id;
+        if (Auth::user()->staffShip or Auth::user()->id === $question->user_id) {
+            $question->user_id = Auth::user()->staffShip ? $this->question->user->id : Auth::user()->id;
             $question->title = $this->title;
             $question->body = $this->body;
             $question->save();
