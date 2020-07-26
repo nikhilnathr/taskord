@@ -55,6 +55,17 @@
                     </span>
                 </button>
             @endif
+            @if (Auth::user()->staffShip or Auth::user()->id === $task->user->id)
+                @if ($confirming === $task->id)
+                <button type="button" class="btn btn-task btn-danger" wire:click="deleteTask" wire:loading.attr="disabled">
+                    Are you sure?
+                </button>
+                @else
+                <button type="button" class="btn btn-task btn-outline-danger" wire:click="confirmDelete" wire:loading.attr="disabled">
+                    {{ Emoji::wastebasket() }}
+                </button>
+                @endif
+            @endif
             @endauth
             @guest
                 <a href="/login" class="btn btn-task btn-outline-success mr-1">
@@ -71,17 +82,6 @@
                     {{ $task->task_comments->count() }}
                 </span>
             </a>
-            @endif
-            @if (Auth::user()->staffShip or Auth::user()->id === $task->user->id)
-                @if ($confirming === $task->id)
-                <button type="button" class="btn btn-task btn-danger" wire:click="deleteTask" wire:loading.attr="disabled">
-                    Are you sure?
-                </button>
-                @else
-                <button type="button" class="btn btn-task btn-outline-danger" wire:click="confirmDelete" wire:loading.attr="disabled">
-                    {{ Emoji::wastebasket() }}
-                </button>
-                @endif
             @endif
         </div>
         @if (session()->has('message'))
