@@ -8,11 +8,13 @@
                 <div class="col-md-8">
                     <div class="mb-4">
                         @livewire('question.question', [
-                            'question' => $question
+                            'question' => $question,
                         ])
                     </div>
                     @livewire('answer.answers', [
-                        'answers' => $question->answer
+                        'question' => $question,
+                        'page' => 1,
+                        'perPage' => 10
                     ])
                 </div>
                 <div class="col-sm">
