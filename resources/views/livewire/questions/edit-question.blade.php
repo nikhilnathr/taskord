@@ -3,7 +3,7 @@
         <div class="card">
             <div class="h5 pt-3 pb-3 text-success card-header">
                 <i class="fa fa-question mr-1"></i>
-                New Question
+                Edit Question
             </div>
             <div class="card-body">
                 @if (session()->has('message'))
@@ -21,7 +21,7 @@
                 <form wire:target="submit" wire:submit.prevent="submit">
                     <div class="mb-3">
                         <label class="form-label font-weight-bold">Title</label>
-                        <input type="text" class="form-control @error('title') is-invalid @enderror" placeholder="Ask and discuss!" wire:model="title">
+                        <input type="text" value="{{ $title }}" class="form-control @error('title') is-invalid @enderror" placeholder="Ask and discuss!" wire:model="title">
                         @error('title')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -30,7 +30,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label font-weight-bold">Body</label>
-                        <textarea class="form-control @error('body') is-invalid @enderror" rows="6" placeholder="What's on your mind?" wire:model="body"></textarea>
+                        <textarea class="form-control @error('body') is-invalid @enderror" rows="6" placeholder="What's on your mind?" wire:model="body">{{ $body }}</textarea>
                         @error('body')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -51,7 +51,7 @@
                         Markdown is supported
                     </div>
                     @endif
-                    <button type="submit" class="btn btn-primary">Ask</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
                 </form>
             </div>
         </div>

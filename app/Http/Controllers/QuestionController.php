@@ -40,4 +40,13 @@ class QuestionController extends Controller
     {
         return view('questions.new');
     }
+    
+    public function edit($id)
+    {
+        $question = Question::where('id', $id)->firstOrFail();
+        
+        return view('questions.edit', [
+            'question' => $question
+        ]);
+    }
 }

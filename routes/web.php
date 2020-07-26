@@ -54,6 +54,7 @@ Route::group(['prefix' => 'questions', 'as' => 'questions.'], function () {
 });
 
 Route::get('question/{id}', 'QuestionController@question')->name('question');
+Route::get('question/edit/{id}', 'QuestionController@edit')->name('edit')->middleware('auth');
 
 // Toggles
 Route::get('adminbar', 'Admin\AdminBarController@toggle')->name('adminbar')->middleware('staff');
