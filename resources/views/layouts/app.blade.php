@@ -63,7 +63,7 @@
                     <ul class="navbar-nav ml-auto">
                         @guest
                             <li class="nav-item mr-3">
-                                <a class="nav-link font-weight-bold" href="{{ route('login') }}">Login</a>
+                                <a class="nav-link text-white font-weight-bold" href="{{ route('login') }}">Login</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">

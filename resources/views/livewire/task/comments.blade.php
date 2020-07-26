@@ -1,6 +1,6 @@
 <div>
     @if ($comments->count() === 0)
-    <div class="card-body text-center">
+    <div class="card-body text-center mt-3">
         <i class="fa fa-3x fa-comments mb-3 text-primary"></i>
         <div class="h5">
             No comments found!

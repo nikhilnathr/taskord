@@ -18,6 +18,11 @@
                             'task' => $task
                         ])
                     @endif
+                    @guest
+                        <a href="/login" class="btn btn-block btn-success mt-4 text-white font-weight-bold">
+                            {{ Emoji::wavingHand() }} Login or Signup to comment
+                        </a>
+                    @endguest
                     @livewire('task.comments', [
                         'task' => $task,
                         'page' => 1,
