@@ -36,23 +36,23 @@ class QuestionController extends Controller
             'question' => $question,
         ]);
     }
-    
+
     public function new()
     {
         return view('questions.new');
     }
-    
+
     public function edit($id)
     {
         $question = Question::where('id', $id)->firstOrFail();
-        
+
         if (Auth::user()->id === $question->user_id) {
             return view('questions.edit', [
-                'question' => $question
+                'question' => $question,
             ]);
         } else {
             return redirect()->route('question.question', [
-                'id' => $question->id
+                'id' => $question->id,
             ]);
         }
     }

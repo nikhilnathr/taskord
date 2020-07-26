@@ -2,23 +2,23 @@
 
 namespace App\Http\Livewire\Questions;
 
-use Livewire\Component;
-use Auth;
 use App\Question;
+use Auth;
+use Livewire\Component;
 
 class EditQuestion extends Component
 {
     public $question;
     public $title;
     public $body;
-    
+
     public function mount($question)
     {
         $this->question = $question;
         $this->title = $question->title;
         $this->body = $question->body;
     }
-    
+
     public function updated($field)
     {
         $this->validateOnly($field, [
@@ -30,7 +30,7 @@ class EditQuestion extends Component
             'body.profanity' => 'Please check your words!',
         ]);
     }
-    
+
     public function submit()
     {
         $validatedData = $this->validate([
@@ -45,22 +45,23 @@ class EditQuestion extends Component
         if (Auth::user()->isFlagged) {
             return session()->flash('error', 'Your account is flagged!');
         }
-        
+
         $question = Question::where('id', $this->question->id)->firstOrFail();
-        
+
         if (Auth::user()->id === $question->user_id) {
-            $question->user_id =  Auth::user()->id;
+            $question->user_id = Auth::user()->id;
             $question->title = $this->title;
             $question->body = $this->body;
             $question->save();
-    
+
             session()->flash('message', 'Question has been posted!');
+
             return redirect()->route('question.question', ['id' => $question->id]);
         } else {
             session()->flash('error', 'Forbidden!');
         }
     }
-    
+
     public function render()
     {
         return view('livewire.questions.edit-question');

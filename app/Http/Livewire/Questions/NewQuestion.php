@@ -2,15 +2,15 @@
 
 namespace App\Http\Livewire\Questions;
 
-use Livewire\Component;
-use Auth;
 use App\Question;
+use Auth;
+use Livewire\Component;
 
 class NewQuestion extends Component
 {
     public $title;
     public $body;
-    
+
     public function updated($field)
     {
         $this->validateOnly($field, [
@@ -22,7 +22,7 @@ class NewQuestion extends Component
             'body.profanity' => 'Please check your words!',
         ]);
     }
-    
+
     public function submit()
     {
         $validatedData = $this->validate([
@@ -41,14 +41,14 @@ class NewQuestion extends Component
         $question = Question::create([
             'user_id' =>  Auth::user()->id,
             'title' => $this->title,
-            'body' => $this->body
+            'body' => $this->body,
         ]);
 
         session()->flash('message', 'Question has been posted!');
 
         return redirect()->route('question', ['id' => $question->id]);
     }
-    
+
     public function render()
     {
         return view('livewire.questions.new-question');
