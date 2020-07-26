@@ -12,7 +12,7 @@ class SingleQuestion extends Component
     {
         $this->question = $question;
     }
-    
+
     public function render()
     {
         return view('livewire.questions.single-question');

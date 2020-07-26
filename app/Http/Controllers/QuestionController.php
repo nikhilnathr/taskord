@@ -26,11 +26,11 @@ class QuestionController extends Controller
             'type' => 'questions.popular',
         ]);
     }
-    
+
     public function question($id)
     {
         $question = Question::where('id', $id)->firstOrFail();
-        
+
         return view('question.question', [
             'question' => $question,
         ]);
