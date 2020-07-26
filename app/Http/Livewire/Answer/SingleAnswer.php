@@ -46,6 +46,27 @@ class SingleAnswer extends Component
             return session()->flash('error', 'Forbidden!');
         }
     }
+    
+    public function deleteAnswer()
+    {
+        if (Auth::check()) {
+            if (Auth::user()->isFlagged) {
+                return session()->flash('error', 'Your account is flagged!');
+            }
+
+            if (Auth::user()->id === $this->answer->user->id) {
+                $this->answer->delete();
+
+                return redirect()->route('question.question', [
+                    'id' => $this->answer->question->id
+                ]);
+            } else {
+                session()->flash('error', 'Forbidden!');
+            }
+        } else {
+            return session()->flash('error', 'Forbidden!');
+        }
+    }
 
     public function render()
     {

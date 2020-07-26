@@ -37,6 +37,11 @@
                     </span>
                 </button>
             @endif
+            @if (Auth::user()->id === $answer->user->id)
+                <button type="button" class="btn btn-task btn-outline-danger text-white mr-1" wire:click="deleteAnswer" wire:loading.attr="disabled">
+                    {{ Emoji::wastebasket() }}
+                </button>
+                @endif
             @endauth
             @guest
                 <a href="/login" class="btn btn-task btn-outline-success mr-1">
