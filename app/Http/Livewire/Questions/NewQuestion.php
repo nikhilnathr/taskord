@@ -46,7 +46,7 @@ class NewQuestion extends Component
 
         session()->flash('message', 'Question has been posted!');
 
-        return redirect()->route('question', ['id' => $question->id]);
+        return redirect()->route('question.question', ['id' => $question->id]);
     }
 
     public function render()

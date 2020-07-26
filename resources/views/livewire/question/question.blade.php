@@ -1,5 +1,11 @@
 <div>
     <div class="card mb-2">
+        @if (session()->has('error'))
+            <div class="alert alert-danger alert-dismissible fade show m-3">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                {{ session('error') }}
+            </div>
+        @endif
         <div class="card-body d-flex align-items-center">
             <img class="avatar-40 rounded-circle" src="{{ $question->user->avatar }}" />
             <span class="ml-2">
@@ -40,6 +46,9 @@
                             Edit
                         </span>
                     </a>
+                    <button type="button" class="btn btn-task btn-outline-danger text-white mr-1" wire:click="deleteQuestion" wire:loading.attr="disabled">
+                        {{ Emoji::wastebasket() }}
+                    </button>
                     @endif
                 @else
                     <button type="button" class="btn btn-task btn-outline-success mr-1" wire:click="togglePraise" wire:loading.attr="disabled">
