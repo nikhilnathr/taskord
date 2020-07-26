@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire\Question;
 
-use Livewire\Component;
-use Auth;
 use App\QuestionPraise;
+use Auth;
+use Livewire\Component;
 
 class Question extends Component
 {
@@ -14,7 +14,7 @@ class Question extends Component
     {
         $this->question = $question;
     }
-    
+
     public function togglePraise()
     {
         if (Auth::check()) {
@@ -46,17 +46,17 @@ class Question extends Component
             return session()->flash('error', 'Forbidden!');
         }
     }
-    
+
     public function deleteQuestion()
     {
         if (Auth::check()) {
             if (Auth::user()->isFlagged) {
                 return session()->flash('error', 'Your account is flagged!');
             }
-            
+
             if (Auth::user()->id === $this->question->user_id) {
                 $this->question->delete();
-    
+
                 return redirect()->route('questions.newest');
             } else {
                 session()->flash('error', 'Forbidden!');

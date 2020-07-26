@@ -72,7 +72,7 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Question');
     }
-    
+
     public function question_praise()
     {
         return $this->hasMany('App\QuestionPraise');

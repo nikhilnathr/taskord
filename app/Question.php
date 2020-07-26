@@ -26,7 +26,7 @@ class Question extends Model
     {
         return $this->hasMany('App\Answer');
     }
-    
+
     public function question_praise()
     {
         return $this->hasMany('App\QuestionPraise');

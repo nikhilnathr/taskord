@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire\Questions;
 
-use Livewire\Component;
-use Auth;
 use App\QuestionPraise;
+use Auth;
+use Livewire\Component;
 
 class SingleQuestion extends Component
 {
@@ -14,7 +14,7 @@ class SingleQuestion extends Component
     {
         $this->question = $question;
     }
-    
+
     public function togglePraise()
     {
         if (Auth::check()) {
