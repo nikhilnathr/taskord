@@ -2,7 +2,7 @@
     <div class="col-md-8">
         <div class="card">
             <div class="h5 pt-3 pb-3 text-success card-header">
-                <i class="fa fa-box-open mr-1"></i>
+                <i class="fa fa-question mr-1"></i>
                 New Question
             </div>
             <div class="card-body">
@@ -21,7 +21,7 @@
                 <form wire:target="submit" wire:submit.prevent="submit">
                     <div class="mb-3">
                         <label class="form-label font-weight-bold">Title</label>
-                        <input type="text" class="form-control @error('title') is-invalid @enderror" placeholder="Simply the name of the product" wire:model="title">
+                        <input type="text" class="form-control @error('title') is-invalid @enderror" placeholder="Ask and discuss!" wire:model="title">
                         @error('title')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -30,7 +30,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label font-weight-bold">Body</label>
-                        <textarea class="form-control @error('body') is-invalid @enderror" rows="6" placeholder="Some words about your awesome product" wire:model="body"></textarea>
+                        <textarea class="form-control @error('body') is-invalid @enderror" rows="6" placeholder="What's on your mind?" wire:model="body"></textarea>
                         @error('body')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
