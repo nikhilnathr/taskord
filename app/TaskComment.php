@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Rennokki\QueryCache\Traits\QueryCacheable;
 
-class TaskComments extends Model
+class TaskComment extends Model
 {
     use QueryCacheable;
 
@@ -25,5 +25,10 @@ class TaskComments extends Model
     public function task()
     {
         return $this->belongsTo('App\Task');
+    }
+    
+    public function task_comment_praise()
+    {
+        return $this->hasMany('App\TaskCommentPraise');
     }
 }

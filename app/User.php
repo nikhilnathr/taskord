@@ -58,9 +58,14 @@ class User extends Authenticatable
         return $this->hasMany('App\TaskPraise');
     }
 
-    public function task_comments()
+    public function task_comment()
     {
-        return $this->hasMany('App\TaskComments');
+        return $this->hasMany('App\TaskComment');
+    }
+    
+    public function task_comment_praise()
+    {
+        return $this->hasMany('App\TaskCommentPraise');
     }
 
     public function products()

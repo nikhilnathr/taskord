@@ -31,9 +31,9 @@ class Task extends Model
         return $this->hasMany('App\TaskPraise');
     }
 
-    public function task_comments()
+    public function task_comment()
     {
-        return $this->hasMany('App\TaskComments');
+        return $this->hasMany('App\TaskComment');
     }
 
     public function product()
