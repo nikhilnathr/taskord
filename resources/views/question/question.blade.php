@@ -12,6 +12,12 @@
                             {{ session('question_created') }}
                         </div>
                     @endif
+                    @if (session()->has('question_edited'))
+                        <div class="alert alert-success alert-dismissible fade show mt-2">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            {{ session('question_edited') }}
+                        </div>
+                    @endif
                     <div class="mb-4">
                         @livewire('questions.single-question', [
                             'type' => $type,

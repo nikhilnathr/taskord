@@ -54,7 +54,7 @@ class EditQuestion extends Component
             $question->body = $this->body;
             $question->save();
 
-            session()->flash('success', 'Question has been posted!');
+            session()->flash('question_edited', 'Question has been edited!');
 
             return redirect()->route('question.question', ['id' => $question->id]);
         } else {
