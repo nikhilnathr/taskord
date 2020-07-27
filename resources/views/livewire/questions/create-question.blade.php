@@ -51,7 +51,10 @@
                         Markdown is supported
                     </div>
                     @endif
-                    <button type="submit" class="btn btn-primary">Ask</button>
+                    <button type="submit" class="btn btn-primary">
+                        Ask
+                        <span wire:target="submit" wire:loading class="spinner-border spinner-border-sm ml-2" role="status"></span>
+                    </button>
                 </form>
             </div>
         </div>

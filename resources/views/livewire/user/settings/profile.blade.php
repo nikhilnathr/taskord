@@ -56,7 +56,10 @@
                         </span>
                     @enderror
                 </div>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary">
+                    Save
+                    <span wire:target="updateProfile" wire:loading class="spinner-border spinner-border-sm ml-2" role="status"></span>
+                </button>
             </form>
         </div>
     </div>
@@ -153,7 +156,10 @@
                         </span>
                     @enderror
                 </div>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary">
+                    Save
+                    <span wire:target="updateSocial" wire:loading class="spinner-border spinner-border-sm ml-2" role="status"></span>
+                </button>
             </form>
         </div>
     </div>

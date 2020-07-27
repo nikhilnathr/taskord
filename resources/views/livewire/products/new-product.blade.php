@@ -79,7 +79,10 @@
                         <input id="launched" class="form-check-input" type="checkbox" wire:model="launched">
                         <label for="launched" class="ml-1">This product is launched</label>
                     </div>
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="submit" class="btn btn-primary">
+                        Save
+                        <span wire:target="submit" wire:loading class="spinner-border spinner-border-sm ml-2" role="status"></span>
+                    </button>
                 </form>
             </div>
         </div>
