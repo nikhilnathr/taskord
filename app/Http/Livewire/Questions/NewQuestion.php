@@ -49,7 +49,7 @@ class NewQuestion extends Component
                 'body' => $this->body,
             ]);
 
-            session()->flash('success', 'Question has been posted!');
+            session()->flash('question_created', 'Question has been created!');
 
             return redirect()->route('question.question', ['id' => $question->id]);
         } else {
