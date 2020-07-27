@@ -50,7 +50,9 @@
                             @foreach ($launched_today->take(5) as $product)
                             <li class="list-group-item">
                                 <div class="d-flex align-items-center">
-                                    <img class="rounded avatar-50 mt-1 ml-2" src="{{ $product->avatar }}" height="50" width="50" />
+                                    <a href="{{ route('product.done', ['slug' => $product->slug]) }}">
+                                        <img class="rounded avatar-50 mt-1 ml-2" src="{{ $product->avatar }}" height="50" width="50" />
+                                    </a>
                                     <span class="ml-3">
                                         <a href="{{ route('product.done', ['slug' => $product->slug]) }}" class="mr-2 h5 align-text-top font-weight-bold text-dark">
                                             {{ $product->name }}
@@ -92,13 +94,17 @@
                         <div class="card mb-4">
                             <div class="card-header">
                                 <div class="h5 pt-2">
-                                    <img class="rounded-circle avatar-30" src="{{ Auth::user()->avatar }}" />
+                                    <a href="{{ route('user.done', ['username' => Auth::user()->username]) }}">
+                                        <img class="rounded-circle avatar-30" src="{{ Auth::user()->avatar }}" />
+                                    </a>
                                     <span class="align-middle">
                                         <span class="ml-2">Hi</span>
-                                        <span class="font-weight-bold">
-                                            {{ Auth::user()->firstname ? Auth::user()->firstname . ' ' . Auth::user()->lastname : Auth::user()->username }}!
-                                            {{ Emoji::wavingHand() }}
-                                        </span>
+                                        <a href="{{ route('user.done', ['username' => Auth::user()->username]) }}">
+                                            <span class="font-weight-bold text-dark">
+                                                {{ Auth::user()->firstname ? Auth::user()->firstname . ' ' . Auth::user()->lastname : Auth::user()->username }}!
+                                                {{ Emoji::wavingHand() }}
+                                            </span>
+                                        </a>
                                     </span>
                                 </div>
                             </div>
@@ -114,7 +120,9 @@
                         <ul class="list-group list-group-flush">
                             @foreach ($recently_joined as $user)
                             <li class="d-flex list-group-item align-items-center">
-                                <img class="rounded-circle avatar-40 mt-1" src="{{ $user->avatar }}" />
+                                <a href="{{ route('user.done', ['username' => $user->username]) }}">
+                                    <img class="rounded-circle avatar-40 mt-1" src="{{ $user->avatar }}" />
+                                </a>
                                 <span class="ml-3">
                                     <a href="{{ route('user.done', ['username' => $user->username]) }}" class="align-text-top text-dark">
                                         <span class="font-weight-bold">
@@ -134,7 +142,9 @@
                         <ul class="list-group list-group-flush">
                             @foreach ($products as $product)
                             <li class="list-group-item pb-2 pt-2">
-                                <img class="rounded avatar-30 mt-1 ml-2" src="{{ $product->avatar }}" height="50" width="50" />
+                                <a href="{{ route('product.done', ['slug' => $product->slug]) }}">
+                                    <img class="rounded avatar-30 mt-1 ml-2" src="{{ $product->avatar }}" height="50" width="50" />
+                                </a>
                                 <a href="{{ route('product.done', ['slug' => $product->slug]) }}" class="ml-2 mr-2 align-text-top font-weight-bold text-dark">
                                     {{ $product->name }}
                                     @if ($product->launched)
@@ -173,7 +183,9 @@
                                         #{{ $loop->index + 1 }}
                                     </span>
                                 </span>
-                                <img class="rounded-circle avatar-30 mt-1 ml-2" src="{{ $user->avatar }}" height="50" width="50" />
+                                <a href="{{ route('user.done', ['username' => $user->username]) }}">
+                                    <img class="rounded-circle avatar-30 mt-1 ml-2" src="{{ $user->avatar }}" height="50" width="50" />
+                                </a>
                                 <a href="{{ route('user.done', ['username' => $user->username]) }}" class="ml-2 mr-2 align-text-top font-weight-bold text-dark">
                                     {{ $user->firstname ? $user->firstname . ' ' . $user->lastname : '' }}
                                 </a>

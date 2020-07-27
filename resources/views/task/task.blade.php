@@ -35,7 +35,9 @@
                             Created by
                         </div>
                         <div class="card-body d-flex align-items-center">
-                            <img class="rounded-circle avatar-40 mt-1" src="{{ $task->user->avatar }}" />
+                            <a href="{{ route('user.done', ['username' => $task->user->username]) }}">
+                                <img class="rounded-circle avatar-40 mt-1" src="{{ $task->user->avatar }}" />
+                            </a>
                             <span class="ml-3">
                                 <a href="{{ route('user.done', ['username' => $task->user->username]) }}" class="align-text-top text-dark">
                                     <span class="font-weight-bold">
@@ -52,7 +54,9 @@
                             Product
                         </div>
                         <div class="card-body d-flex align-items-center">
-                            <img class="rounded avatar-40 mt-1" src="{{ \App\Product::find($task->product_id)->avatar }}" />
+                            <a href="{{ route('product.done', ['slug' => \App\Product::find($task->product_id)->slug]) }}">
+                                <img class="rounded avatar-40 mt-1" src="{{ \App\Product::find($task->product_id)->avatar }}" />
+                            </a>
                             <span class="ml-3">
                                 <a href="{{ route('user.done', ['username' => $task->user->username]) }}" class="align-text-top text-dark">
                                     <span class="font-weight-bold">

@@ -34,7 +34,9 @@
                             Asked by
                         </div>
                         <div class="card-body d-flex align-items-center">
-                            <img class="rounded-circle avatar-40 mt-1" src="{{ $question->user->avatar }}" />
+                            <a href="{{ route('user.done', ['username' => $question->user->username]) }}">
+                                <img class="rounded-circle avatar-40 mt-1" src="{{ $question->user->avatar }}" />
+                            </a>
                             <span class="ml-3">
                                 <a href="{{ route('user.done', ['username' => $question->user->username]) }}" class="align-text-top text-dark">
                                     <span class="font-weight-bold">

@@ -6,7 +6,9 @@
         </div>
     @endif
     <div class="align-items-center d-flex">
-        <img class="avatar-40 rounded-circle" src="{{ $task->user->avatar }}" />
+        <a href="{{ route('user.done', ['username' => $task->user->username]) }}">
+            <img class="avatar-40 rounded-circle" src="{{ $task->user->avatar }}" />
+        </a>
         <span class="ml-2">
             <a href="{{ route('user.done', ['username' => $task->user->username]) }}" class="font-weight-bold text-dark">
                 {{ $task->user->firstname ? $task->user->firstname . ' ' . $task->user->lastname : '' }}
@@ -16,7 +18,9 @@
                     </a>
                 @endif
             </a>
-            <div class="small">{{ "@" . $task->user->username }}</div>
+            <a class="text-black-50" href="{{ route('user.done', ['username' => $task->user->username]) }}">
+                <div class="small">{{ "@" . $task->user->username }}</div>
+            </a>
         </span>
         <span class="align-text-top small float-right ml-auto">
             <a class="text-black-50" href="{{ route('task', ['id' => $task->id]) }}">

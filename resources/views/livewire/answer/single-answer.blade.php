@@ -6,7 +6,9 @@
         </div>
     @endif
     <div class="card-body d-flex align-items-center">
-        <img class="avatar-40 rounded-circle" src="{{ $answer->user->avatar }}" />
+        <a href="{{ route('user.done', ['username' => $answer->user->username]) }}">
+            <img class="avatar-40 rounded-circle" src="{{ $answer->user->avatar }}" />
+        </a>
         <span class="ml-2">
             <a href="{{ route('user.done', ['username' => $answer->user->username]) }}" class="font-weight-bold text-dark">
                 {{ $answer->user->firstname ? $answer->user->firstname . ' ' . $answer->user->lastname : '' }}
