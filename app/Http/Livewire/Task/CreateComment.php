@@ -16,34 +16,52 @@ class CreateComment extends Component
     {
         $this->task = $task;
     }
+    
+    public function updated($field)
+    {
+        if (Auth::check()) {
+            $this->validateOnly($field, [
+                'comment' => 'required|profanity',
+            ],
+            [
+                'comment.profanity' => 'Please check your words!',
+            ]);
+        } else {
+            session()->flash('error', 'Forbidden!');
+        }
+    }
 
     public function submit()
     {
-        $validatedData = $this->validate([
-            'comment' => 'required|profanity',
-        ],
-        [
-            'task.profanity' => 'Please check your words!',
-        ]);
-
-        if (Auth::user()->isFlagged) {
-            return session()->flash('error', 'Your account is flagged!');
+        if (Auth::check()) {
+            $validatedData = $this->validate([
+                'comment' => 'required|profanity',
+            ],
+            [
+                'comment.profanity' => 'Please check your words!',
+            ]);
+    
+            if (Auth::user()->isFlagged) {
+                return session()->flash('error', 'Your account is flagged!');
+            }
+    
+            $comment = TaskComment::create([
+                'user_id' =>  Auth::user()->id,
+                'task_id' =>  $this->task->id,
+                'comment' => $this->comment,
+            ]);
+    
+            $this->emit('commentAdded');
+            $this->comment = '';
+    
+            if (Auth::user()->id !== $this->task->user->id) {
+                Auth::user()->givePoint(new CommentCreated($comment));
+            }
+    
+            return session()->flash('success', 'Comment has been added!');
+        } else {
+            session()->flash('error', 'Forbidden!');
         }
-
-        $comment = TaskComment::create([
-            'user_id' =>  Auth::user()->id,
-            'task_id' =>  $this->task->id,
-            'comment' => $this->comment,
-        ]);
-
-        $this->emit('commentAdded');
-        $this->comment = '';
-
-        if (Auth::user()->id !== $this->task->user->id) {
-            Auth::user()->givePoint(new CommentCreated($comment));
-        }
-
-        return session()->flash('success', 'Comment has been added!');
     }
 
     public function render()

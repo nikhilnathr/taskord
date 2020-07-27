@@ -13,7 +13,7 @@
                     {{ session('error') }}
                 </div>
             @endif
-            @error('task')
+            @error('answer')
                 <div class="alert alert-danger alert-dismissible fade show mt-2">
                     <button type="button" class="close" data-dismiss="alert">×</button>
                     {{ $message }}

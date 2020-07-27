@@ -60,7 +60,7 @@
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">
-                            @if (Auth::user()->darkMode)
+                            @if (Auth::check() && Auth::user()->darkMode)
                             <i class="fa fa-github text-white"></i>
                             @else
                             <i class="fa fa-github"></i>
@@ -102,8 +102,8 @@
                         Subscribe
                     </button>
                 </span>
-                <a class="ml-auto" href="{{ route('user.done', ['username' => Auth::user()->username]) }}">
-                    <img class="rounded-circle float-right avatar-30 mt-1 ml-2" src="{{ Auth::user()->avatar }}" height="50" width="50" />
+                <a class="ml-auto" href="{{ route('user.done', ['username' => Auth::check() && Auth::user()->username]) }}">
+                    <img class="rounded-circle float-right avatar-30 mt-1 ml-2" src="{{ Auth::check() && Auth::user()->avatar }}" height="50" width="50" />
                 </a>
             </div>
         </div>

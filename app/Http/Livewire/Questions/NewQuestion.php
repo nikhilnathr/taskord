@@ -13,40 +13,48 @@ class NewQuestion extends Component
 
     public function updated($field)
     {
-        $this->validateOnly($field, [
-            'title' => 'required|profanity|min:5|max:100',
-            'body' => 'required|profanity|min:3|max:10000',
-        ],
-        [
-            'title.profanity' => 'Please check your words!',
-            'body.profanity' => 'Please check your words!',
-        ]);
+        if (Auth::check()) {
+            $this->validateOnly($field, [
+                'title' => 'required|profanity|min:5|max:100',
+                'body' => 'required|profanity|min:3|max:10000',
+            ],
+            [
+                'title.profanity' => 'Please check your words!',
+                'body.profanity' => 'Please check your words!',
+            ]);
+        } else {
+            session()->flash('error', 'Forbidden!');
+        }
     }
 
     public function submit()
     {
-        $validatedData = $this->validate([
-            'title' => 'required|profanity|min:5|max:100',
-            'body' => 'required|profanity|min:3|max:10000',
-        ],
-        [
-            'title.profanity' => 'Please check your words!',
-            'body.profanity' => 'Please check your words!',
-        ]);
-
-        if (Auth::user()->isFlagged) {
-            return session()->flash('error', 'Your account is flagged!');
+        if (Auth::check()) {
+            $validatedData = $this->validate([
+                'title' => 'required|profanity|min:5|max:100',
+                'body' => 'required|profanity|min:3|max:10000',
+            ],
+            [
+                'title.profanity' => 'Please check your words!',
+                'body.profanity' => 'Please check your words!',
+            ]);
+    
+            if (Auth::user()->isFlagged) {
+                return session()->flash('error', 'Your account is flagged!');
+            }
+    
+            $question = Question::create([
+                'user_id' =>  Auth::user()->id,
+                'title' => $this->title,
+                'body' => $this->body,
+            ]);
+    
+            session()->flash('success', 'Question has been posted!');
+    
+            return redirect()->route('question.question', ['id' => $question->id]);
+        } else {
+            session()->flash('error', 'Forbidden!');
         }
-
-        $question = Question::create([
-            'user_id' =>  Auth::user()->id,
-            'title' => $this->title,
-            'body' => $this->body,
-        ]);
-
-        session()->flash('success', 'Question has been posted!');
-
-        return redirect()->route('question.question', ['id' => $question->id]);
     }
 
     public function render()
