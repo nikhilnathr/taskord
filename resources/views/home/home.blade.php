@@ -37,6 +37,9 @@
                                         </span>
                                     </a>
                                     @endif
+                                    @if ($question->created_at->isToday())
+                                    <span class="badge bg-success ml-2 align-middle">New</span>
+                                    @endif
                                 </div>
                             @endforeach
                         </div>
