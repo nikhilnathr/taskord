@@ -62,7 +62,7 @@ class Profile extends Component
         $validatedData = $this->validate([
             'firstname' => 'max:30',
             'lastname' => 'max:30',
-            'bio' => 'max:200',
+            'bio' => 'max:1000',
             'location' => 'max:30',
             'company' => 'max:30',
         ]);
