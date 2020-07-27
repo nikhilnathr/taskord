@@ -24,9 +24,9 @@ class Account extends Component
             $this->user->isBeta = ! $this->user->isBeta;
             $this->user->save();
             if ($this->user->isBeta) {
-                session()->flash('message', 'Your are now beta member!');
+                session()->flash('success', 'Your are now beta member!');
             } else {
-                session()->flash('message', 'Your are no longer a beta member!');
+                session()->flash('warning', 'Your are no longer a beta member!');
             }
         } else {
             return false;
@@ -61,7 +61,7 @@ class Account extends Component
             $this->user->email = $this->email;
             $this->user->save();
 
-            return session()->flash('message', 'Your account has been updated!');
+            return session()->flash('success', 'Your account has been updated!');
         }
     }
 

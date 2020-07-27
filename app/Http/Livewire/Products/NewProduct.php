@@ -74,7 +74,7 @@ class NewProduct extends Component
             'launched_at' => $launched_at,
         ]);
 
-        session()->flash('message', 'Product has been created!');
+        session()->flash('success', 'Product has been created!');
 
         return redirect()->route('product.done', ['slug' => $product->slug]);
     }

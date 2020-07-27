@@ -18,15 +18,15 @@ class Follow extends Component
     {
         if (Auth::check()) {
             if (Auth::user()->isFlagged) {
-                return session()->flash('message', 'Your account is flagged!');
+                return session()->flash('error', 'Your account is flagged!');
             }
             if (Auth::user()->id === $this->user->id) {
-                return session()->flash('message', 'You can\'t follow yourself!');
+                return session()->flash('error', 'You can\'t follow yourself!');
             } else {
                 Auth::user()->toggleFollow($this->user);
             }
         } else {
-            return session()->flash('message', 'Forbidden!');
+            return session()->flash('error', 'Forbidden!');
         }
     }
 

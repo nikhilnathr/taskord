@@ -4,10 +4,16 @@
             Account
         </div>
         <div class="card-body">
-            @if (session()->has('message'))
+            @if (session()->has('success'))
                 <div class="alert alert-success alert-dismissible fade show mb-3">
                     <button type="button" class="close" data-dismiss="alert">×</button>
-                    {{ session('message') }}
+                    {{ session('success') }}
+                </div>
+            @endif
+            @if (session()->has('warning'))
+                <div class="alert alert-warning alert-dismissible fade show mb-3">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    {{ session('warning') }}
                 </div>
             @endif
             <form wire:submit.prevent="updateAccount">

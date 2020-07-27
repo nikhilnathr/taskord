@@ -1,8 +1,8 @@
 <div class="card-body">
-    @if (session()->has('message'))
+    @if (session()->has('error'))
         <div class="alert alert-danger alert-dismissible fade show">
             <button type="button" class="close" data-dismiss="alert">×</button>
-            {{ session('message') }}
+            {{ session('error') }}
         </div>
     @endif
     <div class="align-items-center d-flex">

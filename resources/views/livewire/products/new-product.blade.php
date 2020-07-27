@@ -6,10 +6,10 @@
                 New Product
             </div>
             <div class="card-body">
-                @if (session()->has('message'))
+                @if (session()->has('success'))
                     <div class="alert alert-success alert-dismissible fade show mb-3">
                         <button type="button" class="close" data-dismiss="alert">×</button>
-                        {{ session('message') }}
+                        {{ session('success') }}
                     </div>
                 @endif
                 @if (session()->has('error'))

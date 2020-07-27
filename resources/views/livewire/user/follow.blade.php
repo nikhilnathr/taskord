@@ -10,7 +10,7 @@
         Follow
     </button>
     @endif
-    @if (session()->has('message'))
-        <span class="ml-2 text-danger font-weight-bold">{{ session('message') }}</span>
+    @if (session()->has('error'))
+        <span class="ml-2 text-danger font-weight-bold">{{ session('error') }}</span>
     @endif
 </div>

@@ -20,10 +20,10 @@ class SingleComment extends Component
     {
         if (Auth::check()) {
             if (Auth::user()->isFlagged) {
-                return session()->flash('message', 'Your account is flagged!');
+                return session()->flash('error', 'Your account is flagged!');
             }
             if (Auth::user()->id === $this->comment->user->id) {
-                return session()->flash('message', 'You can\'t praise your own comment!');
+                return session()->flash('error', 'You can\'t praise your own comment!');
             }
             $isPraised = TaskCommentPraise::where([
                 ['user_id', Auth::user()->id],
@@ -44,7 +44,7 @@ class SingleComment extends Component
                 $this->comment->refresh();
             }
         } else {
-            return session()->flash('message', 'Forbidden!');
+            return session()->flash('error', 'Forbidden!');
         }
     }
 
@@ -57,17 +57,17 @@ class SingleComment extends Component
     {
         if (Auth::check()) {
             if (Auth::user()->isFlagged) {
-                return session()->flash('message', 'Your account is flagged!');
+                return session()->flash('error', 'Your account is flagged!');
             }
             if (Auth::user()->staffShip or Auth::user()->id === $this->comment->user->id) {
                 $this->comment->task_comment_praise()->delete();
                 $this->comment->delete();
                 $this->emit('taskCommentDeleted');
             } else {
-                return session()->flash('message', 'Forbidden!');
+                return session()->flash('error', 'Forbidden!');
             }
         } else {
-            return session()->flash('message', 'Forbidden!');
+            return session()->flash('error', 'Forbidden!');
         }
     }
 

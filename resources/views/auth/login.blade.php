@@ -26,7 +26,7 @@
                         id="username"
                         name="username"
                         value="{{ old('username') }}"
-                        class="form-control {{ session('message') ? 'is-invalid' : '' }}"
+                        class="form-control {{ session('error') ? 'is-invalid' : '' }}"
                         placeholder="Username or Email"
                         autocomplete="username"
                         required
@@ -39,15 +39,15 @@
                         type="password"
                         id="password"
                         name="password"
-                        class="form-control {{ session('message') ? 'is-invalid' : '' }}"
+                        class="form-control {{ session('error') ? 'is-invalid' : '' }}"
                         placeholder="Password"
                         autocomplete="current-password"
                         required
                     >
                     <label for="password">Password</label>
-                    @if (Session::has('message'))
+                    @if (Session::has('error'))
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ session('message') }}</strong>
+                            <strong>{{ session('error') }}</strong>
                         </span>
                     @endif
                 </div>

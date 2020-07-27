@@ -50,7 +50,7 @@ class LoginController extends Controller
         if (auth()->attempt([$fieldType => $input['username'], 'password' => $input['password']])) {
             return redirect()->route('home');
         } else {
-            $request->session()->flash('message', 'Invalid login credentials');
+            $request->session()->flash('error', 'Invalid login credentials');
 
             return redirect()->back();
         }
