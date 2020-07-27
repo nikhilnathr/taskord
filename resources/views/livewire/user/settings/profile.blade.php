@@ -69,8 +69,8 @@
                     {{ session('showfollowing') }}
                 </div>
             @endif
-            <input wire:click="onlyFollowingsTasks" class="form-check-input" type="checkbox" {{ $user->onlyFollowingsTasks ? 'checked' : '' }}>
-            <span class="ml-1">Show only following user's tasks on homepage</span>
+            <input wire:click="onlyFollowingsTasks" id="onlyFollowingsTasks" class="form-check-input" type="checkbox" {{ $user->onlyFollowingsTasks ? 'checked' : '' }}>
+            <label for="onlyFollowingsTasks" class="ml-1">Show only following user's tasks on homepage</label>
             <span wire:loading wire:target="onlyFollowingsTasks" class="small ml-2 text-success font-weight-bold">Updating...</span>
         </div>
     </div>

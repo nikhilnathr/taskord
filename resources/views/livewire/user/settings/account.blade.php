@@ -38,8 +38,8 @@
                 <button type="submit" class="btn btn-primary">Save</button>
             </form>
             <div class="mt-3">
-                <input wire:click="enrollBeta" class="form-check-input" type="checkbox" {{ $user->isBeta ? 'checked' : '' }}>
-                <span class="ml-1">Enroll to Beta</span>
+                <input wire:click="enrollBeta" id="enrollBeta" class="form-check-input" type="checkbox" {{ $user->isBeta ? 'checked' : '' }}>
+                <label for="enrollBeta" class="ml-1">Enroll to Beta</label>
                 <span wire:loading wire:target="enrollBeta" class="small ml-2 text-success font-weight-bold">Enrolling...</span>
             </div>
         </div>

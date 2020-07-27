@@ -76,8 +76,8 @@
                     </div>
                     <div class="mb-3">
                         <div class="font-weight-bold mb-2">Status</div>
-                        <input class="form-check-input" type="checkbox" wire:model="launched">
-                        <span class="ml-1"><span class="ml-1">This product is launched</span></span>
+                        <input id="launched" class="form-check-input" type="checkbox" wire:model="launched">
+                        <label for="launched" class="ml-1">This product is launched</label>
                     </div>
                     <button type="submit" class="btn btn-primary">Save</button>
                 </form>
@@ -102,9 +102,7 @@
                         Subscribe
                     </button>
                 </span>
-                <a class="ml-auto" href="{{ route('user.done', ['username' => Auth::check() && Auth::user()->username]) }}">
-                    <img class="rounded-circle float-right avatar-30 mt-1 ml-2" src="{{ Auth::check() && Auth::user()->avatar }}" height="50" width="50" />
-                </a>
+                <img class="ml-auto rounded-circle float-right avatar-30 mt-1 ml-2" src="@auth{{ Auth::user()->avatar }}@endauth" />
             </div>
         </div>
         <div class="text-black-50">
