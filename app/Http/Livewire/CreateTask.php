@@ -66,64 +66,67 @@ class CreateTask extends Component
         [
             'task.profanity' => 'Please check your words!',
         ]);
-
-        if (Auth::user()->isFlagged) {
-            return session()->flash('error', 'Your account is flagged!');
-        }
-
-        $check_time = Auth::user()->tasks()
-            ->select('task', 'created_at')
-            ->where('created_at', '>', Carbon::now()->subMinutes(3)->toDateTimeString())
-            ->latest()->get()->toArray();
-        if (count($this->search($check_time, 'task', strtolower($this->task))) > 0) {
-            return session()->flash('error', 'Your already posted this task, wait for sometime!');
-        }
-
-        $product = $this->getProductIDFromHashtag($this->task);
-
-        if ($product) {
-            $type = 'product';
-            $product_id = $product;
+        if (Auth::check()) {
+            if (Auth::user()->isFlagged) {
+                return session()->flash('error', 'Your account is flagged!');
+            }
+    
+            $check_time = Auth::user()->tasks()
+                ->select('task', 'created_at')
+                ->where('created_at', '>', Carbon::now()->subMinutes(3)->toDateTimeString())
+                ->latest()->get()->toArray();
+            if (count($this->search($check_time, 'task', strtolower($this->task))) > 0) {
+                return session()->flash('error', 'Your already posted this task, wait for sometime!');
+            }
+    
+            $product = $this->getProductIDFromHashtag($this->task);
+    
+            if ($product) {
+                $type = 'product';
+                $product_id = $product;
+            } else {
+                $type = 'user';
+                $product_id = null;
+            }
+    
+            if ($this->image) {
+                $image = $this->image->store('photos');
+            } else {
+                $image = null;
+            }
+    
+            $state = ! $this->done ? false : true;
+    
+            if ($state) {
+                $done_at = Carbon::now();
+                $created_at = Carbon::now();
+                $updated_at = Carbon::now();
+            } else {
+                $done_at = null;
+                $created_at = Carbon::now();
+                $updated_at = Carbon::now();
+            }
+    
+            $task = Task::create([
+                'user_id' =>  Auth::user()->id,
+                'product_id' =>  $product_id,
+                'task' => $this->task,
+                'done' => $state,
+                'done_at' => $done_at,
+                'created_at' => $created_at,
+                'updated_at' => $updated_at,
+                'image' => $image,
+                'type' => $type,
+            ]);
+    
+            $this->emit('taskAdded');
+            $this->reset();
+            Auth::user()->givePoint(new TaskCreated($task));
+    
+            return session()->flash('success', 'Task has been created!');
         } else {
-            $type = 'user';
-            $product_id = null;
+            return session()->flash('error', 'Forbidden!');
         }
-
-        if ($this->image) {
-            $image = $this->image->store('photos');
-        } else {
-            $image = null;
-        }
-
-        $state = ! $this->done ? false : true;
-
-        if ($state) {
-            $done_at = Carbon::now();
-            $created_at = Carbon::now();
-            $updated_at = Carbon::now();
-        } else {
-            $done_at = null;
-            $created_at = Carbon::now();
-            $updated_at = Carbon::now();
-        }
-
-        $task = Task::create([
-            'user_id' =>  Auth::user()->id,
-            'product_id' =>  $product_id,
-            'task' => $this->task,
-            'done' => $state,
-            'done_at' => $done_at,
-            'created_at' => $created_at,
-            'updated_at' => $updated_at,
-            'image' => $image,
-            'type' => $type,
-        ]);
-
-        $this->emit('taskAdded');
-        $this->reset();
-        Auth::user()->givePoint(new TaskCreated($task));
-
-        return session()->flash('success', 'Task has been created!');
     }
 
     public function render()
