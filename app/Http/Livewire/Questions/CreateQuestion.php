@@ -6,7 +6,7 @@ use App\Question;
 use Auth;
 use Livewire\Component;
 
-class NewQuestion extends Component
+class CreateQuestion extends Component
 {
     public $title;
     public $body;
@@ -59,6 +59,6 @@ class NewQuestion extends Component
 
     public function render()
     {
-        return view('livewire.questions.new-question');
+        return view('livewire.questions.create-question');
     }
 }

@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="container">
-            @livewire('questions.new-question')
+            @livewire('questions.create-question')
         </div>
     </div>
 </div>
