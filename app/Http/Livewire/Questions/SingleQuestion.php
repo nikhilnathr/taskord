@@ -64,6 +64,7 @@ class SingleQuestion extends Component
 
             if (Auth::user()->staffShip or Auth::user()->id === $this->question->user_id) {
                 $this->question->delete();
+                session()->flash('question_deleted', 'Question has been deleted!');
 
                 return redirect()->route('questions.newest');
             } else {

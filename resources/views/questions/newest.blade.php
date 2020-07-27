@@ -21,6 +21,12 @@
                             New Question
                         </a>
                     </div>
+                    @if (session()->has('question_deleted'))
+                        <div class="alert alert-success alert-dismissible fade show mt-2">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            {{ session('question_deleted') }}
+                        </div>
+                    @endif
                     @livewire('questions.questions', [
                         'type' => $type,
                         'page' => 1,
