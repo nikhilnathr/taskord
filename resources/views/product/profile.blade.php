@@ -1,3 +1,9 @@
+@if (session()->has('product_created'))
+    <div class="alert alert-success alert-dismissible fade show mt-2">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        {{ session('product_created') }}
+    </div>
+@endif
 <div class="card">
     <div class="card-body d-flex align-items-center">
         <img class="rounded avatar-120" src="{{ $product->avatar }}"/>
