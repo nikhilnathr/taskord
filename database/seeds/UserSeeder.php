@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
             'company' => 'Taskord',
             'bio' => $faker->sentence($nbWords = 6, $variableNbWords = true),
             'email' => 'test@test.com',
-            'avatar' => 'https://github.com/evildabbit.png',
+            'avatar' => 'https://github.com/dabbit.png',
             'password' => Hash::make('test'),
             'reputation' => 550,
             'website' => 'https://github.com/dabbit',

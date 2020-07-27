@@ -35,7 +35,7 @@ class ProductSeeder extends Seeder
                 'avatar' => 'https://avatar.tobi.sh/'.$faker->userName.'.svg?text='.$faker->emoji,
                 'description' => $faker->sentence($nbWords = 6, $variableNbWords = true),
                 'user_id' => $faker->numberBetween($min = 1, $max = 50),
-                'website' => 'https://github.com/evildabbit',
+                'website' => 'https://github.com/dabbit',
                 'twitter' => $faker->userName,
                 'github' => $faker->userName,
                 'producthunt' => $faker->userName,
