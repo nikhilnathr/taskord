@@ -46,6 +46,24 @@
                             </span>
                         </div>
                     </div>
+                    @if ($task->product_id)
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            Product
+                        </div>
+                        <div class="card-body d-flex align-items-center">
+                            <img class="rounded avatar-40 mt-1" src="{{ \App\Product::find($task->product_id)->avatar }}" />
+                            <span class="ml-3">
+                                <a href="{{ route('user.done', ['username' => $task->user->username]) }}" class="align-text-top text-dark">
+                                    <span class="font-weight-bold">
+                                        {{ \App\Product::find($task->product_id)->name }}
+                                    </span>
+                                    <div>{{ \App\Product::find($task->product_id)->description }}</div>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                    @endif
                     @if ($task->task_comments->count() > 0)
                     <div class="card mb-4">
                         <div class="card-header">
