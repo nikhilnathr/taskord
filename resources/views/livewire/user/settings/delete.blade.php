@@ -1,8 +1,8 @@
 <div class="col-md-8">
-    @if (session()->has('message'))
+    @if (session()->has('success'))
         <div class="alert alert-success alert-dismissible fade show mb-3">
             <button type="button" class="close" data-dismiss="alert">×</button>
-            {{ session('message') }}
+            {{ session('success') }}
         </div>
     @endif
     <div class="card mb-4">

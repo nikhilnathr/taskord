@@ -22,7 +22,7 @@ class Password extends Component
         $this->user->email = $this->email;
         $this->user->save();
 
-        return session()->flash('message', 'Your account has been updated!');
+        return session()->flash('success', 'Your account has been updated!');
     }
 
     public function render()
