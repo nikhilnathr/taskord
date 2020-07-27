@@ -56,7 +56,7 @@ class CreateTask extends Component
 
         return $results;
     }
-    
+
     public function updatedImage()
     {
         if (Auth::check()) {
@@ -78,7 +78,7 @@ class CreateTask extends Component
             [
                 'task.profanity' => 'Please check your words!',
             ]);
-            
+
             if (Auth::user()->isFlagged) {
                 return session()->flash('error', 'Your account is flagged!');
             }
