@@ -72,12 +72,12 @@
             @endguest
             @if ($type !== "question.question")
             <a href="{{ route('question.question', ['id' => $question->id]) }}" class="avatar-stack text-dark">
-                @foreach ($question->answer->take(5) as $answer)
-                <img class="rounded-circle avatar avatar-30" src="{{ $answer->user->avatar }}" />
+                @foreach ($question->answer->groupBy('user_id')->take(5) as $answer)
+                <img class="rounded-circle avatar avatar-30" src="{{ $answer[0]->user->avatar }}" />
                 @endforeach
-                @if ($question->answer->count() >= 5)
+                @if ($question->answer->groupBy('user_id')->count() >= 5)
                 <span class="ml-3 pl-1 align-middle font-weight-bold small">
-                    +{{ $question->answer->count() - 5 }} more
+                    +{{ $question->answer->groupBy('user_id')->count() - 5 }} more
                 </span>
                 @endif
             </a>
