@@ -38,7 +38,14 @@
                             <span class="font-weight-bold ml-2">{{ $user->followers()->count() }}</span>
                             {{ $user->followers()->count() <= 1 ? "Follower" : "Followers" }}
                         </a>
-                        <span class="font-weight-bold ml-2">{{ $user->task_praise->count() }}</span>
+                        <span class="font-weight-bold ml-2">
+                            {{
+                                $user->task_praise->count() + 
+                                $user->task_comment_praise->count() +
+                                $user->question_praise->count() +
+                                $user->answer_praise->count()
+                            }}
+                        </span>
                         {{ $user->task_praise->count() <= 1 ? "Praise" : "Praises" }}
                     </span>
                     @if ($user->bio)

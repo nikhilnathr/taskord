@@ -12,6 +12,11 @@
                             'question' => $question,
                         ])
                     </div>
+                    @if (Auth::check() && !Auth::user()->isFlagged)
+                        @livewire('answer.create-answer', [
+                            'question' => $question
+                        ])
+                    @endif
                     @guest
                         <a href="/login" class="btn btn-block btn-success mt-4 text-white font-weight-bold">
                             {{ Emoji::wavingHand() }} Login or Signup to comment

@@ -10,6 +10,10 @@ use Livewire\Component;
 
 class Answers extends Component
 {
+    public $listeners = [
+        'answerAdded' => 'render',
+    ];
+    
     public $question;
     public $page;
     public $perPage;
@@ -33,6 +37,7 @@ class Answers extends Component
     {
         $answers = Answer::cacheFor(60 * 60)
             ->where('question_id', $this->question->id)
+            ->orderBy('created_at', 'DESC')
             ->get();
 
         return view('livewire.answer.answers', [
