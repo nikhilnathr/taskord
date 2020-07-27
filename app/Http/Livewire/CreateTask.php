@@ -56,17 +56,29 @@ class CreateTask extends Component
 
         return $results;
     }
+    
+    public function updatedImage()
+    {
+        if (Auth::check()) {
+            $this->validate([
+                'image' => 'nullable|mimes:jpeg,jpg,png,gif|max:2048',
+            ]);
+        } else {
+            return session()->flash('error', 'Forbidden!');
+        }
+    }
 
     public function submit()
     {
-        $validatedData = $this->validate([
-            'task' => 'required|profanity',
-            'image' => 'nullable|image|max:2048',
-        ],
-        [
-            'task.profanity' => 'Please check your words!',
-        ]);
         if (Auth::check()) {
+            $validatedData = $this->validate([
+                'task' => 'required|profanity',
+                'image' => 'nullable|mimes:jpeg,jpg,png,gif|max:2048',
+            ],
+            [
+                'task.profanity' => 'Please check your words!',
+            ]);
+            
             if (Auth::user()->isFlagged) {
                 return session()->flash('error', 'Your account is flagged!');
             }

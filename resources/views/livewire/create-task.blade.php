@@ -37,6 +37,7 @@
                 <button wire:loading.attr="disabled" class="btn btn-sm btn-primary" type="submit">
                     <i class="fa fa-plus mr-1"></i>
                     Add Task
+                    <span wire:target="submit" wire:loading class="spinner-border spinner-border-mini ml-2" role="status"></span>
                 </button>
                 </div>
                 <div wire:loading wire:target="image">
@@ -44,9 +45,13 @@
                       <span class="sr-only">Loading...</span>
                     </div>
                 </div>
+                @error('image')
+                <div class="text-danger font-weight-bold mt-3">{{ $message }}</div>
+                @else
                 @if ($image)
                 <img class="img-fluid border mt-3 rounded" src="{{ $image->temporaryUrl() }}">
                 @endif
+                @enderror
             </form>
         </div>
     </div>
