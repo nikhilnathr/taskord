@@ -16,8 +16,7 @@ class UserSeeder extends Seeder
     {
         $faker = Faker::create();
         DB::table('users')->insert([
-            'firstname' => 'Evil',
-            'lastname' => 'Dabbit',
+            'firstname' => 'Dabbit',
             'username' => 'test',
             'company' => 'Taskord',
             'bio' => $faker->sentence($nbWords = 6, $variableNbWords = true),
@@ -25,7 +24,7 @@ class UserSeeder extends Seeder
             'avatar' => 'https://github.com/evildabbit.png',
             'password' => Hash::make('test'),
             'reputation' => 550,
-            'website' => 'https://github.com/evildabbit',
+            'website' => 'https://github.com/dabbit',
             'twitter' => $faker->userName,
             'twitch' => $faker->userName,
             'github' => $faker->userName,

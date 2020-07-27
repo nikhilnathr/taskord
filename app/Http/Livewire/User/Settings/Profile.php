@@ -43,42 +43,28 @@ class Profile extends Component
     public function updated($field)
     {
         $this->validateOnly($field, [
-            'firstname' => 'profanity|max:30',
-            'lastname' => 'profanity|max:30',
-            'bio' => 'profanity|max:200',
-            'location' => 'profanity|max:30',
-            'company' => 'profanity|max:30',
+            'firstname' => 'max:30',
+            'lastname' => 'max:30',
+            'bio' => 'max:1000',
+            'location' => 'max:30',
+            'company' => 'max:30',
             'website' => 'active_url',
             'twitter' => 'alpha_dash|max:30',
             'twitch' => 'alpha_dash|max:200',
             'telegram' => 'alpha_dash|max:30',
             'github' => 'alpha_dash|max:30',
             'youtube' => 'alpha_dash|max:30',
-        ],
-        [
-            'firstname.profanity' => 'Please check your words!',
-            'lastname.profanity' => 'Please check your words!',
-            'bio.profanity' => 'Please check your words!',
-            'location.profanity' => 'Please check your words!',
-            'company.profanity' => 'Please check your words!',
         ]);
     }
 
     public function updateProfile()
     {
         $validatedData = $this->validate([
-            'firstname' => 'profanity|max:30',
-            'lastname' => 'profanity|max:30',
-            'bio' => 'profanity|max:200',
-            'location' => 'profanity|max:30',
-            'company' => 'profanity|max:30',
-        ],
-        [
-            'firstname.profanity' => 'Please check your words!',
-            'lastname.profanity' => 'Please check your words!',
-            'bio.profanity' => 'Please check your words!',
-            'location.profanity' => 'Please check your words!',
-            'company.profanity' => 'Please check your words!',
+            'firstname' => 'max:30',
+            'lastname' => 'max:30',
+            'bio' => 'max:200',
+            'location' => 'max:30',
+            'company' => 'max:30',
         ]);
 
         if (Auth::check()) {
@@ -96,20 +82,12 @@ class Profile extends Component
     public function updateSocial()
     {
         $validatedData = $this->validate([
-            'website' => 'profanity|active_url',
-            'twitter' => 'profanity|alpha_dash|max:30',
-            'twitch' => 'profanity|alpha_dash|max:200',
-            'telegram' => 'profanity|alpha_dash|max:30',
-            'github' => 'profanity|alpha_dash|max:30',
-            'youtube' => 'profanity|alpha_dash|max:30',
-        ],
-        [
-            'website.profanity' => 'Please check your words!',
-            'twitter.profanity' => 'Please check your words!',
-            'twitch.profanity' => 'Please check your words!',
-            'telegram.profanity' => 'Please check your words!',
-            'github.profanity' => 'Please check your words!',
-            'youtube.profanity' => 'Please check your words!',
+            'website' => 'active_url',
+            'twitter' => 'alpha_dash|max:30',
+            'twitch' => 'alpha_dash|max:200',
+            'telegram' => 'alpha_dash|max:30',
+            'github' => 'alpha_dash|max:30',
+            'youtube' => 'alpha_dash|max:30',
         ]);
 
         if (Auth::check()) {

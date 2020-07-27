@@ -20,7 +20,7 @@ class ProductSeeder extends Seeder
             'avatar' => 'https://github.com/taskord.png',
             'description' => 'Get things done socially with Taskord',
             'user_id' => 1,
-            'website' => 'https://github.com/evildabbit',
+            'website' => 'https://github.com/dabbit',
             'twitter' => $faker->userName,
             'github' => $faker->userName,
             'producthunt' => $faker->userName,
