@@ -10,6 +10,7 @@ class SingleQuestion extends Component
 {
     public $question;
     public $type;
+    public $confirming;
 
     public function mount($question, $type)
     {
@@ -48,6 +49,11 @@ class SingleQuestion extends Component
             return session()->flash('error', 'Forbidden!');
         }
     }
+    
+    public function confirmDelete()
+    {
+        $this->confirming = $this->question->id;
+    }
 
     public function deleteQuestion()
     {
@@ -58,7 +64,6 @@ class SingleQuestion extends Component
 
             if (Auth::user()->staffShip or Auth::user()->id === $this->question->user_id) {
                 $this->question->delete();
-
                 return redirect()->route('questions.newest');
             } else {
                 session()->flash('error', 'Forbidden!');

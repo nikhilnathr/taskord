@@ -63,9 +63,15 @@
                     Edit
                 </span>
             </a>
-            <button type="button" class="btn btn-task btn-outline-danger text-white mr-1" wire:click="deleteQuestion" wire:loading.attr="disabled">
+            @if ($confirming === $question->id)
+            <button type="button" class="btn btn-task btn-danger mr-1" wire:click="deleteQuestion" wire:loading.attr="disabled">
+                Are you sure?
+            </button>
+            @else
+            <button type="button" class="btn btn-task btn-outline-danger mr-1" wire:click="confirmDelete" wire:loading.attr="disabled">
                 {{ Emoji::wastebasket() }}
             </button>
+            @endif
             @endif
             @endauth
             @guest

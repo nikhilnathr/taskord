@@ -9,6 +9,7 @@ use Livewire\Component;
 class SingleAnswer extends Component
 {
     public $answer;
+    public $confirming;
 
     public function mount($answer)
     {
@@ -46,6 +47,11 @@ class SingleAnswer extends Component
             return session()->flash('error', 'Forbidden!');
         }
     }
+    
+    public function confirmDelete()
+    {
+        $this->confirming = $this->answer->id;
+    }
 
     public function deleteAnswer()
     {
@@ -56,10 +62,7 @@ class SingleAnswer extends Component
 
             if (Auth::user()->staffShip or Auth::user()->id === $this->answer->user->id) {
                 $this->answer->delete();
-
-                return redirect()->route('question.question', [
-                    'id' => $this->answer->question->id,
-                ]);
+                $this->emit('answerDeleted');
             } else {
                 session()->flash('error', 'Forbidden!');
             }

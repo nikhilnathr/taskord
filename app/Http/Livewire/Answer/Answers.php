@@ -12,6 +12,7 @@ class Answers extends Component
 {
     public $listeners = [
         'answerAdded' => 'render',
+        'answerDeleted' => 'render',
     ];
     
     public $question;

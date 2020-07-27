@@ -44,10 +44,16 @@
                 </button>
             @endif
             @if (Auth::user()->staffShip or Auth::user()->id === $answer->user->id)
-                <button type="button" class="btn btn-task btn-outline-danger text-white mr-1" wire:click="deleteAnswer" wire:loading.attr="disabled">
+                @if ($confirming === $answer->id)
+                <button type="button" class="btn btn-task btn-danger mr-1" wire:click="deleteAnswer" wire:loading.attr="disabled">
+                    Are you sure?
+                </button>
+                @else
+                <button type="button" class="btn btn-task btn-outline-danger mr-1" wire:click="confirmDelete" wire:loading.attr="disabled">
                     {{ Emoji::wastebasket() }}
                 </button>
                 @endif
+            @endif
             @endauth
             @guest
                 <a href="/login" class="btn btn-task btn-outline-success mr-1">
