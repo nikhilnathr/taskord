@@ -3,6 +3,10 @@ $card-bg: #343a40;
 $border-bg: #4c555d;
 $input-bg: #242629;
 
+a:hover {
+    color: #7d79cc;
+}
+
 body {
     background-color: $body-bg;
     color: #ffffff;
@@ -91,4 +95,18 @@ body {
 
 .border {
     border: 1px solid $border-bg !important;
+}
+
+// Hashtag
+.task-font {
+    a {
+        background: #616b75;
+        padding: 0px 5px;
+        border-radius: 5px;
+        color: #fff;
+        
+        &:hover {
+            background: #7e8c9a;
+        }
+    }
 }
