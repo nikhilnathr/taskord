@@ -11,7 +11,7 @@
         <div class="card mt-4">
             @livewire('answer.single-answer', [
                 'answer' => $answer
-            ])
+            ], key($answer->id))
         </div>
     @endforeach
     <div class="mt-4">
