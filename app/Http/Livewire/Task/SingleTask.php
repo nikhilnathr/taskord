@@ -89,7 +89,7 @@ class SingleTask extends Component
             if (Auth::user()->isFlagged) {
                 return session()->flash('error', 'Your account is flagged!');
             }
-            
+
             if (Auth::user()->staffShip or Auth::user()->id === $this->task->user->id) {
                 $this->task->delete();
                 $this->emitUp('taskDeleted');

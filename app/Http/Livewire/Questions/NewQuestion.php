@@ -38,19 +38,19 @@ class NewQuestion extends Component
                 'title.profanity' => 'Please check your words!',
                 'body.profanity' => 'Please check your words!',
             ]);
-    
+
             if (Auth::user()->isFlagged) {
                 return session()->flash('error', 'Your account is flagged!');
             }
-    
+
             $question = Question::create([
                 'user_id' =>  Auth::user()->id,
                 'title' => $this->title,
                 'body' => $this->body,
             ]);
-    
+
             session()->flash('success', 'Question has been posted!');
-    
+
             return redirect()->route('question.question', ['id' => $question->id]);
         } else {
             session()->flash('error', 'Forbidden!');

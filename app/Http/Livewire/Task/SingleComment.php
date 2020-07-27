@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire\Task;
 
-use Livewire\Component;
-use Auth;
 use App\TaskCommentPraise;
+use Auth;
+use Livewire\Component;
 
 class SingleComment extends Component
 {
@@ -15,7 +15,7 @@ class SingleComment extends Component
     {
         $this->comment = $comment;
     }
-    
+
     public function togglePraise()
     {
         if (Auth::check()) {

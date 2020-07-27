@@ -26,7 +26,7 @@ class TaskComment extends Model
     {
         return $this->belongsTo('App\Task');
     }
-    
+
     public function task_comment_praise()
     {
         return $this->hasMany('App\TaskCommentPraise');

@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire\Answer;
 
-use Livewire\Component;
-use Auth;
 use App\Answer;
+use Auth;
+use Livewire\Component;
 
 class CreateAnswer extends Component
 {
@@ -15,7 +15,7 @@ class CreateAnswer extends Component
     {
         $this->question = $question;
     }
-    
+
     public function updated($field)
     {
         if (Auth::check()) {
@@ -29,7 +29,7 @@ class CreateAnswer extends Component
             session()->flash('error', 'Forbidden!');
         }
     }
-    
+
     public function submit()
     {
         if (Auth::check()) {
@@ -39,26 +39,26 @@ class CreateAnswer extends Component
             [
                 'answer.profanity' => 'Please check your words!',
             ]);
-    
+
             if (Auth::user()->isFlagged) {
                 return session()->flash('error', 'Your account is flagged!');
             }
-    
+
             $canswer = Answer::create([
                 'user_id' =>  Auth::user()->id,
                 'question_id' =>  $this->question->id,
                 'answer' => $this->answer,
             ]);
-    
+
             $this->emit('answerAdded');
             $this->answer = '';
-    
+
             return session()->flash('success', 'Answer has been added!');
         } else {
             session()->flash('error', 'Forbidden!');
         }
     }
-    
+
     public function render()
     {
         return view('livewire.answer.create-answer');

@@ -14,7 +14,7 @@ class Answers extends Component
         'answerAdded' => 'render',
         'answerDeleted' => 'render',
     ];
-    
+
     public $question;
     public $page;
     public $perPage;

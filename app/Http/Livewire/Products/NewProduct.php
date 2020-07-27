@@ -49,13 +49,13 @@ class NewProduct extends Component
                 'slug.profanity' => 'Please check your words!',
                 'description.profanity' => 'Please check your words!',
             ]);
-    
+
             if (Auth::user()->isFlagged) {
                 return session()->flash('error', 'Your account is flagged!');
             }
-    
+
             $launched = ! $this->launched ? false : true;
-    
+
             if ($launched) {
                 $launched_status = true;
                 $launched_at = Carbon::now();
@@ -64,7 +64,7 @@ class NewProduct extends Component
                 $launched_status = false;
                 $launched_at = null;
             }
-    
+
             $product = Product::create([
                 'user_id' =>  Auth::user()->id,
                 'name' => $this->name,
@@ -78,9 +78,9 @@ class NewProduct extends Component
                 'launched' => $launched_status,
                 'launched_at' => $launched_at,
             ]);
-    
+
             session()->flash('success', 'Product has been created!');
-    
+
             return redirect()->route('product.done', ['slug' => $product->slug]);
         } else {
             session()->flash('error', 'Forbidden!');

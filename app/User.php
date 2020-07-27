@@ -62,7 +62,7 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\TaskComment');
     }
-    
+
     public function task_comment_praise()
     {
         return $this->hasMany('App\TaskCommentPraise');

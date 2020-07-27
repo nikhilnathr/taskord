@@ -3,9 +3,9 @@
 namespace App\Http\Livewire;
 
 use App\Product;
+use App\Question;
 use App\Task;
 use App\User;
-use App\Question;
 use Livewire\Component;
 
 class Search extends Component
