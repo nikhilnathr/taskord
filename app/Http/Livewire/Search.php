@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Product;
 use App\Task;
 use App\User;
+use App\Question;
 use Livewire\Component;
 
 class Search extends Component
@@ -13,6 +14,7 @@ class Search extends Component
     public $tasks;
     public $users;
     public $products;
+    public $questions;
 
     public function mount()
     {
@@ -20,13 +22,14 @@ class Search extends Component
         $this->tasks;
         $this->users;
         $this->products;
+        $this->questions;
     }
 
     public function updatedQuery()
     {
         $this->tasks = Task::cacheFor(60 * 60)
             ->where('task', 'LIKE', '%'.$this->query.'%')
-            ->limit(5)
+            ->limit(3)
             ->get();
         $this->users = User::cacheFor(60 * 60)
             ->where('username', 'LIKE', '%'.$this->query.'%')
@@ -37,6 +40,10 @@ class Search extends Component
         $this->products = Product::cacheFor(60 * 60)
             ->where('slug', 'LIKE', '%'.$this->query.'%')
             ->orWhere('name', 'LIKE', '%'.$this->query.'%')
+            ->limit(3)
+            ->get();
+        $this->questions = Question::cacheFor(60 * 60)
+            ->where('title', 'LIKE', '%'.$this->query.'%')
             ->limit(3)
             ->get();
     }

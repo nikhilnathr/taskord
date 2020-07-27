@@ -25,7 +25,9 @@
                         <span class="text-black-50">{{ $task->task_praise->count() }}</span>
                     </span>
                 </span>
-                <img class="rounded-circle float-right avatar-30" src="{{ $task->user->avatar }}" />
+                <a href="{{ route('user.done', ['username' => $task->user->username]) }}">
+                    <img class="rounded-circle float-right avatar-30" src="{{ $task->user->avatar }}" />
+                </a>
             </li>
             @endforeach
         @else
@@ -61,11 +63,32 @@
                         <span class="font-weight-bold">{{ $product->name }}</span>
                     </a>
                 </span>
-                <img class="rounded-circle float-right avatar-30" src="{{ $product->user->avatar }}" />
+                <a href="{{ route('user.done', ['username' => $product->user->username]) }}">
+                    <img class="rounded-circle float-right avatar-30" src="{{ $product->user->avatar }}" />
+                </a>
             </li>
             @endforeach
         @else
             <li class="list-group-item">We couldn’t find any products matching <span class="font-weight-bold">{{ $query }}</span>!</li>
+        @endif
+        <li class="list-group-item">
+            <span class="h5">Questions</span>
+        </li>
+        @if (count($questions) > 0)
+            @foreach ($questions as $question)
+            <li class="list-group-item">
+                <span>
+                    <a class="ml-2 task-font text-dark" href="{{ route('question.question', ['id' => $question->id]) }}">
+                        <span class="font-weight-bold">{{ Str::words($question->title, '8') }}</span>
+                    </a>
+                </span>
+                <a href="{{ route('user.done', ['username' => $question->user->username]) }}">
+                    <img class="rounded-circle float-right avatar-30" src="{{ $question->user->avatar }}" />
+                </a>
+            </li>
+            @endforeach
+        @else
+            <li class="list-group-item">We couldn’t find any questions matching <span class="font-weight-bold">{{ $query }}</span>!</li>
         @endif
         @endif
     </ul>
