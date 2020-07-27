@@ -1,6 +1,6 @@
 <div class="card-body">
     @if (session()->has('message'))
-        <div class="alert alert-danger alert-dismissible fade show mt-3">
+        <div class="alert alert-danger alert-dismissible fade show">
             <button type="button" class="close" data-dismiss="alert">×</button>
             {{ session('message') }}
         </div>

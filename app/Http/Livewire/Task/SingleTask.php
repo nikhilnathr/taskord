@@ -38,10 +38,10 @@ class SingleTask extends Component
 
                 return true;
             } else {
-                return session()->flash('message', 'Forbidden!');
+                return session()->flash('error', 'Forbidden!');
             }
         } else {
-            return session()->flash('message', 'Forbidden!');
+            return session()->flash('error', 'Forbidden!');
         }
     }
 
@@ -49,10 +49,10 @@ class SingleTask extends Component
     {
         if (Auth::check()) {
             if (Auth::user()->isFlagged) {
-                return session()->flash('message', 'Your account is flagged!');
+                return session()->flash('error', 'Your account is flagged!');
             }
             if (Auth::user()->id === $this->task->user->id) {
-                return session()->flash('message', 'You can\'t praise your own task!');
+                return session()->flash('error', 'You can\'t praise your own task!');
             }
             $isPraised = TaskPraise::where([
                 ['user_id', Auth::user()->id],
@@ -74,7 +74,7 @@ class SingleTask extends Component
                 givePoint(new PraiseCreated($praise));
             }
         } else {
-            return session()->flash('message', 'Forbidden!');
+            return session()->flash('error', 'Forbidden!');
         }
     }
 
@@ -87,7 +87,7 @@ class SingleTask extends Component
     {
         if (Auth::check()) {
             if (Auth::user()->isFlagged) {
-                return session()->flash('message', 'Your account is flagged!');
+                return session()->flash('error', 'Your account is flagged!');
             }
             if (Auth::user()->staffShip or Auth::user()->id === $this->task->user->id) {
                 $this->task->task_comment()->delete();
@@ -95,10 +95,10 @@ class SingleTask extends Component
                 $this->task->delete();
                 $this->emitUp('taskDeleted');
             } else {
-                return session()->flash('message', 'Forbidden!');
+                return session()->flash('error', 'Forbidden!');
             }
         } else {
-            return session()->flash('message', 'Forbidden!');
+            return session()->flash('error', 'Forbidden!');
         }
     }
 

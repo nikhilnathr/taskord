@@ -1,4 +1,10 @@
 <div>
+    @if (session()->has('error'))
+        <div class="alert alert-danger alert-dismissible fade show m-3 mb-0">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            {{ session('error') }}
+        </div>
+    @endif
     <div class="card-body d-flex align-items-center">
         <img class="avatar-40 rounded-circle" src="{{ $answer->user->avatar }}" />
         <span class="ml-2">

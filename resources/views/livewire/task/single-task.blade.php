@@ -1,4 +1,10 @@
 <li class="list-group-item p-3">
+    @if (session()->has('error'))
+        <div class="alert alert-danger alert-dismissible fade show">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            {{ session('error') }}
+        </div>
+    @endif
     <div class="align-items-center d-flex">
         <img class="avatar-40 rounded-circle" src="{{ $task->user->avatar }}" />
         <span class="ml-2">
@@ -84,11 +90,5 @@
             </a>
             @endif
         </div>
-        @if (session()->has('message'))
-            <div class="alert alert-danger alert-dismissible fade show mt-3">
-                <button type="button" class="close" data-dismiss="alert">×</button>
-                {{ session('message') }}
-            </div>
-        @endif
     </div>
 </li>

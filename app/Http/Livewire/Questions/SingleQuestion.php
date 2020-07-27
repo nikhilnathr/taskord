@@ -21,10 +21,10 @@ class SingleQuestion extends Component
     {
         if (Auth::check()) {
             if (Auth::user()->isFlagged) {
-                return session()->flash('message', 'Your account is flagged!');
+                return session()->flash('error', 'Your account is flagged!');
             }
             if (Auth::user()->id === $this->question->user->id) {
-                return session()->flash('message', 'You can\'t praise your own question!');
+                return session()->flash('error', 'You can\'t praise your own question!');
             }
             $isPraised = QuestionPraise::where([
                 ['user_id', Auth::user()->id],
@@ -45,7 +45,7 @@ class SingleQuestion extends Component
                 $this->question->refresh();
             }
         } else {
-            return session()->flash('message', 'Forbidden!');
+            return session()->flash('error', 'Forbidden!');
         }
     }
 
