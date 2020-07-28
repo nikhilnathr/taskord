@@ -14,7 +14,7 @@ class TaskController extends Controller
             'task' => $task,
         ]);
     }
-    
+
     public function tasks()
     {
         return view('tasks/tasks');

@@ -2,21 +2,20 @@
 
 namespace App\Http\Livewire\Tasks;
 
-use Livewire\Component;
-use App\Task;
+use App\Gamify\Points\TaskCompleted;
 use Auth;
 use Carbon\Carbon;
-use App\Gamify\Points\TaskCompleted;
+use Livewire\Component;
 
 class SingleTask extends Component
 {
     public $task;
-    
+
     public function mount($task)
     {
         $this->task = $task;
     }
-    
+
     public function checkTask()
     {
         if (Auth::check()) {
@@ -32,7 +31,7 @@ class SingleTask extends Component
             return session()->flash('error', 'Forbidden!');
         }
     }
-    
+
     public function render()
     {
         return view('livewire.tasks.single-task');
