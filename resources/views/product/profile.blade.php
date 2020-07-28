@@ -1,6 +1,7 @@
 @if (session()->has('product_created'))
     <div class="alert alert-success alert-dismissible fade show mt-2">
         <button type="button" class="close" data-dismiss="alert">×</button>
+        <i class="fa fa-check mr-1"></i>
         {{ session('product_created') }}
     </div>
 @endif

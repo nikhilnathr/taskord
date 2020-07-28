@@ -45,7 +45,7 @@
                         required
                     >
                     <label for="password">Password</label>
-                    @if (Session::has('error'))
+                    @if (session()->has('error'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ session('error') }}</strong>
                         </span>

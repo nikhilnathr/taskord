@@ -2,6 +2,7 @@
     @if (session()->has('error'))
         <div class="alert alert-danger alert-dismissible fade show m-3 mb-0">
             <button type="button" class="close" data-dismiss="alert">×</button>
+            <i class="fa fa-times mr-1"></i>
             {{ session('error') }}
         </div>
     @endif

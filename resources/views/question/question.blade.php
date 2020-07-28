@@ -9,12 +9,14 @@
                     @if (session()->has('question_created'))
                         <div class="alert alert-success alert-dismissible fade show mt-2">
                             <button type="button" class="close" data-dismiss="alert">×</button>
+                            <i class="fa fa-check mr-1"></i>
                             {{ session('question_created') }}
                         </div>
                     @endif
                     @if (session()->has('question_edited'))
                         <div class="alert alert-success alert-dismissible fade show mt-2">
                             <button type="button" class="close" data-dismiss="alert">×</button>
+                            <i class="fa fa-check mr-1"></i>
                             {{ session('question_edited') }}
                         </div>
                     @endif
