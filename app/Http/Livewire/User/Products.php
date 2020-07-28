@@ -8,7 +8,7 @@ use Livewire\Component;
 class Products extends Component
 {
     public $user_id;
-    
+
     public function mount($user)
     {
         $this->user_id = $user->id;
