@@ -3,11 +3,13 @@
 namespace App\Http\Livewire\User\Settings;
 
 use Livewire\Component;
+use Auth;
+use Hash;
 
 class Password extends Component
 {
     public $user;
-    public $existingPassword;
+    public $currentPassword;
     public $newPassword;
     public $confirmPassword;
 
@@ -16,13 +18,33 @@ class Password extends Component
         $this->user = $user;
     }
 
-    public function updateAccount()
+    public function updated($field)
     {
-        $this->user->username = $this->username;
-        $this->user->email = $this->email;
-        $this->user->save();
+        $this->validateOnly($field, [
+            'currentPassword' => 'required',
+            'newPassword' => 'required|min:6',
+            'confirmPassword' => 'required|same:newPassword',
+        ]);
+    }
+    
+    public function updatePassword()
+    {
+        $this->validate([
+            'currentPassword' => 'required',
+            'newPassword' => 'required|min:6',
+            'confirmPassword' => 'required|same:newPassword',
+        ]);
+        
+        $user = Auth::user();
+        
+    	if (!Hash::check($this->currentPassword, $user->password)) {
+            return session()->flash('error', 'Current password does not match!');
+        }
 
-        return session()->flash('success', 'Your account has been updated!');
+        $user->password = Hash::make($this->newPassword);
+        $user->save();
+
+        return session()->flash('success', 'Your password has been changed!');
     }
 
     public function render()

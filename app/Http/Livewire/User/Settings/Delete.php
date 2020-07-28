@@ -18,7 +18,11 @@ class Delete extends Component
 
     public function confirmDelete()
     {
-        $this->confirming = $this->user->id;
+        if (Auth::check()) {
+            $this->confirming = $this->user->id;
+        } else {
+            return session()->flash('error', 'Forbidden!');
+        }
     }
 
     public function deleteAccount()
@@ -32,7 +36,7 @@ class Delete extends Component
 
             return redirect()->route('home');
         } else {
-            return false;
+            return session()->flash('error', 'Forbidden!');
         }
     }
 
@@ -40,7 +44,7 @@ class Delete extends Component
     {
         if (Auth::check()) {
         } else {
-            return false;
+            return session()->flash('error', 'Forbidden!');
         }
     }
 

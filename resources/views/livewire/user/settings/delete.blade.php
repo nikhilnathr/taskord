@@ -6,6 +6,13 @@
             {{ session('success') }}
         </div>
     @endif
+    @if (session()->has('error'))
+        <div class="alert alert-danger alert-dismissible fade show mb-3">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <i class="fa fa-times mr-1"></i>
+            {{ session('error') }}
+        </div>
+    @endif
     <div class="card mb-4">
         <div class="card-header">
             Danger Zone
