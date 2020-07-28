@@ -12,6 +12,7 @@ class Today extends Component
     public $listeners = [
         'taskChecked' => 'render',
         'taskAdded' => 'render',
+        'taskDeleted' => 'render',
     ];
 
     public function render()

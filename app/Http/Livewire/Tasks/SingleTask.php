@@ -10,6 +10,7 @@ use Livewire\Component;
 class SingleTask extends Component
 {
     public $task;
+    public $confirming;
 
     public function mount($task)
     {
@@ -27,6 +28,29 @@ class SingleTask extends Component
             $this->emit('taskChecked');
 
             return true;
+        } else {
+            return session()->flash('error', 'Forbidden!');
+        }
+    }
+    
+    public function confirmDelete()
+    {
+        $this->confirming = $this->task->id;
+    }
+
+    public function deleteTask()
+    {
+        if (Auth::check()) {
+            if (Auth::user()->isFlagged) {
+                return session()->flash('error', 'Your account is flagged!');
+            }
+
+            if (Auth::user()->staffShip or Auth::user()->id === $this->task->user->id) {
+                $this->task->delete();
+                $this->emitUp('taskDeleted');
+            } else {
+                return session()->flash('error', 'Forbidden!');
+            }
         } else {
             return session()->flash('error', 'Forbidden!');
         }
