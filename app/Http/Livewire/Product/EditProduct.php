@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire\Product;
 
-use Livewire\Component;
 use App\Product;
 use Auth;
+use Livewire\Component;
 
 class EditProduct extends Component
 {
@@ -30,7 +30,7 @@ class EditProduct extends Component
         $this->producthunt = $product->producthunt;
         $this->launched = $product->launched;
     }
-    
+
     public function updated($field)
     {
         if (Auth::check()) {
@@ -48,7 +48,7 @@ class EditProduct extends Component
             session()->flash('error', 'Forbidden!');
         }
     }
-    
+
     public function submit()
     {
         if (Auth::check()) {
@@ -62,13 +62,13 @@ class EditProduct extends Component
                 'slug.profanity' => 'Please check your words!',
                 'description.profanity' => 'Please check your words!',
             ]);
-    
+
             if (Auth::user()->isFlagged) {
                 return session()->flash('error', 'Your account is flagged!');
             }
-    
+
             $product = Product::where('id', $this->product->id)->firstOrFail();
-    
+
             if (Auth::user()->staffShip or Auth::user()->id === $question->user_id) {
                 $product->name = $this->name;
                 $product->slug = $this->slug;
@@ -79,9 +79,9 @@ class EditProduct extends Component
                 $product->producthunt = $this->producthunt;
                 $product->launched = $this->launched;
                 $product->save();
-    
+
                 session()->flash('product_created', 'Product has been updated!');
-    
+
                 return redirect()->route('product.done', ['slug' => $product->slug]);
             } else {
                 session()->flash('error', 'Forbidden!');
@@ -90,7 +90,7 @@ class EditProduct extends Component
             session()->flash('error', 'Forbidden!');
         }
     }
-    
+
     public function render()
     {
         return view('livewire.product.edit-product');

@@ -31,7 +31,7 @@ class ProductController extends Controller
             'pending_count' => Task::where([['product_id', $product->id], ['done', false], ['user_id', $product->user->id]])->count(),
         ]);
     }
-    
+
     public function newest()
     {
         return view('products.newest', [
@@ -45,12 +45,12 @@ class ProductController extends Controller
             'type' => 'products.launched',
         ]);
     }
-    
+
     public function new()
     {
         return view('product.new');
     }
-    
+
     public function edit($slug)
     {
         $product = Product::where('slug', $slug)->firstOrFail();

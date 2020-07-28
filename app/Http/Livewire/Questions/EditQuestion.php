@@ -46,20 +46,20 @@ class EditQuestion extends Component
                 'title.profanity' => 'Please check your words!',
                 'body.profanity' => 'Please check your words!',
             ]);
-    
+
             if (Auth::user()->isFlagged) {
                 return session()->flash('error', 'Your account is flagged!');
             }
-    
+
             $question = Question::where('id', $this->question->id)->firstOrFail();
-    
+
             if (Auth::user()->staffShip or Auth::user()->id === $question->user_id) {
                 $question->title = $this->title;
                 $question->body = $this->body;
                 $question->save();
-    
+
                 session()->flash('question_edited', 'Question has been edited!');
-    
+
                 return redirect()->route('question.question', ['id' => $question->id]);
             } else {
                 session()->flash('error', 'Forbidden!');
