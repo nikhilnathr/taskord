@@ -111,12 +111,8 @@ class CreateTask extends Component
 
             if ($state) {
                 $done_at = Carbon::now();
-                $created_at = Carbon::now();
-                $updated_at = Carbon::now();
             } else {
                 $done_at = null;
-                $created_at = Carbon::now();
-                $updated_at = Carbon::now();
             }
 
             $task = Task::create([
@@ -125,8 +121,6 @@ class CreateTask extends Component
                 'task' => $this->task,
                 'done' => $state,
                 'done_at' => $done_at,
-                'created_at' => $created_at,
-                'updated_at' => $updated_at,
                 'image' => $image,
                 'type' => $type,
             ]);

@@ -6,7 +6,7 @@
             {{ session('error') }}
         </div>
     @endif
-    <div class="">
+    <div>
         <input
             class="form-check-input"
             type="checkbox"
@@ -15,6 +15,11 @@
         />
         <span class="ml-1 task-font">
             {!! Purify::clean(preg_replace('/#(\w+)/', '<a href="product/$1">#$1</a>', $task->task)) !!}
+        </span>
+        <span class="d-flex small float-right ml-auto">
+            <a class="text-black-50" href="{{ route('task', ['id' => $task->id]) }}">
+                {{ !$task->done_at ? Carbon::parse($task->created_at)->diffForHumans() : Carbon::parse($task->done_at)->diffForHumans() }}
+            </a>
         </span>
         @if ($task->image)
         <div>

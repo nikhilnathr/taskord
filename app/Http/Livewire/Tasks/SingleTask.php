@@ -24,7 +24,7 @@ class SingleTask extends Component
             $this->task->updated_at = Carbon::now();
             givePoint(new TaskCompleted($this->task));
             $this->task->save();
-            $this->emitUp('taskChecked');
+            $this->emit('taskChecked');
 
             return true;
         } else {

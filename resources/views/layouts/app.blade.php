@@ -48,6 +48,13 @@
                                 Questions
                             </a>
                         </li>
+                        @auth
+                        <li class="nav-item">
+                            <a class="nav-link text-white font-weight-bold" href="{{ route('tasks') }}">
+                                Tasks
+                            </a>
+                        </li>
+                        @endauth
                         <li class="nav-item dropdown">
                             <a class="nav-link text-white font-weight-bold" href="#" data-toggle="dropdown">
                                 More
