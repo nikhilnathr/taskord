@@ -15,28 +15,6 @@ class UserSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
-        DB::table('users')->insert([
-            'firstname' => 'Dabbit',
-            'username' => 'test',
-            'company' => 'Taskord',
-            'bio' => $faker->sentence($nbWords = 6, $variableNbWords = true),
-            'email' => 'test@test.com',
-            'avatar' => 'https://github.com/dabbit.png',
-            'password' => Hash::make('test'),
-            'reputation' => 550,
-            'website' => 'https://github.com/dabbit',
-            'twitter' => $faker->userName,
-            'twitch' => $faker->userName,
-            'github' => $faker->userName,
-            'telegram' => $faker->userName,
-            'youtube' => $faker->userName,
-            'onlyFollowingsTasks' => false,
-            'isStaff' => true,
-            'isDeveloper' => true,
-            'isBeta' => true,
-            'isPatron' => true,
-            'created_at' => $faker->dateTimeBetween($startDate = '-10 days', $endDate = 'now'),
-        ]);
 
         foreach (range(1, 100) as $index) {
             DB::table('users')->insert([
