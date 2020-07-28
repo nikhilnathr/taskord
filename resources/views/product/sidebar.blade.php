@@ -2,10 +2,12 @@
     @if (Auth::check() and Auth::user()->staffShip or Auth::user()->id === $product->user->id)
     <div class="card mb-4">
         <div class="card-body">
+            @if (Auth::user()->staffShip)
             <button class="btn btn-block btn-success text-white font-weight-bold">
                 <i class="fa fa-bell mr-1"></i>
                 Write a product update
             </button>
+            @endif
             <a class="btn btn-block btn-success text-white font-weight-bold" href="{{ route('product.edit', ['slug' => $product->slug]) }}">
                 <i class="fa fa-edit mr-1"></i>
                 Edit Product

@@ -122,8 +122,10 @@
             <span class="@if (Route::currentRouteName() === 'user.answers') text-primary @endif">Answers</span>
             <span class="small font-weight-normal text-black-50">{{ $answer_count }}</span>
         </a>
+        @if (Auth::user()->staffShip)
         <a class="text-dark font-weight-bold mr-4" href="">
             Stats
         </a>
+        @endif
     </div>
 </div>

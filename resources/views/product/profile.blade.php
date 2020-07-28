@@ -67,11 +67,15 @@
             <span class="@if (Route::currentRouteName() === 'product.pending') text-primary @endif">Pending</span>
             <span class="small font-weight-normal text-black-50">{{ $pending_count }}</span>
         </a>
+        @if (Auth::user()->staffShip)
         <a class="text-dark font-weight-bold mr-4" href="">
             Updates <span class="small font-weight-normal text-black-50">1000</span>
         </a>
+        @endif
+        @if (Auth::user()->staffShip)
         <a class="text-dark font-weight-bold mr-4" href="">
-            Stats <span class="small font-weight-normal text-black-50">1000</span>
+            Stats
         </a>
+        @endif
     </div>
 </div>
