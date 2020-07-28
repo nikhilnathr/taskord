@@ -4,8 +4,8 @@ namespace App\Http\Livewire\Tasks;
 
 use App\Task;
 use Auth;
-use Livewire\Component;
 use Carbon\Carbon;
+use Livewire\Component;
 
 class Today extends Component
 {
@@ -21,7 +21,7 @@ class Today extends Component
             ->where('done', false)
             ->latest()
             ->get();
-            
+
         return view('livewire.tasks.today', [
             'tasks' => $tasks,
         ]);
