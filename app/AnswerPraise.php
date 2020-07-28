@@ -10,7 +10,7 @@ class AnswerPraise extends Model
     use QueryCacheable;
 
     protected $cacheFor = 3600;
-    
+
     protected $fillable = ['user_id', 'answer_id'];
 
     public function answer()

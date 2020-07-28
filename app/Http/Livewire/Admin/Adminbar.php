@@ -2,30 +2,30 @@
 
 namespace App\Http\Livewire\Admin;
 
-use App\Product;
-use App\Task;
-use App\User;
-use App\Question;
 use App\Answer;
+use App\AnswerPraise;
+use App\Product;
+use App\Question;
+use App\QuestionPraise;
+use App\Task;
 use App\TaskComment;
 use App\TaskCommentPraise;
 use App\TaskPraise;
-use App\AnswerPraise;
-use App\QuestionPraise;
+use App\User;
 use Illuminate\Support\Facades\File;
 use Livewire\Component;
 
 class Adminbar extends Component
 {
     protected $listeners = [
-        'refreshStats' => 'render'
+        'refreshStats' => 'render',
     ];
-    
+
     public function refreshStats()
     {
         $this->emitSelf('refreshStats');
     }
-    
+
     public function render()
     {
         if (file_exists('../.git/HEAD')) {
@@ -46,7 +46,7 @@ class Adminbar extends Component
         $questions = Question::cacheFor(60 * 60)->count();
         $answers = Answer::cacheFor(60 * 60)->count();
         $comments = TaskComment::cacheFor(60 * 60)->count();
-        $praises = 
+        $praises =
             TaskPraise::cacheFor(60 * 60)->count() +
             TaskCommentPraise::cacheFor(60 * 60)->count() +
             QuestionPraise::cacheFor(60 * 60)->count() +
