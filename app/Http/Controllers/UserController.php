@@ -73,7 +73,7 @@ class UserController extends Controller
     {
         $user = User::where('username', $username)->firstOrFail();
 
-        return view('user.products', [
+        return view('user.answers', [
             'user' => $user,
             'done_count' => Task::where([['user_id', $user->id], ['done', true]])->count(),
             'pending_count' => Task::where([['user_id', $user->id], ['done', false]])->count(),

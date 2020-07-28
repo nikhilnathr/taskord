@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    @livewire('user.questions', [
+                    @livewire('user.answers', [
                         'user' => $user
                     ])
                 </div>
