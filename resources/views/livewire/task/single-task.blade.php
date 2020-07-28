@@ -60,9 +60,11 @@
             @else
                 <button type="button" class="btn btn-task btn-outline-success mr-1" wire:click="togglePraise" wire:loading.attr="disabled">
                     {{ Emoji::clappingHands() }}
+                    @if ($task->task_praise->count() !== 0)
                     <span class="small text-dark font-weight-bold">
                         {{ $task->task_praise->count() }}
                     </span>
+                    @endif
                 </button>
             @endif
             @if (Auth::user()->staffShip or Auth::user()->id === $task->user->id)
@@ -81,9 +83,11 @@
             @guest
                 <a href="/login" class="btn btn-task btn-outline-success mr-1">
                     {{ Emoji::clappingHands() }}
+                    @if ($task->task_praise->count() !== 0)
                     <span class="small text-dark font-weight-bold">
                         {{ $task->task_praise->count() }}
                     </span>
+                    @endif
                 </a>
             @endguest
             <a href="{{ route('task', ['id' => $task->id]) }}" class="btn btn-task btn-outline-primary mr-1">

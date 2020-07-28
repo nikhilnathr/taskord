@@ -53,9 +53,11 @@
             @else
                 <button type="button" class="btn btn-task btn-outline-success mr-1" wire:click="togglePraise" wire:loading.attr="disabled">
                     {{ Emoji::clappingHands() }}
+                    @if ($question->question_praise->count() !== 0)
                     <span class="small text-dark font-weight-bold">
                         {{ $question->question_praise->count() }}
                     </span>
+                    @endif
                 </button>
             @endif
             @if (Auth::user()->staffShip or Auth::user()->id === $question->user->id)
@@ -80,9 +82,11 @@
             @guest
                 <a href="/login" class="btn btn-task btn-outline-success mr-1">
                     {{ Emoji::clappingHands() }}
+                    @if ($question->question_praise->count() !== 0)
                     <span class="small text-dark font-weight-bold">
                         {{ $question->question_praise->count() }}
                     </span>
+                    @endif
                 </a>
             @endguest
             @if ($type !== "question.question")
