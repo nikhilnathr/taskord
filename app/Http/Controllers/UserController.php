@@ -54,6 +54,34 @@ class UserController extends Controller
             'answer_count' => Answer::where('user_id', $user->id)->count(),
         ]);
     }
+    
+    public function questions($username)
+    {
+        $user = User::where('username', $username)->firstOrFail();
+
+        return view('user.questions', [
+            'user' => $user,
+            'done_count' => Task::where([['user_id', $user->id], ['done', true]])->count(),
+            'pending_count' => Task::where([['user_id', $user->id], ['done', false]])->count(),
+            'product_count' => Product::where('user_id', $user->id)->count(),
+            'question_count' => Question::where('user_id', $user->id)->count(),
+            'answer_count' => Answer::where('user_id', $user->id)->count(),
+        ]);
+    }
+    
+    public function answers($username)
+    {
+        $user = User::where('username', $username)->firstOrFail();
+
+        return view('user.products', [
+            'user' => $user,
+            'done_count' => Task::where([['user_id', $user->id], ['done', true]])->count(),
+            'pending_count' => Task::where([['user_id', $user->id], ['done', false]])->count(),
+            'product_count' => Product::where('user_id', $user->id)->count(),
+            'question_count' => Question::where('user_id', $user->id)->count(),
+            'answer_count' => Answer::where('user_id', $user->id)->count(),
+        ]);
+    }
 
     public function following($username)
     {

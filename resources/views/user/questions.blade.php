@@ -7,8 +7,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    @livewire('user.products', [
+                    @livewire('user.questions', [
                         'user' => $user,
+                        'page' => 1,
+                        'perPage' => 1
                     ])
                 </div>
                 @include('user.sidebar')

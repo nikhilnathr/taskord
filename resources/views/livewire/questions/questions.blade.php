@@ -3,7 +3,7 @@
         @livewire('questions.single-question', [
             'type' => $type,
             'question' => $question,
-        ])
+        ], key($question->id))
     @endforeach
     <div class="mt-4">
         @if ($questions->hasMorePages())
