@@ -34,6 +34,7 @@ class UserSeeder extends Seeder
             'isStaff' => true,
             'isDeveloper' => true,
             'isBeta' => true,
+            'isPatron' => true,
             'created_at' => $faker->dateTimeBetween($startDate = '-10 days', $endDate = 'now'),
         ]);
 
