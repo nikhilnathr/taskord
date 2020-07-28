@@ -54,7 +54,7 @@ class UserController extends Controller
             'answer_count' => Answer::where('user_id', $user->id)->count(),
         ]);
     }
-    
+
     public function questions($username)
     {
         $user = User::where('username', $username)->firstOrFail();
@@ -68,7 +68,7 @@ class UserController extends Controller
             'answer_count' => Answer::where('user_id', $user->id)->count(),
         ]);
     }
-    
+
     public function answers($username)
     {
         $user = User::where('username', $username)->firstOrFail();
