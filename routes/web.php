@@ -42,9 +42,9 @@ Route::group(['prefix' => 'product/{slug}', 'as' => 'product.'], function () {
 });
 
 Route::group(['prefix' => 'products', 'as' => 'products.'], function () {
-    Route::get('', 'ProductsController@newest')->name('newest');
-    Route::get('launched', 'ProductsController@launched')->name('launched');
-    Route::get('new', 'ProductsController@new')->name('new')->middleware('auth');
+    Route::get('', 'ProductController@newest')->name('newest');
+    Route::get('launched', 'ProductController@launched')->name('launched');
+    Route::get('new', 'ProductController@new')->name('new')->middleware('auth');
 });
 
 Route::group(['prefix' => 'questions', 'as' => 'questions.'], function () {

@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="container">
-            @livewire('products.new-product')
+            @livewire('product.new-product')
         </div>
     </div>
 </div>

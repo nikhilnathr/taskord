@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Products;
+namespace App\Http\Livewire\Product;
 
 use App\Product;
 use Auth;
@@ -89,6 +89,6 @@ class NewProduct extends Component
 
     public function render()
     {
-        return view('livewire.products.new-product');
+        return view('livewire.product.new-product');
     }
 }
