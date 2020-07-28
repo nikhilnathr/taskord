@@ -62,6 +62,7 @@ Route::get('adminbar', 'Admin\AdminBarController@toggle')->name('adminbar')->mid
 Route::get('darkmode', 'UserController@darkMode')->name('darkmode')->middleware('patron');
 
 Route::get('task/{id}', 'TaskController@task')->name('task');
+Route::get('tasks', 'TaskController@tasks')->name('tasks')->middleware('auth');
 
 Route::get('patron', 'PatronController@patron')->name('patron');
 
