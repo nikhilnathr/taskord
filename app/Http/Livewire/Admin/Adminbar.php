@@ -5,11 +5,27 @@ namespace App\Http\Livewire\Admin;
 use App\Product;
 use App\Task;
 use App\User;
+use App\Question;
+use App\Answer;
+use App\TaskComment;
+use App\TaskCommentPraise;
+use App\TaskPraise;
+use App\AnswerPraise;
+use App\QuestionPraise;
 use Illuminate\Support\Facades\File;
 use Livewire\Component;
 
 class Adminbar extends Component
 {
+    protected $listeners = [
+        'refreshStats' => 'render'
+    ];
+    
+    public function refreshStats()
+    {
+        $this->emitSelf('refreshStats');
+    }
+    
     public function render()
     {
         if (file_exists('../.git/HEAD')) {
@@ -27,6 +43,14 @@ class Adminbar extends Component
         $users = User::cacheFor(60 * 60)->count();
         $products = Product::cacheFor(60 * 60)->count();
         $reputations = User::cacheFor(60 * 60)->sum('reputation');
+        $questions = Question::cacheFor(60 * 60)->count();
+        $answers = Answer::cacheFor(60 * 60)->count();
+        $comments = TaskComment::cacheFor(60 * 60)->count();
+        $praises = 
+            TaskPraise::cacheFor(60 * 60)->count() +
+            TaskCommentPraise::cacheFor(60 * 60)->count() +
+            QuestionPraise::cacheFor(60 * 60)->count() +
+            AnswerPraise::cacheFor(60 * 60)->count();
 
         return view('livewire.admin.adminbar', [
             'version' => $version,
@@ -35,6 +59,10 @@ class Adminbar extends Component
             'users' => $users,
             'products' => $products,
             'reputations' => $reputations,
+            'questions' => $questions,
+            'answers' => $answers,
+            'comments' => $comments,
+            'praises' => $praises,
         ]);
     }
 }

@@ -21,21 +21,68 @@
             </a>
         </span>
         <span class="float-right">
-            <span class="font-weight-bold mr-3">
-                <i class="fa fa-check mr-1"></i>
-                {{ $tasks }} Tasks
-            </span>
-            <span class="font-weight-bold mr-3">
-                <i class="fa fa-users mr-1"></i>
-                {{ $users }} Users
-            </span>
-            <span class="font-weight-bold mr-3">
-                <i class="fa fa-box-open mr-1"></i>
-                {{ $products }} Products
-            </span>
-            <span class="font-weight-bold mr-3">
-                <i class="fa fa-fire mr-1"></i>
-                {{ $reputations }} Reputations
+            <span type="button" class="dropdown dropleft">
+                <span class="font-weight-bold mr-3" data-toggle="dropdown">
+                    <i class="fa fa-chart-pie mr-1"></i>
+                    Stats
+                </span>
+                <ul class="dropdown-menu shadow-sm border">
+                    <li class="dropdown-item">
+                        <span class="mr-3">
+                            <i class="fa fa-check mr-1"></i>
+                            <span class="font-weight-bold">{{ $tasks }}</span> Tasks
+                        </span>
+                    </li>
+                    <li class="dropdown-item">
+                        <span class="mr-3">
+                            <i class="fa fa-users mr-1"></i>
+                            <span class="font-weight-bold">{{ $users }}</span> Users
+                        </span>
+                    </li>
+                    <li class="dropdown-item">
+                        <span class="mr-3">
+                            <i class="fa fa-box-open mr-1"></i>
+                            <span class="font-weight-bold">{{ $products }}</span> Products
+                        </span>
+                    </li>
+                    <li class="dropdown-item">
+                        <span class="mr-3">
+                            <i class="fa fa-question-circle mr-1"></i>
+                            <span class="font-weight-bold">{{ $questions }}</span> Questions
+                        </span>
+                    </li>
+                    <li class="dropdown-item">
+                        <span class="mr-3">
+                            <i class="fa fa-comments mr-1"></i>
+                            <span class="font-weight-bold">{{ $answers }}</span> Answers
+                        </span>
+                    </li>
+                    <li class="dropdown-item">
+                        <span class="mr-3">
+                            <i class="fa fa-comment mr-1"></i>
+                            <span class="font-weight-bold">{{ $comments }}</span> Comments
+                        </span>
+                    </li>
+                    <li class="dropdown-item">
+                        <span class="mr-3">
+                            <i class="fa fa-gift mr-1"></i>
+                            <span class="font-weight-bold">{{ $praises }}</span> Praises
+                        </span>
+                    </li>
+                    <li class="dropdown-item">
+                        <span class="mr-3">
+                            <i class="fa fa-fire mr-1"></i>
+                            <span class="font-weight-bold">{{ $reputations }}</span> Reputations
+                        </span>
+                    </li>
+                    <div class="dropdown-divider"></div>
+                    <li class="dropdown-item" wire:click="refreshStats">
+                        <span class="mr-3">
+                            <i class="fa fa-refresh mr-1"></i>
+                            Refresh
+                        </span>
+                    </li>
+                </ul>
             </span>
             <span class="font-weight-bold">
                 <i class="fa fa-clock mr-1"></i>
