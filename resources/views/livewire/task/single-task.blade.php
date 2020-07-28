@@ -86,14 +86,14 @@
                     </span>
                 </a>
             @endguest
-            @if ($task->task_comment->count() > 0)
             <a href="{{ route('task', ['id' => $task->id]) }}" class="btn btn-task btn-outline-primary mr-1">
                 {{ Emoji::speechBalloon() }}
+                @if ($task->task_comment->count() !== 0)
                 <span class="small text-dark font-weight-bold">
                     {{ $task->task_comment->count() }}
                 </span>
+                @endif
             </a>
-            @endif
         </div>
     </div>
 </li>
