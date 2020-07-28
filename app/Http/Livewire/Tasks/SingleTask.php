@@ -32,7 +32,7 @@ class SingleTask extends Component
             return session()->flash('error', 'Forbidden!');
         }
     }
-    
+
     public function confirmDelete()
     {
         $this->confirming = $this->task->id;
