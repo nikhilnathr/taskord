@@ -4,9 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="container">
-            @livewire('questions.edit-question', [
-                'question' => $question
-            ])
+            @livewire('question.create-question')
         </div>
     </div>
 </div>

@@ -61,7 +61,7 @@ class ProductController extends Controller
             ]);
         } else {
             return redirect()->route('product.done', [
-                'slug' => $product->id,
+                'slug' => $product->slug,
             ]);
         }
     }

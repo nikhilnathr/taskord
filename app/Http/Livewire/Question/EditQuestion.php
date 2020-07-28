@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Questions;
+namespace App\Http\Livewire\Question;
 
 use App\Question;
 use Auth;
@@ -71,6 +71,6 @@ class EditQuestion extends Component
 
     public function render()
     {
-        return view('livewire.questions.edit-question');
+        return view('livewire.question.edit-question');
     }
 }
