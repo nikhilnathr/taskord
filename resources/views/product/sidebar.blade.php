@@ -1,4 +1,18 @@
 <div class="col-sm">
+    @if (Auth::check() and Auth::user()->staffShip or Auth::user()->id === $product->user->id)
+    <div class="card mb-4">
+        <div class="card-body">
+            <button class="btn btn-block btn-success text-white font-weight-bold">
+                <i class="fa fa-bell mr-1"></i>
+                Write a product update
+            </button>
+            <a class="btn btn-block btn-success text-white font-weight-bold" href="{{ route('product.edit', ['slug' => $product->slug]) }}">
+                <i class="fa fa-edit mr-1"></i>
+                Edit Product
+            </a>
+        </div>
+    </div>
+    @endif
     <div class="card mb-4">
         <div class="card-header">
             Creator

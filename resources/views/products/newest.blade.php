@@ -6,6 +6,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
+                    @if (session()->has('product_deleted'))
+                        <div class="alert alert-success alert-dismissible fade show">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <i class="fa fa-check mr-1"></i>
+                            {{ session('product_deleted') }}
+                        </div>
+                    @endif
                     <div class="mb-3">
                         <a class="mb-2 btn btn-{{ Route::currentRouteName() === 'products.newest' ? '' : 'outline-' }}primary mr-2" href="{{ route('products.newest') }}">
                             Newest

@@ -86,6 +86,17 @@
                         <span wire:target="submit" wire:loading class="spinner-border spinner-border-sm ml-2" role="status"></span>
                     </button>
                 </form>
+                <div class="h5 text-danger mt-3 mb-3">Danger Zone</div>
+                @if ($confirming === $product->id)
+                <button type="button" wire:click="deleteProduct" class="btn btn-danger">
+                    <span class="font-weight-bold">Are you sure?</span>
+                    <span wire:target="deleteProduct" wire:loading class="spinner-border spinner-border-sm ml-2" role="status"></span>
+                </button>
+                @else
+                <button type="button" wire:click="confirmDelete" class="btn btn-danger">
+                    <span class="font-weight-bold">Delete</span> {{ $slug }}
+                </button>
+                @endif
             </div>
         </div>
     </div>

@@ -17,6 +17,7 @@ class EditProduct extends Component
     public $github;
     public $producthunt;
     public $launched;
+    public $confirming;
 
     public function mount($product)
     {
@@ -88,6 +89,31 @@ class EditProduct extends Component
             }
         } else {
             session()->flash('error', 'Forbidden!');
+        }
+    }
+    
+    public function confirmDelete()
+    {
+        $this->confirming = $this->product->id;
+    }
+
+    public function deleteProduct()
+    {
+        if (Auth::check()) {
+            if (Auth::user()->isFlagged) {
+                return session()->flash('error', 'Your account is flagged!');
+            }
+
+            if (Auth::user()->staffShip or Auth::user()->id === $this->question->user_id) {
+                $this->product->delete();
+                session()->flash('product_deleted', 'Product has been deleted!');
+
+                return redirect()->route('products.newest');
+            } else {
+                session()->flash('error', 'Forbidden!');
+            }
+        } else {
+            return session()->flash('error', 'Forbidden!');
         }
     }
 
