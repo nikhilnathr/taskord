@@ -91,7 +91,7 @@ class EditProduct extends Component
             session()->flash('error', 'Forbidden!');
         }
     }
-    
+
     public function confirmDelete()
     {
         $this->confirming = $this->product->id;
