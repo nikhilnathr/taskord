@@ -38,6 +38,7 @@ Route::get('login/{provider}/callback', 'SocialController@Callback');
 Route::group(['prefix' => 'product/{slug}', 'as' => 'product.'], function () {
     Route::get('', 'ProductController@done')->name('done');
     Route::get('pending', 'ProductController@pending')->name('pending');
+    Route::get('edit', 'ProductController@edit')->name('edit')->middleware('auth');
 });
 
 Route::group(['prefix' => 'products', 'as' => 'products.'], function () {

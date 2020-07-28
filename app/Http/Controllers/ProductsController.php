@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
+use Auth;
+
 class ProductsController extends Controller
 {
     public function newest()
