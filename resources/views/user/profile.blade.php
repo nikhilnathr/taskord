@@ -114,8 +114,9 @@
             <span class="@if (Route::currentRouteName() === 'user.products') text-primary @endif">Products</span>
             <span class="small font-weight-normal text-black-50">{{ $product_count }}</span>
         </a>
-        <a class="text-dark font-weight-bold mr-4" href="">
-            Questions <span class="small font-weight-normal text-black-50">{{ $question_count }}</span>
+        <a class="text-dark font-weight-bold mr-4" href="{{ route('user.questions', ['username' => $user->username]) }}">
+            <span class="@if (Route::currentRouteName() === 'user.questions') text-primary @endif">Questions</span>
+            <span class="small font-weight-normal text-black-50">{{ $question_count }}</span>
         </a>
         <a class="text-dark font-weight-bold mr-4" href="">
             Answers <span class="small font-weight-normal text-black-50">{{ $answer_count }}</span>
