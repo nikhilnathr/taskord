@@ -20,7 +20,7 @@ class SocialController extends Controller
         if ($users) {
             Auth::login($users);
 
-            return redirect('/');
+            return redirect()->route('home');
         } else {
             $user = User::create([
                 'username' => $userSocial->getId(),
@@ -30,6 +30,8 @@ class SocialController extends Controller
                 'provider_id' => $userSocial->getId(),
                 'provider' => $provider,
             ]);
+            
+            Auth::login($user);
 
             return redirect()->route('home');
         }
