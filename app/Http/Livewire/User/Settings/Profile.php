@@ -71,7 +71,7 @@ class Profile extends Component
                 'location' => 'max:30',
                 'company' => 'max:30',
             ]);
-    
+
             if (Auth::check()) {
                 $this->user->firstname = $this->firstname;
                 $this->user->lastname = $this->lastname;
@@ -79,7 +79,7 @@ class Profile extends Component
                 $this->user->location = $this->location;
                 $this->user->company = $this->company;
                 $this->user->save();
-    
+
                 return session()->flash('profile', 'Your profile has been updated!');
             }
         } else {
@@ -98,7 +98,7 @@ class Profile extends Component
                 'github' => 'alpha_dash|max:30',
                 'youtube' => 'alpha_dash|max:30',
             ]);
-    
+
             if (Auth::check()) {
                 $this->user->website = $this->website;
                 $this->user->twitter = $this->twitter;
@@ -107,7 +107,7 @@ class Profile extends Component
                 $this->user->github = $this->github;
                 $this->user->youtube = $this->youtube;
                 $this->user->save();
-    
+
                 return session()->flash('social', 'Your social links has been updated!');
             }
         } else {
