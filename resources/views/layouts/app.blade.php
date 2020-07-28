@@ -153,7 +153,10 @@
         </nav>
         @if (Auth::check() && Auth::user()->isFlagged)
         <div class="alert alert-danger rounded-0" role="alert">
-            <div class="font-weight-bold">Your account has been flagged.</div>
+            <div class="font-weight-bold">
+                <i class="fa fa-flag mr-1"></i>
+                Your account has been flagged.
+            </div>
             <div class="mt-1">
                 Because of that, your profile will be hidden from the public. If you believe this is a mistake, <a href="#">contact support</a> to have your account status reviewed.
             </div>
