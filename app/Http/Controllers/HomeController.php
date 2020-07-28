@@ -32,7 +32,7 @@ class HomeController extends Controller
             ->orderBy('launched_at', 'DESC')
             ->take(6)
             ->get();
-        $recently_questions = Question::cacheFor(60 * 60)
+        $recent_questions = Question::cacheFor(60 * 60)
             ->orderBy('created_at', 'DESC')
             ->take(4)
             ->get();
@@ -71,7 +71,7 @@ class HomeController extends Controller
         // dd($stats);
 
         return view('home/home', [
-            'recently_questions' => $recently_questions,
+            'recent_questions' => $recent_questions,
             'launched_today' => $launched_today,
             'recently_joined' => $recently_joined,
             'products' => $products,

@@ -22,8 +22,8 @@
                             Recent questions
                         </div>
                         <div class="card-body">
-                            @foreach ($recently_questions as $question)
-                                <div class="{{ $loop->index === 3 ? '' : 'mb-2' }}">
+                            @foreach ($recent_questions as $question)
+                                <div class="{{ $loop->index === count($recent_questions) - 1 ? '' : 'mb-2' }}">
                                     <a href="{{ route('user.done', ['username' => $question->user->username]) }}">
                                         <img class="rounded-circle avatar-30" src="{{ $question->user->avatar }}" />
                                     </a>
