@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire\User\Settings;
 
-use Livewire\Component;
 use Auth;
 use Hash;
+use Livewire\Component;
 
 class Password extends Component
 {
@@ -26,7 +26,7 @@ class Password extends Component
             'confirmPassword' => 'required|same:newPassword',
         ]);
     }
-    
+
     public function updatePassword()
     {
         $this->validate([
@@ -34,10 +34,10 @@ class Password extends Component
             'newPassword' => 'required|min:6',
             'confirmPassword' => 'required|same:newPassword',
         ]);
-        
+
         $user = Auth::user();
-        
-    	if (!Hash::check($this->currentPassword, $user->password)) {
+
+        if (! Hash::check($this->currentPassword, $user->password)) {
             return session()->flash('error', 'Current password does not match!');
         }
 
