@@ -118,8 +118,6 @@ class CreateTask extends Component
             $this->emit('taskAdded');
             $this->reset();
             Auth::user()->givePoint(new TaskCreated($task));
-
-            return session()->flash('success', 'Task has been created!');
         } else {
             return session()->flash('error', 'Forbidden!');
         }
