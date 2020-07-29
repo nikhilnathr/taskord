@@ -48,7 +48,7 @@
                 @endif
                 @if ($product->producthunt)
                     <a class="mr-3" href="https://producthunt.com/{{ $product->producthunt }}">
-                        <i class="fa fa-producthunt mr-1"></i>
+                        <i class="fa fa-product-hunt mr-1"></i>
                         {{ $product->producthunt }}
                     </a>
                 @endif
