@@ -50,6 +50,7 @@ $(document).on('turbolinks:load', () => {
     });
   });
 });
+
 // Enable Tooltips
 
 $(document).on('turbolinks:load', () => {
@@ -58,7 +59,7 @@ $(document).on('turbolinks:load', () => {
 
 $(document).on("livewire:load", () => {
   window.livewire.hook('afterDomUpdate', () => {
-    setTimeout(function() {
+    setTimeout(() => {
       $('.fade').fadeOut('fast');
     }, 2000);
   });
