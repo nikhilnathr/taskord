@@ -18,7 +18,7 @@ class AdminSeeder extends Seeder
             'username' => 'dabbit',
             'company' => 'Taskord',
             'bio' => 'Dabbing with Code',
-            'email' => 'test@test.com',
+            'email' => 'dabbit@tuta.io',
             'avatar' => 'https://github.com/dabbit.png',
             'password' => Hash::make('test'),
             'reputation' => 550,
