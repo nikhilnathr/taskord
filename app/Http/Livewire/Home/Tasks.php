@@ -42,7 +42,7 @@ class Tasks extends Component
             $userIds = $user->followings->pluck('id');
             $userIds->push(Auth::user()->id);
             $tasks = Task::cacheFor(60 * 60)
-                ->select('id', 'task', 'done_at', 'user_id')
+                ->select('id', 'task', 'done', 'done_at', 'user_id')
                 ->whereIn('user_id', $userIds)
                 ->where('done', true)
                 ->orderBy('done_at', 'desc')
@@ -52,7 +52,7 @@ class Tasks extends Component
                 });
         } else {
             $tasks = Task::cacheFor(60 * 60)
-                ->select('id', 'task', 'done_at', 'user_id')
+                ->select('id', 'task', 'done', 'done_at', 'user_id')
                 ->where('done', true)
                 ->orderBy('done_at', 'desc')
                 ->get()
