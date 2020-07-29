@@ -180,3 +180,8 @@ input[type="color"]:focus,
     margin-bottom: 1px;
     border-width: .2em;
 }
+
+.beta-badge {
+    background-color: transparent !important;
+    border: 1px solid $green;
+}
