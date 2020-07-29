@@ -54,4 +54,19 @@ class LoginTest extends TestCase
         $response->assertRedirect('/');
         $this->assertAuthenticatedAs($user);
     }
+    
+    public function test_user_can_login_with_wrong_credentials()
+    {
+        $user = User::where(['email' => 'dabbit@tuta.io'])->first();
+        $response = $this->post('/login', [
+            'username' => 'dabbit',
+            'password' => 'wrongpassword',
+        ]);
+
+        $response->assertRedirect('/login');
+        $response->assertSessionHasErrors('username');
+        $this->assertTrue(session()->hasOldInput('username'));
+        $this->assertFalse(session()->hasOldInput('password'));
+        $this->assertGuest();
+    }
 }
