@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
 use App\User;
+use Tests\TestCase;
 
 class ProductTest extends TestCase
 {
@@ -43,15 +43,15 @@ class ProductTest extends TestCase
 
         $response->assertStatus(302);
     }
-    
+
     public function test_auth_new_product_url()
     {
         $user = User::where(['email' => 'dabbit@tuta.io'])->first();
         $response = $this->actingAs($user)->get(route('products.new'));
-        
+
         $response->assertStatus(200);
     }
-    
+
     public function test_auth_new_product_displays_the_new_product_page()
     {
         $user = User::where(['email' => 'dabbit@tuta.io'])->first();
@@ -67,15 +67,15 @@ class ProductTest extends TestCase
 
         $response->assertStatus(302);
     }
-    
+
     public function test_auth_edit_product_url()
     {
         $user = User::where(['email' => 'dabbit@tuta.io'])->first();
         $response = $this->actingAs($user)->get(route('product.edit', ['slug' => 'taskord']));
-        
+
         $response->assertStatus(200);
     }
-    
+
     public function test_auth_edit_product_displays_the_edit_product_page()
     {
         $user = User::where(['email' => 'dabbit@tuta.io'])->first();

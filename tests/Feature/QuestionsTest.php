@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
 use App\User;
+use Tests\TestCase;
 
 class QuestionsTest extends TestCase
 {
@@ -58,15 +58,15 @@ class QuestionsTest extends TestCase
 
         $response->assertStatus(302);
     }
-    
+
     public function test_auth_new_question_url()
     {
         $user = User::where(['email' => 'dabbit@tuta.io'])->first();
         $response = $this->actingAs($user)->get(route('questions.new'));
-        
+
         $response->assertStatus(200);
     }
-    
+
     public function test_auth_new_question_displays_the_new_question_page()
     {
         $user = User::where(['email' => 'dabbit@tuta.io'])->first();

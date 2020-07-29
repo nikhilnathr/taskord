@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
 use App\User;
+use Tests\TestCase;
 
 class RegisterTest extends TestCase
 {
@@ -13,12 +13,12 @@ class RegisterTest extends TestCase
 
         $response->assertStatus(200);
     }
-    
+
     public function test_auth_register_back_to_home_url()
     {
         $user = User::where(['email' => 'dabbit@tuta.io'])->first();
         $response = $this->actingAs($user)->get(route('register'));
-        
+
         $response->assertStatus(302);
         $response->assertRedirect('/');
     }
