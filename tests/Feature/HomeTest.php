@@ -2,8 +2,6 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class HomeTest extends TestCase
@@ -14,11 +12,11 @@ class HomeTest extends TestCase
 
         $response->assertStatus(200);
     }
-    
+
     public function test_home_displays_the_home_page()
     {
         $response = $this->get(route('home'));
-    
+
         $response->assertStatus(200);
         $response->assertViewIs('home.home');
     }
