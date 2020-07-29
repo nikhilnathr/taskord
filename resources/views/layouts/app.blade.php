@@ -49,12 +49,14 @@
                             </a>
                         </li>
                         @auth
+                        @if (Auth::user()->isBeta or Auth::user()->staffShip)
                         <li class="nav-item">
                             <a class="nav-link text-white font-weight-bold" href="{{ route('tasks') }}">
                                 Tasks
                                 @include('components.beta', ['background' => 'white'])
                             </a>
                         </li>
+                        @endif
                         @endauth
                         <li class="nav-item dropdown">
                             <a class="nav-link text-white font-weight-bold" href="#" data-toggle="dropdown">
