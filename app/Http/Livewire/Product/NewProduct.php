@@ -79,7 +79,7 @@ class NewProduct extends Component
                 'launched_at' => $launched_at,
             ]);
 
-            session()->flash('product_created', 'Product has been created!');
+            session()->flash('global', 'Product has been created!');
 
             return redirect()->route('product.done', ['slug' => $product->slug]);
         } else {

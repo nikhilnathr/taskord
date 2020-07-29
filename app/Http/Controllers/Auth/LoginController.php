@@ -48,6 +48,8 @@ class LoginController extends Controller
         ]);
         $fieldType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
         if (auth()->attempt([$fieldType => $input['username'], 'password' => $input['password']])) {
+            $request->session()->flash('global', 'Welcome back!');
+            
             return redirect()->route('home');
         } else {
             $request->session()->flash('error', 'Invalid login credentials');
