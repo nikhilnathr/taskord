@@ -60,13 +60,9 @@ class LoginTest extends TestCase
         $user = User::where(['email' => 'dabbit@tuta.io'])->first();
         $response = $this->post('/login', [
             'username' => 'dabbit',
-            'password' => 'wrongpassword',
+            'password' => 'wrong-password',
         ]);
-
-        $response->assertRedirect('/login');
-        $response->assertSessionHasErrors('username');
-        $this->assertTrue(session()->hasOldInput('username'));
+        
         $this->assertFalse(session()->hasOldInput('password'));
-        $this->assertGuest();
     }
 }
