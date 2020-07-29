@@ -16,7 +16,8 @@ class AllTime extends Component
 
     public function render()
     {
-        $tasks = Task::where('user_id', Auth::user()->id)
+        $tasks = Task::doNotCache()
+            ->where('user_id', Auth::user()->id)
             ->where('done', false)
             ->latest()
             ->get();
