@@ -30,4 +30,28 @@ class LoginTest extends TestCase
         $response->assertStatus(200);
         $response->assertViewIs('auth.login');
     }
+    
+    public function test_user_can_login_with_username()
+    {
+        $user = User::where(['email' => 'dabbit@tuta.io'])->first();
+        $response = $this->post('/login', [
+            'username' => 'dabbit',
+            'password' => 'test',
+        ]);
+
+        $response->assertRedirect('/');
+        $this->assertAuthenticatedAs($user);
+    }
+    
+    public function test_user_can_login_with_email()
+    {
+        $user = User::where(['email' => 'dabbit@tuta.io'])->first();
+        $response = $this->post('/login', [
+            'username' => 'dabbit@tuta.io',
+            'password' => 'test',
+        ]);
+
+        $response->assertRedirect('/');
+        $this->assertAuthenticatedAs($user);
+    }
 }
