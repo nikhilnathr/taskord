@@ -55,3 +55,11 @@ $(document).on('turbolinks:load', () => {
 $(document).on('turbolinks:load', () => {
   $("body").tooltip({ selector: '[data-toggle=tooltip]' });
 });
+
+$(document).on("livewire:load", () => {
+  window.livewire.hook('afterDomUpdate', () => {
+    setTimeout(function() {
+      $('.fade').fadeOut('fast');
+    }, 2000);
+  });
+});
