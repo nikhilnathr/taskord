@@ -47,10 +47,10 @@ class Adminbar extends Component
         $answers = Answer::cacheFor(60 * 60)->count();
         $comments = TaskComment::cacheFor(60 * 60)->count();
         $praises =
-            TaskPraise::cacheFor(60 * 60)->count() +
-            TaskCommentPraise::cacheFor(60 * 60)->count() +
-            QuestionPraise::cacheFor(60 * 60)->count() +
-            AnswerPraise::cacheFor(60 * 60)->count();
+            TaskPraise::count() +
+            TaskCommentPraise::count() +
+            QuestionPraise::count() +
+            AnswerPraise::count();
 
         return view('livewire.admin.adminbar', [
             'version' => $version,
