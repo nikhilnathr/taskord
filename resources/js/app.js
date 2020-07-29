@@ -37,6 +37,7 @@ $(document).on('turbolinks:load', () => {
     });
   });
 });
+
 // Dark mode toggle in dropdown
 
 $(document).on('turbolinks:load', () => {
@@ -57,7 +58,9 @@ $(document).on('turbolinks:load', () => {
   $("body").tooltip({ selector: '[data-toggle=tooltip]' });
 });
 
-$(document).on("livewire:load", () => {
+// Hide Alert
+
+$(document).on("livewire:load", (event) => {
   window.livewire.hook('afterDomUpdate', () => {
     setTimeout(() => {
       $('.fade').fadeOut('fast');
