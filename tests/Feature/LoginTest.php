@@ -30,7 +30,7 @@ class LoginTest extends TestCase
         $response->assertStatus(200);
         $response->assertViewIs('auth.login');
     }
-    
+
     public function test_user_can_login_with_username()
     {
         $user = User::where(['email' => 'dabbit@tuta.io'])->first();
@@ -42,7 +42,7 @@ class LoginTest extends TestCase
         $response->assertRedirect('/');
         $this->assertAuthenticatedAs($user);
     }
-    
+
     public function test_user_can_login_with_email()
     {
         $user = User::where(['email' => 'dabbit@tuta.io'])->first();
@@ -54,7 +54,7 @@ class LoginTest extends TestCase
         $response->assertRedirect('/');
         $this->assertAuthenticatedAs($user);
     }
-    
+
     public function test_user_can_login_with_wrong_credentials()
     {
         $user = User::where(['email' => 'dabbit@tuta.io'])->first();
@@ -62,7 +62,7 @@ class LoginTest extends TestCase
             'username' => 'dabbit',
             'password' => 'wrong-password',
         ]);
-        
+
         $this->assertFalse(session()->hasOldInput('password'));
     }
 }
