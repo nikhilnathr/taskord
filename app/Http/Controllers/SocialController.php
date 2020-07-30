@@ -23,7 +23,7 @@ class SocialController extends Controller
             return redirect()->route('home');
         } else {
             $user = User::create([
-                'username' => $userSocial->getId(),
+                'username' => md5(microtime()),
                 'firstname' => $userSocial->getName(),
                 'email' => $userSocial->getEmail(),
                 'avatar' => $userSocial->getAvatar(),
