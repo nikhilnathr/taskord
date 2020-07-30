@@ -23,6 +23,7 @@ class SearchTest extends TestCase
             'task' => 'Test Search',
             'done' => true,
         ]);
+        
         Livewire::test(Search::class)
             ->set('query', 'Test Search')
             ->assertSee('Test Search')
