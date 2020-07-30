@@ -53,4 +53,19 @@ class TaskTest extends TestCase
         Livewire::test(SingleTask::class, ['task' => $task])
             ->call('togglePraise');
     }
+    
+    public function test_delete_task()
+    {
+        $user = User::where(['email' => 'dabbit@tuta.io'])->first();
+        $this->actingAs($user);
+        $task = Task::create([
+            'user_id' => 1,
+            'task' => md5(microtime()),
+            'done' => true,
+        ]);
+        
+        Livewire::test(SingleTask::class, ['task' => $task])
+            ->call('deleteTask')
+            ->assertEmitted('taskDeleted');
+    }
 }
