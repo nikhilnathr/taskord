@@ -30,7 +30,6 @@ class TaskTest extends TestCase
     {
         Livewire::test(CreateTask::class)
             ->set('task', md5(microtime()))
-            ->set('done', true)
             ->call('submit')
             ->assertSeeHtml('Forbidden!');
     }
@@ -42,7 +41,6 @@ class TaskTest extends TestCase
 
         Livewire::test(CreateTask::class)
             ->set('task', md5(microtime()))
-            ->set('done', true)
             ->call('submit')
             ->assertSeeHtml('Task has been created!');
     }
@@ -54,7 +52,6 @@ class TaskTest extends TestCase
 
         Livewire::test(CreateTask::class)
             ->set('task', 'Bitch')
-            ->set('done', true)
             ->call('submit')
             ->assertSeeHtml('Please check your words!');
     }
