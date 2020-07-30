@@ -2,12 +2,10 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Tests\TestCase;
-use Livewire;
 use App\Http\Livewire\Search;
 use App\Task;
+use Livewire;
+use Tests\TestCase;
 
 class SearchTest extends TestCase
 {
@@ -23,7 +21,7 @@ class SearchTest extends TestCase
             'task' => 'Test Search',
             'done' => true,
         ]);
-        
+
         Livewire::test(Search::class)
             ->set('query', 'Test Search')
             ->assertSee('Test Search')

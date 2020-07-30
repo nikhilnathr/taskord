@@ -2,12 +2,10 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Tests\TestCase;
-use Livewire;
 use App\Http\Livewire\CreateTask;
 use App\User;
+use Livewire;
+use Tests\TestCase;
 
 class CreateTaskTest extends TestCase
 {
@@ -19,7 +17,7 @@ class CreateTaskTest extends TestCase
             ->call('submit')
             ->assertSeeHtml('Forbidden!');
     }
-    
+
     public function test_auth_create_task()
     {
         $user = User::where(['email' => 'dabbit@tuta.io'])->first();
@@ -31,7 +29,7 @@ class CreateTaskTest extends TestCase
             ->call('submit')
             ->assertSeeHtml('Task has been created!');
     }
-    
+
     public function test_auth_create_task_with_profanity()
     {
         $user = User::where(['email' => 'dabbit@tuta.io'])->first();

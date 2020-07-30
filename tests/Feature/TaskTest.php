@@ -2,11 +2,11 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use Livewire;
 use App\Http\Livewire\Task\SingleTask;
-use App\User;
 use App\Task;
+use App\User;
+use Livewire;
+use Tests\TestCase;
 
 class TaskTest extends TestCase
 {
@@ -24,7 +24,7 @@ class TaskTest extends TestCase
         $response->assertStatus(200);
         $response->assertViewIs('task.task');
     }
-    
+
     public function test_praise_task()
     {
         $user = User::where(['email' => 'dabbit@tuta.io'])->first();
@@ -34,12 +34,12 @@ class TaskTest extends TestCase
             'task' => md5(microtime()),
             'done' => true,
         ]);
-        
+
         Livewire::test(SingleTask::class, ['task' => $task])
             ->call('togglePraise')
             ->assertSeeHtml('You can&#039;t praise your own task!');
     }
-    
+
     public function test_praise_others_task()
     {
         $user = User::where(['email' => 'dabbit@tuta.io'])->first();
@@ -49,11 +49,11 @@ class TaskTest extends TestCase
             'task' => md5(microtime()),
             'done' => true,
         ]);
-        
+
         Livewire::test(SingleTask::class, ['task' => $task])
             ->call('togglePraise');
     }
-    
+
     public function test_delete_task()
     {
         $user = User::where(['email' => 'dabbit@tuta.io'])->first();
@@ -63,7 +63,7 @@ class TaskTest extends TestCase
             'task' => md5(microtime()),
             'done' => true,
         ]);
-        
+
         Livewire::test(SingleTask::class, ['task' => $task])
             ->call('deleteTask')
             ->assertEmitted('taskDeleted');
