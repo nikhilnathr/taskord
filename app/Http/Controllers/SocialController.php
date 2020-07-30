@@ -30,6 +30,11 @@ class SocialController extends Controller
                 'provider_id' => $userSocial->getId(),
                 'provider' => $provider,
             ]);
+            
+            if ($provider === 'twitter') {
+                $user->twitter = $userSocial->getNickname();
+                $user->save();
+            }
 
             Auth::login($user);
 

@@ -86,7 +86,8 @@
             </span>
             <span class="font-weight-bold">
                 <i class="fa fa-clock mr-1"></i>
-                {{ round(microtime(true) - LARAVEL_START, 2) * 1000 }}ms Load
+                {{ round(microtime(true) - LARAVEL_START, 2) * 1000 }}ms
+                <span class="font-weight-normal">response total</span>
             </span>
         </span>
     </div>
