@@ -107,7 +107,7 @@ class CreateTask extends Component
             }
 
             $task = Task::create([
-                'user_id' =>  Auth::user()->id,
+                'user_id' =>  Auth::id(),
                 'product_id' =>  $product_id,
                 'task' => $this->task,
                 'done' => false,

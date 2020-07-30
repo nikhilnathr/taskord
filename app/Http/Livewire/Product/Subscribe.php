@@ -20,7 +20,7 @@ class Subscribe extends Component
             if (Auth::user()->isFlagged) {
                 return session()->flash('error', 'Your account is flagged!');
             }
-            if (Auth::user()->id === $this->product->user->id) {
+            if (Auth::id() === $this->product->user->id) {
                 return session()->flash('error', 'You can\'t subscribe your own product!');
             } else {
                 Auth::user()->toggleSubscribe($this->product);

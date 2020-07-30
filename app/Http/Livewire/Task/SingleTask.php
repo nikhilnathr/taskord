@@ -22,7 +22,7 @@ class SingleTask extends Component
     public function checkTask()
     {
         if (Auth::check()) {
-            if (Auth::user()->id === $this->task->user->id) {
+            if (Auth::id() === $this->task->user->id) {
                 if ($this->task->done) {
                     undoPoint(new TaskCompleted($this->task));
                     $this->task->done_at = Carbon::now();
@@ -51,23 +51,23 @@ class SingleTask extends Component
             if (Auth::user()->isFlagged) {
                 return session()->flash('error', 'Your account is flagged!');
             }
-            if (Auth::user()->id === $this->task->user->id) {
+            if (Auth::id() === $this->task->user->id) {
                 return session()->flash('error', 'You can\'t praise your own task!');
             }
             $isPraised = TaskPraise::where([
-                ['user_id', Auth::user()->id],
+                ['user_id', Auth::id()],
                 ['task_id', $this->task->id],
             ])->count();
             if ($isPraised === 1) {
                 $praise = TaskPraise::where([
-                    ['user_id', Auth::user()->id],
+                    ['user_id', Auth::id()],
                     ['task_id', $this->task->id],
                 ])->first();
                 $praise->delete();
                 $this->task->refresh();
             } else {
                 $praise = TaskPraise::create([
-                    'user_id' => Auth::user()->id,
+                    'user_id' => Auth::id(),
                     'task_id' => $this->task->id,
                 ]);
                 $this->task->refresh();
@@ -90,7 +90,7 @@ class SingleTask extends Component
                 return session()->flash('error', 'Your account is flagged!');
             }
 
-            if (Auth::user()->staffShip or Auth::user()->id === $this->task->user->id) {
+            if (Auth::user()->staffShip or Auth::id() === $this->task->user->id) {
                 $this->task->delete();
                 $this->emitUp('taskDeleted');
             } else {

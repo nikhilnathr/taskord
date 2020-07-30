@@ -22,23 +22,23 @@ class SingleComment extends Component
             if (Auth::user()->isFlagged) {
                 return session()->flash('error', 'Your account is flagged!');
             }
-            if (Auth::user()->id === $this->comment->user->id) {
+            if (Auth::id() === $this->comment->user->id) {
                 return session()->flash('error', 'You can\'t praise your own comment!');
             }
             $isPraised = TaskCommentPraise::where([
-                ['user_id', Auth::user()->id],
+                ['user_id', Auth::id()],
                 ['task_comment_id', $this->comment->id],
             ])->count();
             if ($isPraised === 1) {
                 $praise = TaskCommentPraise::where([
-                    ['user_id', Auth::user()->id],
+                    ['user_id', Auth::id()],
                     ['task_comment_id', $this->comment->id],
                 ])->first();
                 $praise->delete();
                 $this->comment->refresh();
             } else {
                 $praise = TaskCommentPraise::create([
-                    'user_id' => Auth::user()->id,
+                    'user_id' => Auth::id(),
                     'task_comment_id' => $this->comment->id,
                 ]);
                 $this->comment->refresh();
@@ -59,7 +59,7 @@ class SingleComment extends Component
             if (Auth::user()->isFlagged) {
                 return session()->flash('error', 'Your account is flagged!');
             }
-            if (Auth::user()->staffShip or Auth::user()->id === $this->comment->user->id) {
+            if (Auth::user()->staffShip or Auth::id() === $this->comment->user->id) {
                 $this->comment->task_comment_praise()->delete();
                 $this->comment->delete();
                 $this->emit('taskCommentDeleted');

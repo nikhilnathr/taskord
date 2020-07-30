@@ -61,7 +61,7 @@
                     @endif
                 </button>
             @endif
-            @if (Auth::user()->staffShip or Auth::user()->id === $question->user->id)
+            @if (Auth::user()->staffShip or Auth::id() === $question->user->id)
             <a type="button" class="btn btn-task btn-outline-info text-white mr-1" href="{{ route('question.edit', ['id' => $question->id]) }}">
                 {{ Emoji::writingHand() }}
                 <span class="small text-dark font-weight-bold">

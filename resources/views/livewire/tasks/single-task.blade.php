@@ -20,7 +20,7 @@
             <a class="mr-3 text-black-50" href="{{ route('task', ['id' => $task->id]) }}">
                 {{ !$task->done_at ? Carbon::parse($task->created_at)->diffForHumans() : Carbon::parse($task->done_at)->diffForHumans() }}
             </a>
-            @if (Auth::user()->id === $task->user->id)
+            @if (Auth::id() === $task->user->id)
                 @if ($confirming === $task->id)
                 <button type="button" class="btn btn-task btn-danger" wire:click="deleteTask" wire:loading.attr="disabled">
                     Are you sure?

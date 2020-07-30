@@ -13,7 +13,7 @@
             <div class="text-black-50 mb-2">
                 {{ "#" . $product->slug }}
             </div>
-            @if (Auth::check() && Auth::user()->id !== $product->user->id)
+            @if (Auth::check() && Auth::id() !== $product->user->id)
                 @livewire('product.subscribe', [
                     'product' => $product
                 ])

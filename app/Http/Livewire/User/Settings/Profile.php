@@ -118,7 +118,7 @@ class Profile extends Component
     public function onlyFollowingsTasks()
     {
         if (Auth::check()) {
-            if (Auth::check() && Auth::user()->id === $this->user->id) {
+            if (Auth::check() && Auth::id() === $this->user->id) {
                 $this->user->onlyFollowingsTasks = ! $this->user->onlyFollowingsTasks;
                 $this->user->save();
                 if ($this->user->onlyFollowingsTasks) {

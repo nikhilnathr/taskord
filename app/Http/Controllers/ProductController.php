@@ -55,7 +55,7 @@ class ProductController extends Controller
     {
         $product = Product::where('slug', $slug)->firstOrFail();
 
-        if (Auth::user()->staffShip or Auth::user()->id === $product->user_id) {
+        if (Auth::user()->staffShip or Auth::id() === $product->user_id) {
             return view('product.edit', [
                 'product' => $product,
             ]);

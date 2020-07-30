@@ -40,7 +40,7 @@
                 @endif
             </button>
         @endif
-        @if (Auth::user()->staffShip or Auth::user()->id === $comment->user->id)
+        @if (Auth::user()->staffShip or Auth::id() === $comment->user->id)
             @if ($confirming === $comment->id)
             <button type="button" class="btn btn-task btn-danger" wire:click="deleteTaskComment" wire:loading.attr="disabled">
                 Are you sure?

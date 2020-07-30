@@ -24,7 +24,7 @@
                 Export now
             </button>
             <div class="h5 text-danger mt-3 mb-3">Delete your Account</div>
-            @if ($confirming === Auth::user()->id)
+            @if ($confirming === Auth::id())
             <button wire:click="deleteAccount" class="btn btn-danger">
                 <i class="fa fa-question mr-1"></i>
                 Are you sure?

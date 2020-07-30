@@ -48,7 +48,7 @@
                     @endif
                 </button>
             @endif
-            @if (Auth::user()->staffShip or Auth::user()->id === $answer->user->id)
+            @if (Auth::user()->staffShip or Auth::id() === $answer->user->id)
                 @if ($confirming === $answer->id)
                 <button type="button" class="btn btn-task btn-danger mr-1" wire:click="deleteAnswer" wire:loading.attr="disabled">
                     Are you sure?

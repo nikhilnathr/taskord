@@ -70,7 +70,7 @@ class EditProduct extends Component
 
             $product = Product::where('id', $this->product->id)->firstOrFail();
 
-            if (Auth::user()->staffShip or Auth::user()->id === $question->user_id) {
+            if (Auth::user()->staffShip or Auth::id() === $question->user_id) {
                 $product->name = $this->name;
                 $product->slug = $this->slug;
                 $product->description = $this->description;
@@ -104,7 +104,7 @@ class EditProduct extends Component
                 return session()->flash('error', 'Your account is flagged!');
             }
 
-            if (Auth::user()->staffShip or Auth::user()->id === $this->question->user_id) {
+            if (Auth::user()->staffShip or Auth::id() === $this->question->user_id) {
                 $this->product->delete();
                 session()->flash('product_deleted', 'Product has been deleted!');
 

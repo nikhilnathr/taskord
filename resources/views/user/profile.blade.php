@@ -24,7 +24,7 @@
                     <div class="text-black-50 mb-2">
                         {{ "@" . $user->username }}
                     </div>
-                    @if (Auth::check() && Auth::user()->id !== $user->id && !$user->isFlagged)
+                    @if (Auth::check() && Auth::id() !== $user->id && !$user->isFlagged)
                         @livewire('user.follow', [
                             'user' => $user
                         ])
@@ -76,7 +76,7 @@
                         <span class="font-weight-bold">{{ Emoji::fire() }} {{ $user->getPoints(true) }}</span>
                         {{ $user->getPoints(true) < 2 ? 'Reputation' : 'Reputations' }}
                     </div>
-                    @if (Auth::check() && Auth::user()->id === $user->id)
+                    @if (Auth::check() && Auth::id() === $user->id)
                     <div class="mt-2">
                         <span>{{ Emoji::blossom() }} You are a</span>
                         <span class="font-weight-bold">{{ count($user->badges) === 0 ? 'Beginner' : $user->badges->last()->name }}</span>

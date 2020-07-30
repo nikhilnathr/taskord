@@ -1,5 +1,5 @@
 <div class="col-sm">
-    @if (Auth::check() and Auth::user()->staffShip or Auth::check() and Auth::user()->id === $product->user->id)
+    @if (Auth::check() and Auth::user()->staffShip or Auth::check() and Auth::id() === $product->user->id)
     <div class="card mb-4">
         <div class="card-body">
             @if (Auth::user()->staffShip)

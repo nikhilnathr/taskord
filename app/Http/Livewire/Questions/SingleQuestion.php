@@ -24,23 +24,23 @@ class SingleQuestion extends Component
             if (Auth::user()->isFlagged) {
                 return session()->flash('error', 'Your account is flagged!');
             }
-            if (Auth::user()->id === $this->question->user->id) {
+            if (Auth::id() === $this->question->user->id) {
                 return session()->flash('error', 'You can\'t praise your own question!');
             }
             $isPraised = QuestionPraise::where([
-                ['user_id', Auth::user()->id],
+                ['user_id', Auth::id()],
                 ['question_id', $this->question->id],
             ])->count();
             if ($isPraised === 1) {
                 $praise = QuestionPraise::where([
-                    ['user_id', Auth::user()->id],
+                    ['user_id', Auth::id()],
                     ['question_id', $this->question->id],
                 ])->first();
                 $praise->delete();
                 $this->question->refresh();
             } else {
                 $praise = QuestionPraise::create([
-                    'user_id' => Auth::user()->id,
+                    'user_id' => Auth::id(),
                     'question_id' => $this->question->id,
                 ]);
                 $this->question->refresh();
@@ -62,7 +62,7 @@ class SingleQuestion extends Component
                 return session()->flash('error', 'Your account is flagged!');
             }
 
-            if (Auth::user()->staffShip or Auth::user()->id === $this->question->user_id) {
+            if (Auth::user()->staffShip or Auth::id() === $this->question->user_id) {
                 $this->question->delete();
                 session()->flash('question_deleted', 'Question has been deleted!');
 

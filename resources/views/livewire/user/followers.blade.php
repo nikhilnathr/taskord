@@ -18,7 +18,7 @@
                     </span>
                     <div class="mb-2">{{ $user->bio }}</div>
                 </a>
-                @if (Auth::check() && Auth::user()->id !== $user->id && !$user->isFlagged)
+                @if (Auth::check() && Auth::id() !== $user->id && !$user->isFlagged)
                     @livewire('user.follow', [
                         'user' => $user
                     ])

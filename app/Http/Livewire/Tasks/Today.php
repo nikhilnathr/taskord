@@ -18,7 +18,7 @@ class Today extends Component
     public function render()
     {
         $tasks = Task::doNotCache()
-            ->where('user_id', Auth::user()->id)
+            ->where('user_id', Auth::id())
             ->whereDate('created_at', Carbon::today())
             ->where('done', false)
             ->latest()

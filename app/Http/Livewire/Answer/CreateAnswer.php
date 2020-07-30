@@ -45,7 +45,7 @@ class CreateAnswer extends Component
             }
 
             $canswer = Answer::create([
-                'user_id' =>  Auth::user()->id,
+                'user_id' =>  Auth::id(),
                 'question_id' =>  $this->question->id,
                 'answer' => $this->answer,
             ]);

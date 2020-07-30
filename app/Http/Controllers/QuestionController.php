@@ -47,7 +47,7 @@ class QuestionController extends Controller
     {
         $question = Question::where('id', $id)->firstOrFail();
 
-        if (Auth::user()->staffShip or Auth::user()->id === $question->user_id) {
+        if (Auth::user()->staffShip or Auth::id() === $question->user_id) {
             return view('question.edit', [
                 'question' => $question,
             ]);

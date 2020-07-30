@@ -66,7 +66,7 @@ class NewProduct extends Component
             }
 
             $product = Product::create([
-                'user_id' =>  Auth::user()->id,
+                'user_id' =>  Auth::id(),
                 'name' => $this->name,
                 'slug' => $this->slug,
                 'avatar' => 'https://github.com/taskord.png',

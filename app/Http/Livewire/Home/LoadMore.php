@@ -46,7 +46,7 @@ class LoadMore extends Component
             $user = Auth::user();
             if (Auth::check() && $user->onlyFollowingsTasks) {
                 $userIds = $user->followings->pluck('id');
-                $userIds->push(Auth::user()->id);
+                $userIds->push(Auth::id());
                 $tasks = Task::cacheFor(60 * 60)
                     ->select('id', 'task', 'done', 'done_at', 'user_id')
                     ->whereIn('user_id', $userIds)

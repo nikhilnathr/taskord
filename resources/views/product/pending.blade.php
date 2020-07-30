@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    @if (Auth::check() && Auth::user()->id === $product->user->id && !$product->user->isFlagged)
+                    @if (Auth::check() && Auth::id() === $product->user->id && !$product->user->isFlagged)
                         @livewire('create-task')
                     @endif
                     @livewire('product.tasks', [
