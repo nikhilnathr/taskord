@@ -3,7 +3,9 @@
 namespace Tests\Feature;
 
 use App\Http\Livewire\Task\SingleTask;
+use App\Http\Livewire\Task\CreateComment;
 use App\Task;
+use App\TaskComment;
 use App\User;
 use Livewire;
 use Tests\TestCase;
@@ -67,5 +69,21 @@ class TaskTest extends TestCase
         Livewire::test(SingleTask::class, ['task' => $task])
             ->call('deleteTask')
             ->assertEmitted('taskDeleted');
+    }
+    
+    public function test_create_task_comment()
+    {
+        $user = User::where(['email' => 'dabbit@tuta.io'])->first();
+        $this->actingAs($user);
+        $task = Task::create([
+            'user_id' => 1,
+            'task' => md5(microtime()),
+            'done' => true,
+        ]);
+
+        Livewire::test(CreateComment::class, ['task' => $task])
+            ->set('comment', md5(microtime()))
+            ->call('submit')
+            ->assertSeeHtml('Comment has been added!');
     }
 }
