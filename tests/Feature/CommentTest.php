@@ -2,16 +2,13 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Tests\TestCase;
-use App\Http\Livewire\Task\SingleTask;
 use App\Http\Livewire\Task\CreateComment;
 use App\Http\Livewire\Task\SingleComment;
 use App\Task;
 use App\TaskComment;
 use App\User;
 use Livewire;
+use Tests\TestCase;
 
 class CommentTest extends TestCase
 {
@@ -30,7 +27,7 @@ class CommentTest extends TestCase
             ->call('submit')
             ->assertSeeHtml('Comment has been added!');
     }
-    
+
     public function test_praise_task_comment()
     {
         $user = User::where(['email' => 'dabbit@tuta.io'])->first();
@@ -45,7 +42,7 @@ class CommentTest extends TestCase
             ->call('togglePraise')
             ->assertSeeHtml('You can&#039;t praise your own comment!');
     }
-    
+
     public function test_praise_others_task_comment()
     {
         $user = User::where(['email' => 'dabbit@tuta.io'])->first();
@@ -59,7 +56,7 @@ class CommentTest extends TestCase
         Livewire::test(SingleComment::class, ['comment' => $task_comment])
             ->call('togglePraise');
     }
-    
+
     public function test_delete_task_comment()
     {
         $user = User::where(['email' => 'dabbit@tuta.io'])->first();

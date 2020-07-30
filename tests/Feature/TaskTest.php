@@ -2,12 +2,9 @@
 
 namespace Tests\Feature;
 
-use App\Http\Livewire\Task\SingleTask;
-use App\Http\Livewire\Task\CreateComment;
-use App\Http\Livewire\Task\SingleComment;
 use App\Http\Livewire\CreateTask;
+use App\Http\Livewire\Task\SingleTask;
 use App\Task;
-use App\TaskComment;
 use App\User;
 use Livewire;
 use Tests\TestCase;
@@ -28,7 +25,7 @@ class TaskTest extends TestCase
         $response->assertStatus(200);
         $response->assertViewIs('task.task');
     }
-    
+
     public function test_create_task()
     {
         Livewire::test(CreateTask::class)

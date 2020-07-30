@@ -2,12 +2,12 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
 use App\Http\Livewire\Question\CreateQuestion;
 use App\Http\Livewire\Questions\SingleQuestion;
-use Livewire;
-use App\User;
 use App\Question;
+use App\User;
+use Livewire;
+use Tests\TestCase;
 
 class QuestionTest extends TestCase
 {
@@ -25,7 +25,7 @@ class QuestionTest extends TestCase
         $response->assertStatus(200);
         $response->assertViewIs('question.question');
     }
-    
+
     public function test_create_question()
     {
         Livewire::test(CreateQuestion::class)
@@ -34,12 +34,12 @@ class QuestionTest extends TestCase
             ->call('submit')
             ->assertSeeHtml('Forbidden!');
     }
-    
+
     public function test_auth_create_question()
     {
         $user = User::where(['email' => 'dabbit@tuta.io'])->first();
         $this->actingAs($user);
-        
+
         Livewire::test(CreateQuestion::class)
             ->set('title', md5(microtime()))
             ->call('submit')
@@ -48,7 +48,7 @@ class QuestionTest extends TestCase
             ->call('submit')
             ->assertStatus(200);
     }
-    
+
     public function test_auth_create_question_with_profanity()
     {
         $user = User::where(['email' => 'dabbit@tuta.io'])->first();
@@ -63,7 +63,7 @@ class QuestionTest extends TestCase
                 'body' => 'profanity',
             ]);
     }
-    
+
     public function test_praise_question()
     {
         $user = User::where(['email' => 'dabbit@tuta.io'])->first();
@@ -75,20 +75,20 @@ class QuestionTest extends TestCase
         ]);
 
         Livewire::test(SingleQuestion::class, [
-                'question' => $question,
-                'type' => 'question.question'
-            ])
+            'question' => $question,
+            'type' => 'question.question',
+        ])
             ->call('togglePraise')
             ->assertSeeHtml('You can&#039;t praise your own question!');
-        
+
         Livewire::test(SingleQuestion::class, [
-                'question' => $question,
-                'type' => 'question.newest'
-            ])
+            'question' => $question,
+            'type' => 'question.newest',
+        ])
             ->call('togglePraise')
             ->assertSeeHtml('You can&#039;t praise your own question!');
     }
-    
+
     public function test_praise_others_question()
     {
         $user = User::where(['email' => 'dabbit@tuta.io'])->first();
@@ -100,15 +100,15 @@ class QuestionTest extends TestCase
         ]);
 
         Livewire::test(SingleQuestion::class, [
-                'question' => $question,
-                'type' => 'question.question'
-            ])
+            'question' => $question,
+            'type' => 'question.question',
+        ])
             ->call('togglePraise');
-        
+
         Livewire::test(SingleQuestion::class, [
-                'question' => $question,
-                'type' => 'question.newest'
-            ])
+            'question' => $question,
+            'type' => 'question.newest',
+        ])
             ->call('togglePraise');
     }
 }
