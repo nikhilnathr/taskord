@@ -6,12 +6,12 @@
                 {{ $branchname }}
             </span>
             <span class="font-weight-bold ml-3">
-                <i class="fab fa-laravel mr-1"></i>
-                Laravel v{{ App::VERSION() }}
+                <i class="fa fa-cube mr-1"></i>
+                v{{ $version }}
             </span>
             <span class="font-weight-bold ml-3">
-                <i class="fa fa-cube mr-1"></i>
-                {{ $version }}
+                <i class="fab fa-laravel mr-1"></i>
+                Laravel v{{ App::VERSION() }}
             </span>
             <a class="text-white" href="https://github.com/taskord/taskord" target="_blank">
                 <span class="font-weight-bold ml-3">
