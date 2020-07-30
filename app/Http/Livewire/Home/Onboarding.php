@@ -41,7 +41,6 @@ class Onboarding extends Component
                         $praise_count,
                         $product_count,
                         $has_name,
-                        $changed_username
                     );
 
         return view('livewire.home.onboarding', [
