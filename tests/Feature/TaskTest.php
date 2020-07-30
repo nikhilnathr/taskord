@@ -4,6 +4,8 @@ namespace Tests\Feature;
 
 use App\Http\Livewire\Task\SingleTask;
 use App\Http\Livewire\Task\CreateComment;
+use App\Http\Livewire\Task\SingleComment;
+use App\Http\Livewire\CreateTask;
 use App\Task;
 use App\TaskComment;
 use App\User;
@@ -26,13 +28,46 @@ class TaskTest extends TestCase
         $response->assertStatus(200);
         $response->assertViewIs('task.task');
     }
+    
+    public function test_create_task()
+    {
+        Livewire::test(CreateTask::class)
+            ->set('task', md5(microtime()))
+            ->set('done', true)
+            ->call('submit')
+            ->assertSeeHtml('Forbidden!');
+    }
+
+    public function test_auth_create_task()
+    {
+        $user = User::where(['email' => 'dabbit@tuta.io'])->first();
+        $this->actingAs($user);
+
+        Livewire::test(CreateTask::class)
+            ->set('task', md5(microtime()))
+            ->set('done', true)
+            ->call('submit')
+            ->assertSeeHtml('Task has been created!');
+    }
+
+    public function test_auth_create_task_with_profanity()
+    {
+        $user = User::where(['email' => 'dabbit@tuta.io'])->first();
+        $this->actingAs($user);
+
+        Livewire::test(CreateTask::class)
+            ->set('task', 'Bitch')
+            ->set('done', true)
+            ->call('submit')
+            ->assertSeeHtml('Please check your words!');
+    }
 
     public function test_praise_task()
     {
         $user = User::where(['email' => 'dabbit@tuta.io'])->first();
         $this->actingAs($user);
         $task = Task::create([
-            'user_id' => 1,
+            'user_id' => $user->id,
             'task' => md5(microtime()),
             'done' => true,
         ]);
@@ -61,7 +96,7 @@ class TaskTest extends TestCase
         $user = User::where(['email' => 'dabbit@tuta.io'])->first();
         $this->actingAs($user);
         $task = Task::create([
-            'user_id' => 1,
+            'user_id' => $user->id,
             'task' => md5(microtime()),
             'done' => true,
         ]);
@@ -69,21 +104,5 @@ class TaskTest extends TestCase
         Livewire::test(SingleTask::class, ['task' => $task])
             ->call('deleteTask')
             ->assertEmitted('taskDeleted');
-    }
-    
-    public function test_create_task_comment()
-    {
-        $user = User::where(['email' => 'dabbit@tuta.io'])->first();
-        $this->actingAs($user);
-        $task = Task::create([
-            'user_id' => 1,
-            'task' => md5(microtime()),
-            'done' => true,
-        ]);
-
-        Livewire::test(CreateComment::class, ['task' => $task])
-            ->set('comment', md5(microtime()))
-            ->call('submit')
-            ->assertSeeHtml('Comment has been added!');
     }
 }
