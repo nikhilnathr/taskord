@@ -26,6 +26,7 @@ class Onboarding extends Component
         if (strlen($has_name) !== 0) {
             array_push($completed, 'has_name');
         }
+
         return count($completed);
     }
 
