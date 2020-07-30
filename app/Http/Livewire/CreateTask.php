@@ -55,7 +55,7 @@ class CreateTask extends Component
 
         return $results;
     }
-    
+
     public function done()
     {
         if (Auth::check()) {
