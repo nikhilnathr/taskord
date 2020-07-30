@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class Onboarding extends Component
 {
-    public function calculateCompleteness($task_count, $praise_count, $product_count, $has_name)
+    public function calculateCompleteness($task_count, $praise_count, $product_count, $has_name, $changed_username)
     {
         $completed = [];
 
@@ -26,6 +26,10 @@ class Onboarding extends Component
         if (strlen($has_name) !== 0) {
             array_push($completed, 'has_name');
         }
+        
+        if ($changed_username) {
+            array_push($completed, 'changed_username');
+        }
 
         return count($completed);
     }
@@ -36,11 +40,13 @@ class Onboarding extends Component
         $praise_count = Auth::user()->task_praise->count();
         $product_count = Auth::user()->products->count();
         $has_name = Auth::user()->firstname;
+        $changed_username = preg_match('/^[a-f0-9]{32}$/', Auth::user()->username);
         $completed = $this->calculateCompleteness(
                         $task_count,
                         $praise_count,
                         $product_count,
-                        $has_name
+                        $has_name,
+                        $changed_username
                     );
 
         return view('livewire.home.onboarding', [
@@ -48,6 +54,7 @@ class Onboarding extends Component
             'praise_count' => $praise_count,
             'product_count' => $product_count,
             'has_name' => $has_name,
+            'changed_username' => $changed_username,
             'completed' => $completed,
         ]);
     }

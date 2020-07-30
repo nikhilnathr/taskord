@@ -25,6 +25,12 @@
             <div class="mb-3 text-black-50">
                 Welcome to Taskord, here are some onboarding steps!
             </div>
+            @if (preg_match('/^[a-f0-9]{32}$/', Auth::user()->username))
+            <div class="mb-2">
+                <input class="form-check-input" type="checkbox" disabled {{ $changed_username ? '' : 'checked' }}>
+                <span class="ml-1">Change your username</span>
+            </div>
+            @endif
             <div class="mb-2">
                 <input class="form-check-input" type="checkbox" disabled {{ strlen($has_name) === 0 ? '' : 'checked' }}>
                 <span class="ml-1">Add your name</span>
