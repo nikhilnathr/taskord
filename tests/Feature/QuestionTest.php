@@ -88,4 +88,27 @@ class QuestionTest extends TestCase
             ->call('togglePraise')
             ->assertSeeHtml('You can&#039;t praise your own question!');
     }
+    
+    public function test_praise_others_question()
+    {
+        $user = User::where(['email' => 'dabbit@tuta.io'])->first();
+        $this->actingAs($user);
+        $question = Question::create([
+            'user_id' => 2,
+            'title' => md5(microtime()),
+            'body' => md5(microtime()),
+        ]);
+
+        Livewire::test(SingleQuestion::class, [
+                'question' => $question,
+                'type' => 'question.question'
+            ])
+            ->call('togglePraise');
+        
+        Livewire::test(SingleQuestion::class, [
+                'question' => $question,
+                'type' => 'question.newest'
+            ])
+            ->call('togglePraise');
+    }
 }
