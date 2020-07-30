@@ -15,7 +15,6 @@ class CreateTask extends Component
     use WithFileUploads;
 
     public $task;
-    public $done = true;
     public $image;
 
     public function getProductIDFromHashtag($string)
@@ -55,6 +54,16 @@ class CreateTask extends Component
         }
 
         return $results;
+    }
+    
+    public function done()
+    {
+        if (Auth::check()) {
+            Auth::user()->checkState = ! Auth::user()->checkState;
+            Auth::user()->save();
+        } else {
+            return session()->flash('error', 'Forbidden!');
+        }
     }
 
     public function updatedImage()
@@ -107,7 +116,7 @@ class CreateTask extends Component
                 $image = null;
             }
 
-            $state = ! $this->done ? false : true;
+            $state = Auth::user()->checkState;
 
             if ($state) {
                 $done_at = Carbon::now();
