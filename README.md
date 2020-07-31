@@ -20,7 +20,7 @@
 </div>
 <div align="center">
     <br>
-    <a href="https://redacted.com"><b>redacted.com »</b></a>
+    <a href="https://taskord.com"><b>taskord.com »</b></a>
     <br><br>
     <a href="https://github.com/taskord/taskord/issues/new"><b>Report Bug</b></a>
     •
@@ -30,7 +30,7 @@
 ## About Taskord
 
 - **✅ Tasks:** All tasks are public and added to our maker profiles.
-- **🔥 Streaks:** Earn a shipping streak by completing at least one todo every day, which helps you to stay productive.
+- **🔥 Reputation:** Earn a shipping streak by completing at least one todo every day, which helps you to stay productive.
 - **😀 Makers:** Community of peeps who ships constantly.
 - **📦 Products:** Ship your products to Taskord and make regular updates about the product and even add tasks to them.
 - **💬 Q&A:** Get your questions answered and your answers questioned.
