@@ -1,7 +1,17 @@
 <div>
     <div class="card mb-3">
         <div class="card-body">
-            <span class="font-weight-bold">{{ \App\User::find($data['user_id'])->username }}</span>
+            <span class="font-weight-bold">
+                @if ($type === "App\Notifications\Praised")
+                    {{ Emoji::clappingHands() }}
+                @elseif ($type === "App\Notifications\TaskMentioned")
+                    {{ Emoji::raisedHand() }}
+                @endif
+                {{
+                    \App\User::find($data['user_id'])->firstname ?
+                    \App\User::find($data['user_id'])->firstname . ' ' . \App\User::find($data['user_id'])->lastname : ''
+                }}
+            </span>
             @if ($type === "App\Notifications\Praised")
                 praised your task
             @elseif ($type === "App\Notifications\TaskMentioned")
