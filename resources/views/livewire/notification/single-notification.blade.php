@@ -12,6 +12,9 @@
                     {{ $data['task'] }}
                 </a>
             </div>
+            <div class="small mt-2 text-secondary">
+                {{ Carbon::createFromTimeStamp(strtotime($created_at))->diffForHumans() }}
+            </div>
         </div>
     </div>
 </div>
