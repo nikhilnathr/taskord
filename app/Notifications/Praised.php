@@ -10,7 +10,7 @@ use Illuminate\Notifications\Notification;
 class Praised extends Notification implements ShouldQueue
 {
     use Queueable;
-    
+
     protected $task;
 
     /**
@@ -47,7 +47,7 @@ class Praised extends Notification implements ShouldQueue
                     ->action('Notification Action', url('/'))
                     ->line('Thank you for using our application!');
     }
-    
+
     public function toDatabase($notifiable)
     {
         return [
