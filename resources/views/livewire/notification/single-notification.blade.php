@@ -8,7 +8,9 @@
                 mentioned you in a task
             @endif
             <div class="font-weight-bold mt-2">
-                {{ $data['task'] }}
+                <a class="text-dark" href="{{ route('task', ['id' => $data['task_id']]) }}">
+                    {{ $data['task'] }}
+                </a>
             </div>
         </div>
     </div>
