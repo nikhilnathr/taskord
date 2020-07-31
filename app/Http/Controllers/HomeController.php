@@ -27,12 +27,14 @@ class HomeController extends Controller
     public function index()
     {
         $launched_today = Product::cacheFor(60 * 60)
+            ->select('slug', 'name', 'avatar', 'description', 'launched', 'launched_at', 'user_id')
             ->where('launched', true)
             ->whereDate('launched_at', Carbon::today())
             ->orderBy('launched_at', 'DESC')
             ->take(6)
             ->get();
         $recent_questions = Question::cacheFor(60 * 60)
+            ->select('id', 'title', 'body', 'created_at', 'user_id')
             ->orderBy('created_at', 'DESC')
             ->take(4)
             ->get();
@@ -45,11 +47,13 @@ class HomeController extends Controller
             ->take(5)
             ->get();
         $products = Product::cacheFor(60 * 60)
+            ->select('slug', 'name', 'avatar', 'launched', 'launched_at', 'user_id')
             ->where('launched', true)
             ->orderBy('created_at', 'DESC')
             ->take(5)
             ->get();
         $reputations = User::cacheFor(60 * 60)
+            ->select('username', 'firstname', 'lastname', 'avatar', 'reputation')
             ->where('isFlagged', false)
             ->orderBy('reputation', 'DESC')
             ->take(10)
