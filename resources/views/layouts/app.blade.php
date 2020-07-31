@@ -83,8 +83,11 @@
                             @endif
                         @else
                             <li class="nav-item mr-2">
-                                <a class="nav-link text-white" href="#">
-                                    {{ Emoji::speechBalloon() }}
+                                <a class="nav-link text-white" href="{{ route('notifications') }}">
+                                    {{ Emoji::bell() }}
+                                    <span class="notification-count bg-danger font-weight-bold rounded">
+                                        {{ Auth::user()->notifications->count() }}
+                                    </span>
                                 </a>
                             </li>
                             <li class="nav-item mr-2">

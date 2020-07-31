@@ -68,6 +68,8 @@ Route::get('task/{id}', 'TaskController@task')->name('task');
 
 Route::get('tasks', 'TaskController@tasks')->name('tasks')->middleware('beta');
 
+Route::get('notifications', 'NotificationController@notifications')->name('notifications')->middleware('auth');
+
 Route::get('patron', 'PatronController@patron')->name('patron');
 
 Route::personalDataExports('personal-data-exports');
