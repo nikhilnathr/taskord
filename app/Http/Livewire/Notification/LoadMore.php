@@ -2,12 +2,48 @@
 
 namespace App\Http\Livewire\Notification;
 
+use App\Task;
+use Carbon\Carbon;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Collection;
 use Livewire\Component;
+use Auth;
 
 class LoadMore extends Component
 {
+    public $page;
+    public $perPage;
+    public $loadMore;
+
+    public function mount($page = 1, $perPage = 1)
+    {
+        $this->page = $page + 1; //increment the page
+        $this->perPage = $perPage;
+        $this->loadMore = false; //show the button
+    }
+
+    public function paginate($items, $options = [])
+    {
+        $page = $this->page ?: (Paginator::resolveCurrentPage() ?: 1);
+        $items = $items instanceof Collection ? $items : Collection::make($items);
+
+        return new LengthAwarePaginator($items->forPage($page, $this->perPage), $items->count(), $this->perPage, $page, $options);
+    }
+
+    public function loadMore()
+    {
+        $this->loadMore = true;
+    }
+
     public function render()
     {
-        return view('livewire.notification.load-more');
+        if ($this->loadMore) {
+            return view('livewire.notification.notifications', [
+                'notifications' => $this->paginate(Auth::user()->notifications),
+            ]);
+        } else {
+            return view('livewire.load-more');
+        }
     }
 }

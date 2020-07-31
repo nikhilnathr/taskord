@@ -4,7 +4,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-lg-8">
-            @livewire('notification.notifications')
+            @livewire('notification.notifications', [
+                'page' => 1,
+                'perPage' => 10
+            ])
         </div>
     </div>
 </div>
