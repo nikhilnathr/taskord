@@ -2,11 +2,11 @@
 
 namespace App\Http\Livewire\Notification;
 
-use Livewire\Component;
 use Auth;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
+use Livewire\Component;
 
 class Notifications extends Component
 {
@@ -26,7 +26,7 @@ class Notifications extends Component
 
         return new LengthAwarePaginator($items->forPage($page, $this->perPage), $items->count(), $this->perPage, $page, $options);
     }
-    
+
     public function render()
     {
         return view('livewire.notification.notifications', [

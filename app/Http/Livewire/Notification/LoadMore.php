@@ -2,13 +2,11 @@
 
 namespace App\Http\Livewire\Notification;
 
-use App\Task;
-use Carbon\Carbon;
+use Auth;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
 use Livewire\Component;
-use Auth;
 
 class LoadMore extends Component
 {
