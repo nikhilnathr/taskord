@@ -6,7 +6,7 @@
 <br>
 <div align="center">
     <a href="https://www.php.net">
-        <img src="https://img.shields.io/badge/PHP-v7.3-blue.svg?logo=php&style=flat-square" alt="PHP Version">
+        <img src="https://img.shields.io/badge/PHP-v7.4-blue.svg?logo=php&style=flat-square" alt="PHP Version">
     </a>
     <a href="http://laravel.com">
         <img src="https://img.shields.io/badge/Laravel-v7.x-important.svg?logo=laravel&style=flat-square&longCache=true" alt="Laravel Version">
