@@ -3,21 +3,25 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class TaskPraised extends Notification
+class TaskMentioned extends Notification implements ShouldQueue
 {
     use Queueable;
+
+    protected $task;
+    protected $user;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($task)
     {
-        //
+        $this->task = $task;
     }
 
     /**
@@ -28,7 +32,7 @@ class TaskPraised extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail', 'database'];
     }
 
     /**
@@ -40,9 +44,17 @@ class TaskPraised extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->greeting('Hello @'.$notifiable->username.',')
+                    ->line('@'.$this->task->user->username.' mentioned your in the Task.')
+                    ->action('Go to Task', url('/task/'.$this->task->id))
+                    ->line('Thank you for using our Taskord!');
+    }
+
+    public function toDatabase($notifiable)
+    {
+        return [
+            'task' => $this->task,
+        ];
     }
 
     /**

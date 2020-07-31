@@ -3,8 +3,10 @@
 namespace App\Http\Livewire\Tasks;
 
 use App\Gamify\Points\TaskCreated;
+use App\Notifications\TaskMentioned;
 use App\Product;
 use App\Task;
+use App\User;
 use Auth;
 use Carbon\Carbon;
 use Livewire\Component;
@@ -37,6 +39,19 @@ class CreateTask extends Component
         } else {
             return false;
         }
+    }
+
+    public function getUserIDFromMention($string)
+    {
+        $mention = false;
+        preg_match_all("/(@\w+)/u", $string, $matches);
+        if ($matches) {
+            $mentionsArray = array_count_values($matches[0]);
+            $mention = array_keys($mentionsArray);
+        }
+        $usernames = str_replace('@', '', $mention);
+
+        return $usernames;
     }
 
     public function search($array, $key, $value)
@@ -91,6 +106,7 @@ class CreateTask extends Component
             }
 
             $product = $this->getProductIDFromHashtag($this->task);
+            $users = $this->getUserIDFromMention($this->task);
 
             if ($product) {
                 $type = 'product';
@@ -114,6 +130,18 @@ class CreateTask extends Component
                 'image' => $image,
                 'type' => $type,
             ]);
+
+            if ($users) {
+                $ids = [];
+                for ($i = 0; $i < count($users); $i++) {
+                    $user = User::where('username', $users[$i])->first();
+                    if ($user !== null) {
+                        if ($user->id !== Auth::id()) {
+                            $user->notify(new TaskMentioned($task));
+                        }
+                    }
+                }
+            }
 
             $this->emit('taskAdded');
             $this->reset();
