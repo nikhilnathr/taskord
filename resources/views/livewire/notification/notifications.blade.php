@@ -1,5 +1,8 @@
 <div>
     @foreach (Auth::user()->notifications as $notification)
-        <li>{{ $notification }}</li>
+        @livewire('notification.single-notification', [
+            'type' => $notification->type,
+            'data' => $notification->data
+        ], key($notification->id))
     @endforeach
 </div>

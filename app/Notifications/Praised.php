@@ -7,10 +7,10 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class TaskMentioned extends Notification implements ShouldQueue
+class Praised extends Notification implements ShouldQueue
 {
     use Queueable;
-
+    
     protected $task;
 
     /**
@@ -43,12 +43,11 @@ class TaskMentioned extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->greeting('Hello @'.$notifiable->username.',')
-                    ->line('@'.$this->task->user->username.' mentioned your in the Task.')
-                    ->action('Go to Task', url('/task/'.$this->task->id))
-                    ->line('Thank you for using our Taskord!');
+                    ->line('The introduction to the notification.')
+                    ->action('Notification Action', url('/'))
+                    ->line('Thank you for using our application!');
     }
-
+    
     public function toDatabase($notifiable)
     {
         return [

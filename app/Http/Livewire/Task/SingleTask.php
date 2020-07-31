@@ -8,6 +8,7 @@ use App\TaskPraise;
 use Auth;
 use Carbon\Carbon;
 use Livewire\Component;
+use App\Notifications\Praised;
 
 class SingleTask extends Component
 {
@@ -71,6 +72,7 @@ class SingleTask extends Component
                     'task_id' => $this->task->id,
                 ]);
                 $this->task->refresh();
+                $this->task->user->notify(new Praised($this->task));
                 givePoint(new PraiseCreated($praise));
             }
         } else {
