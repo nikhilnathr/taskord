@@ -42,39 +42,39 @@ class CreateUsersTable extends Migration
             $table->boolean('isBeta')->default(false);
             $table->boolean('isPatron')->default(false);
             $table->boolean('isFlagged')->default(false);
-            
+
             // Task Mentioned
             $table->boolean('taskMentionedEmail')->default(true);
             $table->boolean('taskMentionedWeb')->default(true);
-            
+
             // Task Praised
             $table->boolean('taskPraisedEmail')->default(true);
             $table->boolean('taskPraisedWeb')->default(true);
-            
+
             // Comment Praised
             $table->boolean('commentPraisedEmail')->default(true);
             $table->boolean('commentPraisedWeb')->default(true);
-            
+
             // Question Praised
             $table->boolean('questionPraisedEmail')->default(true);
             $table->boolean('questionPraisedWeb')->default(true);
-            
+
             // Answer Praised
             $table->boolean('answerPraisedEmail')->default(true);
             $table->boolean('answerPraisedWeb')->default(true);
-            
+
             // Answer Added
             $table->boolean('answerAddedEmail')->default(true);
             $table->boolean('answerAddedWeb')->default(true);
-            
+
             // Comment Added
             $table->boolean('commentAddedEmail')->default(true);
             $table->boolean('commentAddedWeb')->default(true);
-            
+
             // User Followed
             $table->boolean('userFollowedEmail')->default(true);
             $table->boolean('userFollowedWeb')->default(true);
-            
+
             // Product Subscribed
             $table->boolean('productSubscribedWeb')->default(true);
             $table->boolean('productSubscribedEmail')->default(true);
