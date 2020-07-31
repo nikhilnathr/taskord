@@ -4,11 +4,11 @@ namespace App\Http\Livewire\Task;
 
 use App\Gamify\Points\PraiseCreated;
 use App\Gamify\Points\TaskCompleted;
+use App\Notifications\Praised;
 use App\TaskPraise;
 use Auth;
 use Carbon\Carbon;
 use Livewire\Component;
-use App\Notifications\Praised;
 
 class SingleTask extends Component
 {
