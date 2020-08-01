@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Task;
 use App\TaskCommentPraise;
 use Auth;
 use Livewire\Component;
+use App\Notifications\TaskCommentPraised;
 
 class SingleComment extends Component
 {
@@ -42,6 +43,7 @@ class SingleComment extends Component
                     'task_comment_id' => $this->comment->id,
                 ]);
                 $this->comment->refresh();
+                $this->comment->user->notify(new TaskCommentPraised($this->comment));
             }
         } else {
             return session()->flash('error', 'Forbidden!');

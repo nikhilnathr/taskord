@@ -4,7 +4,7 @@ namespace App\Http\Livewire\Task;
 
 use App\Gamify\Points\PraiseCreated;
 use App\Gamify\Points\TaskCompleted;
-use App\Notifications\Praised;
+use App\Notifications\TaskPraised;
 use App\TaskPraise;
 use Auth;
 use Carbon\Carbon;
@@ -72,7 +72,7 @@ class SingleTask extends Component
                     'task_id' => $this->task->id,
                 ]);
                 $this->task->refresh();
-                $this->task->user->notify(new Praised($this->task));
+                $this->task->user->notify(new TaskPraised($this->task));
                 givePoint(new PraiseCreated($praise));
             }
         } else {
