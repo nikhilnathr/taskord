@@ -26,7 +26,7 @@ class Notifications extends Component
 
         return new LengthAwarePaginator($items->forPage($page, $this->perPage), $items->count(), $this->perPage, $page, $options);
     }
-    
+
     public function markAsRead()
     {
         Auth::user()->notifications()->delete();
