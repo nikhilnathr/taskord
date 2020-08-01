@@ -201,6 +201,7 @@
                             @endforeach
                         </ul>
                     </div>
+                    @include('components.footer')
                 </div>
             </div>
         </div>
