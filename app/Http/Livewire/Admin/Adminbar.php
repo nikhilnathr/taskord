@@ -35,8 +35,11 @@ class Adminbar extends Component
         } else {
             $branchname = 'master';
         }
-
-        $version = File::get('../VERSION');
+        if (file_exists('../VERSION')) {
+            $version = File::get('../VERSION');
+        } else {
+            $version = '0.0.0';
+        }
 
         // DB Details
         $tasks = Task::cacheFor(60 * 60)->count();
