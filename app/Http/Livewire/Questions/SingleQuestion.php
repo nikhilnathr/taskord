@@ -2,10 +2,10 @@
 
 namespace App\Http\Livewire\Questions;
 
+use App\Notifications\QuestionPraised;
 use App\QuestionPraise;
 use Auth;
 use Livewire\Component;
-use App\Notifications\QuestionPraised;
 
 class SingleQuestion extends Component
 {

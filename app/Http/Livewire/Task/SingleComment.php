@@ -2,10 +2,10 @@
 
 namespace App\Http\Livewire\Task;
 
+use App\Notifications\TaskCommentPraised;
 use App\TaskCommentPraise;
 use Auth;
 use Livewire\Component;
-use App\Notifications\TaskCommentPraised;
 
 class SingleComment extends Component
 {

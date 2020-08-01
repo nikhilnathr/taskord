@@ -3,9 +3,9 @@
 namespace App\Http\Livewire\Answer;
 
 use App\AnswerPraise;
+use App\Notifications\AnswerPraised;
 use Auth;
 use Livewire\Component;
-use App\Notifications\AnswerPraised;
 
 class SingleAnswer extends Component
 {
