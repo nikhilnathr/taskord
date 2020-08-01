@@ -16,6 +16,8 @@
                     {{ Emoji::raisedHand() }}
                 @elseif ($type === "App\Notifications\Followed")
                     {{ Emoji::plusSign() }}
+                @elseif ($type === "App\Notifications\TaskCommented")
+                    {{ Emoji::speechBalloon() }}
                 @endif
                 <a href="{{ route('user.done', ['username' => $user->username]) }}">
                     <img class="rounded-circle avatar-20 ml-2 mr-1" src="{{ $user->avatar }}" />
@@ -55,6 +57,13 @@
                 <div class="font-weight-bold mt-2">
                     <a class="text-dark" href="{{ route('question.question', ['id' => $data['question_id']]) }}">
                         {{ Str::words($data['answer'], '15') }}
+                    </a>
+                </div>
+            @elseif ($type === "App\Notifications\TaskCommented")
+                <span class="align-middle">commented on your task</span>
+                <div class="font-weight-bold mt-2">
+                    <a class="text-dark" href="{{ route('task', ['id' => $data['task_id']]) }}">
+                        {{ Str::words($data['comment'], '15') }}
                     </a>
                 </div>
             @elseif ($type === "App\Notifications\Followed")

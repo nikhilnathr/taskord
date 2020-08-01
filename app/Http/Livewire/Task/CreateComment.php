@@ -6,6 +6,7 @@ use App\Gamify\Points\CommentCreated;
 use App\TaskComment;
 use Auth;
 use Livewire\Component;
+use App\Notifications\TaskCommented;
 
 class CreateComment extends Component
 {
@@ -56,6 +57,7 @@ class CreateComment extends Component
 
             if (Auth::id() !== $this->task->user->id) {
                 Auth::user()->givePoint(new CommentCreated($comment));
+                $this->task->user->notify(new TaskCommented($comment));
             }
 
             return session()->flash('success', 'Comment has been added!');
