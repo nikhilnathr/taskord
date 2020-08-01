@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Answer;
 use App\Answer;
 use Auth;
 use Livewire\Component;
+use App\Notifications\Answered;
 
 class CreateAnswer extends Component
 {
@@ -44,7 +45,7 @@ class CreateAnswer extends Component
                 return session()->flash('error', 'Your account is flagged!');
             }
 
-            $canswer = Answer::create([
+            $answer = Answer::create([
                 'user_id' =>  Auth::id(),
                 'question_id' =>  $this->question->id,
                 'answer' => $this->answer,
@@ -52,6 +53,10 @@ class CreateAnswer extends Component
 
             $this->emit('answerAdded');
             $this->answer = '';
+            
+            if (Auth::id() !== $this->question->user->id) {
+                $this->question->user->notify(new Answered($answer));
+            }
 
             return session()->flash('success', 'Answer has been added!');
         } else {
