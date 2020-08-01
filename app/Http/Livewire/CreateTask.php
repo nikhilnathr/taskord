@@ -40,7 +40,7 @@ class CreateTask extends Component
             return false;
         }
     }
-    
+
     public function getUserIDFromMention($string)
     {
         $mention = false;
@@ -149,7 +149,7 @@ class CreateTask extends Component
                 'image' => $image,
                 'type' => $type,
             ]);
-            
+
             if ($users) {
                 $ids = [];
                 for ($i = 0; $i < count($users); $i++) {
