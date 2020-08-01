@@ -5,14 +5,12 @@
                 @if (
                     $type === "App\Notifications\TaskPraised" or
                     $type === "App\Notifications\QuestionPraised" or
-                    $type === "App\Notifications\AnswerPraised"
+                    $type === "App\Notifications\AnswerPraised" or
+                    $type === "App\Notifications\TaskCommentPraised"
                 )
                     {{ Emoji::clappingHands() }}
                 @elseif ($type === "App\Notifications\TaskMentioned")
                     {{ Emoji::raisedHand() }}
-                @elseif ($type === "App\Notifications\TaskCommentPraised")
-                    {{ Emoji::speechBalloon() }}
-
                 @endif
                 {{
                     \App\User::find($data['user_id'])->firstname ?
@@ -36,9 +34,9 @@
             @elseif ($type === "App\Notifications\TaskCommentPraised")
                 praised your task comment
                 <div class="font-weight-bold mt-2">
-                    <span class="text-dark">
+                    <a class="text-dark" href="{{ route('task', ['id' => $data['task_id']]) }}">
                         {{ $data['comment'] }}
-                    </span>
+                    </a>
                 </div>
             @elseif ($type === "App\Notifications\QuestionPraised")
                 praised your question

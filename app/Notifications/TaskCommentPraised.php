@@ -52,7 +52,7 @@ class TaskCommentPraised extends Notification implements ShouldQueue
     {
         return [
             'comment' => $this->comment->comment,
-            'comment_id' => $this->comment->id,
+            'task_id' => $this->comment->task->id,
             'user_id' => $this->comment->user->id,
         ];
     }
