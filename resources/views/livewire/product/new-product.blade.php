@@ -110,10 +110,6 @@
                 <img class="ml-auto rounded-circle float-right avatar-30 mt-1 ml-2" src="@auth{{ Auth::user()->avatar }}@endauth" />
             </div>
         </div>
-        <div class="text-black-50">
-            <span>
-                © Taskord
-            </span>
-        </div>
+        @include('components.footer')
     </div>
 </div>

@@ -201,11 +201,7 @@
                             @endforeach
                         </ul>
                     </div>
-                    <div class="text-black-50">
-                        <span>
-                            © Taskord
-                        </span>
-                    </div>
+                    @include('components.footer')
                 </div>
             </div>
         </div>
