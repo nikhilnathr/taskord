@@ -110,6 +110,7 @@
                                             </span>
                                         </a>
                                     </span>
+                                    @include('components.beta', ['background' => 'dark'])
                                 </div>
                             </div>
                             <div class="card-body">
