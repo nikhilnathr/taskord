@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Answer;
 use App\AnswerPraise;
 use Auth;
 use Livewire\Component;
+use App\Notifications\AnswerPraised;
 
 class SingleAnswer extends Component
 {
@@ -42,6 +43,7 @@ class SingleAnswer extends Component
                     'answer_id' => $this->answer->id,
                 ]);
                 $this->answer->refresh();
+                $this->answer->user->notify(new AnswerPraised($this->answer));
             }
         } else {
             return session()->flash('error', 'Forbidden!');

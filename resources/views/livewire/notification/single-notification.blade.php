@@ -4,7 +4,8 @@
             <span class="font-weight-bold">
                 @if (
                     $type === "App\Notifications\TaskPraised" or
-                    $type === "App\Notifications\QuestionPraised"
+                    $type === "App\Notifications\QuestionPraised" or
+                    $type === "App\Notifications\AnswerPraised"
                 )
                     {{ Emoji::clappingHands() }}
                 @elseif ($type === "App\Notifications\TaskMentioned")
@@ -39,12 +40,18 @@
                         {{ $data['comment'] }}
                     </span>
                 </div>
-                
             @elseif ($type === "App\Notifications\QuestionPraised")
                 praised your question
                 <div class="font-weight-bold mt-2">
                     <a class="text-dark" href="{{ route('question.question', ['id' => $data['question_id']]) }}">
                         {{ $data['question'] }}
+                    </a>
+                </div>
+            @elseif ($type === "App\Notifications\AnswerPraised")
+                praised your answer
+                <div class="font-weight-bold mt-2">
+                    <a class="text-dark" href="{{ route('question.question', ['id' => $data['question_id']]) }}">
+                        {{ Str::words($data['answer'], '15') }}
                     </a>
                 </div>
             @endif
