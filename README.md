@@ -6,16 +6,26 @@
 <br>
 <div align="center">
     <a href="https://www.php.net">
-        <img src="https://img.shields.io/badge/PHP-v7.4-blue.svg?logo=php&style=flat-square" alt="PHP Version">
+        <img src="https://img.shields.io/badge/PHP-v7.4-blue.svg?logo=php" alt="PHP Version">
     </a>
     <a href="http://laravel.com">
-        <img src="https://img.shields.io/badge/Laravel-v7.x-important.svg?logo=laravel&style=flat-square&longCache=true" alt="Laravel Version">
+        <img src="https://img.shields.io/badge/Laravel-v7.x-important.svg?logo=laravel&longCache=true" alt="Laravel Version">
     </a>
     <a href="https://nodejs.org">
-        <img src="https://img.shields.io/badge/Node-v14.x-brightgreen.svg?logo=node.js&style=flat-square&longCache=true" alt="Node Version">
+        <img src="https://img.shields.io/badge/Node-v14.x-brightgreen.svg?logo=node.js&longCache=true" alt="Node Version">
     </a>
+    <a href="https://github.com/taskord/taskord/actions?query=workflow%3ACI">
+        <img src="https://github.com/taskord/taskord/workflows/CI/badge.svg" alt="CI Workflow">
+    </a>
+    <a href="https://codeclimate.com/github/taskord/taskord/maintainability">
+        <img src="https://api.codeclimate.com/v1/badges/8da39d4842dba57d2b0b/maintainability" alt="CodeClimate Maintainability">
+    </a>
+    <a href="https://www.codetriage.com/taskord/taskord">
+        <img src="https://www.codetriage.com/taskord/taskord/badges/users.svg" alt="CodeTriage">
+    </a>
+    <img src="https://img.shields.io/github/languages/code-size/taskord/taskord" alt="GitHub code size in bytes">
     <a href="LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square&longCache=true" alt="MIT License">
+        <img src="https://img.shields.io/badge/license-MIT-green?longCache=true" alt="MIT License">
     </a>
 </div>
 <div align="center">
