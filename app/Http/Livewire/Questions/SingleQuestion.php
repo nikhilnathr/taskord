@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Questions;
 use App\QuestionPraise;
 use Auth;
 use Livewire\Component;
+use App\Notifications\QuestionPraised;
 
 class SingleQuestion extends Component
 {
@@ -44,6 +45,7 @@ class SingleQuestion extends Component
                     'question_id' => $this->question->id,
                 ]);
                 $this->question->refresh();
+                $this->question->user->notify(new QuestionPraised($this->question));
             }
         } else {
             return session()->flash('error', 'Forbidden!');
