@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire\Product;
 
+use App\Notifications\Subscribed;
 use Auth;
 use Livewire\Component;
-use App\Notifications\Subscribed;
 
 class Subscribe extends Component
 {

@@ -3,9 +3,9 @@
 namespace App\Http\Livewire\Answer;
 
 use App\Answer;
+use App\Notifications\Answered;
 use Auth;
 use Livewire\Component;
-use App\Notifications\Answered;
 
 class CreateAnswer extends Component
 {
@@ -53,7 +53,7 @@ class CreateAnswer extends Component
 
             $this->emit('answerAdded');
             $this->answer = '';
-            
+
             if (Auth::id() !== $this->question->user->id) {
                 $this->question->user->notify(new Answered($answer));
             }
