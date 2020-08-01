@@ -29,14 +29,12 @@
 
 ## About Taskord
 
-- **✅ Tasks:** All tasks are public and added to our maker profiles.
-- **🔥 Reputation:** Earn a shipping streak by completing at least one todo every day, which helps you to stay productive.
-- **😀 Makers:** Community of peeps who ships constantly.
+- **✅ Tasks:** All tasks are public and added to your maker profile.
+- **🔥 Reputation:** Earn reputations by completing, praising and commenting on tasks and questions, which helps you to stay productive.
+- **😀 Makers:** Community of peoples who ships constantly.
 - **📦 Products:** Ship your products to Taskord and make regular updates about the product and even add tasks to them.
-- **💬 Q&A:** Get your questions answered and your answers questioned.
+- **💬 Q&A:** Get your questions answered and use this feature as dicussion too.
 - **🎁 Deals:** Discounts and special deals for Taskord members. Only available to patrons.
-- **🍻 Meetups:** Host a simple and beautiful meetup landing page inside Taskord itself.
-- **🚀 Telegram Chat:** Making you more productive.
 
 ## Prerequisites
 
