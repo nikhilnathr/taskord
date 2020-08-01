@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire\User;
 
+use App\Notifications\Followed;
 use Auth;
 use Livewire\Component;
-use App\Notifications\Followed;
 
 class Follow extends Component
 {
