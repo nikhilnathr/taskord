@@ -14,7 +14,10 @@
                     {{ Emoji::clappingHands() }}
                 @elseif ($type === "App\Notifications\TaskMentioned")
                     {{ Emoji::raisedHand() }}
-                @elseif ($type === "App\Notifications\Followed")
+                @elseif (
+                    $type === "App\Notifications\Followed" or
+                    $type === "App\Notifications\Subscribed"
+                )
                     {{ Emoji::plusSign() }}
                 @elseif (
                     $type === "App\Notifications\TaskCommented" or
@@ -83,6 +86,13 @@
                         'user' => $user
                     ])
                 </div>
+            @elseif ($type === "App\Notifications\Subscribed")
+                <span class="align-middle">
+                    subscribed to your product
+                    <a class="font-weight-bold" href="{{ route('product.done', ['slug' => \App\Product::find($data['product_id'])->slug]) }}">
+                        {{ \App\Product::find($data['product_id'])->name }}
+                    </a>
+                </span>
             @endif
             <div class="small mt-2 text-secondary">
                 {{ Carbon::createFromTimeStamp(strtotime($created_at))->diffForHumans() }}

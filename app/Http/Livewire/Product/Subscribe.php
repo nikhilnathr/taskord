@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Product;
 
 use Auth;
 use Livewire\Component;
+use App\Notifications\Subscribed;
 
 class Subscribe extends Component
 {
@@ -24,6 +25,9 @@ class Subscribe extends Component
                 return session()->flash('error', 'You can\'t subscribe your own product!');
             } else {
                 Auth::user()->toggleSubscribe($this->product);
+                if (Auth::user()->hasSubscribed($this->product)) {
+                    $this->product->user->notify(new Subscribed($this->product, Auth::id()));
+                }
             }
         } else {
             return session()->flash('error', 'Forbidden!');
