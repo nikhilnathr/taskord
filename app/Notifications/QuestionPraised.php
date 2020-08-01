@@ -6,21 +6,24 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Auth;
 
 class QuestionPraised extends Notification implements ShouldQueue
 {
     use Queueable;
 
     protected $question;
+    protected $user_id;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($question)
+    public function __construct($question, $user_id)
     {
         $this->question = $question;
+        $this->user_id = $user_id;
     }
 
     /**
@@ -53,7 +56,7 @@ class QuestionPraised extends Notification implements ShouldQueue
         return [
             'question' => $this->question->title,
             'question_id' => $this->question->id,
-            'user_id' => $this->question->user->id,
+            'user_id' => $this->user_id,
         ];
     }
 

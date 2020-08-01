@@ -43,7 +43,7 @@ class SingleComment extends Component
                     'task_comment_id' => $this->comment->id,
                 ]);
                 $this->comment->refresh();
-                $this->comment->user->notify(new TaskCommentPraised($this->comment));
+                $this->comment->user->notify(new TaskCommentPraised($this->comment, Auth::id()));
             }
         } else {
             return session()->flash('error', 'Forbidden!');

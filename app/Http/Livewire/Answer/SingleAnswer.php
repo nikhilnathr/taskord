@@ -43,7 +43,7 @@ class SingleAnswer extends Component
                     'answer_id' => $this->answer->id,
                 ]);
                 $this->answer->refresh();
-                $this->answer->user->notify(new AnswerPraised($this->answer));
+                $this->answer->user->notify(new AnswerPraised($this->answer, Auth::id()));
             }
         } else {
             return session()->flash('error', 'Forbidden!');

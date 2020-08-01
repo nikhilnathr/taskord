@@ -45,7 +45,7 @@ class SingleQuestion extends Component
                     'question_id' => $this->question->id,
                 ]);
                 $this->question->refresh();
-                $this->question->user->notify(new QuestionPraised($this->question));
+                $this->question->user->notify(new QuestionPraised($this->question, Auth::id()));
             }
         } else {
             return session()->flash('error', 'Forbidden!');

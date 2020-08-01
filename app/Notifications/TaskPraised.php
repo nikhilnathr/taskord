@@ -6,21 +6,24 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Auth;
 
 class TaskPraised extends Notification implements ShouldQueue
 {
     use Queueable;
 
     protected $task;
+    protected $user_id;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($task)
+    public function __construct($task, $user_id)
     {
         $this->task = $task;
+        $this->user_id = $user_id;
     }
 
     /**
@@ -53,7 +56,7 @@ class TaskPraised extends Notification implements ShouldQueue
         return [
             'task' => $this->task->task,
             'task_id' => $this->task->id,
-            'user_id' => $this->task->user->id,
+            'user_id' => $this->user_id,
         ];
     }
 

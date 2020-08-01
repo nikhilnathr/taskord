@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\User;
+namespace App\Http\Livewire\Notification;
 
 use Auth;
 use Livewire\Component;
@@ -34,6 +34,6 @@ class Follow extends Component
 
     public function render()
     {
-        return view('livewire.user.follow');
+        return view('livewire.notification.follow');
     }
 }

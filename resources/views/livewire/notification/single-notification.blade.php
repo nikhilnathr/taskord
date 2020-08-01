@@ -1,4 +1,7 @@
 <div>
+    @php
+        $user = \App\User::find($data['user_id']);
+    @endphp
     <div class="card mb-3">
         <div class="card-body">
             <span class="font-weight-bold">
@@ -11,46 +14,55 @@
                     {{ Emoji::clappingHands() }}
                 @elseif ($type === "App\Notifications\TaskMentioned")
                     {{ Emoji::raisedHand() }}
+                @elseif ($type === "App\Notifications\Followed")
+                    {{ Emoji::plusSign() }}
                 @endif
-                {{
-                    \App\User::find($data['user_id'])->firstname ?
-                    \App\User::find($data['user_id'])->firstname . ' ' . \App\User::find($data['user_id'])->lastname : ''
-                }}
+                <a href="{{ route('user.done', ['username' => $user->username]) }}">
+                    <img class="rounded-circle avatar-20 ml-2 mr-1" src="{{ $user->avatar }}" />
+                    <span class="align-middle">{{ $user->firstname ? $user->firstname . ' ' . $user->lastname : '' }}</span>
+                </a>
             </span>
             @if ($type === "App\Notifications\TaskPraised")
-                praised your task
+                <span class="align-middle">praised your task</span>
                 <div class="font-weight-bold mt-2">
                     <a class="text-dark" href="{{ route('task', ['id' => $data['task_id']]) }}">
                         {{ $data['task'] }}
                     </a>
                 </div>
             @elseif ($type === "App\Notifications\TaskMentioned")
-                mentioned you in a task
+                <span class="align-middle">mentioned you in a task</span>
                 <div class="font-weight-bold mt-2">
                     <a class="text-dark" href="{{ route('task', ['id' => $data['task_id']]) }}">
                         {{ $data['task'] }}
                     </a>
                 </div>
             @elseif ($type === "App\Notifications\TaskCommentPraised")
-                praised your task comment
+                <span class="align-middle">praised your task comment</span>
                 <div class="font-weight-bold mt-2">
                     <a class="text-dark" href="{{ route('task', ['id' => $data['task_id']]) }}">
                         {{ $data['comment'] }}
                     </a>
                 </div>
             @elseif ($type === "App\Notifications\QuestionPraised")
-                praised your question
+                <span class="align-middle">praised your question</span>
                 <div class="font-weight-bold mt-2">
                     <a class="text-dark" href="{{ route('question.question', ['id' => $data['question_id']]) }}">
                         {{ $data['question'] }}
                     </a>
                 </div>
             @elseif ($type === "App\Notifications\AnswerPraised")
-                praised your answer
+                <span class="align-middle">praised your answer</span>
                 <div class="font-weight-bold mt-2">
                     <a class="text-dark" href="{{ route('question.question', ['id' => $data['question_id']]) }}">
                         {{ Str::words($data['answer'], '15') }}
                     </a>
+                </div>
+            @elseif ($type === "App\Notifications\Followed")
+                <span class="align-middle">followed you</span>
+                <div class="mt-2">
+                    @livewire('notification.follow', [
+                        'user' => $user
+                    ])
                 </div>
             @endif
             <div class="small mt-2 text-secondary">

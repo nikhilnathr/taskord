@@ -6,24 +6,21 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
-use Auth;
 
-class TaskCommentPraised extends Notification implements ShouldQueue
+class Followed extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    protected $comment;
-    protected $user_id;
+    protected $user;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($comment, $user_id)
+    public function __construct($user)
     {
-        $this->comment = $comment;
-        $this->user_id = $user_id;
+        $this->user = $user;
     }
 
     /**
@@ -46,7 +43,7 @@ class TaskCommentPraised extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Comment Praised')
+                    ->line('The introduction to the notification.')
                     ->action('Notification Action', url('/'))
                     ->line('Thank you for using our application!');
     }
@@ -54,10 +51,7 @@ class TaskCommentPraised extends Notification implements ShouldQueue
     public function toDatabase($notifiable)
     {
         return [
-            'comment' => $this->comment->comment,
-            'comment_id' => $this->comment->id,
-            'task_id' => $this->comment->task->id,
-            'user_id' => $this->user_id,
+            'user_id' => $this->user->id,
         ];
     }
 

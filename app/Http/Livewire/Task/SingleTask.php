@@ -72,7 +72,7 @@ class SingleTask extends Component
                     'task_id' => $this->task->id,
                 ]);
                 $this->task->refresh();
-                $this->task->user->notify(new TaskPraised($this->task));
+                $this->task->user->notify(new TaskPraised($this->task, Auth::id()));
                 givePoint(new PraiseCreated($praise));
             }
         } else {
