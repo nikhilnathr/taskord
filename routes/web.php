@@ -73,3 +73,5 @@ Route::get('notifications', 'NotificationController@notifications')->name('notif
 Route::get('patron', 'PatronController@patron')->name('patron');
 
 Route::personalDataExports('personal-data-exports');
+
+Route::get('streaks/{username}', 'StatsController@streaks')->name('streak');

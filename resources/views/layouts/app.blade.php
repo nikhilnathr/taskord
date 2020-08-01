@@ -9,6 +9,7 @@
     <link rel="icon" href="/images/logo.svg" sizes="any" type="image/svg+xml">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
     <link href="{{ mix('css/app.css') }}" rel="stylesheet" data-turbolinks-track="true">
     @if (Auth::check() && Auth::user()->isPatron or Auth::check() && Auth::user()->isStaff)
     @if (Auth::user()->darkMode)
