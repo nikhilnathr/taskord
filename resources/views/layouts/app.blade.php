@@ -83,14 +83,7 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item mr-2">
-                                <a class="nav-link text-white" href="{{ route('notifications') }}">
-                                    {{ Emoji::bell() }}
-                                    <span class="notification-count bg-danger font-weight-bold rounded">
-                                        {{ Auth::user()->notifications->count() }}
-                                    </span>
-                                </a>
-                            </li>
+                            @livewire('notification.icon')
                             <li class="nav-item mr-2">
                                 <div class="nav-link">
                                     <span class="badge rounded-pill bg-warning text-dark reputation">
