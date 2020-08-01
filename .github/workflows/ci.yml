@@ -9,13 +9,30 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.operating-system }}
+
+    strategy:
+      matrix:
+        operating-system: [ubuntu-latest, macos-latest]
+        php-versions: ['7.3', '7.4']
+
+    name: 📦 php ${{ matrix.php-versions }} 🖥️ ${{ matrix.operating-system }}
 
     steps:
-    - uses: actions/checkout@v2
+    - name: 🛒 Checkout
+      uses: actions/checkout@v2
+
+    - name: 🐘 Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php-versions }}
+        coverage: xdebug
+        tools: composer:v2, php-cs-fixer, phpunit
 
     - name: 🗃 Copy .env
-      run: php -r "file_exists('.env') || copy('.env.ci', '.env');"
+      run: |
+        php -v
+        php -r "file_exists('.env') || copy('.env.ci', '.env');"
 
     - name: ✅ Validate composer.json and composer.lock
       run: composer validate
