@@ -42,7 +42,16 @@
             }}
         />
         <span class="ml-1 task-font">
-            {!! Purify::clean(preg_replace('/#(\w+)/', '<a href="product/$1">#$1</a>', $task->task)) !!}
+            {!!
+                Purify::clean(
+                    preg_replace('/@(\w+)/',  
+                        '<a href="@$1">@$1</a>', 
+                        preg_replace('/#(\w+)/',
+                            '<a href="product/$1">#$1</a>',
+                        $task->task)
+                    )
+                )
+            !!}
         </span>
         @if ($task->image)
         <div>
