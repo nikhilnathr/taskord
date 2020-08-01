@@ -49,7 +49,7 @@ class QuestionTest extends TestCase
             ->assertStatus(200);
     }
 
-    public function test_auth_create_question_with_profanity()
+    public function test_auth_create_question_profanity()
     {
         $user = User::where(['email' => 'dabbit@tuta.io'])->first();
         $this->actingAs($user);
@@ -59,9 +59,25 @@ class QuestionTest extends TestCase
             ->set('body', 'Bitch')
             ->call('submit')
             ->assertHasErrors([
+                'title' => 'profanity',
                 'body' => 'profanity',
-                'body' => 'profanity',
-            ]);
+            ])
+            ->assertSeeHtml('Please check your words!');
+    }
+
+    public function test_auth_create_question_required()
+    {
+        $user = User::where(['email' => 'dabbit@tuta.io'])->first();
+        $this->actingAs($user);
+
+        Livewire::test(CreateQuestion::class)
+            ->call('submit')
+            ->assertHasErrors([
+                'title' => 'required',
+                'body' => 'required',
+            ])
+            ->assertSeeHtml('The title field is required.')
+            ->assertSeeHtml('The body field is required.');
     }
 
     public function test_praise_question()
@@ -103,12 +119,66 @@ class QuestionTest extends TestCase
             'question' => $question,
             'type' => 'question.question',
         ])
-            ->call('togglePraise');
+            ->call('togglePraise')
+            ->assertDontSeeHtml('You can&#039;t praise your own question!');
 
         Livewire::test(SingleQuestion::class, [
             'question' => $question,
             'type' => 'question.newest',
         ])
-            ->call('togglePraise');
+            ->call('togglePraise')
+            ->assertDontSeeHtml('You can&#039;t praise your own question!');
+    }
+
+    public function test_delete_question()
+    {
+        $question = Question::create([
+            'user_id' => 1,
+            'title' => md5(microtime()),
+            'body' => md5(microtime()),
+        ]);
+
+        Livewire::test(SingleQuestion::class, [
+            'question' => $question,
+            'type' => 'question.question',
+        ])
+            ->call('deleteQuestion')
+            ->assertSeeHtml('Forbidden!');
+
+        Livewire::test(SingleQuestion::class, [
+            'question' => $question,
+            'type' => 'question.newest',
+        ])
+            ->call('deleteQuestion')
+            ->assertSeeHtml('Forbidden!');
+    }
+
+    public function test_auth_delete_question()
+    {
+        $user = User::where(['email' => 'dabbit@tuta.io'])->first();
+        $this->actingAs($user);
+        $question = Question::create([
+            'user_id' => $user->id,
+            'title' => md5(microtime()),
+            'body' => md5(microtime()),
+        ]);
+
+        Livewire::test(SingleQuestion::class, [
+            'question' => $question,
+            'type' => 'question.question',
+        ])
+            ->call('deleteQuestion');
+
+        $question = Question::create([
+            'user_id' => $user->id,
+            'title' => md5(microtime()),
+            'body' => md5(microtime()),
+        ]);
+
+        Livewire::test(SingleQuestion::class, [
+            'question' => $question,
+            'type' => 'question.newest',
+        ])
+            ->call('deleteQuestion');
     }
 }

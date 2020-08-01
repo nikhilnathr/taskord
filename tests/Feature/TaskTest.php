@@ -45,7 +45,7 @@ class TaskTest extends TestCase
             ->assertSeeHtml('Task has been created!');
     }
 
-    public function test_auth_create_task_with_profanity()
+    public function test_auth_create_task_profanity()
     {
         $user = User::where(['email' => 'dabbit@tuta.io'])->first();
         $this->actingAs($user);
@@ -53,7 +53,23 @@ class TaskTest extends TestCase
         Livewire::test(CreateTask::class)
             ->set('task', 'Bitch')
             ->call('submit')
+            ->assertHasErrors([
+                'task' => 'profanity',
+            ])
             ->assertSeeHtml('Please check your words!');
+    }
+
+    public function test_auth_create_task_required()
+    {
+        $user = User::where(['email' => 'dabbit@tuta.io'])->first();
+        $this->actingAs($user);
+
+        Livewire::test(CreateTask::class)
+            ->call('submit')
+            ->assertHasErrors([
+                'task' => 'required',
+            ])
+            ->assertSeeHtml('The task field is required.');
     }
 
     public function test_praise_task()
@@ -82,7 +98,8 @@ class TaskTest extends TestCase
         ]);
 
         Livewire::test(SingleTask::class, ['task' => $task])
-            ->call('togglePraise');
+            ->call('togglePraise')
+            ->assertDontSeeHtml('You can&#039;t praise your own task!');
     }
 
     public function test_delete_task()
