@@ -17,7 +17,7 @@
     <a class="pr-2" href="#">
         Terms
     </a>
-    <a class="pr-2" href="#">
+    <a class="pr-2" href="https://taskord.freshdesk.com/support/tickets/new" targer="_blank">
         Contact
     </a>
 </div>
