@@ -3,10 +3,10 @@
 namespace App\Http\Livewire\Task;
 
 use App\Gamify\Points\CommentCreated;
+use App\Notifications\TaskCommented;
 use App\TaskComment;
 use Auth;
 use Livewire\Component;
-use App\Notifications\TaskCommented;
 
 class CreateComment extends Component
 {
