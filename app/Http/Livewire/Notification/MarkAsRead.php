@@ -2,8 +2,8 @@
 
 namespace App\Http\Livewire\Notification;
 
-use Livewire\Component;
 use Auth;
+use Livewire\Component;
 
 class MarkAsRead extends Component
 {
@@ -12,7 +12,7 @@ class MarkAsRead extends Component
         Auth::user()->notifications()->delete();
         $this->emitUp('markAsRead');
     }
-    
+
     public function render()
     {
         return view('livewire.notification.mark-as-read');

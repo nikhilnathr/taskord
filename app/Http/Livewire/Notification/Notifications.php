@@ -13,7 +13,7 @@ class Notifications extends Component
     public $listeners = [
         'markAsRead' => 'render',
     ];
-    
+
     public $page;
     public $perPage;
 
