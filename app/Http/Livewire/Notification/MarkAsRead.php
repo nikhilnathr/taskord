@@ -10,7 +10,7 @@ class MarkAsRead extends Component
     public function markAsRead()
     {
         Auth::user()->notifications()->delete();
-        $this->emitUp('markAsRead');
+        $this->emit('markAsRead');
     }
 
     public function render()
