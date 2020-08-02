@@ -1,4 +1,4 @@
-<li wire:poll class="nav-item mr-2">
+<li wire:poll.5s class="nav-item mr-2">
     <a class="nav-link text-white" href="{{ route('notifications') }}">
         {{ Emoji::bell() }}
         @if (Auth::user()->notifications->count() !== 0)
