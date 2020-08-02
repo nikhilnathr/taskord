@@ -90,6 +90,7 @@
                 <span class="align-middle">
                     subscribed to your product
                     <a class="font-weight-bold" href="{{ route('product.done', ['slug' => \App\Product::find($data['product_id'])->slug]) }}">
+                        <img class="rounded avatar-20 ml-2 mr-1" src="{{ \App\Product::find($data['product_id'])->avatar }}" />
                         {{ \App\Product::find($data['product_id'])->name }}
                     </a>
                 </span>
