@@ -56,8 +56,8 @@ class CreateComment extends Component
             $this->comment = '';
 
             if (Auth::id() !== $this->task->user->id) {
-                givePoint(new CommentCreated($comment));
                 $this->task->user->notify(new TaskCommented($comment));
+                givePoint(new CommentCreated($comment));
             }
 
             return session()->flash('success', 'Comment has been added!');

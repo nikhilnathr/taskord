@@ -6,6 +6,7 @@ use App\Answer;
 use App\Notifications\Answered;
 use Auth;
 use Livewire\Component;
+use App\Gamify\Points\CommentCreated;
 
 class CreateAnswer extends Component
 {
@@ -56,6 +57,7 @@ class CreateAnswer extends Component
 
             if (Auth::id() !== $this->question->user->id) {
                 $this->question->user->notify(new Answered($answer));
+                givePoint(new CommentCreated($answer));
             }
 
             return session()->flash('success', 'Answer has been added!');
