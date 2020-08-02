@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-lg-8">
             <a type="button" class="btn btn-primary mb-3" href="{{ route('notifications.unread') }}">
-                Unread 
+                Unread
                 <span class="ml-1 badge bg-white text-black-50">
                     {{ Auth::user()->unreadNotifications->count() }}
                 </span>
