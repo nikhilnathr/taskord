@@ -19,6 +19,18 @@
                 Account
             </a>
             <a
+                class="list-group-item text-dark pt-2 pb-2 @if (Route::currentRouteName() === 'user.settings.account') active text-white @endif"
+                href="{{ route('user.settings.account') }}"
+            >
+                <i class="fa fa-bell mr-1"></i>
+                Notifications (TODO)
+                @if (Route::currentRouteName() === 'user.settings.account')
+                @include('components.beta', ['background' => 'white'])
+                @else
+                @include('components.beta', ['background' => 'dark'])
+                @endif
+            </a>
+            <a
                 class="list-group-item text-dark pt-2 pb-2 @if (Route::currentRouteName() === 'user.settings.password') active text-white @endif"
                 href="{{ route('user.settings.password') }}"
             >
