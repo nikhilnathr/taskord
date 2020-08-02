@@ -7,7 +7,8 @@
             @if (Auth::user()->unreadNotifications->count() !== 0)
             @livewire('notification.mark-as-read')
             @endif
-            @livewire('notification.notifications', [
+            @livewire('notification.unread', [
+                'type' => 'unread',
                 'page' => 1,
                 'perPage' => 10
             ])

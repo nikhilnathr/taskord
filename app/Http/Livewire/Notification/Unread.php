@@ -8,17 +8,19 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
 use Livewire\Component;
 
-class Notifications extends Component
+class Unread extends Component
 {
     public $listeners = [
         'markAsRead' => 'render',
     ];
-
+    
+    public $type;
     public $page;
     public $perPage;
 
-    public function mount($page, $perPage)
+    public function mount($type, $page, $perPage)
     {
+        $this->type = $type;
         $this->page = $page ? $page : 1;
         $this->perPage = $perPage ? $perPage : 1;
     }
@@ -33,7 +35,7 @@ class Notifications extends Component
 
     public function render()
     {
-        return view('livewire.notification.notifications', [
+        return view('livewire.notification.unread', [
             'notifications' => $this->paginate(Auth::user()->unreadNotifications),
         ]);
     }

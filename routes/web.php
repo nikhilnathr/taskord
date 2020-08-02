@@ -60,6 +60,12 @@ Route::group(['prefix' => 'question', 'as' => 'question.'], function () {
     Route::get('{id}', 'QuestionController@question')->name('question');
     Route::get('edit/{id}', 'QuestionController@edit')->name('edit')->middleware('auth');
 });
+
+Route::group(['prefix' => 'notifications', 'as' => 'notifications.', 'middleware' => ['auth']], function () {
+    Route::get('', 'NotificationController@unread')->name('unread');
+    Route::get('all', 'NotificationController@all')->name('all');
+});
+
 // Toggles
 Route::get('adminbar', 'Admin\AdminBarController@toggle')->name('adminbar')->middleware('staff');
 Route::get('darkmode', 'UserController@darkMode')->name('darkmode')->middleware('patron');
@@ -67,8 +73,6 @@ Route::get('darkmode', 'UserController@darkMode')->name('darkmode')->middleware(
 Route::get('task/{id}', 'TaskController@task')->name('task');
 
 Route::get('tasks', 'TaskController@tasks')->name('tasks')->middleware('beta');
-
-Route::get('notifications', 'NotificationController@notifications')->name('notifications')->middleware('auth');
 
 Route::get('patron', 'PatronController@patron')->name('patron');
 

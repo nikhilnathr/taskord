@@ -18,6 +18,7 @@
     @endforeach
     @if ($notifications->hasMorePages())
         @livewire('notification.load-more', [
+            'type' => 'unread',
             'page' => $page,
             'perPage' => $perPage
         ])

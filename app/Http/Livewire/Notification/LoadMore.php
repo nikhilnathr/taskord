@@ -10,11 +10,12 @@ use Livewire\Component;
 
 class LoadMore extends Component
 {
+    public $type;
     public $page;
     public $perPage;
     public $loadMore;
 
-    public function mount($page = 1, $perPage = 1)
+    public function mount($type, $page = 1, $perPage = 1)
     {
         $this->page = $page + 1; //increment the page
         $this->perPage = $perPage;
@@ -37,9 +38,15 @@ class LoadMore extends Component
     public function render()
     {
         if ($this->loadMore) {
-            return view('livewire.notification.notifications', [
-                'notifications' => $this->paginate(Auth::user()->notifications),
-            ]);
+            if ($this->type === 'unread') {
+                return view('livewire.notification.notifications', [
+                    'notifications' => $this->paginate(Auth::user()->notifications),
+                ]);
+            } else {
+                return view('livewire.notification.all', [
+                    'notifications' => $this->paginate(Auth::user()->notifications),
+                ]);
+            }
         } else {
             return view('livewire.load-more');
         }
