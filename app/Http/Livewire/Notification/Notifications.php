@@ -10,6 +10,10 @@ use Livewire\Component;
 
 class Notifications extends Component
 {
+    public $listeners = [
+        'markAsRead' => 'render',
+    ];
+    
     public $page;
     public $perPage;
 
@@ -25,11 +29,6 @@ class Notifications extends Component
         $items = $items instanceof Collection ? $items : Collection::make($items);
 
         return new LengthAwarePaginator($items->forPage($page, $this->perPage), $items->count(), $this->perPage, $page, $options);
-    }
-
-    public function markAsRead()
-    {
-        Auth::user()->notifications()->delete();
     }
 
     public function render()
