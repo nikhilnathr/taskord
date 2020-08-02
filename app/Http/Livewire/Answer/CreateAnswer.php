@@ -3,10 +3,10 @@
 namespace App\Http\Livewire\Answer;
 
 use App\Answer;
+use App\Gamify\Points\CommentCreated;
 use App\Notifications\Answered;
 use Auth;
 use Livewire\Component;
-use App\Gamify\Points\CommentCreated;
 
 class CreateAnswer extends Component
 {
