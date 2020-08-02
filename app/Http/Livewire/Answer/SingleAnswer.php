@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Answer;
 
+use App\Gamify\Points\PraiseCreated;
 use App\AnswerPraise;
 use App\Notifications\AnswerPraised;
 use Auth;
@@ -44,6 +45,7 @@ class SingleAnswer extends Component
                 ]);
                 $this->answer->refresh();
                 $this->answer->user->notify(new AnswerPraised($this->answer, Auth::id()));
+                givePoint(new PraiseCreated($praise));
             }
         } else {
             return session()->flash('error', 'Forbidden!');
