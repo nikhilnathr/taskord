@@ -13,11 +13,13 @@
     </button>
     @endif
     @foreach ($notifications as $notification)
-        @livewire('notification.single-notification', [
-            'type' => $notification->type,
-            'data' => $notification->data,
-            'created_at' => $notification->created_at,
-        ], key($notification->id))
+        <div wire:poll>
+            @livewire('notification.single-notification', [
+                'type' => $notification->type,
+                'data' => $notification->data,
+                'created_at' => $notification->created_at,
+            ], key($notification->id))
+        </div>
     @endforeach
     @if ($notifications->hasMorePages())
         @livewire('notification.load-more', [
