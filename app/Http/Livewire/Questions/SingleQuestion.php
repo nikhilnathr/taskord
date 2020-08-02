@@ -2,11 +2,11 @@
 
 namespace App\Http\Livewire\Questions;
 
+use App\Gamify\Points\PraiseCreated;
 use App\Notifications\QuestionPraised;
 use App\QuestionPraise;
 use Auth;
 use Livewire\Component;
-use App\Gamify\Points\PraiseCreated;
 
 class SingleQuestion extends Component
 {

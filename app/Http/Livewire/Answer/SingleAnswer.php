@@ -2,8 +2,8 @@
 
 namespace App\Http\Livewire\Answer;
 
-use App\Gamify\Points\PraiseCreated;
 use App\AnswerPraise;
+use App\Gamify\Points\PraiseCreated;
 use App\Notifications\AnswerPraised;
 use Auth;
 use Livewire\Component;

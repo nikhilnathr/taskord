@@ -2,10 +2,10 @@
 
 namespace App\Http\Livewire\Question;
 
+use App\Gamify\Points\QuestionCreated;
 use App\Question;
 use Auth;
 use Livewire\Component;
-use App\Gamify\Points\QuestionCreated;
 
 class CreateQuestion extends Component
 {
