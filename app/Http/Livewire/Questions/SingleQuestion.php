@@ -6,6 +6,7 @@ use App\Notifications\QuestionPraised;
 use App\QuestionPraise;
 use Auth;
 use Livewire\Component;
+use App\Gamify\Points\PraiseCreated;
 
 class SingleQuestion extends Component
 {
@@ -46,6 +47,7 @@ class SingleQuestion extends Component
                 ]);
                 $this->question->refresh();
                 $this->question->user->notify(new QuestionPraised($this->question, Auth::id()));
+                givePoint(new PraiseCreated($praise));
             }
         } else {
             return session()->flash('error', 'Forbidden!');
