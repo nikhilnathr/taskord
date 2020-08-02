@@ -13,7 +13,7 @@ class All extends Component
     public $listeners = [
         'deleteAll' => 'render',
     ];
-    
+
     public $type;
     public $page;
     public $perPage;
@@ -32,7 +32,7 @@ class All extends Component
 
         return new LengthAwarePaginator($items->forPage($page, $this->perPage), $items->count(), $this->perPage, $page, $options);
     }
-    
+
     public function render()
     {
         return view('livewire.notification.all', [

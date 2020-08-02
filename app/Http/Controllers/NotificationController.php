@@ -8,7 +8,7 @@ class NotificationController extends Controller
     {
         return view('notifications.unread');
     }
-    
+
     public function all()
     {
         return view('notifications.all');

@@ -13,7 +13,7 @@ class Unread extends Component
     public $listeners = [
         'markAsRead' => 'render',
     ];
-    
+
     public $type;
     public $page;
     public $perPage;

@@ -2,8 +2,8 @@
 
 namespace App\Http\Livewire\Notification;
 
-use Livewire\Component;
 use Auth;
+use Livewire\Component;
 
 class Delete extends Component
 {
@@ -12,7 +12,7 @@ class Delete extends Component
         Auth::user()->notifications()->delete();
         $this->emit('deleteAll');
     }
-    
+
     public function render()
     {
         return view('livewire.notification.delete');
