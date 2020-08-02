@@ -21,7 +21,7 @@
             </a>
         </span>
         <span class="float-right">
-            <span type="button" class="dropdown dropleft">
+            <span role="button" class="dropdown dropleft">
                 <span class="font-weight-bold mr-3" data-toggle="dropdown">
                     <i class="fa fa-chart-pie mr-1"></i>
                     Stats
