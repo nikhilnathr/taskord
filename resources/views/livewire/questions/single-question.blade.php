@@ -90,6 +90,15 @@
                     @endif
                 </a>
             @endguest
+            @if (views($question)->remember()->count() > 0)
+            <span class="align-middle ml-2 mr-2">
+                <i class="fa fa-eye mr-1"></i>
+                <span class="text-secondary">
+                    <span class="font-weight-bold">{{ views($question)->remember()->count() }}</span>
+                    {{ views($question)->remember()->count() <= 1 ? 'View' : 'Views' }}
+                </span>
+            </span>
+            @endif
             @if ($type !== "question.question")
             <a href="{{ route('question.question', ['id' => $question->id]) }}" class="avatar-stack text-dark">
                 @foreach ($question->answer->groupBy('user_id')->take(5) as $answer)
