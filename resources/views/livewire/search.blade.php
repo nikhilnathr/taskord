@@ -41,7 +41,7 @@
             <li class="list-group-item">
                 <img class="rounded-circle avatar-30" src="{{ $user->avatar }}" />
                 <span>
-                    <a class="ml-2 task-font text-dark" href="{{ route('user.done', ['username' => $user->username]) }}">
+                    <a class="ml-2 task-font text-dark align-middle" href="{{ route('user.done', ['username' => $user->username]) }}">
                         <span class="font-weight-bold">{{ $user->firstname ? $user->firstname . ' ' . $user->lastname : '' }}</span>
                         <span class="small">{{ "@" . $user->username }}</span>
                     </a>
@@ -59,7 +59,7 @@
             <li class="list-group-item">
                 <img class="rounded avatar-30" src="{{ $product->avatar }}" />
                 <span>
-                    <a class="ml-2 task-font text-dark" href="{{ route('product.done', ['slug' => $product->slug]) }}">
+                    <a class="ml-2 task-font text-dark align-middle" href="{{ route('product.done', ['slug' => $product->slug]) }}">
                         <span class="font-weight-bold">{{ $product->name }}</span>
                     </a>
                 </span>
