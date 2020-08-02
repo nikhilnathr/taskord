@@ -11,56 +11,44 @@
         </div>
         <ul class="list-group list-group-flush">
             @if ($user->website)
-            <li class="list-group-item">
-                <a class="text-dark" href="{{ $user->website }}">
-                    <i class="fa fa-link mr-1"></i>
-                    {{ Helper::removeProtocol($user->website) }}
-                </a>
-            </li>
+            <a class="list-group-item link-dark" href="{{ $user->website }}">
+                <i class="fa fa-link mr-1"></i>
+                {{ Helper::removeProtocol($user->website) }}
+            </a>
             @endif
             @if ($user->twitter)
-            <li class="list-group-item">
-                <a class="text-dark" href="https://twitter.com/{{ $user->twitter }}">
-                    <i class="fa fa-twitter mr-1"></i>
-                    {{ $user->twitter }}
-                </a>
-            </li>
+            <a class="list-group-item link-dark" href="https://twitter.com/{{ $user->twitter }}">
+                <i class="fa fa-twitter mr-1"></i>
+                {{ $user->twitter }}
+            </a>
             @endif
             @if ($user->twitch)
-            <li class="list-group-item">
-                <a class="text-dark" href="https://twitch.tv/{{ $user->twitch }}">
-                    <i class="fa fa-twitch mr-1"></i>
-                    {{ $user->twitch }}
-                </a>
-            </li>
+            <a class="list-group-item link-dark" href="https://twitch.tv/{{ $user->twitch }}">
+                <i class="fa fa-twitch mr-1"></i>
+                {{ $user->twitch }}
+            </a>
             @endif
             @if ($user->telegram)
-            <li class="list-group-item">
-                <a class="text-dark" href="https://t.me/{{ $user->telegram }}">
-                    <i class="fa fa-telegram mr-1"></i>
-                    {{ $user->telegram }}
-                </a>
-            </li>
+            <a class="list-group-item link-dark" href="https://t.me/{{ $user->telegram }}">
+                <i class="fa fa-telegram mr-1"></i>
+                {{ $user->telegram }}
+            </a>
             @endif
             @if ($user->github)
-            <li class="list-group-item">
-                <a class="text-dark" href="https://github.com/{{ $user->github }}">
-                    @if (Auth::check() && Auth::user()->darkMode)
-                    <i class="fa fa-github text-white mr-1"></i>
-                    @else
-                    <i class="fa fa-github mr-1"></i>
-                    @endif
-                    {{ $user->github }}
-                </a>
-            </li>
+            <a class="list-group-item link-dark" href="https://github.com/{{ $user->github }}">
+                @if (Auth::check() && Auth::user()->darkMode)
+                <i class="fa fa-github text-white mr-1"></i>
+                @else
+                <i class="fa fa-github mr-1"></i>
+                @endif
+                {{ $user->github }}
+            </a>
             @endif
             @if ($user->youtube)
-            <li class="list-group-item">
-                <a class="text-dark" href="https://youtube.com/{{ $user->youtube }}">
-                    <i class="fa fa-youtube mr-1"></i>
-                    {{ $user->youtube }}
-                </a>
-            </li>
+            <a class="list-group-item link-dark" href="https://youtube.com/{{ $user->youtube }}">
+                <i class="fa fa-youtube mr-1"></i>
+                {{ $user->youtube }}
+            </a>
             @endif
         </ul>
     </div>
