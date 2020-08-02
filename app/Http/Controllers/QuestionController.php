@@ -31,6 +31,7 @@ class QuestionController extends Controller
     public function question($id)
     {
         $question = Question::where('id', $id)->firstOrFail();
+        views($question)->unique()->count();
 
         return view('question.question', [
             'type' => 'question.question',

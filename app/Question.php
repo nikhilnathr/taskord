@@ -4,10 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Rennokki\QueryCache\Traits\QueryCacheable;
+use CyrildeWit\EloquentViewable\InteractsWithViews;
+use CyrildeWit\EloquentViewable\Contracts\Viewable;
 
-class Question extends Model
+class Question extends Model implements Viewable
 {
-    use QueryCacheable;
+    use QueryCacheable, InteractsWithViews;
 
     protected $cacheFor = 3600;
 
